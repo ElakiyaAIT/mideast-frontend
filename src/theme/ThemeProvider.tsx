@@ -1,0 +1,35 @@
+import { useEffect, type JSX, type ReactNode } from 'react';
+import { useAppSelector, useAppDispatch } from '../hooks/redux';
+import { setTheme } from '../store/themeSlice';
+import type { ThemeMode } from '../types';
+
+interface ThemeProviderProps {
+  children: ReactNode;
+}
+
+export const ThemeProvider = ({ children }: ThemeProviderProps): JSX.Element => {
+  const { mode } = useAppSelector((state) => state.theme);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    const root = document.documentElement;
+    root.classList.remove('light', 'dark');
+    root.classList.add(mode);
+    dispatch(setTheme(mode));
+  }, [mode, dispatch]);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const handleChange = (e: MediaQueryListEvent): void => {
+      if (!localStorage.getItem('app_theme')) {
+        const newMode: ThemeMode = e.matches ? 'dark' : 'light';
+        dispatch(setTheme(newMode));
+      }
+    };
+
+    mediaQuery.addEventListener('change', handleChange);
+    return (): void => mediaQuery.removeEventListener('change', handleChange);
+  }, [dispatch]);
+
+  return <>{children}</>;
+};

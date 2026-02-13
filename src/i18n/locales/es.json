@@ -1,0 +1,383 @@
+{
+  "common": {
+    "loading": "Cargando...",
+    "error": "Error",
+    "success": "Éxito",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "create": "Crear",
+    "update": "Actualizar",
+    "submit": "Enviar",
+    "back": "Atrás",
+    "next": "Siguiente",
+    "previous": "Anterior",
+    "search": "Buscar",
+    "filter": "Filtrar",
+    "actions": "Acciones",
+    "noData": "No hay datos disponibles",
+    "confirm": "Confirmar",
+    "close": "Cerrar",
+    "tryAgain": "Intentar de Nuevo",
+    "goHome": "Ir al Inicio",
+    "viewAll": "Ver Todo",
+    "viewMore": "Ver Más",
+    "learnMore": "Saber Más",
+    "or": "O",
+    "reset": "Restablecer",
+    "apply": "Aplicar"
+  },
+  "nav": {
+    "home": "INICIO",
+    "buyNow": "COMPRAR AHORA",
+    "sell": "VENDER",
+    "auction": "SUBASTA",
+    "aboutUs": "SOBRE NOSOTROS",
+    "contactUs": "CONTÁCTENOS",
+    "login": "Iniciar Sesión",
+    "register": "Registrarse"
+  },
+  "validation": {
+    "required": "{{field}} es requerido",
+    "minLength": "{{field}} debe tener al menos {{min}} caracteres",
+    "maxLength": "{{field}} no debe exceder {{max}} caracteres",
+    "password": {
+      "required": "La contraseña es requerida",
+      "minLength": "La contraseña debe tener al menos 8 caracteres",
+      "pattern": "La contraseña debe contener al menos una letra mayúscula, una letra minúscula, un número y un carácter especial"
+    },
+    "firstName": {
+      "required": "El nombre es requerido",
+      "minLength": "El nombre debe tener al menos 2 caracteres",
+      "maxLength": "El nombre no debe exceder 50 caracteres"
+    },
+    "lastName": {
+      "required": "El apellido es requerido",
+      "minLength": "El apellido debe tener al menos 2 caracteres",
+      "maxLength": "El apellido no debe exceder 50 caracteres"
+    },
+    "email": {
+      "required": "El correo electrónico es requerido",
+      "invalid": "Por favor ingrese una dirección de correo electrónico válida"
+    },
+    "token": {
+      "required": "El token de restablecimiento es requerido"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Iniciar Sesión",
+      "email": "Correo Electrónico",
+      "password": "Contraseña",
+      "forgotPassword": "¿Olvidaste tu contraseña?",
+      "noAccount": "¿No tienes una cuenta?",
+      "signUp": "Regístrate",
+      "signIn": "Iniciar sesión",
+      "success": "Inicio de sesión exitoso",
+      "error": "Correo electrónico o contraseña inválidos",
+      "rememberMe": "Recuérdame",
+      "googleSignIn": "Iniciar sesión con Google"
+    },
+    "register": {
+      "title": "Registrarse",
+      "firstName": "Nombre",
+      "lastName": "Apellido",
+      "email": "Correo Electrónico",
+      "password": "Contraseña",
+      "confirmPassword": "Confirmar Contraseña",
+      "haveAccount": "¿Ya tienes una cuenta?",
+      "signIn": "Iniciar sesión",
+      "createAccount": "Crear Cuenta",
+      "success": "Registro exitoso",
+      "error": "Error en el registro",
+      "createYourAccount": "Crea tu cuenta",
+      "signInExisting": "O inicia sesión en tu cuenta existente",
+      "emailPlaceholder": "Ingresa tu correo electrónico",
+      "passwordPlaceholder": "Crea una contraseña",
+      "passwordRequirements": "La contraseña debe contener al menos una letra mayúscula, una letra minúscula, un número y un carácter especial"
+    },
+    "forgotPassword": {
+      "title": "Olvidé mi Contraseña",
+      "forgotYourPassword": "¿Olvidaste tu contraseña?",
+      "description": "Ingresa tu dirección de correo electrónico y te enviaremos un enlace para restablecer tu contraseña.",
+      "email": "Correo Electrónico",
+      "sendResetLink": "Enviar Enlace de Restablecimiento",
+      "backToLogin": "Volver al Inicio de Sesión",
+      "success": "Enlace de restablecimiento de contraseña enviado a tu correo electrónico",
+      "error": "Error al enviar el enlace de restablecimiento",
+      "checkEmail": "Revisa tu correo electrónico",
+      "emailSent": "Si existe una cuenta con ese correo electrónico, se ha enviado un enlace de restablecimiento de contraseña.",
+      "emailPlaceholder": "Ingresa tu correo electrónico"
+    },
+    "resetPassword": {
+      "title": "Restablecer Contraseña",
+      "resetYourPassword": "Restablece tu contraseña",
+      "description": "Ingresa tu nueva contraseña a continuación.",
+      "newPassword": "Nueva Contraseña",
+      "confirmPassword": "Confirmar Contraseña",
+      "reset": "Restablecer Contraseña",
+      "success": "Contraseña restablecida exitosamente",
+      "error": "Error al restablecer la contraseña",
+      "passwordPlaceholder": "Ingresa tu nueva contraseña",
+      "passwordRequirements": "La contraseña debe contener al menos una letra mayúscula, una letra minúscula, un número y un carácter especial"
+    },
+    "logout": {
+      "success": "Sesión cerrada exitosamente",
+      "error": "Error al cerrar sesión"
+    }
+  },
+  "dashboard": {
+    "title": "Panel de Control",
+    "welcome": "¡Bienvenido de nuevo, {{name}}!",
+    "overview": "Resumen",
+    "analytics": "Análisis",
+    "reports": "Informes",
+    "settings": "Configuración",
+    "profile": "Perfil",
+    "users": "Usuarios"
+  },
+  "profile": {
+    "title": "Perfil",
+    "personalInfo": "Información Personal",
+    "firstName": "Nombre",
+    "lastName": "Apellido",
+    "email": "Correo Electrónico",
+    "role": "Rol",
+    "updateSuccess": "Perfil actualizado exitosamente",
+    "updateError": "Error al actualizar el perfil"
+  },
+  "home": {
+    "hero": {
+      "title": "EQUIPO PESADO USADO DE CALIDAD EN VENTA",
+      "subtitle": "Desde 2004, Mideast Equipment Supply ha sido un socio global confiable para la compra y venta de equipos pesados. Gracias a nuestras sólidas relaciones internacionales, ofrecemos transacciones fluidas, soporte experto y un servicio al cliente excepcional.",
+      "exploreEquipment": "Explorar Equipos",
+      "upcomingAuctions": "Próximas Subastas"
+    },
+    "auctions": {
+      "title": "Próximas Subastas",
+      "proxibidBidding": "Licitación Proxibid",
+      "equipmentfactsBidding": "Licitación Equipmentfacts",
+      "viewMoreAuctions": "Ver Más Subastas",
+      "auctionEquipment": "Equipo de subasta"
+    },
+    "categories": {
+      "title": "Explorar Categorías de Equipos",
+      "reasons": "Razones para elegirnos",
+      "viewAllCategory": "Ver Todas las Categorías",
+      "rollers": "Rodillos",
+      "wheelLoaders": "Cargadoras de Ruedas",
+      "excavator": "Excavadora",
+      "bulldozers": "Bulldozers",
+      "dumpTruck": "Camión Volquete",
+      "cranes": "Grúas",
+      "articulatedTrucks": "Camiones Articulados",
+      "beltTrailers": "Remolques de Correa",
+      "drillingRigs": "Equipos de Perforación",
+      "26gCase": "Case 26g"
+    },
+    "support":{
+        "title":"Apoyo",
+        "subtitle":"Ofrecemos equipos de construcción de la mejor calidad y un excelente servicio de soporte.",
+        "description":"Nuestra misión es brindar servicios honestos y profesionales a nuestros clientes en la industria de equipo pesado. Nos enorgullecemos de nuestra reputación como socio ético y de confianza para contratistas y distribuidores. Podemos ayudarle a comprar o vender su equipo pesado, tanto a nivel local como internacional, a través de nuestra red global de contactos. Nuestro objetivo es su completa y total satisfacción."
+    },
+    "products": {
+      "title": "Nuestros Productos",
+      "subtitle": "Últimos Equipos",
+      "viewEquipments": "Ver Equipos",
+      "description": "Cumplir con el programa de mantenimiento recomendado para su máquina es una de las formas más efectivas de garantizar que siga funcionando de manera óptima.",
+      "viewMore":"Ver Más",
+      "best":"mejor",
+      "retailPrice":"Precio de Venta"
+    },
+    "services": {
+      "title": "Servicios",
+      "subtitle": "Líder de la Industria en Suministro de Equipos de Construcción",
+      "auction": "Subasta",
+      "cargoConsignment": "Consignación de Carga",
+        "buy": {
+          "title": "Comprar",
+          "subtitle": "Compramos equipos pesados y camiones, desde una pieza hasta 100+.",
+          "learnMore": "Más información"
+        },
+          "consignment":{
+        "title":"Consignación",
+        "subtitle":"Si no llegan a un acuerdo de compra, podemos ayudarle. Vendemos equipos en consignación.",
+        "learnMore":"Más información"
+      },
+       "auctions":{
+        "title":"Subasta",
+        "subtitle":"Nuestras subastas en línea brindan una alternativa eficaz para vender su equipo pesado usado.",
+        "learnMore":"Más información"
+      },
+       "eqLocators":{
+        "title":"Localizadores EQ",
+        "subtitle":"Con nuestra amplia red podemos ayudarle a localizar cualquier equipo que no se encuentre actualmente en stock.",
+        "learnMore":"Más información"
+      }
+
+    },
+    "testimonials": {
+      "title": "Testimonios",
+      "subtitle": "Lo Que Dicen Nuestros Clientes",
+      "prev":"Anterior",
+      "next":"Siguiente"
+    }
+  },
+  "product": {
+    "retailPrice": "Precio de Venta",
+    "salePrice": "Precio de Oferta",
+    "totalPrice": "Precio Total",
+    "currentBid": "Oferta Actual",
+    "viewMore": "Ver Más",
+    "buyNow": "COMPRAR AHORA",
+    "placeBid": "OFERTAR",
+    "soldOut": "Agotado",
+    "status": {
+      "newest": "MÁS NUEVO",
+      "forSale": "EN VENTA",
+      "forAuction": "EN SUBASTA",
+      "sold": "VENDIDO"
+    },
+    "specs": {
+      "assemblyWeight": "Peso de Ensamblaje",
+      "grossPower": "Potencia Bruta",
+      "maxSpeed": "Velocidad Máxima",
+      "engine": "Motor",
+      "hours": "Horas",
+      "location": "Ubicación",
+      "make": "Marca",
+      "model": "Modelo",
+      "condition": "Condición",
+      "year": "Año",
+      "fuelType": "Tipo de Combustible",
+      "mileage": "Kilometraje",
+      "exteriorColor": "Color Exterior",
+      "drive": "Tracción"
+    },
+    "details": {
+      "description": "Descripción del Producto",
+      "vehicleDetails": "Detalles del Vehículo",
+      "relatedProducts": "Productos Relacionados",
+      "documentation": "Documentación",
+      "serviceHistory": "Historial de Servicio",
+      "specificationDocumentation": "Documentación de Especificaciones",
+      "verifiedListing": "Listado Verificado",
+      "securePayment": "Pago Seguro",
+      "includedTaxes": "Impuestos y Revisión Incluidos",
+      "savingsBadge": "AHORRA $10,000"
+    },
+    "breadcrumb": {
+      "home": "Inicio",
+      "inventory": "Inventario"
+    }
+  },
+  "buy": {
+    "title": "Comprar Equipos",
+    "inventory": "Inventario",
+    "filter": "Filtrar",
+    "reset": "Restablecer",
+    "activeResults": "Resultados Activos",
+    "found": "ENCONTRADOS",
+    "selectAll": "SELECCIONAR TODO",
+    "unselectAll": "DESELECCIONAR TODO",
+    "applyFilters": "APLICAR FILTROS",
+    "showing": "Mostrando",
+    "resultsCount": "de {{total}} Resultados",
+    "filters": {
+      "auctionDate": "Fecha de Subasta",
+      "category": "Categoría",
+      "make": "Marca",
+      "year": "Año",
+      "stateCity": "Estado / Ciudad",
+      "currentBid": "Oferta Actual"
+    }
+  },
+  "sell": {
+    "title": "VENDER Inventario",
+    "subtitle": "Vender tu equipo usado es fácil.",
+    "getStarted": "¡Comienza a vender tu equipo con Mideast hoy!",
+    "steps": {
+      "basicInfo": "Información Básica",
+      "details": "Detalles",
+      "condition": "Condición",
+      "media": "Medios",
+      "additional": "Adicional",
+      "price": "Precio",
+      "review": "Revisión"
+    },
+    "form": {
+      "basicEquipmentInformation": "Información Básica del Equipo",
+      "equipmentTitle": "Título del Equipo",
+      "category": "Categoría",
+      "description": "Descripción",
+      "selectCategory": "Seleccionar Categoría"
+    },
+    "stepDescriptions": {
+      "step1": "Proporciona información básica sobre tu equipo",
+      "step2": "Agrega especificaciones detalladas",
+      "step3": "Describe la condición",
+      "step4": "Sube fotos y videos",
+      "step5": "Información adicional",
+      "step6": "Establece tu precio",
+      "step7": "Revisa y envía"
+    }
+  },
+  "aboutUs": {
+    "title": "Sobre Nosotros",
+    "comingSoon": "El contenido de la página Sobre Nosotros estará disponible pronto..."
+  },
+  "contactUs": {
+    "title": "Contáctenos",
+    "comingSoon": "El contenido de la página Contáctenos estará disponible pronto..."
+  },
+  "footer": {
+    "aboutCompany": "Sobre la Compañía",
+    "mission": "En Mideast Supply, construimos confianza con operaciones transparentes, experiencia en la industria, transacciones fluidas y servicio al cliente inigualable. Tu éxito es nuestra prioridad.",
+    "ourNetwork": "Nuestra Red",
+    "contactInfo": "Información de Contacto",
+    "needHelp": "¿Necesitas ayuda? Habla con un Experto",
+    "termsOfUse": "Términos de Uso",
+    "privacyPolicy": "Política de Privacidad",
+    "copyright": "Copyright © Mideast Equipment Supply {{year}}. Todos los derechos reservados.",
+    "links": {
+      "buy": "Comprar",
+      "sell": "Vender",
+      "aboutUs": "Sobre Nosotros",
+      "contactUs": "Contáctenos"
+    },
+    "social": {
+      "facebook": "Facebook",
+      "behance": "Behance",
+      "linkedin": "LinkedIn",
+      "twitter": "Twitter"
+    },
+    "abbreviations": {
+      "fb": "FB",
+      "be": "BE",
+      "ln": "LN",
+      "tw": "TW"
+    }
+  },
+  "topBanner": {
+    "address": "1600 SW 47th Avenue, Fort Lauderdale, FL, EE.UU.",
+    "email": "info@mideastsupply.com",
+    "hours": "Lun - Vie 9:00AM - 5:00PM"
+  },
+  "errors": {
+    "generic": "Ocurrió un error. Por favor, inténtalo de nuevo.",
+    "network": "Error de red. Por favor, verifica tu conexión.",
+    "unauthorized": "No estás autorizado para realizar esta acción.",
+    "notFound": "El recurso solicitado no fue encontrado.",
+    "serverError": "Error del servidor. Por favor, inténtalo más tarde.",
+    "validationFailed": "Error de validación. Por favor, verifica tu entrada.",
+    "somethingWentWrong": "Algo salió mal",
+    "unexpectedError": "Ocurrió un error inesperado. Por favor, intenta actualizar la página.",
+    "errorDetails": "Detalles del Error"
+  },
+  "language": {
+    "en": "English",
+    "es": "Español",
+    "switch": "Cambiar Idioma"
+  }
+}

@@ -1,0 +1,470 @@
+import { TopBanner, Header, Footer } from '../../components/layout';
+import type { JSX } from 'react';
+import { useState } from 'react';
+import { useEquipmentList } from '../../hooks/queries/useEquipment';
+import { Link } from 'react-router-dom';
+import { ROUTES } from '../../constants';
+import { InlineSpinner } from '../../components/Loader';
+import AccordionFilter, { type FilterOption }  from '../../components/Filter/AccordionFilter';
+
+// Import images
+import buynowBanner from '../../assets/images/buynow-banner.png';
+import type { Equipment } from '../../api/equipmentApi';
+
+const BuyPage = (): JSX.Element => {
+  const [page, setPage] = useState(1);
+  const limit = 9;
+  const[isAuctionDateOpen, setIsAuctionDateOpen]=useState(false);
+  const[auctionDate, setAuctionDate]=useState<string|null>(null);
+  const [categories, setCategories] = useState<string[]>([]);
+  const [makes, setMakes] = useState<string[]>([]);
+  const filtersPayload = {
+  auctionDate,          // string | null
+  categories,           // string[]
+  makes,                // string[]
+  // later:
+  // years,
+  // states,
+  // currentBid,
+};
+  
+
+  const categoryOptions: FilterOption[] = [
+  { id: 'articulated', label: 'Articulated Trucks', count: 2 },
+  { id: 'belt', label: 'Belt Trailers', count: 1 },
+  { id: 'drilling', label: 'Drilling Rigs', count: 3 },
+  { id: 'dump', label: 'Dump Trucks', count: 6 },
+  { id: 'excavators', label: 'Excavators', count: 2 },
+];
+
+
+  // Fetch equipment with pagination
+  const { data, isLoading, isError } = useEquipmentList({ page, limit });
+
+  const equipment = data?.items || [];
+  const totalPages = data?.pagination?.totalPages || 1;
+
+  const getStatusBadge = (equipment: Equipment) => {
+    if (equipment.status === 'SOLD') {
+      return { label: 'SOLD', className: 'bg-red-500' };
+    }
+    if (equipment.listingType === 'auction' || equipment.listingType === 'both') {
+      return { label: 'FOR AUCTION', className: 'bg-blue-500' };
+    }
+    return { label: 'AVAILABLE', className: 'bg-green-500' };
+  };
+
+  const formatPrice = (price?: number): string => {
+    if (!price) return 'Contact for price';
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 0,
+    }).format(price);
+  };
+
+  const appliedFiltersCount = Object.values(filtersPayload).reduce(
+    (count, value) => {
+      if (Array.isArray(value)) return value.length > 0 ? count + value.length : count;
+      return value ? count + 1 : count;
+    },
+    0
+  );
+
+  const handleApplyFilters = () => {
+  //API call goes here
+  // example:
+  // fetchEquipment(filtersPayload)
+
+  console.log('Applying filters with payload:', filtersPayload);
+};
+
+
+  return (
+    <>
+      <TopBanner />
+      <Header />
+
+      {/* Banner Section */}
+      <div className="relative bg-gray-800 h-64 flex items-center justify-center overflow-hidden br-30">
+        <img
+          alt="Construction background"
+          className="absolute inset-0 w-full h-full object-cover"
+          src={buynowBanner}
+        />
+        <div className="relative z-10 text-center">
+          <h1 className="text-5xl font-bold text-white tracking-tight uppercase">
+            Inventory
+          </h1>
+          <div className="mt-2 text-primary font-medium text-sm flex items-center justify-center gap-2">
+            <span className="text-gray-400">Home</span>
+            <span className="material-icons text-xs text-gray-500">chevron_right</span>
+            <span>Inventory</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="flex flex-col lg:flex-row gap-8">
+          {/* Sidebar Filters */}
+          <aside className="w-full lg:w-1/4 space-y-6">
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-xl font-bold">Filter</h2>
+              <button className="text-primary text-sm font-medium hover:underline">
+                Reset
+              </button>
+            </div>
+            <div className="bg-gray-100 dark:bg-gray-800 p-3 rounded-lg flex justify-between items-center mb-6">
+              <span className="text-xs font-bold uppercase tracking-wider opacity-60">
+                Active Results
+              </span>
+              <span className="bg-primary text-white text-[10px] font-bold px-2 py-1 rounded">
+                {data?.pagination?.total || 0} FOUND
+              </span>
+            </div>
+            {/* Filter sections - keeping existing structure */}
+            {/* <div className="text-sm text-gray-500 dark:text-gray-400">
+              Filters coming soon...
+            </div> */}
+            {/* AUCTION DATE FILTER */}
+            <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden">
+              <button
+                type="button"
+                onClick={() => setIsAuctionDateOpen((prev) => !prev)}
+                className={`w-full flex items-center justify-between px-4 py-3 text-sm font-semibold transition
+      ${isAuctionDateOpen
+                    ? 'bg-yellow-500 text-white'
+                    : 'bg-white dark:bg-gray-900 text-gray-800 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-800'
+                  }
+    `}
+              >
+                <div className="flex items-center gap-2">
+                  <i
+                    className={`material-icons-outlined text-base transition
+          ${isAuctionDateOpen ? 'text-white' : 'text-yellow-500'}
+        `}
+                  >
+                    calendar_month
+                  </i>
+                  <span className={`transition ${isAuctionDateOpen
+                      ? 'text-white'
+                      : 'text-black dark:text-white'
+                    }`}>Auction Date</span>
+                </div>
+
+                <i
+                  className={`material-icons-outlined transition
+        ${isAuctionDateOpen ? 'text-white' : 'text-gray-400'}
+      `}
+                >
+                  {isAuctionDateOpen ? 'expand_less' : 'expand_more'}
+                </i>
+              </button>
+
+              {isAuctionDateOpen && (
+                <div className="px-4 pb-2 bg-white dark:bg-gray-900  text-black dark:text-white">
+                  <input
+                    type="date"
+                    value={auctionDate || ''}
+                    onChange={(e) => setAuctionDate(e.target.value)}
+                    className="w-full px-3 py-2 text-sm rounded-xl
+                   border border-gray-300 dark:border-gray-700
+                   bg-white dark:bg-gray-900
+                     text-black dark:text-white
+                   focus:outline-none focus:ring-2 focus:ring-primary
+                       dark:[color-scheme:dark]"
+                  />
+
+                  {auctionDate && (
+                    <button
+                      onClick={() => setAuctionDate(null)}
+                      className="mt-3 text-xs   text-black dark:text-white
+                      font-medium hover:underline"
+                    >
+                      Clear date
+                    </button>
+                  )}
+                </div>
+              )}
+            </div>
+
+            {/* {CATEGORY FILTER} */}
+            <AccordionFilter
+              title="Category"
+              icon="category"
+              headerColor="orange"
+              options={categoryOptions}
+              value={categories}
+              onChange={setCategories}
+            />
+            {/* MAKE FILTER */}
+            <AccordionFilter
+              title="Make"
+              icon="precision_manufacturing"
+              options={categoryOptions}
+              value={makes}
+              onChange={setMakes}
+            />
+            {/* YEAR*/}
+            <AccordionFilter
+              title="Year"
+              icon="calendar_month"
+              options={categoryOptions}
+              value={makes}
+              onChange={setMakes}
+            />
+            {/* STATE/CITY*/}
+            <AccordionFilter
+              title="State/City"
+              icon="map"
+              options={categoryOptions}
+              value={makes}
+              onChange={setMakes}
+            />
+            {/* CURRENT BID */}
+            <AccordionFilter
+              title="Current Bid"
+              icon="paid"
+              options={categoryOptions}
+              value={makes}
+              onChange={setMakes}
+            />
+            <button
+              type="button"
+              onClick={handleApplyFilters}
+              disabled={appliedFiltersCount === 0}
+              className={`w-full mt-6 flex items-center justify-between px-4 py-3
+    rounded-xl font-semibold transition
+    ${appliedFiltersCount === 0
+                  ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                  : 'bg-primary text-white hover:bg-orange-600'
+                }
+  `}
+            >
+              <span>Apply Filters</span>
+
+              {appliedFiltersCount > 0 && (
+                <span className="ml-2 rounded bg-white/20 px-2 py-0.5 text-[10px] font-semibold text-white">
+                  {appliedFiltersCount} FOUND
+                </span>
+              )}
+            </button>
+
+          </aside>
+
+          {/* Products Grid */}
+          <section className="flex-1">
+            {/* View Toggle and Sort */}
+            <div className="flex justify-between items-center mb-6">
+              <div className="flex gap-2">
+                <button className="p-2 bg-primary text-white rounded-lg">
+                  <span className="material-icons">grid_view</span>
+                </button>
+                <button className="p-2 bg-gray-200 dark:bg-gray-800 rounded-lg">
+                  <span className="material-icons">view_list</span>
+                </button>
+              </div>
+              <select className="px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900">
+                <option>Sort by: Newest</option>
+                <option>Sort by: Price (Low to High)</option>
+                <option>Sort by: Price (High to Low)</option>
+              </select>
+            </div>
+
+            {/* Loading State */}
+            {isLoading && (
+              <div className="flex justify-center items-center py-20">
+                <InlineSpinner />
+              </div>
+            )}
+
+            {/* Error State */}
+            {isError && (
+              <div className="text-center py-20">
+                <p className="text-red-500">Failed to load equipment. Please try again later.</p>
+              </div>
+            )}
+
+            {/* Empty State */}
+            {!isLoading && !isError && equipment.length === 0 && (
+              <div className="text-center py-20">
+                <p className="text-gray-500 dark:text-gray-400">
+                  No equipment found. Check back later!
+                </p>
+              </div>
+            )}
+
+            {/* Products Grid */}
+            {!isLoading && !isError && equipment.length > 0 && (
+              <>
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                  {equipment.map((item) => {
+                    const badge = getStatusBadge(item);
+                    const isSold = item.status === 'SOLD';
+                    const primaryImage = item.images?.[0] || '/placeholder-equipment.jpg';
+
+                    return (
+                      <div
+                        key={item._id}
+                        className="bg-white dark:bg-gray-900 rounded-2xl shadow-md overflow-hidden group hover:shadow-xl transition-all border border-gray-100 dark:border-gray-800"
+                      >
+                        <div className="relative overflow-hidden aspect-[4/3]">
+                          <div
+                            className={`absolute top-4 left-4 ${badge.className} text-white text-[10px] font-bold px-3 py-1 uppercase rounded-full shadow-lg z-10`}
+                          >
+                            {badge.label}
+                          </div>
+                          <img
+                            alt={item.title}
+                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                            src={primaryImage}
+                            onError={(e) => {
+                              const target = e.target as HTMLImageElement;
+                              target.src = '/placeholder-equipment.jpg';
+                            }}
+                          />
+                        </div>
+                        <div className={`p-5 ${isSold ? 'opacity-75' : ''}`}>
+                          <h3 className="text-lg font-bold mb-4 truncate">{item.title}</h3>
+                          <div className="grid grid-cols-3 gap-4 mb-6">
+                            <div>
+                              <p
+                                className={`text-[14px] font-bold ${isSold ? 'text-gray-400 line-through' : ''}`}
+                              >
+                                {item.make}
+                              </p>
+                              <p className="text-[10px] text-gray-400 uppercase font-medium">
+                                Make
+                              </p>
+                            </div>
+                            <div>
+                              <p
+                                className={`text-[14px] font-bold ${isSold ? 'text-gray-400 line-through' : ''}`}
+                              >
+                                {item.year}
+                              </p>
+                              <p className="text-[10px] text-gray-400 uppercase font-medium">
+                                Year
+                              </p>
+                            </div>
+                            <div>
+                              <p
+                                className={`text-[14px] font-bold ${isSold ? 'text-gray-400 line-through' : ''}`}
+                              >
+                                {item.hoursUsed || 'N/A'}
+                              </p>
+                              <p className="text-[10px] text-gray-400 uppercase font-medium">
+                                Hours
+                              </p>
+                            </div>
+                            <div>
+                              <p
+                                className={`text-[14px] font-bold ${isSold ? 'text-gray-400 line-through' : ''}`}
+                              >
+                                {item.models}
+                              </p>
+                              <p className="text-[10px] text-gray-400 uppercase font-medium">
+                                Model
+                              </p>
+                            </div>
+                            <div>
+                              <p
+                                className={`text-[14px] font-bold ${isSold ? 'text-gray-400 line-through' : ''}`}
+                              >
+                                {item.condition || 'N/A'}
+                              </p>
+                              <p className="text-[10px] text-gray-400 uppercase font-medium">
+                                Condition
+                              </p>
+                            </div>
+                            <div>
+                              <p
+                                className={`text-[14px] font-bold ${isSold ? 'text-gray-400 line-through' : ''}`}
+                              >
+                                {item.location.state}
+                              </p>
+                              <p className="text-[10px] text-gray-400 uppercase font-medium">
+                                Location
+                              </p>
+                            </div>
+                          </div>
+                          <div className="flex justify-between items-end border-t border-gray-100 dark:border-gray-800 pt-4">
+                            <div>
+                              <p className="text-[10px] text-gray-400 uppercase font-bold">
+                                {item.listingType === 'buy_now' ? 'Buy Now Price' : 'Starting Bid'}
+                              </p>
+                              <p
+                                className={`text-xl font-bold ${isSold ? 'text-gray-500' : 'text-primary'}`}
+                              >
+                                {formatPrice(item.buyNowPrice)}
+                              </p>
+                            </div>
+                            {isSold ? (
+                              <button className="bg-gray-400 text-white px-4 py-2 rounded-2xl text-xs font-bold uppercase cursor-not-allowed">
+                                Sold Out
+                              </button>
+                            ) : (
+                              <Link
+                                to={`${ROUTES.BUY}/${item._id}`}
+                                className="bg-primary hover:bg-orange-600 text-white px-4 py-2 rounded-2xl text-xs font-bold uppercase transition-colors"
+                              >
+                                View More
+                              </Link>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* Pagination */}
+                {totalPages > 1 && (
+                  <div className="flex justify-center items-center gap-2 mt-10">
+                    <button
+                      onClick={() => setPage((p) => Math.max(1, p - 1))}
+                      disabled={page === 1}
+                      className="p-2 rounded-lg border border-gray-300 dark:border-gray-700 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-100 dark:hover:bg-gray-800"
+                    >
+                      <span className="material-icons">chevron_left</span>
+                    </button>
+
+                    {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
+                      const pageNum = i + 1;
+                      return (
+                        <button
+                          key={pageNum}
+                          onClick={() => setPage(pageNum)}
+                          className={`px-4 py-2 rounded-lg font-medium ${
+                            page === pageNum
+                              ? 'bg-primary text-white'
+                              : 'border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800'
+                          }`}
+                        >
+                          {pageNum}
+                        </button>
+                      );
+                    })}
+
+                    <button
+                      onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+                      disabled={page === totalPages}
+                      className="p-2 rounded-lg border border-gray-300 dark:border-gray-700 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-100 dark:hover:bg-gray-800"
+                    >
+                      <span className="material-icons">chevron_right</span>
+                    </button>
+                  </div>
+                )}
+              </>
+            )}
+          </section>
+        </div>
+      </main>
+
+      <Footer />
+    </>
+  );
+};
+
+export default BuyPage;

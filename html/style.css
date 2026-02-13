@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+body {
+  font-family: 'Barlow', sans-serif !important;
+}
+
+.bg-banner {
+  background-image: url('images/banner-bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.button {
+  background: linear-gradient(109.29deg, #fdad3e 37.04%, #f27405 86.44%);
+}
+
+.slide-bottom {
+  -webkit-animation: slide-bottom 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: slide-bottom 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+/**
+ * ----------------------------------------
+ * animation slide-bottom
+ * ----------------------------------------
+ */
+@-webkit-keyframes slide-bottom {
+  0% {
+    -webkit-transform: translateY(-100px);
+    transform: translateY(-100px);
+  }
+  100% {
+    -webkit-transform: translateY(50px);
+    transform: translateY(50px);
+  }
+}
+@keyframes slide-bottom {
+  0% {
+    -webkit-transform: translateX(100px);
+    transform: translateX(100px);
+  }
+  100% {
+    -webkit-transform: translateX(0px);
+    transform: translateX(0px);
+  }
+}
+
+.equpment-bg {
+  background-image: url('images/equp-bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.bg-services {
+  background-image: url('images/service-bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.banner-transparent {
+  scale: 1.5 !important;
+}
+
+/* Mobile Menu Styles */
+#mobileMenu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+}
+
+#mobileMenu:not(.hidden) {
+  max-height: 500px;
+}
+.br-30 {
+  border-radius: 0px 0px 30px 30px;
+}
+/* Testimonial Carousel Responsive */
+.testimonial-slide {
+  animation: fadeIn 0.5s ease-in;
+}
+
+.bg-dark-gray {
+  background-color: #324658;
+}
+.sell-details-form {
+  background: rgba(50, 70, 88, 0.07);
+  padding: 30px;
+  border-radius: 30px;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive improvements */
+@media screen and (max-width: 1024px) {
+  /* Show mobile menu on tablets and below */
+  #menuToggle {
+    display: block;
+  }
+
+  header nav {
+    padding: 0.75rem 1rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .banner-transparent {
+    scale: 1 !important;
+  }
+
+  /* Stack navigation better on mobile */
+  header nav {
+    padding: 0.75rem 1rem;
+  }
+
+  /* Improve testimonial dots on mobile */
+  .dot-indicator {
+    height: 0.4rem;
+    width: 0.4rem;
+  }
+
+  /* Better spacing for mobile menu buttons */
+  #mobileMenu .flex {
+    gap: 0.5rem;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  /* Extra small screens */
+  .text-4xl {
+    font-size: 1.875rem;
+  }
+
+  /* Ensure carousel text is readable */
+  .testimonial-slide p {
+    font-size: 1rem;
+  }
+  #detailsTab,
+  #basic-eqp-info,
+  #conditionTab,
+  #mediaTab,
+  #additionalTab,
+  #priceTab,
+  #reviewTab {
+    padding: 1rem !important;
+  }
+  .sm-scrolll-menu {
+    overflow: auto;
+    gap: 20px;
+  }
+}

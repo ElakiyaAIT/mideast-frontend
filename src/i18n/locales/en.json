@@ -1,0 +1,382 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "update": "Update",
+    "submit": "Submit",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "search": "Search",
+    "filter": "Filter",
+    "actions": "Actions",
+    "noData": "No data available",
+    "confirm": "Confirm",
+    "close": "Close",
+    "tryAgain": "Try Again",
+    "goHome": "Go Home",
+    "viewAll": "View All",
+    "viewMore": "View More",
+    "learnMore": "Learn More",
+    "or": "OR",
+    "reset": "Reset",
+    "apply": "Apply"
+  },
+  "nav": {
+    "home": "HOME",
+    "buyNow": "BUY NOW",
+    "sell": "SELL",
+    "auction": "AUCTION",
+    "aboutUs": "ABOUT US",
+    "contactUs": "CONTACT US",
+    "login": "Login",
+    "register": "Register"
+  },
+  "validation": {
+    "required": "{{field}} is required",
+    "minLength": "{{field}} must be at least {{min}} characters",
+    "maxLength": "{{field}} must not exceed {{max}} characters",
+    "password": {
+      "required": "Password is required",
+      "minLength": "Password must be at least 8 characters",
+      "pattern": "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character"
+    },
+    "firstName": {
+      "required": "First name is required",
+      "minLength": "First name must be at least 2 characters",
+      "maxLength": "First name must not exceed 50 characters"
+    },
+    "lastName": {
+      "required": "Last name is required",
+      "minLength": "Last name must be at least 2 characters",
+      "maxLength": "Last name must not exceed 50 characters"
+    },
+    "email": {
+      "required": "Email is required",
+      "invalid": "Please enter a valid email address"
+    },
+    "token": {
+      "required": "Reset token is required"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Login",
+      "email": "Email",
+      "password": "Password",
+      "forgotPassword": "Forgot password?",
+      "noAccount": "Don't have an account?",
+      "signUp": "Sign up",
+      "signIn": "Sign in",
+      "success": "Login successful",
+      "error": "Invalid email or password",
+      "rememberMe": "Remember me",
+      "googleSignIn": "Log in with Google"
+    },
+    "register": {
+      "title": "Register",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
+      "haveAccount": "Already have an account?",
+      "signIn": "Sign in",
+      "createAccount": "Create Account",
+      "success": "Registration successful",
+      "error": "Registration failed",
+      "createYourAccount": "Create your account",
+      "signInExisting": "Or sign in to your existing account",
+      "emailPlaceholder": "Enter your email",
+      "passwordPlaceholder": "Create a password",
+      "passwordRequirements": "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character"
+    },
+    "forgotPassword": {
+      "title": "Forgot Password",
+      "forgotYourPassword": "Forgot your password?",
+      "description": "Enter your email address and we'll send you a link to reset your password.",
+      "email": "Email",
+      "sendResetLink": "Send Reset Link",
+      "backToLogin": "Back to Login",
+      "success": "Password reset link sent to your email",
+      "error": "Failed to send reset link",
+      "checkEmail": "Check your email",
+      "emailSent": "If an account with that email exists, a password reset link has been sent.",
+      "emailPlaceholder": "Enter your email"
+    },
+    "resetPassword": {
+      "title": "Reset Password",
+      "resetYourPassword": "Reset your password",
+      "description": "Enter your new password below.",
+      "newPassword": "New Password",
+      "confirmPassword": "Confirm Password",
+      "reset": "Reset Password",
+      "success": "Password reset successful",
+      "error": "Password reset failed",
+      "passwordPlaceholder": "Enter your new password",
+      "passwordRequirements": "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character"
+    },
+    "logout": {
+      "success": "Logged out successfully",
+      "error": "Logout failed"
+    }
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome back, {{name}}!",
+    "overview": "Overview",
+    "analytics": "Analytics",
+    "reports": "Reports",
+    "settings": "Settings",
+    "profile": "Profile",
+    "users": "Users"
+  },
+  "profile": {
+    "title": "Profile",
+    "personalInfo": "Personal Information",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email",
+    "role": "Role",
+    "updateSuccess": "Profile updated successfully",
+    "updateError": "Failed to update profile"
+  },
+  "home": {
+    "hero": {
+      "title": "QUALITY, USED HEAVY EQUIPMENT FOR SALE",
+      "subtitle": "Since 2004, Mideast Equipment Supply has been a reliable global partner for buying and selling heavy equipment. With trusted worldwide relationships, we deliver seamless transactions, expert support, and exceptional customer service.",
+      "exploreEquipment": "Explore Equipment",
+      "upcomingAuctions": "Upcoming Auctions"
+    },
+    "auctions": {
+      "title": "Upcoming Auctions",
+      "proxibidBidding": "Proxibid Bidding",
+      "equipmentfactsBidding": "Equipmentfacts Bidding",
+      "viewMoreAuctions": "View More Auctions",
+      "auctionEquipment": "Auction equipment"
+    },
+    "categories": {
+      "title": "Browse Equipment Categories",
+      "reasons": "Reasons to choose us",
+      "viewAllCategory": "View All Category",
+      "rollers": "Rollers",
+      "wheelLoaders": "Wheel Loaders",
+      "excavator": "Excavator",
+      "bulldozers": "Bulldozers",
+      "dumpTruck": "Dump Truck",
+      "cranes": "Cranes",
+      "articulatedTrucks": "Articulated Trucks",
+      "beltTrailers": "Belt Trailers",
+      "drillingRigs": "Drilling Rigs",
+      "26gCase": "26g Case"
+    },
+    "support":{
+      "title":"support",
+      "subtitle":"We Provide The Best Quality Construction Equipment And Excellent Support Service",
+      "description":"Our mission is to provide honest, professional services to our customers in the heavy equipment industry. We take pride in our reputation as an ethical and reputable partner for contractors and dealers. We can help you buy or sell your heavy equipment — both locally and worldwide — through our global network of contacts. Our goal is your complete and total satisfaction."
+    },
+    "products": {
+      "title": "Our Products",
+      "subtitle": "Latest Equipment",
+      "viewEquipments": "View Equipment's",
+      "description": " Adhering to the recommended maintenance schedule of your machine is one of the most effective ways to ensure it stays performing at its best.",
+      "viewMore":"View More",
+      "best":"Best",
+      "retailPrice":"Retail Price"
+    },
+    "services": {
+      "title": "Services",
+      "subtitle": "Industry Leader In Construction Equipment Supply",
+      "auction": "Auction",
+      "cargoConsignment": "Cargo Consignment",
+      "buy":{
+          "title":"Buy",
+          "subtitle":"We buy heavy equipment & trucks, one piece to 100+.",
+          "learnMore":"Learn More"
+      },
+      "consignment":{
+        "title":"Consignment",
+        "subtitle":"Can't come to agreement on a purchase, we can help. We sell equipment on consignment.",
+        "learnMore":"Learn More"
+      },
+      "auctions":{
+        "title":"Auctions",
+        "subtitle":"Our online auctions provide an effective alternative to sell your used heavy equipment.",
+        "learnMore":"Learn More"
+      },
+      "eqLocators":{
+        "title":"EQ Locators",
+        "subtitle":"With our vast network we can help locate any equipment not currenly in stock.",
+        "learnMore":"Learn More"
+      }
+    },
+    "testimonials": {
+      "title": "Testimonials",
+      "subtitle": "What Customers Say About Us",
+      "prev":"Prev",
+      "next":"Next"
+    }
+  },
+  "product": {
+    "retailPrice": "Retail Price",
+    "salePrice": "Sale Price",
+    "totalPrice": "Total Price",
+    "currentBid": "Current Bid",
+    "viewMore": "View More",
+    "buyNow": "BUY NOW",
+    "placeBid": "PLACE BID",
+    "soldOut": "Sold Out",
+    "status": {
+      "newest": "NEWEST",
+      "forSale": "FOR SALE",
+      "forAuction": "FOR AUCTION",
+      "sold": "SOLD"
+    },
+    "specs": {
+      "assemblyWeight": "Assembly Weight",
+      "grossPower": "Gross Power",
+      "maxSpeed": "Max Speed",
+      "engine": "Engine",
+      "hours": "Hours",
+      "location": "Location",
+      "make": "Make",
+      "model": "Model",
+      "condition": "Condition",
+      "year": "Year",
+      "fuelType": "Fuel type",
+      "mileage": "Mileage",
+      "exteriorColor": "Exterior Color",
+      "drive": "Drive"
+    },
+    "details": {
+      "description": "Product Description",
+      "vehicleDetails": "Vehicle Details",
+      "relatedProducts": "Related Products",
+      "documentation": "Documentation",
+      "serviceHistory": "Service History",
+      "specificationDocumentation": "Specification Documentation",
+      "verifiedListing": "Verified Listing",
+      "securePayment": "Secure Payment",
+      "includedTaxes": "Included Taxes & Checkup",
+      "savingsBadge": "SAVE $10,000"
+    },
+    "breadcrumb": {
+      "home": "Home",
+      "inventory": "Inventory"
+    }
+  },
+  "buy": {
+    "title": "Buy Equipment",
+    "inventory": "Inventory",
+    "filter": "Filter",
+    "reset": "Reset",
+    "activeResults": "Active Results",
+    "found": "FOUND",
+    "selectAll": "SELECT ALL",
+    "unselectAll": "UNSELECT ALL",
+    "applyFilters": "APPLY FILTERS",
+    "showing": "Showing",
+    "resultsCount": "of {{total}} Results",
+    "filters": {
+      "auctionDate": "Auction Date",
+      "category": "Category",
+      "make": "Make",
+      "year": "Year",
+      "stateCity": "State / City",
+      "currentBid": "Current Bid"
+    }
+  },
+  "sell": {
+    "title": "SELL Inventory",
+    "subtitle": "Selling your used equipment is easy.",
+    "getStarted": "Get started selling your equipment with Mideast today!",
+    "steps": {
+      "basicInfo": "Basic Info",
+      "details": "Details",
+      "condition": "Condition",
+      "media": "Media",
+      "additional": "Additional",
+      "price": "Price",
+      "review": "Review"
+    },
+    "form": {
+      "basicEquipmentInformation": "Basic Equipment Information",
+      "equipmentTitle": "Equipment Title",
+      "category": "Category",
+      "description": "Description",
+      "selectCategory": "Select Category"
+    },
+    "stepDescriptions": {
+      "step1": "Provide basic information about your equipment",
+      "step2": "Add detailed specifications",
+      "step3": "Describe the condition",
+      "step4": "Upload photos and videos",
+      "step5": "Additional information",
+      "step6": "Set your price",
+      "step7": "Review and submit"
+    }
+  },
+  "aboutUs": {
+    "title": "About Us",
+    "comingSoon": "About Us page content coming soon..."
+  },
+  "contactUs": {
+    "title": "Contact Us",
+    "comingSoon": "Contact Us page content coming soon..."
+  },
+  "footer": {
+    "aboutCompany": "About Company",
+    "mission": "At Mideast Supply, we build trust with transparent operations, industry expertise, seamless transactions, and unmatched customer service. Your success is our priority.",
+    "ourNetwork": "Our Network",
+    "contactInfo": "Contact Info",
+    "needHelp": "Need help? Talk to an Expert",
+    "termsOfUse": "Terms of Use",
+    "privacyPolicy": "Policy Privacy",
+    "copyright": "Copyright © Mideast Equipment Supply {{year}}. All rights reserved.",
+    "links": {
+      "buy": "Buy",
+      "sell": "Sell",
+      "aboutUs": "About Us",
+      "contactUs": "Contact Us"
+    },
+    "social": {
+      "facebook": "Facebook",
+      "behance": "Behance",
+      "linkedin": "LinkedIn",
+      "twitter": "Twitter"
+    },
+    "abbreviations": {
+      "fb": "FB",
+      "be": "BE",
+      "ln": "LN",
+      "tw": "TW"
+    }
+  },
+  "topBanner": {
+    "address": "1600 SW 47th Avenue, Fort Lauderdale, FL, USA",
+    "email": "info@mideastsupply.com",
+    "hours": "Mon - Fri 9:00AM - 5:00PM"
+  },
+  "errors": {
+    "generic": "An error occurred. Please try again.",
+    "network": "Network error. Please check your connection.",
+    "unauthorized": "You are not authorized to perform this action.",
+    "notFound": "The requested resource was not found.",
+    "serverError": "Server error. Please try again later.",
+    "validationFailed": "Validation failed. Please check your input.",
+    "somethingWentWrong": "Something went wrong",
+    "unexpectedError": "An unexpected error occurred. Please try refreshing the page.",
+    "errorDetails": "Error Details"
+  },
+  "language": {
+    "en": "English",
+    "es": "Español",
+    "switch": "Switch Language"
+  }
+}

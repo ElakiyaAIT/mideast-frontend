@@ -1,0 +1,3570 @@
+<!doctype html>
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Heavy Equipment Inventory | Mideast Equipment Supply</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="animations.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;family=Oswald:wght@500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              primary: '#F59E0B',
+              'background-light': '#FFFFFF',
+              'background-dark': '#111827',
+              'brand-dark': '#1F2937',
+              'brand-black': '#0F172A',
+            },
+            fontFamily: {
+              display: ['Barlow', 'sans-serif'],
+              sans: ['Inter', 'sans-serif'],
+            },
+            borderRadius: {
+              DEFAULT: '0.5rem',
+              xl: '1rem',
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .textured-orange {
+        background-color: #f59e0b;
+        background-image: radial-gradient(#d97706 0.5px, transparent 0.5px);
+        background-size: 20px 20px;
+      }
+    </style>
+  </head>
+
+  <body
+    class="bg-background-light font-display text-gray-900 transition-colors duration-300 dark:bg-background-dark dark:text-gray-100"
+  >
+    <div class="hidden lg:block">
+      <!-- Header Start  -->
+      <div
+        class="flex flex-wrap items-center justify-between bg-brand-black px-4 py-2 text-xs text-white md:px-12"
+      >
+        <div class="flex space-x-6">
+          <span class="flex items-center gap-1"
+            ><i class="material-icons-outlined text-sm">location_on</i> 50 East Dudley Town Road
+            Bloomfield, CT 06002</span
+          >
+          <span class="flex items-center gap-1"
+            ><i class="material-icons-outlined text-sm">email</i> auctions@mideastequip.com</span
+          >
+          <span class="hidden items-center gap-1 md:flex"
+            ><i class="material-icons-outlined text-sm">schedule</i> Mon - Fri 9:00AM - 5:00PM</span
+          >
+        </div>
+        <div class="flex space-x-4">
+          <a href="#" class="transition-colors hover:text-primary">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+          <a href="#" class="transition-colors hover:text-primary">
+            <i class="fa-brands fa-behance"></i>
+          </a>
+          <a href="#" class="transition-colors hover:text-primary">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+          <a href="#" class="transition-colors hover:text-primary">
+            <i class="fa-brands fa-x-twitter"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <header
+      class="sticky top-0 z-50 border-b border-slate-100 bg-white dark:border-slate-800 dark:bg-brand-dark"
+    >
+      <nav class="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 md:px-8">
+        <div class="flex flex-1 items-center gap-4 md:gap-8">
+          <div class="flex items-center gap-2">
+            <div class="leading-tight">
+              <img src="images/mideastlogo.svg" alt="Mideast Equipment Logo" />
+            </div>
+          </div>
+          <div
+            class="hidden items-center gap-2 border-l border-slate-200 pl-8 dark:border-slate-700 lg:flex"
+          >
+            <i class="material-icons-outlined text-primary">phone_in_talk</i>
+            <div>
+              <p class="text-[10px] font-medium text-slate-400">Need help? Talk to an Expert</p>
+              <p class="text-sm font-bold text-slate-700 dark:text-slate-200">860-222-3393</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <button
+          id="menuToggle"
+          class="order-3 p-2 text-slate-600 transition-colors hover:text-primary dark:text-slate-400 lg:hidden"
+        >
+          <i class="material-icons-outlined text-2xl">menu</i>
+        </button>
+
+        <!-- Desktop Navigation -->
+        <div
+          class="hidden items-center space-x-6 text-sm font-semibold text-slate-600 dark:text-slate-300 lg:flex"
+        >
+          <a class="text-primary" href="index.html">HOME</a>
+          <a class="transition-colors hover:text-primary" href="buynow.html">BUY NOW</a>
+          <a class="transition-colors hover:text-primary" href="sell.html">SELL</a>
+          <a class="transition-colors hover:text-primary" href="auctionup.html">AUCTION</a>
+          <a class="transition-colors hover:text-primary" href="#">ABOUT US</a>
+          <a class="transition-colors hover:text-primary" href="contactus.html">CONTACT US</a>
+        </div>
+
+        <!-- Desktop Right Section -->
+        <div class="hidden items-center gap-4 lg:flex">
+          <button class="p-2 text-slate-400 transition-colors hover:text-primary">
+            <i class="material-icons-outlined">search</i>
+          </button>
+          <div class="flex items-center gap-2">
+            <button
+              class="button rounded-3xl bg-primary px-5 py-2 text-sm font-bold uppercase text-white transition-colors hover:bg-orange-600"
+              href="#"
+            >
+              Login
+            </button>
+            <button
+              class="rounded-3xl border-2 border-slate-200 px-5 py-2 text-sm font-bold uppercase transition-colors hover:bg-slate-50 dark:border-slate-700 dark:hover:bg-slate-800"
+              href="#"
+            >
+              Register
+            </button>
+          </div>
+        </div>
+
+        <!-- Mobile Right Section -->
+        <div class="order-2 flex items-center gap-2 lg:hidden">
+          <button class="p-2 text-slate-400 transition-colors hover:text-primary">
+            <i class="material-icons-outlined">search</i>
+          </button>
+        </div>
+      </nav>
+
+      <!-- Mobile Menu -->
+      <div
+        id="mobileMenu"
+        class="hidden max-h-0 overflow-hidden border-t border-slate-100 bg-white transition-all duration-300 dark:border-slate-800 dark:bg-brand-dark lg:hidden"
+      >
+        <div class="space-y-4 px-4 py-6">
+          <a
+            class="block text-sm font-semibold uppercase text-primary transition-colors hover:text-orange-600"
+            href="index.html"
+            >HOME</a
+          >
+          <a
+            class="block text-sm font-semibold uppercase text-slate-600 transition-colors hover:text-primary dark:text-slate-300"
+            href="buynow.html"
+            >BUY NOW</a
+          >
+          <a
+            class="block text-sm font-semibold uppercase text-slate-600 transition-colors hover:text-primary dark:text-slate-300"
+            href="sell.html"
+            >SELL</a
+          >
+          <a
+            class="block text-sm font-semibold uppercase text-slate-600 transition-colors hover:text-primary dark:text-slate-300"
+            href="auctionup.html"
+            >AUCTION</a
+          >
+          <a
+            class="block text-sm font-semibold uppercase text-slate-600 transition-colors hover:text-primary dark:text-slate-300"
+            href="#"
+            >ABOUT US</a
+          >
+          <a
+            class="block text-sm font-semibold uppercase text-slate-600 transition-colors hover:text-primary dark:text-slate-300"
+            href="contactus.html"
+            >CONTACT US</a
+          >
+          <div class="flex gap-2 border-t border-slate-200 pt-4 dark:border-slate-700">
+            <button
+              class="button flex-1 rounded-3xl bg-primary px-4 py-2 text-center text-xs font-bold uppercase text-white transition-colors hover:bg-orange-600"
+              href="#"
+            >
+              Login
+            </button>
+            <button
+              class="flex-1 rounded-3xl border-2 border-slate-200 px-4 py-2 text-center text-xs font-bold uppercase text-slate-600 transition-colors hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+              href="#"
+            >
+              Register
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Header End  -->
+
+    <!-- Banner Start  -->
+    <div class="br-30 relative flex h-64 items-center justify-center overflow-hidden bg-gray-800">
+      <img
+        alt="Construction background"
+        class="absolute inset-0 h-full w-full"
+        src="images/sell-banner.png"
+      />
+      <div class="relative z-10 text-center">
+        <h1 class="text-5xl font-bold uppercase tracking-tight text-white">SELL Inventory</h1>
+        <div class="mt-2 flex items-center justify-center gap-2 text-sm font-medium text-primary">
+          <span class="text-white">Home</span>
+          <span class="material-icons text-xs text-white">chevron_right</span>
+          <span class="text-white">SELL Inventory</span>
+        </div>
+      </div>
+    </div>
+    <!-- Banner End  -->
+
+    <!-- Main Start  -->
+    <main class="mx-auto max-w-7xl px-6 py-12">
+      <section class="mx-auto max-w-7xl px-0 py-16 lg:px-6">
+        <h2
+          class="mb-8 w-fit border-b-4 border-primary pb-2 text-3xl font-black uppercase tracking-tight"
+        >
+          Selling your used equipment is easy.
+        </h2>
+        <div class="mb-12 grid gap-6 md:grid-cols-3">
+          <div
+            class="bg-dark-gray group flex items-center gap-6 rounded-2xl border-b-4 border-primary p-8 text-white transition-all hover:translate-y-[-4px]"
+          >
+            <span
+              class="text-7xl font-black text-primary/40 transition-colors group-hover:text-primary"
+              >1</span
+            >
+            <p class="text-lg font-bold uppercase leading-tight">
+              Free equipment valuation with projected retail &amp; auction values.
+            </p>
+          </div>
+          <div
+            class="bg-dark-gray group flex items-center gap-6 rounded-2xl border-b-4 border-primary p-8 text-white transition-all hover:translate-y-[-4px]"
+          >
+            <span
+              class="text-7xl font-black text-primary/40 transition-colors group-hover:text-primary"
+              >2</span
+            >
+            <p class="text-lg font-bold uppercase leading-tight">
+              We'll market + sell your equipment.
+            </p>
+          </div>
+          <div
+            class="bg-dark-gray group flex items-center gap-6 rounded-2xl border-b-4 border-primary p-8 text-white transition-all hover:translate-y-[-4px]"
+          >
+            <span
+              class="text-7xl font-black text-primary/40 transition-colors group-hover:text-primary"
+              >3</span
+            >
+            <p class="text-lg font-bold uppercase leading-tight">You get paid.</p>
+          </div>
+        </div>
+        <div class="mb-12 flex items-center justify-center gap-4">
+          <div class="h-px flex-grow bg-slate-300 dark:bg-slate-700"></div>
+          <span class="text-2xl font-black text-slate-400">OR</span>
+          <div class="h-px flex-grow bg-slate-300 dark:bg-slate-700"></div>
+        </div>
+        <div class="mb-20 grid gap-6 md:grid-cols-3">
+          <div
+            class="bg-dark-gray group flex items-center gap-6 rounded-2xl border-b-4 border-primary p-8 text-white transition-all hover:translate-y-[-4px]"
+          >
+            <span
+              class="text-7xl font-black text-primary/40 transition-colors group-hover:text-primary"
+              >1</span
+            >
+            <p class="text-lg font-bold uppercase leading-tight">We make you an offer.</p>
+          </div>
+          <div
+            class="bg-dark-gray group flex items-center gap-6 rounded-2xl border-b-4 border-primary p-8 text-white transition-all hover:translate-y-[-4px]"
+          >
+            <span
+              class="text-7xl font-black text-primary/40 transition-colors group-hover:text-primary"
+              >2</span
+            >
+            <p class="text-lg font-bold uppercase leading-tight">We verify your equipment</p>
+          </div>
+          <div
+            class="bg-dark-gray group flex items-center gap-6 rounded-2xl border-b-4 border-primary p-8 text-white transition-all hover:translate-y-[-4px]"
+          >
+            <span
+              class="text-7xl font-black text-primary/40 transition-colors group-hover:text-primary"
+              >3</span
+            >
+            <p class="text-lg font-bold uppercase leading-tight">You get paid.</p>
+          </div>
+        </div>
+        <div class="mb-6">
+          <h2 class="text-3xl font-black uppercase tracking-tight">
+            Get started selling your equipment with Mideast today!
+          </h2>
+          <p class="mt-2 text-slate-500">
+            Complete the form below, or call us at
+            <span class="font-bold text-primary">860-222-3393</span>
+          </p>
+        </div>
+        <div
+          class="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-2xl dark:border-slate-700 dark:bg-slate-800"
+        >
+          <div
+            class="border-b border-slate-200 bg-slate-50 p-8 dark:border-slate-700 dark:bg-slate-900/50"
+          >
+            <div class="sm-scrolll-menu mx-auto flex items-center justify-between">
+              <div class="flex flex-col items-center gap-2">
+                <div
+                  class="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-white shadow-lg shadow-primary/30"
+                >
+                  <i class="material-icons">info</i>
+                </div>
+                <span class="text-xs font-bold uppercase tracking-wider text-primary"
+                  >Basic Info</span
+                >
+              </div>
+              <div class="step-connector"></div>
+              <div class="flex flex-col items-center gap-2">
+                <div
+                  class="flex h-12 w-12 items-center justify-center rounded-full bg-slate-200 text-slate-500 dark:bg-slate-700"
+                >
+                  <i class="material-icons">description</i>
+                </div>
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-400"
+                  >Details</span
+                >
+              </div>
+              <div class="step-connector"></div>
+              <div class="flex flex-col items-center gap-2">
+                <div
+                  class="flex h-12 w-12 items-center justify-center rounded-full bg-slate-200 text-slate-500 dark:bg-slate-700"
+                >
+                  <i class="material-icons">fact_check</i>
+                </div>
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-400"
+                  >Condition</span
+                >
+              </div>
+              <div class="step-connector"></div>
+              <div class="flex flex-col items-center gap-2">
+                <div
+                  class="flex h-12 w-12 items-center justify-center rounded-full bg-slate-200 text-slate-500 dark:bg-slate-700"
+                >
+                  <i class="material-icons">photo_library</i>
+                </div>
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Media</span>
+              </div>
+              <div class="step-connector"></div>
+              <div class="flex flex-col items-center gap-2">
+                <div
+                  class="flex h-12 w-12 items-center justify-center rounded-full bg-slate-200 text-slate-500 dark:bg-slate-700"
+                >
+                  <i class="material-icons">add_box</i>
+                </div>
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-400"
+                  >Additional</span
+                >
+              </div>
+              <div class="step-connector"></div>
+              <div class="flex flex-col items-center gap-2">
+                <div
+                  class="flex h-12 w-12 items-center justify-center rounded-full bg-slate-200 text-slate-500 dark:bg-slate-700"
+                >
+                  <i class="material-icons">payments</i>
+                </div>
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Price</span>
+              </div>
+              <div class="step-connector"></div>
+              <div class="flex flex-col items-center gap-2">
+                <div
+                  class="flex h-12 w-12 items-center justify-center rounded-full bg-slate-200 text-slate-500 dark:bg-slate-700"
+                >
+                  <i class="material-icons">visibility</i>
+                </div>
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-400"
+                  >Review</span
+                >
+              </div>
+            </div>
+          </div>
+          <div id="basic-eqp-info" class="p-8 lg:p-12">
+            <h3 class="mb-8 text-xl font-bold uppercase tracking-tight">
+              Basic Equipment Information
+            </h3>
+            <div class="space-y-8">
+              <div>
+                <label
+                  class="mb-2 block text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300"
+                  >Equipment Title</label
+                >
+                <input
+                  class="w-full rounded-lg border-slate-200 bg-slate-50 p-3 focus:border-primary focus:ring-primary dark:border-slate-700 dark:bg-slate-900"
+                  placeholder="e.g., Caterpillar 320 Excavator (2020)"
+                  type="text"
+                />
+              </div>
+              <div>
+                <label
+                  class="mb-2 block text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300"
+                  >Category</label
+                >
+                <select
+                  class="w-full rounded-lg border-slate-200 bg-slate-50 p-3 focus:border-primary focus:ring-primary dark:border-slate-700 dark:bg-slate-900"
+                >
+                  <option>Select Category</option>
+                  <option>Excavators</option>
+                  <option>Loaders</option>
+                  <option>Dozers</option>
+                  <option>Compaction</option>
+                </select>
+              </div>
+              <div>
+                <label
+                  class="mb-2 block text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300"
+                  >Description</label
+                >
+                <div
+                  class="overflow-hidden rounded-lg border border-slate-200 dark:border-slate-700"
+                >
+                  <div
+                    class="flex gap-2 overflow-x-auto border-b border-slate-200 bg-slate-100 p-2 dark:border-slate-700 dark:bg-slate-900"
+                  >
+                    <button
+                      class="rounded p-1 text-slate-600 hover:bg-slate-200 dark:text-slate-400 dark:hover:bg-slate-800"
+                    >
+                      <i class="material-icons text-lg">format_bold</i>
+                    </button>
+                    <button
+                      class="rounded p-1 text-slate-600 hover:bg-slate-200 dark:text-slate-400 dark:hover:bg-slate-800"
+                    >
+                      <i class="material-icons text-lg">format_italic</i>
+                    </button>
+                    <button
+                      class="rounded p-1 text-slate-600 hover:bg-slate-200 dark:text-slate-400 dark:hover:bg-slate-800"
+                    >
+                      <i class="material-icons text-lg">format_underlined</i>
+                    </button>
+                    <div class="mx-1 w-px bg-slate-300 dark:bg-slate-700"></div>
+                    <button
+                      class="rounded p-1 text-slate-600 hover:bg-slate-200 dark:text-slate-400 dark:hover:bg-slate-800"
+                    >
+                      <i class="material-icons text-lg">format_list_bulleted</i>
+                    </button>
+                    <button
+                      class="rounded p-1 text-slate-600 hover:bg-slate-200 dark:text-slate-400 dark:hover:bg-slate-800"
+                    >
+                      <i class="material-icons text-lg">format_list_numbered</i>
+                    </button>
+                    <div class="mx-1 w-px bg-slate-300 dark:bg-slate-700"></div>
+                    <button
+                      class="rounded p-1 text-slate-600 hover:bg-slate-200 dark:text-slate-400 dark:hover:bg-slate-800"
+                    >
+                      <i class="material-icons text-lg">link</i>
+                    </button>
+                    <button
+                      class="rounded p-1 text-slate-600 hover:bg-slate-200 dark:text-slate-400 dark:hover:bg-slate-800"
+                    >
+                      <i class="material-icons text-lg">image</i>
+                    </button>
+                  </div>
+                  <textarea
+                    class="w-full border-none bg-white p-4 focus:ring-0 dark:bg-slate-900"
+                    placeholder="Provide a detailed description of the equipment, its features, and recent maintenance..."
+                    rows="8"
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+            <div
+              class="mt-12 flex items-center justify-between border-t border-slate-200 pt-8 dark:border-slate-700"
+            >
+              <button
+                class="flex cursor-not-allowed items-center gap-2 rounded-full bg-slate-100 px-8 py-3 font-bold text-slate-500 opacity-50 dark:bg-slate-700 dark:text-slate-300"
+              >
+                <i class="material-icons">arrow_back</i> PREVIOUS
+              </button>
+              <button
+                class="flex transform items-center gap-2 rounded-full bg-primary px-10 py-3 font-bold text-white shadow-lg shadow-primary/30 transition-all hover:scale-105 hover:bg-orange-600"
+              >
+                NEXT <i class="material-icons">arrow_forward</i>
+              </button>
+            </div>
+          </div>
+
+          <!-- DETAILS TAB CONTENT -->
+          <div id="detailsTab" class="hidden p-8 lg:p-12">
+            <h3 class="mb-8 text-xl font-bold uppercase tracking-tight">Equipment Details</h3>
+            <div class="space-y-12">
+              <!-- BASIC DETAILS -->
+              <section class="sell-details-form">
+                <h4
+                  class="mb-6 border-b border-slate-200 pb-3 text-sm font-bold uppercase tracking-wider text-slate-500 dark:border-slate-700 dark:text-slate-400"
+                >
+                  Basic Details
+                </h4>
+                <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+                  <div>
+                    <label
+                      class="mb-2 block text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300"
+                      >Year</label
+                    >
+                    <input
+                      class="w-full rounded-lg border border-slate-200 bg-slate-50 p-3 focus:border-primary focus:ring-primary dark:border-slate-700 dark:bg-slate-900"
+                      placeholder="e.g., 2020"
+                      type="text"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      class="mb-2 block text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300"
+                      >Make</label
+                    >
+                    <input
+                      class="w-full rounded-lg border border-slate-200 bg-slate-50 p-3 focus:border-primary focus:ring-primary dark:border-slate-700 dark:bg-slate-900"
+                      placeholder="e.g., Caterpillar"
+                      type="text"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      class="mb-2 block text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300"
+                      >Model</label
+                    >
+                    <input
+                      class="w-full rounded-lg border border-slate-200 bg-slate-50 p-3 focus:border-primary focus:ring-primary dark:border-slate-700 dark:bg-slate-900"
+                      placeholder="e.g., 320D"
+                      type="text"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      class="mb-2 block text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300"
+                      >Manufacturer</label
+                    >
+                    <input
+                      class="w-full rounded-lg border border-slate-200 bg-slate-50 p-3 focus:border-primary focus:ring-primary dark:border-slate-700 dark:bg-slate-900"
+                      placeholder="e.g., Caterpillar Inc"
+                      type="text"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      class="mb-2 block text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300"
+                      >Engine Hours</label
+                    >
+                    <input
+                      class="w-full rounded-lg border border-slate-200 bg-slate-50 p-3 focus:border-primary focus:ring-primary dark:border-slate-700 dark:bg-slate-900"
+                      placeholder="e.g., 4,750"
+                      type="text"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      class="mb-2 block text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300"
+                      >Mileage</label
+                    >
+                    <input
+                      class="w-full rounded-lg border border-slate-200 bg-slate-50 p-3 focus:border-primary focus:ring-primary dark:border-slate-700 dark:bg-slate-900"
+                      placeholder="e.g., 12,000"
+                      type="text"
+                    />
+                  </div>
+                </div>
+              </section>
+
+              <!-- GENERAL SPECIFICATIONS -->
+              <section class="sell-details-form">
+                <h4
+                  class="mb-6 border-b border-slate-200 pb-3 text-sm font-bold uppercase tracking-wider text-slate-500 dark:border-slate-700 dark:text-slate-400"
+                >
+                  General Specifications
+                </h4>
+                <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+                  <div>
+                    <label
+                      class="mb-2 block text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300"
+                      >Transmission</label
+                    >
+                    <select
+                      class="w-full rounded-lg border border-slate-200 bg-slate-50 p-3 focus:border-primary focus:ring-primary dark:border-slate-700 dark:bg-slate-900"
+                    >
+                      <option>Select Transmission</option>
+                      <option>Automatic</option>
+                      <option>Manual</option>
+                      <option>Hydrostatic</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label
+                      class="mb-2 block text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300"
+                      >Engine Type</label
+                    >
+                    <select
+                      class="w-full rounded-lg border border-slate-200 bg-slate-50 p-3 focus:border-primary focus:ring-primary dark:border-slate-700 dark:bg-slate-900"
+                    >
+                      <option>Select Engine Type</option>
+                      <option>Diesel</option>
+                      <option>Gasoline</option>
+                      <option>Electric</option>
+                      <option>Hybrid</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label
+                      class="mb-2 block text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300"
+                      >Gross Power (HP)</label
+                    >
+                    <input
+                      class="w-full rounded-lg border border-slate-200 bg-slate-50 p-3 focus:border-primary focus:ring-primary dark:border-slate-700 dark:bg-slate-900"
+                      placeholder="e.g., 320"
+                      type="text"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      class="mb-2 block text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300"
+                      >Operating Weight (LBS)</label
+                    >
+                    <input
+                      class="w-full rounded-lg border border-slate-200 bg-slate-50 p-3 focus:border-primary focus:ring-primary dark:border-slate-700 dark:bg-slate-900"
+                      placeholder="e.g., 52,000"
+                      type="text"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      class="mb-2 block text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300"
+                      >Fuel Type</label
+                    >
+                    <select
+                      class="w-full rounded-lg border border-slate-200 bg-slate-50 p-3 focus:border-primary focus:ring-primary dark:border-slate-700 dark:bg-slate-900"
+                    >
+                      <option>Select Fuel Type</option>
+                      <option>Diesel</option>
+                      <option>Gasoline</option>
+                      <option>Propane</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label
+                      class="mb-2 block text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300"
+                      >Cab Type</label
+                    >
+                    <select
+                      class="w-full rounded-lg border border-slate-200 bg-slate-50 p-3 focus:border-primary focus:ring-primary dark:border-slate-700 dark:bg-slate-900"
+                    >
+                      <option>Select Cab Type</option>
+                      <option>Enclosed</option>
+                      <option>Open</option>
+                      <option>ROPS</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label
+                      class="mb-2 block text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300"
+                      >Tire/Track Size</label
+                    >
+                    <input
+                      class="w-full rounded-lg border border-slate-200 bg-slate-50 p-3 focus:border-primary focus:ring-primary dark:border-slate-700 dark:bg-slate-900"
+                      placeholder="e.g., 320mm"
+                      type="text"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      class="mb-2 block text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300"
+                      >Suspension Type</label
+                    >
+                    <div class="flex gap-6">
+                      <label class="flex items-center"
+                        ><input type="radio" name="suspension" value="track" class="mr-2" />
+                        Track</label
+                      >
+                      <label class="flex items-center"
+                        ><input type="radio" name="suspension" value="wheel" class="mr-2" />
+                        Wheel</label
+                      >
+                      <label class="flex items-center"
+                        ><input type="radio" name="suspension" value="combined" class="mr-2" />
+                        Combined</label
+                      >
+                    </div>
+                  </div>
+                  <div>
+                    <label
+                      class="mb-2 block text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300"
+                      >Tire/Track Wear</label
+                    >
+                    <div class="space-y-2">
+                      <div class="flex items-center justify-between text-sm">
+                        <span>0%</span>
+                        <span class="font-bold text-primary">50%</span>
+                        <span>100%</span>
+                      </div>
+                      <div
+                        class="h-2 w-full overflow-hidden rounded-full bg-slate-200 dark:bg-slate-700"
+                      >
+                        <div class="h-full bg-primary" style="width: 50%"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- CONDITION OVERVIEW -->
+              <section class="sell-details-form">
+                <h4
+                  class="mb-6 border-b border-slate-200 pb-3 text-sm font-bold uppercase tracking-wider text-slate-500 dark:border-slate-700 dark:text-slate-400"
+                >
+                  Condition Overview
+                </h4>
+                <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+                  <div>
+                    <label
+                      class="mb-2 block text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300"
+                      >Overall Condition</label
+                    >
+                    <select
+                      class="w-full rounded-lg border border-slate-200 bg-slate-50 p-3 focus:border-primary focus:ring-primary dark:border-slate-700 dark:bg-slate-900"
+                    >
+                      <option>Select Condition</option>
+                      <option>Excellent</option>
+                      <option>Good</option>
+                      <option>Fair</option>
+                      <option>Poor</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label
+                      class="mb-2 block text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300"
+                      >Exterior Color</label
+                    >
+                    <select
+                      class="w-full rounded-lg border border-slate-200 bg-slate-50 p-3 focus:border-primary focus:ring-primary dark:border-slate-700 dark:bg-slate-900"
+                    >
+                      <option>Select Color</option>
+                      <option>Yellow</option>
+                      <option>Black</option>
+                      <option>White</option>
+                      <option>Red</option>
+                      <option>Other</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label
+                      class="mb-2 block text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300"
+                      >Interior Color</label
+                    >
+                    <select
+                      class="w-full rounded-lg border border-slate-200 bg-slate-50 p-3 focus:border-primary focus:ring-primary dark:border-slate-700 dark:bg-slate-900"
+                    >
+                      <option>Select Color</option>
+                      <option>Black</option>
+                      <option>Gray</option>
+                      <option>Blue</option>
+                      <option>Other</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label
+                      class="mb-2 block text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300"
+                      >Jump Start Required?</label
+                    >
+                    <div class="flex gap-6">
+                      <label class="flex items-center"
+                        ><input type="radio" name="jumpStart" class="mr-2" /> Yes</label
+                      >
+                      <label class="flex items-center"
+                        ><input type="radio" name="jumpStart" class="mr-2" /> No</label
+                      >
+                    </div>
+                  </div>
+                  <div>
+                    <label
+                      class="mb-2 block text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300"
+                      >Batteries Hold Charge?</label
+                    >
+                    <div class="flex gap-6">
+                      <label class="flex items-center"
+                        ><input type="radio" name="batteryCharge" class="mr-2" /> Yes</label
+                      >
+                      <label class="flex items-center"
+                        ><input type="radio" name="batteryCharge" class="mr-2" /> No</label
+                      >
+                    </div>
+                  </div>
+                  <div>
+                    <label
+                      class="mb-2 block text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300"
+                      >Parking Brake Works?</label
+                    >
+                    <div class="flex gap-6">
+                      <label class="flex items-center"
+                        ><input type="radio" name="parkingBrake" class="mr-2" /> Yes</label
+                      >
+                      <label class="flex items-center"
+                        ><input type="radio" name="parkingBrake" class="mr-2" /> No</label
+                      >
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- ENGINE CONDITION -->
+              <section class="sell-details-form">
+                <h4
+                  class="mb-6 border-b border-slate-200 pb-3 text-sm font-bold uppercase tracking-wider text-slate-500 dark:border-slate-700 dark:text-slate-400"
+                >
+                  Engine Condition
+                </h4>
+                <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+                  <div>
+                    <label
+                      class="mb-2 block text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300"
+                      >Overall Condition</label
+                    >
+                    <select
+                      class="w-full rounded-lg border border-slate-200 bg-slate-50 p-3 focus:border-primary focus:ring-primary dark:border-slate-700 dark:bg-slate-900"
+                    >
+                      <option>Select Condition</option>
+                      <option>Excellent</option>
+                      <option>Good</option>
+                      <option>Fair</option>
+                      <option>Poor</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label
+                      class="mb-2 block text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300"
+                      >Oil Level OK?</label
+                    >
+                    <div class="flex gap-6">
+                      <label class="flex items-center"
+                        ><input type="radio" name="oilLevel" class="mr-2" /> Yes</label
+                      >
+                      <label class="flex items-center"
+                        ><input type="radio" name="oilLevel" class="mr-2" /> No</label
+                      >
+                    </div>
+                  </div>
+                  <div>
+                    <label
+                      class="mb-2 block text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300"
+                      >Any Leaks?</label
+                    >
+                    <div class="flex gap-6">
+                      <label class="flex items-center"
+                        ><input type="radio" name="leaks" class="mr-2" /> Yes</label
+                      >
+                      <label class="flex items-center"
+                        ><input type="radio" name="leaks" class="mr-2" /> No</label
+                      >
+                    </div>
+                  </div>
+                  <div>
+                    <label
+                      class="mb-2 block text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300"
+                      >Coolant Level</label
+                    >
+                    <select
+                      class="w-full rounded-lg border border-slate-200 bg-slate-50 p-3 focus:border-primary focus:ring-primary dark:border-slate-700 dark:bg-slate-900"
+                    >
+                      <option>Select Level</option>
+                      <option>Full</option>
+                      <option>Good</option>
+                      <option>Low</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label
+                      class="mb-2 block text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300"
+                      >Smoke Color</label
+                    >
+                    <select
+                      class="w-full rounded-lg border border-slate-200 bg-slate-50 p-3 focus:border-primary focus:ring-primary dark:border-slate-700 dark:bg-slate-900"
+                    >
+                      <option>Select Color</option>
+                      <option>None</option>
+                      <option>White</option>
+                      <option>Blue</option>
+                      <option>Black</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label
+                      class="mb-2 block text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300"
+                      >Engine Noise</label
+                    >
+                    <select
+                      class="w-full rounded-lg border border-slate-200 bg-slate-50 p-3 focus:border-primary focus:ring-primary dark:border-slate-700 dark:bg-slate-900"
+                    >
+                      <option>Select Noise Level</option>
+                      <option>Quiet</option>
+                      <option>Normal</option>
+                      <option>Loud</option>
+                      <option>Very Loud</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label
+                      class="mb-2 block text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300"
+                      >Cold Start Quality</label
+                    >
+                    <select
+                      class="w-full rounded-lg border border-slate-200 bg-slate-50 p-3 focus:border-primary focus:ring-primary dark:border-slate-700 dark:bg-slate-900"
+                    >
+                      <option>Select Quality</option>
+                      <option>Starts Easily</option>
+                      <option>Normal</option>
+                      <option>Difficult</option>
+                      <option>Won't Start</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label
+                      class="mb-2 block text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300"
+                      >Check Engine Light?</label
+                    >
+                    <div class="flex gap-6">
+                      <label class="flex items-center"
+                        ><input type="radio" name="checkEngine" class="mr-2" /> Yes</label
+                      >
+                      <label class="flex items-center"
+                        ><input type="radio" name="checkEngine" class="mr-2" /> No</label
+                      >
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- HYDRAULICS -->
+              <section class="sell-details-form">
+                <h4
+                  class="mb-6 border-b border-slate-200 pb-3 text-sm font-bold uppercase tracking-wider text-slate-500 dark:border-slate-700 dark:text-slate-400"
+                >
+                  Hydraulics
+                </h4>
+                <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+                  <div>
+                    <label
+                      class="mb-2 block text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300"
+                      >Hydraulic Pump Condition</label
+                    >
+                    <select
+                      class="w-full rounded-lg border border-slate-200 bg-slate-50 p-3 focus:border-primary focus:ring-primary dark:border-slate-700 dark:bg-slate-900"
+                    >
+                      <option>Select Condition</option>
+                      <option>Excellent</option>
+                      <option>Good</option>
+                      <option>Fair</option>
+                      <option>Poor</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label
+                      class="mb-2 block text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300"
+                      >Cylinder Leaks?</label
+                    >
+                    <div class="flex gap-6">
+                      <label class="flex items-center"
+                        ><input type="radio" name="cylinderLeaks" class="mr-2" /> Yes</label
+                      >
+                      <label class="flex items-center"
+                        ><input type="radio" name="cylinderLeaks" class="mr-2" /> No</label
+                      >
+                    </div>
+                  </div>
+                  <div>
+                    <label
+                      class="mb-2 block text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300"
+                      >Hose Condition</label
+                    >
+                    <select
+                      class="w-full rounded-lg border border-slate-200 bg-slate-50 p-3 focus:border-primary focus:ring-primary dark:border-slate-700 dark:bg-slate-900"
+                    >
+                      <option>Select Condition</option>
+                      <option>Excellent</option>
+                      <option>Good</option>
+                      <option>Fair</option>
+                      <option>Poor</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label
+                      class="mb-2 block text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300"
+                      >Hydraulic Response</label
+                    >
+                    <select
+                      class="w-full rounded-lg border border-slate-200 bg-slate-50 p-3 focus:border-primary focus:ring-primary dark:border-slate-700 dark:bg-slate-900"
+                    >
+                      <option>Select Response</option>
+                      <option>Excellent</option>
+                      <option>Good</option>
+                      <option>Slow</option>
+                      <option>Very Slow</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label
+                      class="mb-2 block text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300"
+                      >Hydraulics Damage?</label
+                    >
+                    <div class="flex gap-6">
+                      <label class="flex items-center"
+                        ><input type="radio" name="hydraulicsDamage" class="mr-2" /> Yes</label
+                      >
+                      <label class="flex items-center"
+                        ><input type="radio" name="hydraulicsDamage" class="mr-2" /> No</label
+                      >
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- CAB & ELECTRONICS -->
+              <section class="sell-details-form">
+                <h4
+                  class="mb-6 border-b border-slate-200 pb-3 text-sm font-bold uppercase tracking-wider text-slate-500 dark:border-slate-700 dark:text-slate-400"
+                >
+                  Cab & Electronics
+                </h4>
+                <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+                  <div>
+                    <label
+                      class="mb-2 block text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300"
+                      >Dashboard Functional?</label
+                    >
+                    <div class="flex gap-6">
+                      <label class="flex items-center"
+                        ><input type="radio" name="dashboard" class="mr-2" /> Yes</label
+                      >
+                      <label class="flex items-center"
+                        ><input type="radio" name="dashboard" class="mr-2" /> No</label
+                      >
+                    </div>
+                  </div>
+                  <div>
+                    <label
+                      class="mb-2 block text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300"
+                      >AC/Heater Working?</label
+                    >
+                    <div class="flex gap-6">
+                      <label class="flex items-center"
+                        ><input type="radio" name="acHeater" class="mr-2" /> Yes</label
+                      >
+                      <label class="flex items-center"
+                        ><input type="radio" name="acHeater" class="mr-2" /> No</label
+                      >
+                    </div>
+                  </div>
+                  <div>
+                    <label
+                      class="mb-2 block text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300"
+                      >Display Errors?</label
+                    >
+                    <div class="flex gap-6">
+                      <label class="flex items-center"
+                        ><input type="radio" name="displayErrors" class="mr-2" /> Yes</label
+                      >
+                      <label class="flex items-center"
+                        ><input type="radio" name="displayErrors" class="mr-2" /> No</label
+                      >
+                    </div>
+                  </div>
+                  <div>
+                    <label
+                      class="mb-2 block text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300"
+                      >Seat Condition</label
+                    >
+                    <select
+                      class="w-full rounded-lg border border-slate-200 bg-slate-50 p-3 focus:border-primary focus:ring-primary dark:border-slate-700 dark:bg-slate-900"
+                    >
+                      <option>Select Condition</option>
+                      <option>Excellent</option>
+                      <option>Good</option>
+                      <option>Fair</option>
+                      <option>Poor</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label
+                      class="mb-2 block text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300"
+                      >Controls Working?</label
+                    >
+                    <div class="flex gap-6">
+                      <label class="flex items-center"
+                        ><input type="radio" name="controls" class="mr-2" /> Yes</label
+                      >
+                      <label class="flex items-center"
+                        ><input type="radio" name="controls" class="mr-2" /> No</label
+                      >
+                    </div>
+                  </div>
+                  <div>
+                    <label
+                      class="mb-2 block text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300"
+                      >Lights Working?</label
+                    >
+                    <div class="flex gap-6">
+                      <label class="flex items-center"
+                        ><input type="radio" name="lights" class="mr-2" /> Yes</label
+                      >
+                      <label class="flex items-center"
+                        ><input type="radio" name="lights" class="mr-2" /> No</label
+                      >
+                    </div>
+                  </div>
+                  <div>
+                    <label
+                      class="mb-2 block text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300"
+                      >Sensors Working?</label
+                    >
+                    <div class="flex gap-6">
+                      <label class="flex items-center"
+                        ><input type="radio" name="sensors" class="mr-2" /> Yes</label
+                      >
+                      <label class="flex items-center"
+                        ><input type="radio" name="sensors" class="mr-2" /> No</label
+                      >
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+            <div
+              class="mt-12 flex items-center justify-between border-t border-slate-200 pt-8 dark:border-slate-700"
+            >
+              <button
+                id="prevBtn"
+                class="flex items-center gap-2 rounded-full bg-slate-100 px-8 py-3 font-bold text-slate-500 transition-all hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-300 dark:hover:bg-slate-600"
+              >
+                <i class="material-icons">arrow_back</i> PREVIOUS
+              </button>
+              <button
+                id="nextBtn"
+                class="flex transform items-center gap-2 rounded-full bg-primary px-10 py-3 font-bold text-white shadow-lg shadow-primary/30 transition-all hover:scale-105 hover:bg-orange-600"
+              >
+                NEXT <i class="material-icons">arrow_forward</i>
+              </button>
+            </div>
+          </div>
+          <!-- CONDITION TAB CONTENT -->
+          <div id="conditionTab" class="hidden p-8 lg:p-12">
+            <h3 class="mb-8 text-xl font-bold uppercase tracking-tight">Condition Checklist</h3>
+            <div class="max-w-7xl">
+              <div class="mb-8 grid grid-cols-1 gap-6 lg:grid-cols-4">
+                <!-- LEFT SIDEBAR NAVIGATION -->
+                <div class="space-y-3">
+                  <div
+                    class="flex items-center gap-2 rounded-full bg-primary px-6 py-3 font-bold text-white shadow-lg"
+                  >
+                    <span class="material-symbols-outlined">yard</span>
+                    EXTERIOR
+                  </div>
+
+                  <button
+                    class="conditionNavBtn flex w-full items-center gap-2 rounded-full border-2 border-slate-300 px-6 py-3 font-bold text-slate-700 transition-all hover:border-primary dark:border-slate-600 dark:text-slate-300"
+                    data-condition="engine"
+                  >
+                    <span class="material-symbols-outlined">settings</span>
+                    ENGINE
+                  </button>
+                  <button
+                    class="conditionNavBtn flex w-full items-center gap-2 rounded-full border-2 border-slate-300 px-6 py-3 font-bold text-slate-700 transition-all hover:border-primary dark:border-slate-600 dark:text-slate-300"
+                    data-condition="hydraulics"
+                  >
+                    <span class="material-symbols-outlined">water_damage</span>
+                    HYDRAULICS
+                  </button>
+                  <button
+                    class="conditionNavBtn flex w-full items-center gap-2 rounded-full border-2 border-slate-300 px-6 py-3 font-bold text-slate-700 transition-all hover:border-primary dark:border-slate-600 dark:text-slate-300"
+                    data-condition="undercarriage"
+                  >
+                    <span class="material-symbols-outlined">construction</span>
+                    UNDERCARRIAGE
+                  </button>
+                  <button
+                    class="conditionNavBtn flex w-full items-center gap-2 rounded-full border-2 border-slate-300 px-6 py-3 font-bold text-slate-700 transition-all hover:border-primary dark:border-slate-600 dark:text-slate-300"
+                    data-condition="functional"
+                  >
+                    <span class="material-symbols-outlined">verified</span>
+                    FUNCTIONAL TEST
+                  </button>
+                </div>
+
+                <!-- RIGHT CONTENT AREA -->
+                <div class="lg:col-span-3">
+                  <!-- EXTERIOR CONDITION -->
+                  <div
+                    id="exterior-condition"
+                    class="conditionSection rounded-2xl bg-slate-50 p-8 dark:bg-slate-900"
+                  >
+                    <h4
+                      class="mb-6 border-b-2 border-primary pb-4 text-lg font-bold uppercase tracking-tight"
+                    >
+                      Exterior Condition
+                    </h4>
+
+                    <div class="space-y-6">
+                      <!-- Header Row (Desktop only) -->
+                      <div
+                        class="hidden grid-cols-12 gap-6 border-b border-slate-200 pb-6 dark:border-slate-700 md:grid"
+                      >
+                        <div class="md:col-span-3">
+                          <p class="text-sm font-bold uppercase text-slate-600 dark:text-slate-400">
+                            Item
+                          </p>
+                        </div>
+                        <div class="md:col-span-3">
+                          <p class="text-sm font-bold uppercase text-slate-600 dark:text-slate-400">
+                            Status
+                          </p>
+                        </div>
+                        <div class="md:col-span-6">
+                          <p class="text-sm font-bold uppercase text-slate-600 dark:text-slate-400">
+                            Photos / Videos
+                          </p>
+                        </div>
+                      </div>
+
+                      <!-- Row 1 -->
+                      <div
+                        class="grid grid-cols-1 gap-6 border-b border-slate-200 pb-6 dark:border-slate-700 md:grid-cols-12"
+                      >
+                        <div class="md:col-span-3">
+                          <p class="font-semibold">Body Panels</p>
+                        </div>
+
+                        <div class="md:col-span-3">
+                          <select
+                            class="w-full rounded-lg border border-slate-200 bg-white p-2 dark:border-slate-700 dark:bg-slate-800"
+                          >
+                            <option>e.g., Good</option>
+                            <option>Excellent</option>
+                            <option>Good</option>
+                            <option>Fair</option>
+                            <option>Poor</option>
+                          </select>
+                        </div>
+
+                        <div class="md:col-span-6">
+                          <div
+                            class="border-secondary cursor-pointer rounded-lg border-2 border-dashed bg-white p-4 text-center transition-all hover:bg-primary/5 dark:bg-slate-800"
+                          >
+                            <p>
+                              <span class="text-sm font-bold text-primary">Click here</span>
+                              to upload your file or drag
+                            </p>
+                            <p class="text-xs text-slate-400">
+                              Supported Format: SVG, JPG, PNG (10mb each)
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Row 2 -->
+                      <div
+                        class="grid grid-cols-1 gap-6 border-b border-slate-200 pb-6 dark:border-slate-700 md:grid-cols-12"
+                      >
+                        <div class="md:col-span-3">
+                          <p class="font-semibold">Glass & Mirrors</p>
+                        </div>
+
+                        <div class="md:col-span-3">
+                          <select
+                            class="w-full rounded-lg border border-slate-200 bg-white p-2 dark:border-slate-700 dark:bg-slate-800"
+                          >
+                            <option>e.g., Good</option>
+                            <option>Excellent</option>
+                            <option>Good</option>
+                            <option>Fair</option>
+                            <option>Poor</option>
+                          </select>
+                        </div>
+
+                        <div class="md:col-span-6">
+                          <div
+                            class="border-secondary cursor-pointer rounded-lg border-2 border-dashed bg-white p-4 text-center transition-all hover:bg-primary/5 dark:bg-slate-800"
+                          >
+                            <p>
+                              <span class="text-sm font-bold text-primary">Click here</span>
+                              to upload your file or drag
+                            </p>
+                            <p class="text-xs text-slate-400">
+                              Supported Format: SVG, JPG, PNG (10mb each)
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Row 3 -->
+                      <div class="grid grid-cols-1 gap-6 md:grid-cols-12">
+                        <div class="md:col-span-3">
+                          <p class="font-semibold">Lights & Signals</p>
+                        </div>
+
+                        <div class="md:col-span-3">
+                          <select
+                            class="w-full rounded-lg border border-slate-200 bg-white p-2 dark:border-slate-700 dark:bg-slate-800"
+                          >
+                            <option>e.g., Good</option>
+                            <option>Excellent</option>
+                            <option>Good</option>
+                            <option>Fair</option>
+                            <option>Poor</option>
+                          </select>
+                        </div>
+
+                        <div class="md:col-span-6">
+                          <div
+                            class="border-secondary cursor-pointer rounded-lg border-2 border-dashed bg-white p-4 text-center transition-all hover:bg-primary/5 dark:bg-slate-800"
+                          >
+                            <p>
+                              <span class="text-sm font-bold text-primary">Click here</span>
+                              to upload your file or drag
+                            </p>
+                            <p class="text-xs text-slate-400">
+                              Supported Format: SVG, JPG, PNG (10mb each)
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- ENGINE CONDITION -->
+                  <div
+                    id="engine-condition"
+                    class="conditionSection hidden rounded-2xl bg-slate-50 p-8 dark:bg-slate-900"
+                  >
+                    <h4
+                      class="mb-6 border-b-2 border-primary pb-4 text-lg font-bold uppercase tracking-tight"
+                    >
+                      Engine Condition
+                    </h4>
+                    <div class="space-y-6">
+                      <div
+                        class="grid grid-cols-1 gap-6 border-b border-slate-200 pb-6 dark:border-slate-700 md:grid-cols-3"
+                      >
+                        <div>
+                          <p
+                            class="mb-2 text-sm font-bold uppercase text-slate-600 dark:text-slate-400"
+                          >
+                            Item
+                          </p>
+                          <p class="font-semibold">Engine Block</p>
+                        </div>
+                        <div>
+                          <p
+                            class="mb-2 text-sm font-bold uppercase text-slate-600 dark:text-slate-400"
+                          >
+                            Status
+                          </p>
+                          <select
+                            class="w-full rounded-lg border border-slate-200 bg-white p-2 dark:border-slate-700 dark:bg-slate-800"
+                          >
+                            <option>e.g., Good</option>
+                            <option>Excellent</option>
+                            <option>Good</option>
+                            <option>Fair</option>
+                            <option>Poor</option>
+                          </select>
+                        </div>
+                        <div>
+                          <p
+                            class="mb-2 text-sm font-bold uppercase text-slate-600 dark:text-slate-400"
+                          >
+                            Photos/Videos
+                          </p>
+                          <div
+                            class="cursor-pointer rounded-lg border-2 border-dashed border-primary p-4 text-center transition-all hover:bg-primary/5"
+                          >
+                            <p class="text-sm font-bold text-primary">Click here</p>
+                            <p class="text-xs text-slate-400">to upload your file or drag</p>
+                            <p class="text-xs text-slate-400">
+                              Supported Format: SVG, JPG, PNG (10mb each)
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+                        <div>
+                          <p
+                            class="mb-2 text-sm font-bold uppercase text-slate-600 dark:text-slate-400"
+                          >
+                            Item
+                          </p>
+                          <p class="font-semibold">Transmission</p>
+                        </div>
+                        <div>
+                          <p
+                            class="mb-2 text-sm font-bold uppercase text-slate-600 dark:text-slate-400"
+                          >
+                            Status
+                          </p>
+                          <select
+                            class="w-full rounded-lg border border-slate-200 bg-white p-2 dark:border-slate-700 dark:bg-slate-800"
+                          >
+                            <option>e.g., Good</option>
+                            <option>Excellent</option>
+                            <option>Good</option>
+                            <option>Fair</option>
+                            <option>Poor</option>
+                          </select>
+                        </div>
+                        <div>
+                          <p
+                            class="mb-2 text-sm font-bold uppercase text-slate-600 dark:text-slate-400"
+                          >
+                            Photos/Videos
+                          </p>
+                          <div
+                            class="cursor-pointer rounded-lg border-2 border-dashed border-primary p-4 text-center transition-all hover:bg-primary/5"
+                          >
+                            <p class="text-sm font-bold text-primary">Click here</p>
+                            <p class="text-xs text-slate-400">to upload your file or drag</p>
+                            <p class="text-xs text-slate-400">
+                              Supported Format: SVG, JPG, PNG (10mb each)
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- HYDRAULICS CONDITION -->
+                  <div
+                    id="hydraulics-condition"
+                    class="conditionSection hidden rounded-2xl bg-slate-50 p-8 dark:bg-slate-900"
+                  >
+                    <h4
+                      class="mb-6 border-b-2 border-primary pb-4 text-lg font-bold uppercase tracking-tight"
+                    >
+                      Hydraulics Condition
+                    </h4>
+                    <div class="space-y-6">
+                      <div
+                        class="grid grid-cols-1 gap-6 border-b border-slate-200 pb-6 dark:border-slate-700 md:grid-cols-3"
+                      >
+                        <div>
+                          <p
+                            class="mb-2 text-sm font-bold uppercase text-slate-600 dark:text-slate-400"
+                          >
+                            Item
+                          </p>
+                          <p class="font-semibold">Hydraulic Pump</p>
+                        </div>
+                        <div>
+                          <p
+                            class="mb-2 text-sm font-bold uppercase text-slate-600 dark:text-slate-400"
+                          >
+                            Status
+                          </p>
+                          <select
+                            class="w-full rounded-lg border border-slate-200 bg-white p-2 dark:border-slate-700 dark:bg-slate-800"
+                          >
+                            <option>e.g., Good</option>
+                            <option>Excellent</option>
+                            <option>Good</option>
+                            <option>Fair</option>
+                            <option>Poor</option>
+                          </select>
+                        </div>
+                        <div>
+                          <p
+                            class="mb-2 text-sm font-bold uppercase text-slate-600 dark:text-slate-400"
+                          >
+                            Photos/Videos
+                          </p>
+                          <div
+                            class="cursor-pointer rounded-lg border-2 border-dashed border-primary p-4 text-center transition-all hover:bg-primary/5"
+                          >
+                            <p class="text-sm font-bold text-primary">Click here</p>
+                            <p class="text-xs text-slate-400">to upload your file or drag</p>
+                            <p class="text-xs text-slate-400">
+                              Supported Format: SVG, JPG, PNG (10mb each)
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+                        <div>
+                          <p
+                            class="mb-2 text-sm font-bold uppercase text-slate-600 dark:text-slate-400"
+                          >
+                            Item
+                          </p>
+                          <p class="font-semibold">Cylinders</p>
+                        </div>
+                        <div>
+                          <p
+                            class="mb-2 text-sm font-bold uppercase text-slate-600 dark:text-slate-400"
+                          >
+                            Status
+                          </p>
+                          <select
+                            class="w-full rounded-lg border border-slate-200 bg-white p-2 dark:border-slate-700 dark:bg-slate-800"
+                          >
+                            <option>e.g., Good</option>
+                            <option>Excellent</option>
+                            <option>Good</option>
+                            <option>Fair</option>
+                            <option>Poor</option>
+                          </select>
+                        </div>
+                        <div>
+                          <p
+                            class="mb-2 text-sm font-bold uppercase text-slate-600 dark:text-slate-400"
+                          >
+                            Photos/Videos
+                          </p>
+                          <div
+                            class="cursor-pointer rounded-lg border-2 border-dashed border-primary p-4 text-center transition-all hover:bg-primary/5"
+                          >
+                            <p class="text-sm font-bold text-primary">Click here</p>
+                            <p class="text-xs text-slate-400">to upload your file or drag</p>
+                            <p class="text-xs text-slate-400">
+                              Supported Format: SVG, JPG, PNG (10mb each)
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- UNDERCARRIAGE CONDITION -->
+                  <div
+                    id="undercarriage-condition"
+                    class="conditionSection hidden rounded-2xl bg-slate-50 p-8 dark:bg-slate-900"
+                  >
+                    <h4
+                      class="mb-6 border-b-2 border-primary pb-4 text-lg font-bold uppercase tracking-tight"
+                    >
+                      Undercarriage Condition
+                    </h4>
+                    <div class="space-y-6">
+                      <div
+                        class="grid grid-cols-1 gap-6 border-b border-slate-200 pb-6 dark:border-slate-700 md:grid-cols-3"
+                      >
+                        <div>
+                          <p
+                            class="mb-2 text-sm font-bold uppercase text-slate-600 dark:text-slate-400"
+                          >
+                            Item
+                          </p>
+                          <p class="font-semibold">Tracks/Wheels</p>
+                        </div>
+                        <div>
+                          <p
+                            class="mb-2 text-sm font-bold uppercase text-slate-600 dark:text-slate-400"
+                          >
+                            Status
+                          </p>
+                          <select
+                            class="w-full rounded-lg border border-slate-200 bg-white p-2 dark:border-slate-700 dark:bg-slate-800"
+                          >
+                            <option>e.g., Good</option>
+                            <option>Excellent</option>
+                            <option>Good</option>
+                            <option>Fair</option>
+                            <option>Poor</option>
+                          </select>
+                        </div>
+                        <div>
+                          <p
+                            class="mb-2 text-sm font-bold uppercase text-slate-600 dark:text-slate-400"
+                          >
+                            Photos/Videos
+                          </p>
+                          <div
+                            class="cursor-pointer rounded-lg border-2 border-dashed border-primary p-4 text-center transition-all hover:bg-primary/5"
+                          >
+                            <p class="text-sm font-bold text-primary">Click here</p>
+                            <p class="text-xs text-slate-400">to upload your file or drag</p>
+                            <p class="text-xs text-slate-400">
+                              Supported Format: SVG, JPG, PNG (10mb each)
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+                        <div>
+                          <p
+                            class="mb-2 text-sm font-bold uppercase text-slate-600 dark:text-slate-400"
+                          >
+                            Item
+                          </p>
+                          <p class="font-semibold">Suspension</p>
+                        </div>
+                        <div>
+                          <p
+                            class="mb-2 text-sm font-bold uppercase text-slate-600 dark:text-slate-400"
+                          >
+                            Status
+                          </p>
+                          <select
+                            class="w-full rounded-lg border border-slate-200 bg-white p-2 dark:border-slate-700 dark:bg-slate-800"
+                          >
+                            <option>e.g., Good</option>
+                            <option>Excellent</option>
+                            <option>Good</option>
+                            <option>Fair</option>
+                            <option>Poor</option>
+                          </select>
+                        </div>
+                        <div>
+                          <p
+                            class="mb-2 text-sm font-bold uppercase text-slate-600 dark:text-slate-400"
+                          >
+                            Photos/Videos
+                          </p>
+                          <div
+                            class="cursor-pointer rounded-lg border-2 border-dashed border-primary p-4 text-center transition-all hover:bg-primary/5"
+                          >
+                            <p class="text-sm font-bold text-primary">Click here</p>
+                            <p class="text-xs text-slate-400">to upload your file or drag</p>
+                            <p class="text-xs text-slate-400">
+                              Supported Format: SVG, JPG, PNG (10mb each)
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- FUNCTIONAL TEST -->
+                  <div
+                    id="functional-condition"
+                    class="conditionSection hidden rounded-2xl bg-slate-50 p-8 dark:bg-slate-900"
+                  >
+                    <h4
+                      class="mb-6 border-b-2 border-primary pb-4 text-lg font-bold uppercase tracking-tight"
+                    >
+                      Functional Test
+                    </h4>
+                    <div class="space-y-6">
+                      <div
+                        class="grid grid-cols-1 gap-6 border-b border-slate-200 pb-6 dark:border-slate-700 md:grid-cols-3"
+                      >
+                        <div>
+                          <p
+                            class="mb-2 text-sm font-bold uppercase text-slate-600 dark:text-slate-400"
+                          >
+                            Item
+                          </p>
+                          <p class="font-semibold">Engine Start</p>
+                        </div>
+                        <div>
+                          <p
+                            class="mb-2 text-sm font-bold uppercase text-slate-600 dark:text-slate-400"
+                          >
+                            Status
+                          </p>
+                          <select
+                            class="w-full rounded-lg border border-slate-200 bg-white p-2 dark:border-slate-700 dark:bg-slate-800"
+                          >
+                            <option>e.g., Good</option>
+                            <option>Starts Easily</option>
+                            <option>Starts with Effort</option>
+                            <option>Won't Start</option>
+                          </select>
+                        </div>
+                        <div>
+                          <p
+                            class="mb-2 text-sm font-bold uppercase text-slate-600 dark:text-slate-400"
+                          >
+                            Photos/Videos
+                          </p>
+                          <div
+                            class="cursor-pointer rounded-lg border-2 border-dashed border-primary p-4 text-center transition-all hover:bg-primary/5"
+                          >
+                            <p class="text-sm font-bold text-primary">Click here</p>
+                            <p class="text-xs text-slate-400">to upload your file or drag</p>
+                            <p class="text-xs text-slate-400">
+                              Supported Format: SVG, JPG, PNG (10mb each)
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+                        <div>
+                          <p
+                            class="mb-2 text-sm font-bold uppercase text-slate-600 dark:text-slate-400"
+                          >
+                            Item
+                          </p>
+                          <p class="font-semibold">Operation Test</p>
+                        </div>
+                        <div>
+                          <p
+                            class="mb-2 text-sm font-bold uppercase text-slate-600 dark:text-slate-400"
+                          >
+                            Status
+                          </p>
+                          <select
+                            class="w-full rounded-lg border border-slate-200 bg-white p-2 dark:border-slate-700 dark:bg-slate-800"
+                          >
+                            <option>e.g., Good</option>
+                            <option>Operates Smoothly</option>
+                            <option>Operates with Issues</option>
+                            <option>Doesn't Operate</option>
+                          </select>
+                        </div>
+                        <div>
+                          <p
+                            class="mb-2 text-sm font-bold uppercase text-slate-600 dark:text-slate-400"
+                          >
+                            Photos/Videos
+                          </p>
+                          <div
+                            class="cursor-pointer rounded-lg border-2 border-dashed border-primary p-4 text-center transition-all hover:bg-primary/5"
+                          >
+                            <p class="text-sm font-bold text-primary">Click here</p>
+                            <p class="text-xs text-slate-400">to upload your file or drag</p>
+                            <p class="text-xs text-slate-400">
+                              Supported Format: SVG, JPG, PNG (10mb each)
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="mt-12 flex items-center justify-between border-t border-slate-200 pt-8 dark:border-slate-700"
+            >
+              <button
+                class="flex items-center gap-2 rounded-full bg-slate-100 px-8 py-3 font-bold text-slate-500 transition-all hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-300 dark:hover:bg-slate-600"
+              >
+                <i class="material-icons">arrow_back</i> PREVIOUS
+              </button>
+              <button
+                class="flex transform items-center gap-2 rounded-full bg-primary px-10 py-3 font-bold text-white shadow-lg shadow-primary/30 transition-all hover:scale-105 hover:bg-orange-600"
+              >
+                NEXT <i class="material-icons">arrow_forward</i>
+              </button>
+            </div>
+          </div>
+
+          <!-- MEDIA TAB CONTENT -->
+          <div id="mediaTab" class="hidden p-8 lg:p-12">
+            <h3 class="mb-12 text-xl font-bold uppercase tracking-tight">
+              Upload Equipment Photos & Videos
+            </h3>
+            <div class="max-w-6xl space-y-12">
+              <!-- EXTERIOR PHOTOS -->
+              <section>
+                <div class="mb-6 flex items-center gap-3">
+                  <div
+                    class="flex h-10 w-10 items-center justify-center rounded-full bg-primary font-bold text-white"
+                  >
+                    <i class="material-symbols-outlined">image</i>
+                  </div>
+                  <h4 class="text-lg font-bold text-slate-900 dark:text-white">Exterior</h4>
+                </div>
+                <div class="mb-6 text-center">
+                  <p class="text-sm font-bold text-primary">Click here</p>
+                  <p class="text-xs text-slate-400">to upload your file or drag</p>
+                  <p class="text-xs text-slate-400">Supported Format: SVG, JPG, PNG (10mb each)</p>
+                </div>
+                <div class="grid grid-cols-2 gap-4 md:grid-cols-4">
+                  <div
+                    class="group relative aspect-video overflow-hidden rounded-xl bg-slate-200 dark:bg-slate-700"
+                  >
+                    <img
+                      src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=400"
+                      alt="Equipment exterior"
+                      class="h-full w-full object-cover"
+                    />
+                    <button
+                      class="absolute right-2 top-2 rounded-full bg-black/50 p-1 text-white opacity-0 transition-opacity hover:bg-black/70 group-hover:opacity-100"
+                    >
+                      <i class="material-icons text-sm">close</i>
+                    </button>
+                  </div>
+                  <div
+                    class="group relative aspect-video overflow-hidden rounded-xl bg-slate-200 dark:bg-slate-700"
+                  >
+                    <img
+                      src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=400"
+                      alt="Equipment exterior 2"
+                      class="h-full w-full object-cover"
+                    />
+                    <button
+                      class="absolute right-2 top-2 rounded-full bg-black/50 p-1 text-white opacity-0 transition-opacity hover:bg-black/70 group-hover:opacity-100"
+                    >
+                      <i class="material-icons text-sm">close</i>
+                    </button>
+                  </div>
+                  <div
+                    class="flex aspect-video cursor-pointer items-center justify-center rounded-xl border-2 border-dashed border-slate-300 transition-all hover:bg-slate-50 dark:border-slate-600 dark:hover:bg-slate-800"
+                  >
+                    <div class="text-center">
+                      <i class="material-icons mb-2 text-4xl text-slate-400">add_photo_alternate</i>
+                      <p class="text-sm font-semibold text-slate-600 dark:text-slate-400">
+                        Add more
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- ENGINE COMPARTMENT PHOTOS -->
+              <section>
+                <div class="mb-6 flex items-center gap-3">
+                  <div
+                    class="flex h-10 w-10 items-center justify-center rounded-full bg-primary font-bold text-white"
+                  >
+                    <i class="material-symbols-outlined">settings</i>
+                  </div>
+                  <h4 class="text-lg font-bold text-slate-900 dark:text-white">
+                    Engine Compartment
+                  </h4>
+                </div>
+                <div class="mb-6 text-center">
+                  <p class="text-sm font-bold text-primary">Click here</p>
+                  <p class="text-xs text-slate-400">to upload your file or drag</p>
+                  <p class="text-xs text-slate-400">Supported Format: SVG, JPG, PNG (10mb each)</p>
+                </div>
+                <div class="grid grid-cols-2 gap-4 md:grid-cols-4">
+                  <div
+                    class="group relative aspect-video overflow-hidden rounded-xl bg-slate-200 dark:bg-slate-700"
+                  >
+                    <img
+                      src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400"
+                      alt="Engine compartment"
+                      class="h-full w-full object-cover"
+                    />
+                    <button
+                      class="absolute right-2 top-2 rounded-full bg-black/50 p-1 text-white opacity-0 transition-opacity hover:bg-black/70 group-hover:opacity-100"
+                    >
+                      <i class="material-icons text-sm">close</i>
+                    </button>
+                  </div>
+                  <div
+                    class="group relative aspect-video overflow-hidden rounded-xl bg-slate-200 dark:bg-slate-700"
+                  >
+                    <img
+                      src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400"
+                      alt="Engine compartment 2"
+                      class="h-full w-full object-cover"
+                    />
+                    <button
+                      class="absolute right-2 top-2 rounded-full bg-black/50 p-1 text-white opacity-0 transition-opacity hover:bg-black/70 group-hover:opacity-100"
+                    >
+                      <i class="material-icons text-sm">close</i>
+                    </button>
+                  </div>
+                  <div
+                    class="flex aspect-video cursor-pointer items-center justify-center rounded-xl border-2 border-dashed border-slate-300 transition-all hover:bg-slate-50 dark:border-slate-600 dark:hover:bg-slate-800"
+                  >
+                    <div class="text-center">
+                      <i class="material-icons mb-2 text-4xl text-slate-400">add_photo_alternate</i>
+                      <p class="text-sm font-semibold text-slate-600 dark:text-slate-400">
+                        Add more
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- UNDERCARRIAGE / TRACKS PHOTOS -->
+              <section>
+                <div class="mb-6 flex items-center gap-3">
+                  <div
+                    class="flex h-10 w-10 items-center justify-center rounded-full bg-primary font-bold text-white"
+                  >
+                    <i class="material-symbols-outlined">construction</i>
+                  </div>
+                  <h4 class="text-lg font-bold text-slate-900 dark:text-white">
+                    Undercarriage / Tracks
+                  </h4>
+                </div>
+                <div class="mb-6 text-center">
+                  <p class="text-sm font-bold text-primary">Click here</p>
+                  <p class="text-xs text-slate-400">to upload your file or drag</p>
+                  <p class="text-xs text-slate-400">Supported Format: SVG, JPG, PNG (10mb each)</p>
+                </div>
+                <div class="grid grid-cols-2 gap-4 md:grid-cols-4">
+                  <div
+                    class="flex aspect-video cursor-pointer items-center justify-center rounded-xl border-2 border-dashed border-slate-300 transition-all hover:bg-slate-50 dark:border-slate-600 dark:hover:bg-slate-800"
+                  >
+                    <div class="text-center">
+                      <i class="material-icons mb-2 text-4xl text-slate-400">add_photo_alternate</i>
+                      <p class="text-sm font-semibold text-slate-600 dark:text-slate-400">
+                        Add photos
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- INTERIOR / CAB PHOTOS -->
+              <section>
+                <div class="mb-6 flex items-center gap-3">
+                  <div
+                    class="flex h-10 w-10 items-center justify-center rounded-full bg-primary font-bold text-white"
+                  >
+                    <i class="material-symbols-outlined">chair</i>
+                  </div>
+                  <h4 class="text-lg font-bold text-slate-900 dark:text-white">Interior / Cab</h4>
+                </div>
+                <div class="mb-6 text-center">
+                  <p class="text-sm font-bold text-primary">Click here</p>
+                  <p class="text-xs text-slate-400">to upload your file or drag</p>
+                  <p class="text-xs text-slate-400">Supported Format: SVG, JPG, PNG (10mb each)</p>
+                </div>
+                <div class="grid grid-cols-2 gap-4 md:grid-cols-4">
+                  <div
+                    class="group relative aspect-video overflow-hidden rounded-xl bg-slate-200 dark:bg-slate-700"
+                  >
+                    <img
+                      src="https://images.unsplash.com/photo-1596524430575-9dbb51ee2517?w=400"
+                      alt="Interior cab"
+                      class="h-full w-full object-cover"
+                    />
+                    <button
+                      class="absolute right-2 top-2 rounded-full bg-black/50 p-1 text-white opacity-0 transition-opacity hover:bg-black/70 group-hover:opacity-100"
+                    >
+                      <i class="material-icons text-sm">close</i>
+                    </button>
+                  </div>
+                  <div
+                    class="group relative aspect-video overflow-hidden rounded-xl bg-slate-200 dark:bg-slate-700"
+                  >
+                    <img
+                      src="https://images.unsplash.com/photo-1596524430575-9dbb51ee2517?w=400"
+                      alt="Interior cab 2"
+                      class="h-full w-full object-cover"
+                    />
+                    <button
+                      class="absolute right-2 top-2 rounded-full bg-black/50 p-1 text-white opacity-0 transition-opacity hover:bg-black/70 group-hover:opacity-100"
+                    >
+                      <i class="material-icons text-sm">close</i>
+                    </button>
+                  </div>
+                  <div
+                    class="flex aspect-video cursor-pointer items-center justify-center rounded-xl border-2 border-dashed border-slate-300 transition-all hover:bg-slate-50 dark:border-slate-600 dark:hover:bg-slate-800"
+                  >
+                    <div class="text-center">
+                      <i class="material-icons mb-2 text-4xl text-slate-400">add_photo_alternate</i>
+                      <p class="text-sm font-semibold text-slate-600 dark:text-slate-400">
+                        Add more
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- OTHER ATTACHMENTS PHOTOS -->
+              <section>
+                <div class="mb-6 flex items-center gap-3">
+                  <div
+                    class="flex h-10 w-10 items-center justify-center rounded-full bg-primary font-bold text-white"
+                  >
+                    <i class="material-symbols-outlined">attach_file</i>
+                  </div>
+                  <h4 class="text-lg font-bold text-slate-900 dark:text-white">
+                    Other Attachments
+                  </h4>
+                </div>
+                <div class="mb-6 text-center">
+                  <p class="text-sm font-bold text-primary">Click here</p>
+                  <p class="text-xs text-slate-400">to upload your file or drag</p>
+                  <p class="text-xs text-slate-400">Supported Format: SVG, JPG, PNG (10mb each)</p>
+                </div>
+                <div class="grid grid-cols-2 gap-4 md:grid-cols-4">
+                  <div
+                    class="group relative aspect-video overflow-hidden rounded-xl bg-slate-200 dark:bg-slate-700"
+                  >
+                    <img
+                      src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=400"
+                      alt="Attachments"
+                      class="h-full w-full object-cover"
+                    />
+                    <button
+                      class="absolute right-2 top-2 rounded-full bg-black/50 p-1 text-white opacity-0 transition-opacity hover:bg-black/70 group-hover:opacity-100"
+                    >
+                      <i class="material-icons text-sm">close</i>
+                    </button>
+                  </div>
+                  <div
+                    class="group relative aspect-video overflow-hidden rounded-xl bg-slate-200 dark:bg-slate-700"
+                  >
+                    <img
+                      src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=400"
+                      alt="Attachments 2"
+                      class="h-full w-full object-cover"
+                    />
+                    <button
+                      class="absolute right-2 top-2 rounded-full bg-black/50 p-1 text-white opacity-0 transition-opacity hover:bg-black/70 group-hover:opacity-100"
+                    >
+                      <i class="material-icons text-sm">close</i>
+                    </button>
+                  </div>
+                  <div
+                    class="flex aspect-video cursor-pointer items-center justify-center rounded-xl border-2 border-dashed border-slate-300 transition-all hover:bg-slate-50 dark:border-slate-600 dark:hover:bg-slate-800"
+                  >
+                    <div class="text-center">
+                      <i class="material-icons mb-2 text-4xl text-slate-400">add_photo_alternate</i>
+                      <p class="text-sm font-semibold text-slate-600 dark:text-slate-400">
+                        Add more
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- VIDEOS SECTION -->
+              <section>
+                <div class="mb-6 flex items-center gap-3">
+                  <div
+                    class="flex h-10 w-10 items-center justify-center rounded-full bg-primary font-bold text-white"
+                  >
+                    <i class="material-symbols-outlined">play_circle</i>
+                  </div>
+                  <h4 class="text-lg font-bold text-slate-900 dark:text-white">Videos</h4>
+                </div>
+
+                <!-- Engine Start-ups Videos -->
+                <div class="mb-8">
+                  <h5 class="mb-4 text-sm font-bold text-slate-700 dark:text-slate-300">
+                    Engine Start-ups
+                  </h5>
+                  <div class="mb-6 text-center">
+                    <p class="text-sm font-bold text-primary">Click here</p>
+                    <p class="text-xs text-slate-400">to upload your file or drag</p>
+                    <p class="text-xs text-slate-400">
+                      Supported Format: MP4, WebP, 4K (10mb each)
+                    </p>
+                  </div>
+                  <div class="grid grid-cols-2 gap-4">
+                    <div
+                      class="group relative aspect-video overflow-hidden rounded-xl bg-slate-200 dark:bg-slate-700"
+                    >
+                      <img
+                        src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=400"
+                        alt="Engine start-up video"
+                        class="h-full w-full object-cover"
+                      />
+                      <div
+                        class="absolute inset-0 flex items-center justify-center bg-black/20 transition-all group-hover:bg-black/40"
+                      >
+                        <button
+                          class="flex h-16 w-16 items-center justify-center rounded-full bg-primary/90 text-white hover:bg-primary"
+                        >
+                          <i class="material-icons text-4xl">play_arrow</i>
+                        </button>
+                      </div>
+                      <button
+                        class="absolute right-2 top-2 rounded-full bg-black/50 p-1 text-white opacity-0 transition-opacity hover:bg-black/70 group-hover:opacity-100"
+                      >
+                        <i class="material-icons text-sm">close</i>
+                      </button>
+                    </div>
+                    <div
+                      class="group relative aspect-video overflow-hidden rounded-xl bg-slate-200 dark:bg-slate-700"
+                    >
+                      <img
+                        src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=400"
+                        alt="Engine start-up video 2"
+                        class="h-full w-full object-cover"
+                      />
+                      <div
+                        class="absolute inset-0 flex items-center justify-center bg-black/20 transition-all group-hover:bg-black/40"
+                      >
+                        <button
+                          class="flex h-16 w-16 items-center justify-center rounded-full bg-primary/90 text-white hover:bg-primary"
+                        >
+                          <i class="material-icons text-4xl">play_arrow</i>
+                        </button>
+                      </div>
+                      <button
+                        class="absolute right-2 top-2 rounded-full bg-black/50 p-1 text-white opacity-0 transition-opacity hover:bg-black/70 group-hover:opacity-100"
+                      >
+                        <i class="material-icons text-sm">close</i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Walk-around Videos -->
+                <div>
+                  <h5 class="mb-4 text-sm font-bold text-slate-700 dark:text-slate-300">
+                    Walk-around
+                  </h5>
+                  <div class="mb-6 text-center">
+                    <p class="text-sm font-bold text-primary">Click here</p>
+                    <p class="text-xs text-slate-400">to upload your file or drag</p>
+                    <p class="text-xs text-slate-400">
+                      Supported Format: MP4, WebP, 4K (10mb each)
+                    </p>
+                  </div>
+                  <div class="grid grid-cols-2 gap-4">
+                    <div
+                      class="group relative aspect-video overflow-hidden rounded-xl bg-slate-200 dark:bg-slate-700"
+                    >
+                      <img
+                        src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=400"
+                        alt="Walk-around video"
+                        class="h-full w-full object-cover"
+                      />
+                      <div
+                        class="absolute inset-0 flex items-center justify-center bg-black/20 transition-all group-hover:bg-black/40"
+                      >
+                        <button
+                          class="flex h-16 w-16 items-center justify-center rounded-full bg-primary/90 text-white hover:bg-primary"
+                        >
+                          <i class="material-icons text-4xl">play_arrow</i>
+                        </button>
+                      </div>
+                      <button
+                        class="absolute right-2 top-2 rounded-full bg-black/50 p-1 text-white opacity-0 transition-opacity hover:bg-black/70 group-hover:opacity-100"
+                      >
+                        <i class="material-icons text-sm">close</i>
+                      </button>
+                    </div>
+                    <div
+                      class="group relative aspect-video overflow-hidden rounded-xl bg-slate-200 dark:bg-slate-700"
+                    >
+                      <img
+                        src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=400"
+                        alt="Walk-around video 2"
+                        class="h-full w-full object-cover"
+                      />
+                      <div
+                        class="absolute inset-0 flex items-center justify-center bg-black/20 transition-all group-hover:bg-black/40"
+                      >
+                        <button
+                          class="flex h-16 w-16 items-center justify-center rounded-full bg-primary/90 text-white hover:bg-primary"
+                        >
+                          <i class="material-icons text-4xl">play_arrow</i>
+                        </button>
+                      </div>
+                      <button
+                        class="absolute right-2 top-2 rounded-full bg-black/50 p-1 text-white opacity-0 transition-opacity hover:bg-black/70 group-hover:opacity-100"
+                      >
+                        <i class="material-icons text-sm">close</i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+
+            <div
+              class="mt-12 flex items-center justify-between border-t border-slate-200 pt-8 dark:border-slate-700"
+            >
+              <button
+                class="flex items-center gap-2 rounded-full bg-slate-100 px-8 py-3 font-bold text-slate-500 transition-all hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-300 dark:hover:bg-slate-600"
+              >
+                <i class="material-icons">arrow_back</i> PREVIOUS
+              </button>
+              <button
+                class="flex transform items-center gap-2 rounded-full bg-primary px-10 py-3 font-bold text-white shadow-lg shadow-primary/30 transition-all hover:scale-105 hover:bg-orange-600"
+              >
+                NEXT <i class="material-icons">arrow_forward</i>
+              </button>
+            </div>
+          </div>
+
+          <!-- ADDITIONAL INFO TAB CONTENT -->
+          <div id="additionalTab" class="hidden p-8 lg:p-12">
+            <h3 class="mb-12 text-xl font-bold uppercase tracking-tight">
+              Additional Equipment Information
+            </h3>
+            <div class="max-w-6xl space-y-12">
+              <!-- EQUIPMENT IDENTITY INFORMATION SECTION -->
+              <section class="rounded-xl bg-slate-50 p-8 dark:bg-slate-800">
+                <h4 class="mb-6 text-lg font-bold text-slate-900 dark:text-white">
+                  Equipment Identity Information
+                </h4>
+                <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+                  <!-- VIN Number -->
+                  <div>
+                    <label
+                      class="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-300"
+                      >VIN Number</label
+                    >
+                    <input
+                      type="text"
+                      placeholder="e.g. GASORVXEZ1"
+                      class="w-full rounded-lg border border-slate-200 bg-white p-3 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                    />
+                  </div>
+
+                  <!-- Manufacturer Date -->
+                  <div>
+                    <label
+                      class="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-300"
+                      >Manufacturer Date</label
+                    >
+                    <div class="relative">
+                      <input
+                        type="date"
+                        class="w-full rounded-lg border border-slate-200 bg-white p-3 text-slate-900 focus:outline-none focus:ring-2 focus:ring-primary dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                      />
+                      <i class="material-icons absolute right-3 top-3 text-slate-400"
+                        >calendar_today</i
+                      >
+                    </div>
+                  </div>
+
+                  <!-- Model Year Confirmation -->
+                  <div>
+                    <label
+                      class="mb-3 block text-sm font-semibold text-slate-700 dark:text-slate-300"
+                      >Model Year Confirmation</label
+                    >
+                    <div class="flex gap-6">
+                      <label class="flex cursor-pointer items-center gap-2">
+                        <input
+                          type="radio"
+                          name="modelYearConfirm"
+                          value="yes"
+                          class="h-4 w-4 text-primary"
+                        />
+                        <span class="text-slate-600 dark:text-slate-400">Yes</span>
+                      </label>
+                      <label class="flex cursor-pointer items-center gap-2">
+                        <input
+                          type="radio"
+                          name="modelYearConfirm"
+                          value="no"
+                          class="h-4 w-4 text-primary"
+                        />
+                        <span class="text-slate-600 dark:text-slate-400">No</span>
+                      </label>
+                    </div>
+                  </div>
+
+                  <!-- If equipment has any damage? -->
+                  <div>
+                    <label
+                      class="mb-3 block text-sm font-semibold text-slate-700 dark:text-slate-300"
+                      >If equipment has any damage?</label
+                    >
+                    <div class="flex gap-6">
+                      <label class="flex cursor-pointer items-center gap-2">
+                        <input
+                          type="radio"
+                          name="hasDamage"
+                          value="yes"
+                          class="h-4 w-4 text-primary"
+                        />
+                        <span class="text-slate-600 dark:text-slate-400">Yes</span>
+                      </label>
+                      <label class="flex cursor-pointer items-center gap-2">
+                        <input
+                          type="radio"
+                          name="hasDamage"
+                          value="no"
+                          class="h-4 w-4 text-primary"
+                        />
+                        <span class="text-slate-600 dark:text-slate-400">No</span>
+                      </label>
+                    </div>
+                  </div>
+
+                  <!-- Maintenance Records Available? -->
+                  <div>
+                    <label
+                      class="mb-3 block text-sm font-semibold text-slate-700 dark:text-slate-300"
+                      >Maintenance Records Available?</label
+                    >
+                    <div class="flex gap-6">
+                      <label class="flex cursor-pointer items-center gap-2">
+                        <input
+                          type="radio"
+                          name="maintenanceRecords"
+                          value="yes"
+                          class="h-4 w-4 text-primary"
+                        />
+                        <span class="text-slate-600 dark:text-slate-400">Yes</span>
+                      </label>
+                      <label class="flex cursor-pointer items-center gap-2">
+                        <input
+                          type="radio"
+                          name="maintenanceRecords"
+                          value="no"
+                          class="h-4 w-4 text-primary"
+                        />
+                        <span class="text-slate-600 dark:text-slate-400">No</span>
+                      </label>
+                    </div>
+                  </div>
+
+                  <!-- Warranty Available? -->
+                  <div>
+                    <label
+                      class="mb-3 block text-sm font-semibold text-slate-700 dark:text-slate-300"
+                      >Warranty Available?</label
+                    >
+                    <div class="flex gap-6">
+                      <label class="flex cursor-pointer items-center gap-2">
+                        <input
+                          type="radio"
+                          name="warranty"
+                          value="yes"
+                          class="h-4 w-4 text-primary"
+                        />
+                        <span class="text-slate-600 dark:text-slate-400">Yes</span>
+                      </label>
+                      <label class="flex cursor-pointer items-center gap-2">
+                        <input
+                          type="radio"
+                          name="warranty"
+                          value="no"
+                          class="h-4 w-4 text-primary"
+                        />
+                        <span class="text-slate-600 dark:text-slate-400">No</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- LOCATION SECTION -->
+              <section class="rounded-xl bg-slate-50 p-8 dark:bg-slate-800">
+                <h4 class="mb-6 text-lg font-bold text-slate-900 dark:text-white">Location</h4>
+
+                <!-- Address -->
+                <div class="mb-6">
+                  <label class="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-300"
+                    >Address</label
+                  >
+                  <input
+                    type="text"
+                    placeholder="e.g. Plan falls"
+                    class="w-full rounded-lg border border-slate-200 bg-white p-3 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                  />
+                </div>
+
+                <!-- Map -->
+                <div
+                  class="h-96 overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700"
+                >
+                  <iframe
+                    width="100%"
+                    height="100%"
+                    style="border: 0"
+                    loading="lazy"
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3151.8354345093747!2d144.95373501531575!3d-37.8162099734598!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sau!4v1234567890"
+                    allowfullscreen=""
+                    aria-hidden="false"
+                    tabindex="0"
+                  ></iframe>
+                </div>
+              </section>
+
+              <!-- OWNERSHIP & LEGAL DOCUMENTS SECTION -->
+              <section class="rounded-xl bg-slate-50 p-8 dark:bg-slate-800">
+                <h4 class="mb-8 text-lg font-bold text-slate-900 dark:text-white">
+                  Ownership & Legal Documents
+                </h4>
+                <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+                  <!-- Ownership Proof -->
+                  <div>
+                    <label
+                      class="mb-3 block text-sm font-semibold text-slate-700 dark:text-slate-300"
+                      >Ownership Proof</label
+                    >
+                    <div
+                      class="cursor-pointer rounded-xl border-2 border-dashed border-slate-300 p-8 text-center transition-all hover:bg-slate-100 dark:border-slate-600 dark:hover:bg-slate-900"
+                    >
+                      <i class="material-icons mb-3 block text-4xl text-primary">file_upload</i>
+                      <p class="text-sm font-bold text-primary">Click here</p>
+                      <p class="text-xs text-slate-400">to upload your file or drag</p>
+                      <p class="text-xs text-slate-400">
+                        Supported Format: PDF, DOC, JPG (15mb each)
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Invoice / Bill of Sale -->
+                  <div>
+                    <label
+                      class="mb-3 block text-sm font-semibold text-slate-700 dark:text-slate-300"
+                      >Invoice / Bill of Sale</label
+                    >
+                    <div
+                      class="cursor-pointer rounded-xl border-2 border-dashed border-slate-300 p-8 text-center transition-all hover:bg-slate-100 dark:border-slate-600 dark:hover:bg-slate-900"
+                    >
+                      <i class="material-icons mb-3 block text-4xl text-primary">file_upload</i>
+                      <p class="text-sm font-bold text-primary">Click here</p>
+                      <p class="text-xs text-slate-400">to upload your file or drag</p>
+                      <p class="text-xs text-slate-400">
+                        Supported Format: PDF, DOC, JPG (15mb each)
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Government Registration -->
+                  <div>
+                    <label
+                      class="mb-3 block text-sm font-semibold text-slate-700 dark:text-slate-300"
+                      >Government Registration</label
+                    >
+                    <div
+                      class="cursor-pointer rounded-xl border-2 border-dashed border-slate-300 p-8 text-center transition-all hover:bg-slate-100 dark:border-slate-600 dark:hover:bg-slate-900"
+                    >
+                      <i class="material-icons mb-3 block text-4xl text-primary">file_upload</i>
+                      <p class="text-sm font-bold text-primary">Click here</p>
+                      <p class="text-xs text-slate-400">to upload your file or drag</p>
+                      <p class="text-xs text-slate-400">
+                        Supported Format: PDF, DOC, JPG (15mb each)
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Emission Test -->
+                  <div>
+                    <label
+                      class="mb-3 block text-sm font-semibold text-slate-700 dark:text-slate-300"
+                      >Emission Test</label
+                    >
+                    <div
+                      class="cursor-pointer rounded-xl border-2 border-dashed border-slate-300 p-8 text-center transition-all hover:bg-slate-100 dark:border-slate-600 dark:hover:bg-slate-900"
+                    >
+                      <i class="material-icons mb-3 block text-4xl text-primary">file_upload</i>
+                      <p class="text-sm font-bold text-primary">Click here</p>
+                      <p class="text-xs text-slate-400">to upload your file or drag</p>
+                      <p class="text-xs text-slate-400">
+                        Supported Format: PDF, DOC, JPG (15mb each)
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Insurance Documents -->
+                  <div>
+                    <label
+                      class="mb-3 block text-sm font-semibold text-slate-700 dark:text-slate-300"
+                      >Insurance Documents</label
+                    >
+                    <div
+                      class="cursor-pointer rounded-xl border-2 border-dashed border-slate-300 p-8 text-center transition-all hover:bg-slate-100 dark:border-slate-600 dark:hover:bg-slate-900"
+                    >
+                      <i class="material-icons mb-3 block text-4xl text-primary">file_upload</i>
+                      <p class="text-sm font-bold text-primary">Click here</p>
+                      <p class="text-xs text-slate-400">to upload your file or drag</p>
+                      <p class="text-xs text-slate-400">
+                        Supported Format: PDF, DOC, JPG (15mb each)
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Recent Maintenance Log -->
+                  <div>
+                    <label
+                      class="mb-3 block text-sm font-semibold text-slate-700 dark:text-slate-300"
+                      >Recent Maintenance Log</label
+                    >
+                    <div
+                      class="cursor-pointer rounded-xl border-2 border-dashed border-slate-300 p-8 text-center transition-all hover:bg-slate-100 dark:border-slate-600 dark:hover:bg-slate-900"
+                    >
+                      <i class="material-icons mb-3 block text-4xl text-primary">file_upload</i>
+                      <p class="text-sm font-bold text-primary">Click here</p>
+                      <p class="text-xs text-slate-400">to upload your file or drag</p>
+                      <p class="text-xs text-slate-400">
+                        Supported Format: PDF, DOC, JPG (15mb each)
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+
+            <div
+              class="mt-12 flex items-center justify-between border-t border-slate-200 pt-8 dark:border-slate-700"
+            >
+              <button
+                class="flex items-center gap-2 rounded-full bg-slate-100 px-8 py-3 font-bold text-slate-500 transition-all hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-300 dark:hover:bg-slate-600"
+              >
+                <i class="material-icons">arrow_back</i> PREVIOUS
+              </button>
+              <button
+                class="flex transform items-center gap-2 rounded-full bg-primary px-10 py-3 font-bold text-white shadow-lg shadow-primary/30 transition-all hover:scale-105 hover:bg-orange-600"
+              >
+                NEXT <i class="material-icons">arrow_forward</i>
+              </button>
+            </div>
+          </div>
+
+          <!-- PRICE TAB CONTENT -->
+          <div id="priceTab" class="hidden p-8 lg:p-12">
+            <div class="max-w-6xl">
+              <!-- Equipment Header -->
+              <div class="mb-12">
+                <h2 class="mb-2 text-3xl font-bold text-slate-900 dark:text-white">
+                  CATERPILLAR 320 GC EXCAVATOR
+                </h2>
+                <p class="text-slate-600 dark:text-slate-400">
+                  Current valuation for your 2018 model with 4,500 hours.
+                </p>
+              </div>
+
+              <!-- Pricing Cards Grid -->
+              <div class="mb-12 grid grid-cols-1 gap-8 md:grid-cols-3">
+                <!-- Auction Range Card -->
+                <div
+                  class="rounded-3xl border border-primary/30 bg-gradient-to-br from-primary/20 to-primary/10 p-8 transition-all hover:shadow-lg"
+                >
+                  <div
+                    class="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/20"
+                  >
+                    <i class="material-icons text-2xl text-primary">gavel</i>
+                  </div>
+                  <h3
+                    class="mb-2 text-sm font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400"
+                  >
+                    Auction Range
+                  </h3>
+                  <p class="mb-3 text-xs text-slate-500 dark:text-slate-500">
+                    Based on recent auction sales in your region
+                  </p>
+                  <p class="mb-6 text-3xl font-bold text-slate-900 dark:text-white">
+                    $120,000 – $145,000
+                  </p>
+                  <button
+                    class="w-full transform rounded-full bg-primary px-4 py-3 text-sm font-bold text-white transition-all hover:scale-105 hover:bg-orange-600"
+                  >
+                    VIEW AUCTION INSIGHTS
+                  </button>
+                </div>
+
+                <!-- Retail Range Card -->
+                <div
+                  class="rounded-3xl border border-primary/30 bg-gradient-to-br from-primary/20 to-primary/10 p-8 transition-all hover:shadow-lg"
+                >
+                  <div
+                    class="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/20"
+                  >
+                    <i class="material-icons text-2xl text-primary">storefront</i>
+                  </div>
+                  <h3
+                    class="mb-2 text-sm font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400"
+                  >
+                    Retail Range
+                  </h3>
+                  <p class="mb-3 text-xs text-slate-500 dark:text-slate-500">
+                    Estimated for private or dealer selling
+                  </p>
+                  <p class="mb-6 text-3xl font-bold text-slate-900 dark:text-white">
+                    $120,000 – $145,000
+                  </p>
+                  <button
+                    class="w-full transform rounded-full bg-primary px-4 py-3 text-sm font-bold text-white transition-all hover:scale-105 hover:bg-orange-600"
+                  >
+                    EXPLORE RETAIL LISTINGS
+                  </button>
+                </div>
+
+                <!-- Cash Offer Card -->
+                <div
+                  class="rounded-3xl border border-primary/30 bg-gradient-to-br from-primary/20 to-primary/10 p-8 transition-all hover:shadow-lg"
+                >
+                  <div
+                    class="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/20"
+                  >
+                    <i class="material-icons text-2xl text-primary">wallet</i>
+                  </div>
+                  <h3
+                    class="mb-2 text-sm font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400"
+                  >
+                    Cash Offer
+                  </h3>
+                  <p class="mb-3 text-xs text-slate-500 dark:text-slate-500">
+                    Estimated offer to sell quickly
+                  </p>
+                  <p class="mb-6 text-3xl font-bold text-slate-900 dark:text-white">$135,000</p>
+                  <button
+                    class="w-full transform rounded-full bg-primary px-4 py-3 text-sm font-bold text-white transition-all hover:scale-105 hover:bg-orange-600"
+                  >
+                    GET MY OFFER
+                  </button>
+                </div>
+              </div>
+
+              <!-- Condition Validation Section -->
+              <section class="mb-8 rounded-2xl bg-slate-50 p-8 dark:bg-slate-800">
+                <div class="mb-6 flex items-start justify-between">
+                  <div>
+                    <h3 class="mb-2 text-lg font-bold text-slate-900 dark:text-white">
+                      Condition Validation
+                    </h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400">
+                      A concise overview of your equipment's current state.
+                    </p>
+                  </div>
+                  <a
+                    href="#"
+                    class="flex items-center gap-1 text-sm font-semibold text-primary hover:text-orange-600"
+                  >
+                    Full Condition Report
+                    <i class="material-icons text-base">open_in_new</i>
+                  </a>
+                </div>
+
+                <div class="space-y-3">
+                  <!-- Engine -->
+                  <div class="flex items-start gap-3">
+                    <div
+                      class="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/30"
+                    >
+                      <i class="material-icons text-sm text-green-600">check_circle</i>
+                    </div>
+                    <div>
+                      <p class="text-sm font-semibold text-slate-900 dark:text-white">
+                        Engine:
+                        <span class="font-normal text-slate-600 dark:text-slate-400"
+                          >Excellent condition, recently serviced.</span
+                        >
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Hydraulics -->
+                  <div class="flex items-start gap-3">
+                    <div
+                      class="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/30"
+                    >
+                      <i class="material-icons text-sm text-green-600">check_circle</i>
+                    </div>
+                    <div>
+                      <p class="text-sm font-semibold text-slate-900 dark:text-white">
+                        Hydraulics:
+                        <span class="font-normal text-slate-600 dark:text-slate-400"
+                          >Good, no leaks detected.</span
+                        >
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Exterior -->
+                  <div class="flex items-start gap-3">
+                    <div
+                      class="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/30"
+                    >
+                      <i class="material-icons text-sm text-green-600">check_circle</i>
+                    </div>
+                    <div>
+                      <p class="text-sm font-semibold text-slate-900 dark:text-white">
+                        Exterior:
+                        <span class="font-normal text-slate-600 dark:text-slate-400"
+                          >Minor cosmetic dents and scratches.</span
+                        >
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Undercarriage -->
+                  <div class="flex items-start gap-3">
+                    <div
+                      class="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-red-100 dark:bg-red-900/30"
+                    >
+                      <i class="material-icons text-sm text-red-600">cancel</i>
+                    </div>
+                    <div>
+                      <p class="text-sm font-semibold text-slate-900 dark:text-white">
+                        Undercarriage:
+                        <span class="font-normal text-slate-600 dark:text-slate-400"
+                          >Fair, some wear on tracks.</span
+                        >
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Interior -->
+                  <div class="flex items-start gap-3">
+                    <div
+                      class="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/30"
+                    >
+                      <i class="material-icons text-sm text-green-600">check_circle</i>
+                    </div>
+                    <div>
+                      <p class="text-sm font-semibold text-slate-900 dark:text-white">
+                        Interior:
+                        <span class="font-normal text-slate-600 dark:text-slate-400"
+                          >Clean, fully functional controls.</span
+                        >
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Detailed Valuation Insights Section -->
+              <section class="rounded-2xl bg-slate-50 p-8 dark:bg-slate-800">
+                <h3 class="mb-6 text-lg font-bold text-slate-900 dark:text-white">
+                  Detailed Valuation Insights
+                </h3>
+
+                <!-- Data Sources & Disclaimer -->
+                <div class="mb-8">
+                  <div class="mb-3 flex items-center gap-2">
+                    <i class="material-icons text-slate-600 dark:text-slate-400">info</i>
+                    <h4 class="font-semibold text-slate-900 dark:text-white">
+                      Data Sources & Disclaimer
+                    </h4>
+                  </div>
+                  <ul class="ml-8 list-disc space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                    <li>Valuations based on 500+ similar equipment sales in the past 12 months</li>
+                    <li>Data aggregated from major auction houses and private sales</li>
+                    <li>Adjusted for hours, condition, and regional market trends</li>
+                    <li>Final sale price may vary based on market conditions at time of sale</li>
+                  </ul>
+                </div>
+
+                <!-- Valuation Confidence -->
+                <div>
+                  <div class="mb-2 flex items-center justify-between">
+                    <h4 class="font-semibold text-slate-900 dark:text-white">
+                      Valuation Confidence
+                    </h4>
+                    <span class="text-sm font-bold text-primary">High</span>
+                  </div>
+                  <div class="h-2 w-full rounded-full bg-slate-200 dark:bg-slate-700">
+                    <div class="h-2 rounded-full bg-primary" style="width: 85%"></div>
+                  </div>
+                  <p class="mt-2 text-xs text-slate-500 dark:text-slate-400">
+                    Based on strong market data availability and recent comparable sales
+                  </p>
+                </div>
+              </section>
+            </div>
+
+            <div
+              class="mt-12 flex items-center justify-between border-t border-slate-200 pt-8 dark:border-slate-700"
+            >
+              <button
+                class="flex items-center gap-2 rounded-full bg-slate-100 px-8 py-3 font-bold text-slate-500 transition-all hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-300 dark:hover:bg-slate-600"
+              >
+                <i class="material-icons">arrow_back</i> PREVIOUS
+              </button>
+              <button
+                class="flex transform items-center gap-2 rounded-full bg-primary px-10 py-3 font-bold text-white shadow-lg shadow-primary/30 transition-all hover:scale-105 hover:bg-orange-600"
+              >
+                NEXT <i class="material-icons">arrow_forward</i>
+              </button>
+            </div>
+          </div>
+
+          <!-- REVIEW & SELL TAB CONTENT -->
+          <div id="reviewTab" class="hidden p-8 lg:p-12">
+            <h3 class="mb-12 text-xl font-bold uppercase tracking-tight">Review & Sell</h3>
+            <div class="max-w-6xl space-y-4">
+              <!-- BASIC EQUIPMENT INFORMATION SECTION -->
+              <div
+                class="overflow-hidden rounded-xl border border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-900"
+              >
+                <button
+                  class="reviewSectionBtn flex w-full items-center justify-between p-6 transition-all hover:bg-slate-50 dark:hover:bg-slate-800"
+                  data-section="basicInfo"
+                >
+                  <div class="flex items-center gap-3">
+                    <div
+                      class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-primary text-sm font-bold text-white"
+                    >
+                      1
+                    </div>
+                    <h4 class="text-lg font-bold text-slate-900 dark:text-white">
+                      Basic Equipment Information
+                    </h4>
+                  </div>
+                  <i class="material-icons text-slate-400">expand_more</i>
+                </button>
+                <div
+                  id="basicInfo-section"
+                  class="border-t border-slate-200 bg-slate-50 p-6 dark:border-slate-700 dark:bg-slate-800/50"
+                >
+                  <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+                    <div>
+                      <p
+                        class="mb-1 text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400"
+                      >
+                        Equipment Title
+                      </p>
+                      <p class="text-lg font-semibold text-slate-900 dark:text-white">
+                        Caterpillar 320 GC Excavator (2018)
+                      </p>
+                    </div>
+                    <div>
+                      <p
+                        class="mb-1 text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400"
+                      >
+                        Category
+                      </p>
+                      <p class="text-lg font-semibold text-slate-900 dark:text-white">Excavators</p>
+                    </div>
+                    <div class="md:col-span-2">
+                      <p
+                        class="mb-1 text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400"
+                      >
+                        Description
+                      </p>
+                      <p class="text-sm text-slate-700 dark:text-slate-300">
+                        Heavy automated machine
+                      </p>
+                    </div>
+                  </div>
+                  <button
+                    class="mt-4 flex items-center gap-2 text-sm font-semibold text-primary hover:text-orange-600"
+                  >
+                    <i class="material-icons text-base">edit</i> Edit
+                  </button>
+                </div>
+              </div>
+
+              <!-- EQUIPMENT DETAILS SECTION -->
+              <div
+                class="overflow-hidden rounded-xl border border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-900"
+              >
+                <button
+                  class="reviewSectionBtn flex w-full items-center justify-between p-6 transition-all hover:bg-slate-50 dark:hover:bg-slate-800"
+                  data-section="equipmentDetails"
+                >
+                  <div class="flex items-center gap-3">
+                    <div
+                      class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-primary text-sm font-bold text-white"
+                    >
+                      2
+                    </div>
+                    <h4 class="text-lg font-bold text-slate-900 dark:text-white">
+                      Equipment Details
+                    </h4>
+                  </div>
+                  <i class="material-icons text-slate-400">expand_more</i>
+                </button>
+                <div
+                  id="equipmentDetails-section"
+                  class="hidden border-t border-slate-200 bg-slate-50 p-6 dark:border-slate-700 dark:bg-slate-800/50"
+                >
+                  <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                    <div>
+                      <p
+                        class="mb-1 text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400"
+                      >
+                        Make
+                      </p>
+                      <p class="text-lg font-semibold text-slate-900 dark:text-white">
+                        Caterpillar
+                      </p>
+                    </div>
+                    <div>
+                      <p
+                        class="mb-1 text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400"
+                      >
+                        Model
+                      </p>
+                      <p class="text-lg font-semibold text-slate-900 dark:text-white">Excavators</p>
+                    </div>
+                    <div>
+                      <p
+                        class="mb-1 text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400"
+                      >
+                        Operating Weight
+                      </p>
+                      <p class="text-lg font-semibold text-slate-900 dark:text-white">22,000 kg</p>
+                    </div>
+                    <div>
+                      <p
+                        class="mb-1 text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400"
+                      >
+                        Engine
+                      </p>
+                      <p class="text-lg font-semibold text-slate-900 dark:text-white">
+                        Diesel - 162 HP
+                      </p>
+                    </div>
+                    <div>
+                      <p
+                        class="mb-1 text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400"
+                      >
+                        Transmission
+                      </p>
+                      <p class="text-lg font-semibold text-slate-900 dark:text-white">Automatic</p>
+                    </div>
+                    <div>
+                      <p
+                        class="mb-1 text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400"
+                      >
+                        Engine Type
+                      </p>
+                      <p class="text-lg font-semibold text-slate-900 dark:text-white">CAT C4</p>
+                    </div>
+                  </div>
+                  <button
+                    class="mt-4 flex items-center gap-2 text-sm font-semibold text-primary hover:text-orange-600"
+                  >
+                    <i class="material-icons text-base">edit</i> Edit
+                  </button>
+                </div>
+              </div>
+
+              <!-- CONDITION CHECKLIST SECTION -->
+              <div
+                class="overflow-hidden rounded-xl border border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-900"
+              >
+                <button
+                  class="reviewSectionBtn flex w-full items-center justify-between p-6 transition-all hover:bg-slate-50 dark:hover:bg-slate-800"
+                  data-section="conditionCheck"
+                >
+                  <div class="flex items-center gap-3">
+                    <div
+                      class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-primary text-sm font-bold text-white"
+                    >
+                      3
+                    </div>
+                    <h4 class="text-lg font-bold text-slate-900 dark:text-white">
+                      Condition Checklist
+                    </h4>
+                  </div>
+                  <i class="material-icons text-slate-400">expand_more</i>
+                </button>
+                <div
+                  id="conditionCheck-section"
+                  class="hidden border-t border-slate-200 bg-slate-50 p-6 dark:border-slate-700 dark:bg-slate-800/50"
+                >
+                  <div class="flex flex-wrap gap-2">
+                    <span
+                      class="inline-flex items-center gap-2 rounded-full bg-green-100 px-4 py-2 text-sm font-semibold text-green-800 dark:bg-green-900/30 dark:text-green-300"
+                    >
+                      <i class="material-icons text-base">check_circle</i> EXTERIOR: GOOD
+                    </span>
+                    <span
+                      class="inline-flex items-center gap-2 rounded-full bg-yellow-100 px-4 py-2 text-sm font-semibold text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300"
+                    >
+                      <i class="material-icons text-base">warning</i> UNDERCARRIAGE: FAIR
+                    </span>
+                    <span
+                      class="inline-flex items-center gap-2 rounded-full bg-green-100 px-4 py-2 text-sm font-semibold text-green-800 dark:bg-green-900/30 dark:text-green-300"
+                    >
+                      <i class="material-icons text-base">check_circle</i> ENGINE: GOOD
+                    </span>
+                    <span
+                      class="inline-flex items-center gap-2 rounded-full bg-yellow-100 px-4 py-2 text-sm font-semibold text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300"
+                    >
+                      <i class="material-icons text-base">warning</i> MECHANICAL: FAIR
+                    </span>
+                  </div>
+                  <button
+                    class="mt-4 flex items-center gap-2 text-sm font-semibold text-primary hover:text-orange-600"
+                  >
+                    <i class="material-icons text-base">edit</i> Edit
+                  </button>
+                </div>
+              </div>
+
+              <!-- PHOTOS & VIDEOS SECTION -->
+              <div
+                class="overflow-hidden rounded-xl border border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-900"
+              >
+                <button
+                  class="reviewSectionBtn flex w-full items-center justify-between p-6 transition-all hover:bg-slate-50 dark:hover:bg-slate-800"
+                  data-section="photosVideos"
+                >
+                  <div class="flex items-center gap-3">
+                    <div
+                      class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-primary text-sm font-bold text-white"
+                    >
+                      4
+                    </div>
+                    <h4 class="text-lg font-bold text-slate-900 dark:text-white">
+                      Photos & Videos
+                    </h4>
+                  </div>
+                  <i class="material-icons text-slate-400">expand_more</i>
+                </button>
+                <div
+                  id="photosVideos-section"
+                  class="hidden border-t border-slate-200 bg-slate-50 p-6 dark:border-slate-700 dark:bg-slate-800/50"
+                >
+                  <div class="flex flex-wrap gap-3">
+                    <img
+                      src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=100&h=100&fit=crop"
+                      alt="Equipment photo 1"
+                      class="h-24 w-24 cursor-pointer rounded-lg object-cover transition-opacity hover:opacity-80"
+                    />
+                    <img
+                      src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=100&h=100&fit=crop"
+                      alt="Equipment photo 2"
+                      class="h-24 w-24 cursor-pointer rounded-lg object-cover transition-opacity hover:opacity-80"
+                    />
+                    <img
+                      src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=100&h=100&fit=crop"
+                      alt="Equipment photo 3"
+                      class="h-24 w-24 cursor-pointer rounded-lg object-cover transition-opacity hover:opacity-80"
+                    />
+                    <img
+                      src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=100&h=100&fit=crop"
+                      alt="Equipment photo 4"
+                      class="h-24 w-24 cursor-pointer rounded-lg object-cover transition-opacity hover:opacity-80"
+                    />
+                    <img
+                      src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=100&h=100&fit=crop"
+                      alt="Equipment photo 5"
+                      class="h-24 w-24 cursor-pointer rounded-lg object-cover transition-opacity hover:opacity-80"
+                    />
+                    <img
+                      src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=100&h=100&fit=crop"
+                      alt="Equipment photo 6"
+                      class="h-24 w-24 cursor-pointer rounded-lg object-cover transition-opacity hover:opacity-80"
+                    />
+                    <img
+                      src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=100&h=100&fit=crop"
+                      alt="Equipment photo 7"
+                      class="h-24 w-24 cursor-pointer rounded-lg object-cover transition-opacity hover:opacity-80"
+                    />
+                  </div>
+                  <button
+                    class="mt-4 flex items-center gap-2 text-sm font-semibold text-primary hover:text-orange-600"
+                  >
+                    <i class="material-icons text-base">edit</i> Edit
+                  </button>
+                </div>
+              </div>
+
+              <!-- ADDITIONAL EQUIPMENT INFORMATION SECTION 1 -->
+              <div
+                class="overflow-hidden rounded-xl border border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-900"
+              >
+                <button
+                  class="reviewSectionBtn flex w-full items-center justify-between p-6 transition-all hover:bg-slate-50 dark:hover:bg-slate-800"
+                  data-section="additionalInfo1"
+                >
+                  <div class="flex items-center gap-3">
+                    <div
+                      class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-primary text-sm font-bold text-white"
+                    >
+                      5
+                    </div>
+                    <h4 class="text-lg font-bold text-slate-900 dark:text-white">
+                      Additional Equipment Information
+                    </h4>
+                  </div>
+                  <i class="material-icons text-slate-400">expand_more</i>
+                </button>
+                <div
+                  id="additionalInfo1-section"
+                  class="hidden border-t border-slate-200 bg-slate-50 p-6 dark:border-slate-700 dark:bg-slate-800/50"
+                >
+                  <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+                    <div>
+                      <p
+                        class="mb-1 text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400"
+                      >
+                        VIN Number
+                      </p>
+                      <p class="text-lg font-semibold text-slate-900 dark:text-white">
+                        CAT0320DCXYZ123
+                      </p>
+                    </div>
+                    <div>
+                      <p
+                        class="mb-1 text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400"
+                      >
+                        Manufacturer Date
+                      </p>
+                      <p class="text-lg font-semibold text-slate-900 dark:text-white">12/05/2015</p>
+                    </div>
+                    <div>
+                      <p
+                        class="mb-1 text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400"
+                      >
+                        Model Year Confirmation
+                      </p>
+                      <p class="flex items-center gap-2">
+                        <span
+                          class="flex h-5 w-5 items-center justify-center rounded-full bg-primary text-xs text-white"
+                        >
+                          <i class="material-icons text-base">check</i>
+                        </span>
+                        <span class="text-lg font-semibold text-slate-900 dark:text-white"
+                          >Yes</span
+                        >
+                      </p>
+                    </div>
+                    <div>
+                      <p
+                        class="mb-1 text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400"
+                      >
+                        Location
+                      </p>
+                      <p class="text-lg font-semibold text-slate-900 dark:text-white">
+                        1234 Industrial Blvd, Italy
+                      </p>
+                    </div>
+                    <div class="md:col-span-2">
+                      <p
+                        class="mb-1 text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400"
+                      >
+                        Insurance Documents
+                      </p>
+                      <div class="flex items-center gap-2 text-slate-700 dark:text-slate-300">
+                        <i class="material-icons text-base text-primary">description</i>
+                        <span class="font-semibold">Invoice-2468.pdf</span>
+                      </div>
+                    </div>
+                  </div>
+                  <button
+                    class="mt-4 flex items-center gap-2 text-sm font-semibold text-primary hover:text-orange-600"
+                  >
+                    <i class="material-icons text-base">edit</i> Edit
+                  </button>
+                </div>
+              </div>
+
+              <!-- PRICING SUMMARY SECTION -->
+              <div
+                class="overflow-hidden rounded-xl border border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-900"
+              >
+                <button
+                  class="reviewSectionBtn flex w-full items-center justify-between p-6 transition-all hover:bg-slate-50 dark:hover:bg-slate-800"
+                  data-section="pricingSummary"
+                >
+                  <div class="flex items-center gap-3">
+                    <div
+                      class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-primary text-sm font-bold text-white"
+                    >
+                      6
+                    </div>
+                    <h4 class="text-lg font-bold text-slate-900 dark:text-white">
+                      Pricing Summary
+                    </h4>
+                  </div>
+                  <i class="material-icons text-slate-400">expand_more</i>
+                </button>
+                <div
+                  id="pricingSummary-section"
+                  class="hidden border-t border-slate-200 bg-slate-50 p-6 dark:border-slate-700 dark:bg-slate-800/50"
+                >
+                  <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+                    <div>
+                      <p
+                        class="mb-1 text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400"
+                      >
+                        Selected Option
+                      </p>
+                      <p class="text-lg font-semibold text-slate-900 dark:text-white">
+                        Retail Range
+                      </p>
+                    </div>
+                    <div>
+                      <p
+                        class="mb-1 text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400"
+                      >
+                        Price Range
+                      </p>
+                      <p class="text-lg font-semibold text-slate-900 dark:text-white">
+                        $150,000 – $175,000
+                      </p>
+                    </div>
+                    <div>
+                      <p
+                        class="mb-1 text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400"
+                      >
+                        Confidence
+                      </p>
+                      <p class="text-lg font-semibold text-slate-900 dark:text-white">High</p>
+                    </div>
+                  </div>
+                  <button
+                    class="mt-4 flex items-center gap-2 text-sm font-semibold text-primary hover:text-orange-600"
+                  >
+                    <i class="material-icons text-base">edit</i> Edit
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="mt-12 flex items-center justify-between border-t border-slate-200 pt-8 dark:border-slate-700"
+            >
+              <button
+                class="flex items-center gap-2 rounded-full bg-slate-100 px-8 py-3 font-bold text-slate-500 transition-all hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-300 dark:hover:bg-slate-600"
+              >
+                <i class="material-icons">arrow_back</i> PREVIOUS
+              </button>
+              <button
+                class="flex transform items-center gap-2 rounded-full bg-primary px-10 py-3 font-bold text-white shadow-lg shadow-primary/30 transition-all hover:scale-105 hover:bg-orange-600"
+              >
+                SUBMIT <i class="material-icons">check_circle</i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Footer Start  -->
+    <footer class="border-t border-slate-800 bg-black pb-10 pt-20 text-white">
+      <div
+        class="mx-auto mb-16 grid max-w-7xl grid-cols-1 gap-12 px-4 md:grid-cols-2 md:px-8 lg:grid-cols-4"
+      >
+        <div class="space-y-6">
+          <div class="flex items-center gap-2">
+            <img src="images/mideast-logo.png" alt="" />
+          </div>
+          <p class="text-sm leading-relaxed text-slate-400">
+            Our mission is to provide honest, professional services to our customers in the heavy
+            equipment industry. We take pride in our reputation as an ethical and reputable partner
+            for contractors and dealers.
+          </p>
+        </div>
+        <div>
+          <h4 class="mb-6 border-l-4 border-primary pl-3 font-display text-lg font-bold uppercase">
+            About Company
+          </h4>
+          <ul class="space-y-3 text-sm text-slate-400">
+            <li><a class="transition-colors hover:text-primary" href="#">Buy</a></li>
+            <li><a class="transition-colors hover:text-primary" href="sell.html">SELL</a></li>
+            <li><a class="transition-colors hover:text-primary" href="#">About Us</a></li>
+            <li><a class="transition-colors hover:text-primary" href="#">Contact Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="mb-6 border-l-4 border-primary pl-3 font-display text-lg font-bold uppercase">
+            Our Network
+          </h4>
+          <ul class="space-y-3 text-sm text-slate-400">
+            <li><a class="transition-colors hover:text-primary" href="#">Facebook</a></li>
+            <li><a class="transition-colors hover:text-primary" href="#">Behance</a></li>
+            <li><a class="transition-colors hover:text-primary" href="#">Linkedin</a></li>
+            <li><a class="transition-colors hover:text-primary" href="#">Twitter</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="mb-6 border-l-4 border-primary pl-3 font-display text-lg font-bold uppercase">
+            Contact Info
+          </h4>
+          <div class="space-y-4 text-sm">
+            <div>
+              <p class="text-xs text-slate-400">Need help? Talk to an Expert</p>
+              <p class="text-lg font-bold text-primary">860-222-3393</p>
+            </div>
+            <p class="text-slate-400">50 East Dudley Town Road Bloomfield, CT 06002</p>
+            <p class="text-slate-400">auctions@mideastequip.com</p>
+          </div>
+        </div>
+      </div>
+      <div
+        class="mx-auto max-w-7xl border-t border-slate-800 px-4 pt-10 text-center md:px-8 md:text-left"
+      >
+        <div class="flex flex-col items-center justify-between gap-6 md:flex-row">
+          <div class="flex gap-6 text-xs font-semibold text-slate-500">
+            <a class="transition-colors hover:text-white" href="#">Terms of Use</a>
+            <a class="transition-colors hover:text-white" href="#">Policy Privacy</a>
+            <a class="transition-colors hover:text-white" href="#">Contact Us</a>
+          </div>
+          <p class="text-xs text-slate-500">
+            Copyright © Mideast Equipment Supply 2026. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+    <!-- Footer End  -->
+
+    <!-- <button
+        class="fixed bottom-6 right-6 w-12 h-12 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full flex items-center justify-center shadow-2xl z-[100] hover:scale-110 transition-transform"
+        onclick="document.documentElement.classList.toggle('dark')">
+        <span class="material-icons">dark_mode</span>
+    </button> -->
+    <script>
+      // Initialize AOS (Animate On Scroll)
+      AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true,
+        offset: 50,
+      });
+
+      // Highlight Active Page Menu Item
+      function setActiveMenuLink() {
+        const currentPagePath = window.location.pathname;
+        const currentPageFile = currentPagePath.split('/').pop() || 'index.html';
+
+        // Get all navigation links
+        const desktopLinks = document.querySelectorAll(
+          'header .hidden.lg\\:flex.items-center.space-x-6 a',
+        );
+        const mobileLinks = document.querySelectorAll('#mobileMenu a');
+
+        // Function to check if a link matches the current page
+        function isCurrentPage(href) {
+          if (!href) return false;
+          return (
+            href === currentPageFile ||
+            (currentPageFile === '' && href === 'index.html') ||
+            currentPagePath.includes(href)
+          );
+        }
+
+        // Process desktop links
+        desktopLinks.forEach((link) => {
+          const href = link.getAttribute('href');
+          if (isCurrentPage(href)) {
+            link.classList.remove('hover:text-primary', 'transition-colors');
+            link.classList.add('text-primary', 'font-bold');
+          } else {
+            link.classList.remove('text-primary', 'font-bold');
+            link.classList.add('hover:text-primary', 'transition-colors');
+          }
+        });
+
+        // Process mobile links
+        mobileLinks.forEach((link) => {
+          const href = link.getAttribute('href');
+          if (isCurrentPage(href)) {
+            link.classList.remove('hover:text-primary', 'text-slate-600', 'dark:text-slate-300');
+            link.classList.add('text-primary', 'font-bold');
+          } else {
+            link.classList.remove('text-primary', 'font-bold');
+            link.classList.add('hover:text-primary', 'text-slate-600', 'dark:text-slate-300');
+          }
+        });
+      }
+
+      // Set active link on page load
+      setActiveMenuLink();
+
+      // Mobile Menu Toggle
+      const menuToggle = document.getElementById('menuToggle');
+      const mobileMenu = document.getElementById('mobileMenu');
+
+      menuToggle.addEventListener('click', () => {
+        const isOpen = mobileMenu.classList.contains('hidden');
+        if (isOpen) {
+          mobileMenu.classList.remove('hidden');
+          setTimeout(() => {
+            mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
+          }, 0);
+        } else {
+          mobileMenu.style.maxHeight = '0px';
+          setTimeout(() => {
+            mobileMenu.classList.add('hidden');
+          }, 300);
+        }
+      });
+
+      // Close menu when a link is clicked
+      const mobileLinks = mobileMenu.querySelectorAll('a');
+      mobileLinks.forEach((link) => {
+        link.addEventListener('click', () => {
+          mobileMenu.style.maxHeight = '0px';
+          setTimeout(() => {
+            mobileMenu.classList.add('hidden');
+          }, 300);
+        });
+      });
+
+      // Testimonials Carousel
+      let currentSlide = 0;
+      const slides = document.querySelectorAll('.testimonial-slide');
+      const dots = document.querySelectorAll('.dot-indicator');
+      const totalSlides = slides.length;
+
+      function showSlide(n) {
+        // Hide all slides
+        slides.forEach((slide) => {
+          slide.classList.add('opacity-0', 'hidden');
+          slide.classList.remove('opacity-100');
+        });
+
+        // Show current slide
+        slides[n].classList.remove('opacity-0', 'hidden');
+        slides[n].classList.add('opacity-100');
+
+        // Update dots
+        dots.forEach((dot, index) => {
+          if (index === n) {
+            dot.classList.add('bg-primary');
+            dot.classList.remove('bg-slate-300', 'dark:bg-slate-600');
+          } else {
+            dot.classList.remove('bg-primary');
+            dot.classList.add('bg-slate-300', 'dark:bg-slate-600');
+          }
+        });
+      }
+
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        showSlide(currentSlide);
+      }
+
+      function prevSlide() {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        showSlide(currentSlide);
+      }
+
+      // Add event listeners to buttons
+      document.getElementById('nextBtn').addEventListener('click', nextSlide);
+      document.getElementById('prevBtn').addEventListener('click', prevSlide);
+
+      // Add event listeners to dots
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          currentSlide = index;
+          showSlide(currentSlide);
+        });
+      });
+
+      // Auto-advance carousel every 8 seconds
+      setInterval(nextSlide, 8000);
+
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start',
+            });
+          }
+        });
+      });
+
+      // Add animation to elements on scroll
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px',
+      };
+
+      const observer = new IntersectionObserver(function (entries) {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.animation = 'slideInUp 0.8s ease-out forwards';
+          }
+        });
+      }, observerOptions);
+
+      // Observe all cards and items
+      document.querySelectorAll('.group, .bg-white').forEach((el) => {
+        observer.observe(el);
+      });
+
+      // Multi-Step Form Navigation
+      let currentStep = 1;
+      const formSection = document.querySelector(
+        '.bg-white.dark\\:bg-slate-800.rounded-3xl.shadow-2xl',
+      );
+      const basicInfoContent = formSection.querySelector(
+        '.p-8.lg\\:p-12:not(#detailsTab):not(#conditionTab):not(#mediaTab):not(#additionalTab):not(#priceTab):not(#reviewTab)',
+      );
+      const detailsContent = document.getElementById('detailsTab');
+      const conditionContent = document.getElementById('conditionTab');
+      const mediaContent = document.getElementById('mediaTab');
+      const additionalContent = document.getElementById('additionalTab');
+      const priceContent = document.getElementById('priceTab');
+      const reviewContent = document.getElementById('reviewTab');
+
+      function showStep(step) {
+        if (basicInfoContent) basicInfoContent.style.display = step === 1 ? 'block' : 'none';
+        if (detailsContent) detailsContent.style.display = step === 2 ? 'block' : 'none';
+        if (conditionContent) conditionContent.style.display = step === 3 ? 'block' : 'none';
+        if (mediaContent) mediaContent.style.display = step === 4 ? 'block' : 'none';
+        if (additionalContent) additionalContent.style.display = step === 5 ? 'block' : 'none';
+        if (priceContent) priceContent.style.display = step === 6 ? 'block' : 'none';
+        if (reviewContent) reviewContent.style.display = step === 7 ? 'block' : 'none';
+      }
+
+      // Get all buttons in the form
+      const buttons = document.querySelectorAll(
+        '.bg-white.dark\\:bg-slate-800.rounded-3xl.shadow-2xl button',
+      );
+
+      buttons.forEach((button, index) => {
+        const hasNext = button.innerHTML.includes('arrow_forward');
+        const hasPrev = button.innerHTML.includes('arrow_back');
+
+        if (hasNext) {
+          button.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (currentStep < 7) {
+              currentStep++;
+              showStep(currentStep);
+              window.scrollTo({ top: formSection.offsetTop - 100, behavior: 'smooth' });
+            }
+          });
+        }
+
+        if (hasPrev) {
+          button.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (currentStep > 1) {
+              currentStep--;
+              showStep(currentStep);
+              window.scrollTo({ top: formSection.offsetTop - 100, behavior: 'smooth' });
+            }
+          });
+        }
+      });
+
+      // Condition tab navigation
+      document.querySelectorAll('.conditionNavBtn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const condition = btn.getAttribute('data-condition');
+          document.querySelectorAll('.conditionSection').forEach((section) => {
+            section.classList.add('hidden');
+          });
+          document.getElementById(condition + '-condition').classList.remove('hidden');
+
+          // Update active button styling
+          document.querySelectorAll('.conditionNavBtn').forEach((b) => {
+            b.classList.remove('bg-primary', 'text-white');
+            b.classList.add('border-2', 'border-slate-300');
+          });
+          btn.classList.add('bg-primary', 'text-white');
+          btn.classList.remove('border-2', 'border-slate-300');
+        });
+      });
+
+      // Review tab accordion toggle
+      document.querySelectorAll('.reviewSectionBtn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const section = btn.getAttribute('data-section');
+          const sectionContent = document.getElementById(section + '-section');
+          const icon = btn.querySelector('.material-icons');
+
+          // Toggle content visibility
+          sectionContent.classList.toggle('hidden');
+
+          // Toggle icon rotation
+          if (sectionContent.classList.contains('hidden')) {
+            icon.textContent = 'expand_more';
+          } else {
+            icon.textContent = 'expand_less';
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,1376 @@
+<!doctype html>
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Heavy Equipment Inventory | Mideast Equipment Supply</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="animations.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;family=Oswald:wght@500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              primary: '#F59E0B',
+              secondary: '#111827',
+              'background-light': '#FFFFFF',
+              'background-dark': '#111827',
+              'brand-dark': '#1F2937',
+              'brand-black': '#0F172A',
+            },
+            fontFamily: {
+              display: ['Barlow', 'sans-serif'],
+              sans: ['Inter', 'sans-serif'],
+            },
+            borderRadius: {
+              DEFAULT: '0.5rem',
+              xl: '1rem',
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .textured-orange {
+        background-color: #f59e0b;
+        background-image: radial-gradient(#d97706 0.5px, transparent 0.5px);
+        background-size: 20px 20px;
+      }
+    </style>
+  </head>
+
+  <body
+    class="bg-background-light font-display text-gray-900 transition-colors duration-300 dark:bg-background-dark dark:text-gray-100"
+  >
+    <div class="hidden lg:block">
+      <!-- Header Start  -->
+      <div
+        class="flex flex-wrap items-center justify-between bg-brand-black px-4 py-2 text-xs text-white md:px-12"
+      >
+        <div class="flex space-x-6">
+          <span class="flex items-center gap-1"
+            ><i class="material-icons-outlined text-sm">location_on</i> 50 East Dudley Town Road
+            Bloomfield, CT 06002</span
+          >
+          <span class="flex items-center gap-1"
+            ><i class="material-icons-outlined text-sm">email</i> auctions@mideastequip.com</span
+          >
+          <span class="hidden items-center gap-1 md:flex"
+            ><i class="material-icons-outlined text-sm">schedule</i> Mon - Fri 9:00AM - 5:00PM</span
+          >
+        </div>
+        <div class="flex space-x-4">
+          <a href="#" class="transition-colors hover:text-primary">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+          <a href="#" class="transition-colors hover:text-primary">
+            <i class="fa-brands fa-behance"></i>
+          </a>
+          <a href="#" class="transition-colors hover:text-primary">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+          <a href="#" class="transition-colors hover:text-primary">
+            <i class="fa-brands fa-x-twitter"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <header
+      class="sticky top-0 z-50 border-b border-slate-100 bg-white dark:border-slate-800 dark:bg-brand-dark"
+    >
+      <nav class="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 md:px-8">
+        <div class="flex flex-1 items-center gap-4 md:gap-8">
+          <div class="flex items-center gap-2">
+            <div class="leading-tight">
+              <img src="images/mideastlogo.svg" alt="Mideast Equipment Logo" />
+            </div>
+          </div>
+          <div
+            class="hidden items-center gap-2 border-l border-slate-200 pl-8 dark:border-slate-700 lg:flex"
+          >
+            <i class="material-icons-outlined text-primary">phone_in_talk</i>
+            <div>
+              <p class="text-[10px] font-medium text-slate-400">Need help? Talk to an Expert</p>
+              <p class="text-sm font-bold text-slate-700 dark:text-slate-200">860-222-3393</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <button
+          id="menuToggle"
+          class="order-3 p-2 text-slate-600 transition-colors hover:text-primary dark:text-slate-400 lg:sr-only"
+        >
+          <i class="material-icons-outlined text-2xl">menu</i>
+        </button>
+
+        <!-- Desktop Navigation -->
+        <div
+          class="hidden items-center space-x-6 text-sm font-semibold text-slate-600 dark:text-slate-300 lg:flex"
+        >
+          <a class="text-primary" href="index.html">HOME</a>
+          <a class="transition-colors hover:text-primary" href="buynow.html">BUY NOW</a>
+          <a class="transition-colors hover:text-primary" href="sell.html">SELL</a>
+          <a class="transition-colors hover:text-primary" href="auctionup.html">AUCTION</a>
+          <a class="transition-colors hover:text-primary" href="#">ABOUT US</a>
+          <a class="transition-colors hover:text-primary" href="contactus.html">CONTACT US</a>
+        </div>
+
+        <!-- Desktop Right Section -->
+        <div class="hidden items-center gap-4 lg:flex">
+          <button class="p-2 text-slate-400 transition-colors hover:text-primary">
+            <i class="material-icons-outlined">search</i>
+          </button>
+          <div class="flex items-center gap-2">
+            <button
+              class="button rounded-3xl bg-primary px-5 py-2 text-sm font-bold uppercase text-white transition-colors hover:bg-orange-600"
+              href="#"
+            >
+              Login
+            </button>
+            <button
+              class="rounded-3xl border-2 border-slate-200 px-5 py-2 text-sm font-bold uppercase transition-colors hover:bg-slate-50 dark:border-slate-700 dark:hover:bg-slate-800"
+              href="#"
+            >
+              Register
+            </button>
+          </div>
+        </div>
+
+        <!-- Mobile Right Section -->
+        <div class="order-2 flex items-center gap-2 lg:hidden">
+          <button class="p-2 text-slate-400 transition-colors hover:text-primary">
+            <i class="material-icons-outlined">search</i>
+          </button>
+        </div>
+      </nav>
+
+      <!-- Mobile Menu -->
+      <div
+        id="mobileMenu"
+        class="hidden max-h-0 overflow-hidden border-t border-slate-100 bg-white transition-all duration-300 dark:border-slate-800 dark:bg-brand-dark lg:hidden"
+      >
+        <div class="space-y-4 px-4 py-6">
+          <a
+            class="block text-sm font-semibold uppercase text-primary transition-colors hover:text-orange-600"
+            href="index.html"
+            >HOME</a
+          >
+          <a
+            class="block text-sm font-semibold uppercase text-slate-600 transition-colors hover:text-primary dark:text-slate-300"
+            href="buynow.html"
+            >BUY NOW</a
+          >
+          <a
+            class="block text-sm font-semibold uppercase text-slate-600 transition-colors hover:text-primary dark:text-slate-300"
+            href="sell.html"
+            >SELL</a
+          >
+          <a
+            class="block text-sm font-semibold uppercase text-slate-600 transition-colors hover:text-primary dark:text-slate-300"
+            href="auctionup.html"
+            >AUCTION</a
+          >
+          <a
+            class="block text-sm font-semibold uppercase text-slate-600 transition-colors hover:text-primary dark:text-slate-300"
+            href="#"
+            >ABOUT US</a
+          >
+          <a
+            class="block text-sm font-semibold uppercase text-slate-600 transition-colors hover:text-primary dark:text-slate-300"
+            href="contactus.html"
+            >CONTACT US</a
+          >
+          <div class="flex gap-2 border-t border-slate-200 pt-4 dark:border-slate-700">
+            <a
+              class="button flex-1 rounded-3xl bg-primary px-4 py-2 text-center text-xs font-bold uppercase text-white transition-colors hover:bg-orange-600"
+              href="#"
+              >Login</a
+            >
+            <a
+              class="flex-1 rounded-3xl border-2 border-slate-200 px-4 py-2 text-center text-xs font-bold uppercase text-slate-600 transition-colors hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+              href="#"
+              >Register</a
+            >
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Header End  -->
+
+    <!-- Banner Start  -->
+    <div class="br-30 relative flex h-64 items-center justify-center overflow-hidden bg-gray-800">
+      <img
+        alt="Construction background"
+        class="absolute inset-0 h-full w-full"
+        src="images/auction-banner.png"
+      />
+      <div class="relative z-10 text-center">
+        <h1 class="text-5xl font-bold uppercase tracking-tight text-white">Auction</h1>
+        <div class="mt-2 flex items-center justify-center gap-2 text-sm font-medium text-primary">
+          <span class="text-white">Home</span>
+          <span class="material-icons text-xs text-white">chevron_right</span>
+          <span class="text-white">Auction</span>
+        </div>
+      </div>
+    </div>
+    <!-- Banner End  -->
+    <section class="relative z-20 mx-auto -mt-16 max-w-7xl px-4">
+      <div class="rounded-lg bg-primary p-8 shadow-2xl">
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-4">
+          <div class="relative">
+            <input
+              class="w-full rounded border-none bg-white px-4 py-3 text-sm focus:ring-2 focus:ring-slate-900"
+              placeholder="Search Auctions ..."
+              type="text"
+            />
+          </div>
+          <div class="relative">
+            <input
+              class="w-full rounded border-none bg-white px-4 py-3 text-sm focus:ring-2 focus:ring-slate-900"
+              placeholder="DD/MM/YYYY"
+              type="text"
+            />
+            <span class="material-icons absolute right-3 top-3 text-slate-400">calendar_today</span>
+          </div>
+          <div class="relative">
+            <input
+              class="w-full rounded border-none bg-white px-4 py-3 text-sm focus:ring-2 focus:ring-slate-900"
+              placeholder="Locations"
+              type="text"
+            />
+          </div>
+          <button
+            class="bg-secondary rounded-3xl px-4 py-3 font-bold uppercase tracking-wider text-white transition-all hover:bg-slate-800"
+          >
+            Search
+          </button>
+        </div>
+      </div>
+    </section>
+    <section
+      class="mx-auto mt-12 flex max-w-7xl flex-col items-center justify-between gap-6 px-4 md:flex-row"
+    >
+      <div class="font-medium text-slate-500 dark:text-slate-400">
+        Showing <span class="font-bold text-slate-900 dark:text-white">1-6</span> Of
+        <span class="font-bold text-slate-900 dark:text-white">1,370</span> Results
+      </div>
+      <div class="flex rounded-3xl bg-slate-200 p-1 dark:bg-slate-800">
+        <button
+          id="upcomingBtn"
+          type="button"
+          class="bg-secondary rounded-2xl px-8 py-2 text-xs font-bold uppercase text-white"
+        >
+          Upcoming
+        </button>
+        <button
+          id="pastBtn"
+          type="button"
+          class="rounded-2xl px-8 py-2 text-xs font-bold uppercase text-slate-500 hover:text-slate-700 dark:hover:text-slate-300"
+        >
+          Past
+        </button>
+      </div>
+    </section>
+    <!-- Main Start  -->
+    <main class="mx-auto max-w-7xl px-6 py-12">
+      <!-- UPCOMING -->
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3" id="upcomingContent">
+        <div
+          class="custom-shadow group overflow-hidden rounded-xl border border-slate-100 bg-white transition-all duration-300 hover:-translate-y-1 dark:border-slate-700 dark:bg-slate-800"
+        >
+          <div class="relative">
+            <img
+              alt="Dozer"
+              class="h-48 w-full object-cover"
+              src="images/dangvm_construction_equipment_bulldozers_-ar_32_-v_6.1_fc02ca1c-0341-4ac2-bbef-d00b37dfeab0_2.jpg.png"
+            />
+            <div
+              class="absolute right-4 top-4 rounded bg-slate-900/80 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white backdrop-blur-sm"
+            >
+              Upcoming
+            </div>
+            <div class="grid grid-cols-2 gap-1 bg-white p-1 dark:bg-slate-800">
+              <img alt="Thumbnail 1" class="h-20 w-full object-cover" src="images/AUCT12.png" />
+              <img alt="Thumbnail 2" class="h-20 w-full object-cover" src="images/auct13.png" />
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="mb-2 text-xl font-bold leading-tight dark:text-white">
+              John Deere 850K Crawler Dozer - Construction Ready
+            </h3>
+            <p class="mb-6 text-xs leading-relaxed text-slate-500 dark:text-slate-400">
+              Farm Tractors, Construction Equipment, Farm Equipment, Cars, Trucks, Lawn and...
+            </p>
+            <div class="mb-8 space-y-3">
+              <div class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
+                <span class="material-icons text-secondary text-base">calendar_today</span>
+                <span>January 12, 2026</span>
+              </div>
+              <div class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
+                <span class="material-icons text-secondary text-base">schedule</span>
+                <span>10AM ET</span>
+              </div>
+              <div class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
+                <span class="material-icons text-secondary text-base">location_on</span>
+                <span>Various Locations Throughout the Northeast</span>
+              </div>
+            </div>
+            <div class="space-y-3">
+              <button
+                class="w-full rounded-2xl border border-primary/30 bg-primary/20 py-3 text-xs font-black uppercase tracking-widest text-primary transition-colors hover:bg-primary/30"
+              >
+                Proxibid Bidding
+              </button>
+              <button
+                class="w-full rounded-2xl bg-primary py-3 text-xs font-black uppercase tracking-widest text-white shadow-lg shadow-orange-500/20 transition-colors hover:bg-orange-500"
+              >
+                EquipmentFacts Bidding
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          class="custom-shadow group overflow-hidden rounded-xl border border-slate-100 bg-white transition-all duration-300 hover:-translate-y-1 dark:border-slate-700 dark:bg-slate-800"
+        >
+          <div class="relative">
+            <img alt="Excavator" class="h-48 w-full object-cover" src="images/auct14.png" />
+            <div
+              class="absolute right-4 top-4 rounded bg-slate-900/80 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white backdrop-blur-sm"
+            >
+              Upcoming
+            </div>
+            <div class="grid grid-cols-2 gap-1 bg-white p-1 dark:bg-slate-800">
+              <img alt="Thumbnail 1" class="h-20 w-full object-cover" src="images/auct15.png" />
+              <img alt="Thumbnail 2" class="h-20 w-full object-cover" src="images/auct16.png" />
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="mb-2 text-xl font-bold leading-tight dark:text-white">
+              Komatsu PC390LC Excavator Fleet - 3 Units Available
+            </h3>
+            <p class="mb-6 text-xs leading-relaxed text-slate-500 dark:text-slate-400">
+              Excavators, Earthmoving, Construction Equipment, Heavy Duty, Site Prep and...
+            </p>
+            <div class="mb-8 space-y-3">
+              <div class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
+                <span class="material-icons text-secondary text-base">calendar_today</span>
+                <span>January 13, 2026</span>
+              </div>
+              <div class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
+                <span class="material-icons text-secondary text-base">schedule</span>
+                <span>10AM ET</span>
+              </div>
+              <div class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
+                <span class="material-icons text-secondary text-base">location_on</span>
+                <span>Los Angeles, California</span>
+              </div>
+            </div>
+            <div class="space-y-3">
+              <button
+                class="w-full rounded-2xl border border-primary/30 bg-primary/20 py-3 text-xs font-black uppercase tracking-widest text-primary transition-colors hover:bg-primary/30"
+              >
+                Proxibid Bidding
+              </button>
+              <button
+                class="w-full rounded-2xl bg-primary py-3 text-xs font-black uppercase tracking-widest text-white shadow-lg shadow-orange-500/20 transition-colors hover:bg-orange-500"
+              >
+                EquipmentFacts Bidding
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          class="custom-shadow group overflow-hidden rounded-xl border border-slate-100 bg-white transition-all duration-300 hover:-translate-y-1 dark:border-slate-700 dark:bg-slate-800"
+        >
+          <div class="relative">
+            <img alt="Fleet" class="h-48 w-full object-cover" src="/images/auct17.png" />
+            <div
+              class="absolute right-4 top-4 rounded bg-slate-900/80 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white backdrop-blur-sm"
+            >
+              Upcoming
+            </div>
+            <div class="grid grid-cols-2 gap-1 bg-white p-1 dark:bg-slate-800">
+              <img alt="Thumbnail 1" class="h-20 w-full object-cover" src="images/auct16.png" />
+              <img alt="Thumbnail 2" class="h-20 w-full object-cover" src="images/auct15.png" />
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="mb-2 text-xl font-bold leading-tight dark:text-white">
+              Komatsu PC390LC Excavator Fleet - 3 Units Available
+            </h3>
+            <p class="mb-6 text-xs leading-relaxed text-slate-500 dark:text-slate-400">
+              Excavators, Earthmoving, Construction Equipment, Heavy Duty, Site Prep and...
+            </p>
+            <div class="mb-8 space-y-3">
+              <div class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
+                <span class="material-icons text-secondary text-base">calendar_today</span>
+                <span>January 13, 2026</span>
+              </div>
+              <div class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
+                <span class="material-icons text-secondary text-base">schedule</span>
+                <span>10AM ET</span>
+              </div>
+              <div class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
+                <span class="material-icons text-secondary text-base">location_on</span>
+                <span>Los Angeles, California</span>
+              </div>
+            </div>
+            <div class="space-y-3">
+              <button
+                class="w-full rounded-2xl border border-primary/30 bg-primary/20 py-3 text-xs font-black uppercase tracking-widest text-primary transition-colors hover:bg-primary/30"
+              >
+                Proxibid Bidding
+              </button>
+              <button
+                class="w-full rounded-2xl bg-primary py-3 text-xs font-black uppercase tracking-widest text-white shadow-lg shadow-orange-500/20 transition-colors hover:bg-orange-500"
+              >
+                EquipmentFacts Bidding
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          class="custom-shadow group overflow-hidden rounded-xl border border-slate-100 bg-white transition-all duration-300 hover:-translate-y-1 dark:border-slate-700 dark:bg-slate-800"
+        >
+          <div class="relative">
+            <img alt="Equipment" class="h-48 w-full object-cover" src="images/auct14.png" />
+            <div
+              class="absolute right-4 top-4 rounded bg-slate-900/80 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white backdrop-blur-sm"
+            >
+              Upcoming
+            </div>
+            <div class="grid grid-cols-2 gap-1 bg-white p-1 dark:bg-slate-800">
+              <img alt="Thumbnail 1" class="h-20 w-full object-cover" src="images/auct15.png" />
+              <img alt="Thumbnail 2" class="h-20 w-full object-cover" src="images/auct16.png" />
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="mb-2 text-xl font-bold leading-tight dark:text-white">
+              John Deere 850K Crawler Dozer - Construction Ready
+            </h3>
+            <p class="mb-6 text-xs leading-relaxed text-slate-500 dark:text-slate-400">
+              Farm Tractors, Construction Equipment, Farm Equipment, Cars, Trucks, Lawn and...
+            </p>
+            <div class="mb-8 space-y-3">
+              <div class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
+                <span class="material-icons text-secondary text-base">calendar_today</span>
+                <span>January 12, 2026</span>
+              </div>
+              <div class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
+                <span class="material-icons text-secondary text-base">schedule</span>
+                <span>10AM ET</span>
+              </div>
+              <div class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
+                <span class="material-icons text-secondary text-base">location_on</span>
+                <span>Various Locations Throughout the Northeast</span>
+              </div>
+            </div>
+            <div class="space-y-3">
+              <button
+                class="w-full rounded-2xl border border-primary/30 bg-primary/20 py-3 text-xs font-black uppercase tracking-widest text-primary transition-colors hover:bg-primary/30"
+              >
+                Proxibid Bidding
+              </button>
+              <button
+                class="w-full rounded-2xl bg-primary py-3 text-xs font-black uppercase tracking-widest text-white shadow-lg shadow-orange-500/20 transition-colors hover:bg-orange-500"
+              >
+                EquipmentFacts Bidding
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          class="custom-shadow group overflow-hidden rounded-xl border border-slate-100 bg-white transition-all duration-300 hover:-translate-y-1 dark:border-slate-700 dark:bg-slate-800"
+        >
+          <div class="relative">
+            <img alt="Excavator" class="h-48 w-full object-cover" src="/images/auct17.png" />
+            <div
+              class="absolute right-4 top-4 rounded bg-slate-900/80 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white backdrop-blur-sm"
+            >
+              Upcoming
+            </div>
+            <div class="grid grid-cols-2 gap-1 bg-white p-1 dark:bg-slate-800">
+              <img alt="Thumbnail 1" class="h-20 w-full object-cover" src="images/auct15.png" />
+              <img alt="Thumbnail 2" class="h-20 w-full object-cover" src="images/auct16.png" />
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="mb-2 text-xl font-bold leading-tight dark:text-white">
+              Komatsu PC390LC Excavator Fleet - 3 Units Available
+            </h3>
+            <p class="mb-6 text-xs leading-relaxed text-slate-500 dark:text-slate-400">
+              Excavators, Earthmoving, Construction Equipment, Heavy Duty, Site Prep and...
+            </p>
+            <div class="mb-8 space-y-3">
+              <div class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
+                <span class="material-icons text-secondary text-base">calendar_today</span>
+                <span>January 13, 2026</span>
+              </div>
+              <div class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
+                <span class="material-icons text-secondary text-base">schedule</span>
+                <span>10AM ET</span>
+              </div>
+              <div class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
+                <span class="material-icons text-secondary text-base">location_on</span>
+                <span>Los Angeles, California</span>
+              </div>
+            </div>
+            <div class="space-y-3">
+              <button
+                class="w-full rounded-2xl border border-primary/30 bg-primary/20 py-3 text-xs font-black uppercase tracking-widest text-primary transition-colors hover:bg-primary/30"
+              >
+                Proxibid Bidding
+              </button>
+              <button
+                class="w-full rounded-2xl bg-primary py-3 text-xs font-black uppercase tracking-widest text-white shadow-lg shadow-orange-500/20 transition-colors hover:bg-orange-500"
+              >
+                EquipmentFacts Bidding
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          class="custom-shadow group overflow-hidden rounded-xl border border-slate-100 bg-white transition-all duration-300 hover:-translate-y-1 dark:border-slate-700 dark:bg-slate-800"
+        >
+          <div class="relative">
+            <img
+              alt="Fleet"
+              class="h-48 w-full object-cover"
+              src="images/dangvm_construction_equipment_bulldozers_-ar_32_-v_6.1_fc02ca1c-0341-4ac2-bbef-d00b37dfeab0_2.jpg.png"
+            />
+            <div
+              class="absolute right-4 top-4 rounded bg-slate-900/80 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white backdrop-blur-sm"
+            >
+              Upcoming
+            </div>
+            <div class="grid grid-cols-2 gap-1 bg-white p-1 dark:bg-slate-800">
+              <img alt="Thumbnail 1" class="h-20 w-full object-cover" src="images/AUCT12.png" />
+              <img alt="Thumbnail 2" class="h-20 w-full object-cover" src="images/auct13.png" />
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="mb-2 text-xl font-bold leading-tight dark:text-white">
+              Komatsu PC390LC Excavator Fleet - 3 Units Available
+            </h3>
+            <p class="mb-6 text-xs leading-relaxed text-slate-500 dark:text-slate-400">
+              Excavators, Earthmoving, Construction Equipment, Heavy Duty, Site Prep and...
+            </p>
+            <div class="mb-8 space-y-3">
+              <div class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
+                <span class="material-icons text-secondary text-base">calendar_today</span>
+                <span>January 13, 2026</span>
+              </div>
+              <div class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
+                <span class="material-icons text-secondary text-base">schedule</span>
+                <span>10AM ET</span>
+              </div>
+              <div class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
+                <span class="material-icons text-secondary text-base">location_on</span>
+                <span>Los Angeles, California</span>
+              </div>
+            </div>
+            <div class="space-y-3">
+              <button
+                class="w-full rounded-2xl border border-primary/30 bg-primary/20 py-3 text-xs font-black uppercase tracking-widest text-primary transition-colors hover:bg-primary/30"
+              >
+                Proxibid Bidding
+              </button>
+              <button
+                class="w-full rounded-2xl bg-primary py-3 text-xs font-black uppercase tracking-widest text-white shadow-lg shadow-orange-500/20 transition-colors hover:bg-orange-500"
+              >
+                EquipmentFacts Bidding
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- past auction start -->
+      <div
+        id="pastContent"
+        class="grid hidden grid-cols-1 gap-8 pt-10 md:grid-cols-2 lg:grid-cols-3"
+      >
+        <div
+          class="group overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm transition-all duration-300 hover:shadow-xl dark:border-slate-700 dark:bg-slate-800"
+        >
+          <div class="relative overflow-hidden">
+            <div class="grid h-[240px] grid-cols-3 grid-rows-2 gap-1">
+              <div class="relative col-span-3 row-span-1 overflow-hidden">
+                <img
+                  src="images/dangvm_construction_equipment_bulldozers_-ar_32_-v_6.1_fc02ca1c-0341-4ac2-bbef-d00b37dfeab0_2.jpg.png"
+                  alt="Main Excavator"
+                  class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div
+                  class="absolute right-3 top-3 rounded bg-slate-800/80 px-3 py-1 text-[10px] font-bold uppercase text-white"
+                >
+                  PAST
+                </div>
+              </div>
+              <div class="col-span-1 row-span-1 overflow-hidden">
+                <img src="images/AUCT12.png" alt="Detail 1" class="h-full w-full object-cover" />
+              </div>
+              <div class="col-span-2 row-span-1 overflow-hidden">
+                <img src="images/auct14.png" alt="Detail 2" class="h-full w-full object-cover" />
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3
+              class="mb-2 text-lg font-bold leading-tight transition-colors group-hover:text-primary"
+            >
+              Komatsu PC390LC Excavator Fleet - 3 Units Available
+            </h3>
+            <p class="mb-6 line-clamp-2 text-xs leading-relaxed text-slate-500 dark:text-slate-400">
+              Farm Tractors, Construction Equipment, Farm Equipment, Cars, Trucks, Lawn and....
+            </p>
+            <div class="mb-6 grid grid-cols-2 gap-y-3 text-xs text-slate-600 dark:text-slate-300">
+              <div class="flex items-center gap-2">
+                <span class="material-icons-outlined text-secondary text-sm">calendar_today</span>
+                December 12, 2025
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="material-icons-outlined text-secondary text-sm">schedule</span>
+                Auction Duration: 3Days
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="material-icons-outlined text-secondary text-sm">sell</span>
+                Starting price: <span class="font-bold">$25.199</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="material-icons-outlined text-secondary text-sm">gavel</span>
+                Bids: <span class="font-bold">18</span>
+              </div>
+              <div class="col-span-2 flex items-center gap-2">
+                <span class="material-icons-outlined text-secondary text-sm">location_on</span>
+                Los Angeles, California
+              </div>
+            </div>
+            <div
+              class="flex items-center justify-between border-t border-slate-100 pt-6 dark:border-slate-700"
+            >
+              <div>
+                <p class="text-[10px] font-bold uppercase text-slate-400">SOLD FOR</p>
+                <p class="text-xl font-extrabold text-primary">$35.199</p>
+              </div>
+              <button
+                class="rounded-2xl bg-primary/10 px-6 py-2.5 text-sm font-bold uppercase text-primary transition-all hover:bg-primary hover:text-white"
+              >
+                View More
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          class="group overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm transition-all duration-300 hover:shadow-xl dark:border-slate-700 dark:bg-slate-800"
+        >
+          <div class="relative overflow-hidden">
+            <div class="grid h-[240px] grid-cols-3 grid-rows-2 gap-1">
+              <div class="relative col-span-3 row-span-1 overflow-hidden">
+                <img
+                  src="images/auct17.png"
+                  alt="Main Excavator"
+                  class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div
+                  class="absolute right-3 top-3 rounded bg-slate-800/80 px-3 py-1 text-[10px] font-bold uppercase text-white"
+                >
+                  PAST
+                </div>
+              </div>
+              <div class="col-span-1 row-span-1 overflow-hidden">
+                <img src="images/auct15.png" alt="Detail 1" class="h-full w-full object-cover" />
+              </div>
+              <div class="col-span-2 row-span-1 overflow-hidden">
+                <img
+                  src="images/dangvm_construction_equipment_bulldozers_-ar_32_-v_6.1_fc02ca1c-0341-4ac2-bbef-d00b37dfeab0_2.jpg.png"
+                  alt="Detail 2"
+                  class="h-full w-full object-cover"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3
+              class="mb-2 text-lg font-bold leading-tight transition-colors group-hover:text-primary"
+            >
+              John Deere 850K Crawler Dozer - Construction Ready
+            </h3>
+            <p class="mb-6 line-clamp-2 text-xs leading-relaxed text-slate-500 dark:text-slate-400">
+              Farm Tractors, Construction Equipment, Farm Equipment, Cars, Trucks, Lawn and....
+            </p>
+            <div class="mb-6 grid grid-cols-2 gap-y-3 text-xs text-slate-600 dark:text-slate-300">
+              <div class="flex items-center gap-2">
+                <span class="material-icons-outlined text-secondary text-sm">calendar_today</span>
+                December 12, 2025
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="material-icons-outlined text-secondary text-sm">schedule</span>
+                Auction Duration: 3Days
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="material-icons-outlined text-secondary text-sm">sell</span>
+                Starting price: <span class="font-bold">$25.199</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="material-icons-outlined text-secondary text-sm">gavel</span>
+                Bids: <span class="font-bold">18</span>
+              </div>
+              <div class="col-span-2 flex items-center gap-2">
+                <span class="material-icons-outlined text-secondary text-sm">location_on</span>
+                Los Angeles, California
+              </div>
+            </div>
+            <div
+              class="flex items-center justify-between border-t border-slate-100 pt-6 dark:border-slate-700"
+            >
+              <div>
+                <p class="text-[10px] font-bold uppercase text-slate-400">SOLD FOR</p>
+                <p class="text-xl font-extrabold text-primary">$35.199</p>
+              </div>
+              <button
+                class="rounded-2xl bg-primary/10 px-6 py-2.5 text-sm font-bold uppercase text-primary transition-all hover:bg-primary hover:text-white"
+              >
+                View More
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          class="group overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm transition-all duration-300 hover:shadow-xl dark:border-slate-700 dark:bg-slate-800"
+        >
+          <div class="relative overflow-hidden">
+            <div class="grid h-[240px] grid-cols-3 grid-rows-2 gap-1">
+              <div class="relative col-span-3 row-span-1 overflow-hidden">
+                <img
+                  src="/images/auct17.png"
+                  alt="Main Excavator"
+                  class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div
+                  class="absolute right-3 top-3 rounded bg-slate-800/80 px-3 py-1 text-[10px] font-bold uppercase text-white"
+                >
+                  PAST
+                </div>
+              </div>
+              <div class="col-span-1 row-span-1 overflow-hidden">
+                <img src="images/auct15.png" alt="Detail 1" class="h-full w-full object-cover" />
+              </div>
+              <div class="col-span-2 row-span-1 overflow-hidden">
+                <img src="images/auct16.png" alt="Detail 2" class="h-full w-full object-cover" />
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3
+              class="mb-2 text-lg font-bold leading-tight transition-colors group-hover:text-primary"
+            >
+              Komatsu PC390LC Excavator Fleet - 3 Units Available
+            </h3>
+            <p class="mb-6 line-clamp-2 text-xs leading-relaxed text-slate-500 dark:text-slate-400">
+              Farm Tractors, Construction Equipment, Farm Equipment, Cars, Trucks, Lawn and....
+            </p>
+            <div class="mb-6 grid grid-cols-2 gap-y-3 text-xs text-slate-600 dark:text-slate-300">
+              <div class="flex items-center gap-2">
+                <span class="material-icons-outlined text-secondary text-sm">calendar_today</span>
+                December 12, 2025
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="material-icons-outlined text-secondary text-sm">schedule</span>
+                Auction Duration: 3Days
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="material-icons-outlined text-secondary text-sm">sell</span>
+                Starting price: <span class="font-bold">$25.199</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="material-icons-outlined text-secondary text-sm">gavel</span>
+                Bids: <span class="font-bold">18</span>
+              </div>
+              <div class="col-span-2 flex items-center gap-2">
+                <span class="material-icons-outlined text-secondary text-sm">location_on</span>
+                Los Angeles, California
+              </div>
+            </div>
+            <div
+              class="flex items-center justify-between border-t border-slate-100 pt-6 dark:border-slate-700"
+            >
+              <div>
+                <p class="text-[10px] font-bold uppercase text-slate-400">SOLD FOR</p>
+                <p class="text-xl font-extrabold text-primary">$35.199</p>
+              </div>
+              <button
+                class="rounded-2xl bg-primary/10 px-6 py-2.5 text-sm font-bold uppercase text-primary transition-all hover:bg-primary hover:text-white"
+              >
+                View More
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          class="group overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm transition-all duration-300 hover:shadow-xl dark:border-slate-700 dark:bg-slate-800"
+        >
+          <div class="relative overflow-hidden">
+            <div class="grid h-[240px] grid-cols-3 grid-rows-2 gap-1">
+              <div class="relative col-span-3 row-span-1 overflow-hidden">
+                <img
+                  src="images/auct16.png"
+                  alt="Main Excavator"
+                  class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div
+                  class="absolute right-3 top-3 rounded bg-slate-800/80 px-3 py-1 text-[10px] font-bold uppercase text-white"
+                >
+                  PAST
+                </div>
+              </div>
+              <div class="col-span-1 row-span-1 overflow-hidden">
+                <img src="images/auct15.png" alt="Detail 1" class="h-full w-full object-cover" />
+              </div>
+              <div class="col-span-2 row-span-1 overflow-hidden">
+                <img src="images/auct17.png" alt="Detail 2" class="h-full w-full object-cover" />
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3
+              class="mb-2 text-lg font-bold leading-tight transition-colors group-hover:text-primary"
+            >
+              Komatsu PC390LC Excavator Fleet - 3 Units Available
+            </h3>
+            <p class="mb-6 line-clamp-2 text-xs leading-relaxed text-slate-500 dark:text-slate-400">
+              Farm Tractors, Construction Equipment, Farm Equipment, Cars, Trucks, Lawn and....
+            </p>
+            <div class="mb-6 grid grid-cols-2 gap-y-3 text-xs text-slate-600 dark:text-slate-300">
+              <div class="flex items-center gap-2">
+                <span class="material-icons-outlined text-secondary text-sm">calendar_today</span>
+                December 12, 2025
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="material-icons-outlined text-secondary text-sm">schedule</span>
+                Auction Duration: 3Days
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="material-icons-outlined text-secondary text-sm">sell</span>
+                Starting price: <span class="font-bold">$25.199</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="material-icons-outlined text-secondary text-sm">gavel</span>
+                Bids: <span class="font-bold">18</span>
+              </div>
+              <div class="col-span-2 flex items-center gap-2">
+                <span class="material-icons-outlined text-secondary text-sm">location_on</span>
+                Los Angeles, California
+              </div>
+            </div>
+            <div
+              class="flex items-center justify-between border-t border-slate-100 pt-6 dark:border-slate-700"
+            >
+              <div>
+                <p class="text-[10px] font-bold uppercase text-slate-400">SOLD FOR</p>
+                <p class="text-xl font-extrabold text-primary">$35.199</p>
+              </div>
+              <button
+                class="rounded-2xl bg-primary/10 px-6 py-2.5 text-sm font-bold uppercase text-primary transition-all hover:bg-primary hover:text-white"
+              >
+                View More
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          class="group overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm transition-all duration-300 hover:shadow-xl dark:border-slate-700 dark:bg-slate-800"
+        >
+          <div class="relative overflow-hidden">
+            <div class="grid h-[240px] grid-cols-3 grid-rows-2 gap-1">
+              <div class="relative col-span-3 row-span-1 overflow-hidden">
+                <img
+                  src="images/dangvm_construction_equipment_bulldozers_-ar_32_-v_6.1_fc02ca1c-0341-4ac2-bbef-d00b37dfeab0_2.jpg.png"
+                  alt="Main Excavator"
+                  class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div
+                  class="absolute right-3 top-3 rounded bg-slate-800/80 px-3 py-1 text-[10px] font-bold uppercase text-white"
+                >
+                  PAST
+                </div>
+              </div>
+              <div class="col-span-1 row-span-1 overflow-hidden">
+                <img src="images/AUCT12.png" alt="Detail 1" class="h-full w-full object-cover" />
+              </div>
+              <div class="col-span-2 row-span-1 overflow-hidden">
+                <img src="images/auct14.png" alt="Detail 2" class="h-full w-full object-cover" />
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3
+              class="mb-2 text-lg font-bold leading-tight transition-colors group-hover:text-primary"
+            >
+              Komatsu PC390LC Excavator Fleet - 3 Units Available
+            </h3>
+            <p class="mb-6 line-clamp-2 text-xs leading-relaxed text-slate-500 dark:text-slate-400">
+              Farm Tractors, Construction Equipment, Farm Equipment, Cars, Trucks, Lawn and....
+            </p>
+            <div class="mb-6 grid grid-cols-2 gap-y-3 text-xs text-slate-600 dark:text-slate-300">
+              <div class="flex items-center gap-2">
+                <span class="material-icons-outlined text-secondary text-sm">calendar_today</span>
+                December 12, 2025
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="material-icons-outlined text-secondary text-sm">schedule</span>
+                Auction Duration: 3Days
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="material-icons-outlined text-secondary text-sm">sell</span>
+                Starting price: <span class="font-bold">$25.199</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="material-icons-outlined text-secondary text-sm">gavel</span>
+                Bids: <span class="font-bold">18</span>
+              </div>
+              <div class="col-span-2 flex items-center gap-2">
+                <span class="material-icons-outlined text-secondary text-sm">location_on</span>
+                Los Angeles, California
+              </div>
+            </div>
+            <div
+              class="flex items-center justify-between border-t border-slate-100 pt-6 dark:border-slate-700"
+            >
+              <div>
+                <p class="text-[10px] font-bold uppercase text-slate-400">SOLD FOR</p>
+                <p class="text-xl font-extrabold text-primary">$35.199</p>
+              </div>
+              <button
+                class="rounded-2xl bg-primary/10 px-6 py-2.5 text-sm font-bold uppercase text-primary transition-all hover:bg-primary hover:text-white"
+              >
+                View More
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          class="group overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm transition-all duration-300 hover:shadow-xl dark:border-slate-700 dark:bg-slate-800"
+        >
+          <div class="relative overflow-hidden">
+            <div class="grid h-[240px] grid-cols-3 grid-rows-2 gap-1">
+              <div class="relative col-span-3 row-span-1 overflow-hidden">
+                <img
+                  src="images/auct16.png"
+                  alt="Main Excavator"
+                  class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div
+                  class="absolute right-3 top-3 rounded bg-slate-800/80 px-3 py-1 text-[10px] font-bold uppercase text-white"
+                >
+                  PAST
+                </div>
+              </div>
+              <div class="col-span-1 row-span-1 overflow-hidden">
+                <img src="images/auct15.png" alt="Detail 1" class="h-full w-full object-cover" />
+              </div>
+              <div class="col-span-2 row-span-1 overflow-hidden">
+                <img src="images/auct17.png" alt="Detail 2" class="h-full w-full object-cover" />
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3
+              class="mb-2 text-lg font-bold leading-tight transition-colors group-hover:text-primary"
+            >
+              Komatsu PC390LC Excavator Fleet - 3 Units Available
+            </h3>
+            <p class="mb-6 line-clamp-2 text-xs leading-relaxed text-slate-500 dark:text-slate-400">
+              Farm Tractors, Construction Equipment, Farm Equipment, Cars, Trucks, Lawn and....
+            </p>
+            <div class="mb-6 grid grid-cols-2 gap-y-3 text-xs text-slate-600 dark:text-slate-300">
+              <div class="flex items-center gap-2">
+                <span class="material-icons-outlined text-secondary text-sm">calendar_today</span>
+                December 12, 2025
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="material-icons-outlined text-secondary text-sm">schedule</span>
+                Auction Duration: 3Days
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="material-icons-outlined text-secondary text-sm">sell</span>
+                Starting price: <span class="font-bold">$25.199</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="material-icons-outlined text-secondary text-sm">gavel</span>
+                Bids: <span class="font-bold">18</span>
+              </div>
+              <div class="col-span-2 flex items-center gap-2">
+                <span class="material-icons-outlined text-secondary text-sm">location_on</span>
+                Los Angeles, California
+              </div>
+            </div>
+            <div
+              class="flex items-center justify-between border-t border-slate-100 pt-6 dark:border-slate-700"
+            >
+              <div>
+                <p class="text-[10px] font-bold uppercase text-slate-400">SOLD FOR</p>
+                <p class="text-xl font-extrabold text-primary">$35.199</p>
+              </div>
+              <button
+                class="rounded-2xl bg-primary/10 px-6 py-2.5 text-sm font-bold uppercase text-primary transition-all hover:bg-primary hover:text-white"
+              >
+                View More
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Main End  -->
+
+    <!-- PAGENATION0 -->
+    <div class="mt-16 flex items-center justify-center gap-3">
+      <button
+        class="flex h-10 w-10 items-center justify-center rounded-full bg-primary font-bold text-white shadow-lg shadow-orange-500/30"
+      >
+        1
+      </button>
+      <button
+        class="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white font-bold text-slate-600 transition-all hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700"
+      >
+        2
+      </button>
+      <button
+        class="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white font-bold text-slate-600 transition-all hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700"
+      >
+        3
+      </button>
+      <span class="text-slate-400">...</span>
+      <button
+        class="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white font-bold text-slate-600 transition-all hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700"
+      >
+        5
+      </button>
+      <button
+        class="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white font-bold text-slate-600 transition-all hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700"
+      >
+        <span class="material-icons text-base">keyboard_double_arrow_right</span>
+      </button>
+    </div>
+
+    <!-- Footer Start  -->
+    <
+    <footer class="border-t border-slate-800 bg-black pb-10 pt-20 text-white">
+      <div
+        class="mx-auto mb-16 grid max-w-7xl grid-cols-1 gap-12 px-4 md:grid-cols-2 md:px-8 lg:grid-cols-4"
+      >
+        <div class="space-y-6">
+          <div class="flex items-center gap-2">
+            <img src="images/mideast-logo.png" alt="" />
+          </div>
+          <p class="text-sm leading-relaxed text-slate-400">
+            Our mission is to provide honest, professional services to our customers in the heavy
+            equipment industry. We take pride in our reputation as an ethical and reputable partner
+            for contractors and dealers.
+          </p>
+        </div>
+        <div>
+          <h4 class="mb-6 border-l-4 border-primary pl-3 font-display text-lg font-bold uppercase">
+            About Company
+          </h4>
+          <ul class="space-y-3 text-sm text-slate-400">
+            <li><a class="transition-colors hover:text-primary" href="#">Buy</a></li>
+            <li><a class="transition-colors hover:text-primary" href="sell.html">SELL</a></li>
+            <li><a class="transition-colors hover:text-primary" href="#">About Us</a></li>
+            <li><a class="transition-colors hover:text-primary" href="#">Contact Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="mb-6 border-l-4 border-primary pl-3 font-display text-lg font-bold uppercase">
+            Our Network
+          </h4>
+          <ul class="space-y-3 text-sm text-slate-400">
+            <li><a class="transition-colors hover:text-primary" href="#">Facebook</a></li>
+            <li><a class="transition-colors hover:text-primary" href="#">Behance</a></li>
+            <li><a class="transition-colors hover:text-primary" href="#">Linkedin</a></li>
+            <li><a class="transition-colors hover:text-primary" href="#">Twitter</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="mb-6 border-l-4 border-primary pl-3 font-display text-lg font-bold uppercase">
+            Contact Info
+          </h4>
+          <div class="space-y-4 text-sm">
+            <div>
+              <p class="text-xs text-slate-400">Need help? Talk to an Expert</p>
+              <p class="text-lg font-bold text-primary">860-222-3393</p>
+            </div>
+            <p class="text-slate-400">50 East Dudley Town Road Bloomfield, CT 06002</p>
+            <p class="text-slate-400">auctions@mideastequip.com</p>
+          </div>
+        </div>
+      </div>
+      <div
+        class="mx-auto max-w-7xl border-t border-slate-800 px-4 pt-10 text-center md:px-8 md:text-left"
+      >
+        <div class="flex flex-col items-center justify-between gap-6 md:flex-row">
+          <div class="flex gap-6 text-xs font-semibold text-slate-500">
+            <a class="transition-colors hover:text-white" href="#">Terms of Use</a>
+            <a class="transition-colors hover:text-white" href="#">Policy Privacy</a>
+            <a class="transition-colors hover:text-white" href="#">Contact Us</a>
+          </div>
+          <p class="text-xs text-slate-500">
+            Copyright © Mideast Equipment Supply 2026. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+    <!-- Footer End  -->
+
+    <!-- <button
+        class="fixed bottom-6 right-6 w-12 h-12 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full flex items-center justify-center shadow-2xl z-[100] hover:scale-110 transition-transform"
+        onclick="document.documentElement.classList.toggle('dark')">
+        <span class="material-icons">dark_mode</span>
+    </button> -->
+    <script>
+      // toggle for upcomming past
+      const upcomingBtn = document.getElementById('upcomingBtn');
+      const pastBtn = document.getElementById('pastBtn');
+
+      const upcomingContent = document.getElementById('upcomingContent');
+      const pastContent = document.getElementById('pastContent');
+
+      upcomingBtn.addEventListener('click', () => {
+        upcomingContent.classList.remove('hidden');
+        pastContent.classList.add('hidden');
+
+        upcomingBtn.classList.add('bg-secondary', 'text-white');
+        pastBtn.classList.remove('bg-secondary', 'text-white');
+        pastBtn.classList.add('text-slate-500');
+      });
+
+      pastBtn.addEventListener('click', () => {
+        pastContent.classList.remove('hidden');
+        upcomingContent.classList.add('hidden');
+
+        pastBtn.classList.add('bg-secondary', 'text-white');
+        upcomingBtn.classList.remove('bg-secondary', 'text-white');
+        upcomingBtn.classList.add('text-slate-500');
+      });
+
+      // Initialize AOS (Animate On Scroll)
+      AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true,
+        offset: 50,
+      });
+
+      // Mobile Menu Toggle
+      const menuToggle = document.getElementById('menuToggle');
+      const mobileMenu = document.getElementById('mobileMenu');
+
+      menuToggle.addEventListener('click', () => {
+        const isOpen = mobileMenu.classList.contains('hidden');
+        if (isOpen) {
+          mobileMenu.classList.remove('hidden');
+          setTimeout(() => {
+            mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
+          }, 0);
+        } else {
+          mobileMenu.style.maxHeight = '0px';
+          setTimeout(() => {
+            mobileMenu.classList.add('hidden');
+          }, 300);
+        }
+      });
+
+      // Close menu when a link is clicked
+      const mobileLinks = mobileMenu.querySelectorAll('a');
+      mobileLinks.forEach((link) => {
+        link.addEventListener('click', () => {
+          mobileMenu.style.maxHeight = '0px';
+          setTimeout(() => {
+            mobileMenu.classList.add('hidden');
+          }, 300);
+        });
+      });
+
+      // Testimonials Carousel
+      let currentSlide = 0;
+      const slides = document.querySelectorAll('.testimonial-slide');
+      const dots = document.querySelectorAll('.dot-indicator');
+      const totalSlides = slides.length;
+
+      function showSlide(n) {
+        // Hide all slides
+        slides.forEach((slide) => {
+          slide.classList.add('opacity-0', 'hidden');
+          slide.classList.remove('opacity-100');
+        });
+
+        // Show current slide
+        slides[n].classList.remove('opacity-0', 'hidden');
+        slides[n].classList.add('opacity-100');
+
+        // Update dots
+        dots.forEach((dot, index) => {
+          if (index === n) {
+            dot.classList.add('bg-primary');
+            dot.classList.remove('bg-slate-300', 'dark:bg-slate-600');
+          } else {
+            dot.classList.remove('bg-primary');
+            dot.classList.add('bg-slate-300', 'dark:bg-slate-600');
+          }
+        });
+      }
+
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        showSlide(currentSlide);
+      }
+
+      function prevSlide() {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        showSlide(currentSlide);
+      }
+
+      // Add event listeners to buttons
+      document.getElementById('nextBtn').addEventListener('click', nextSlide);
+      document.getElementById('prevBtn').addEventListener('click', prevSlide);
+
+      // Add event listeners to dots
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          currentSlide = index;
+          showSlide(currentSlide);
+        });
+      });
+
+      // Auto-advance carousel every 8 seconds
+      setInterval(nextSlide, 8000);
+
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start',
+            });
+          }
+        });
+      });
+
+      // Add animation to elements on scroll
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px',
+      };
+
+      const observer = new IntersectionObserver(function (entries) {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.animation = 'slideInUp 0.8s ease-out forwards';
+          }
+        });
+      }, observerOptions);
+
+      // Observe all cards and items
+      document.querySelectorAll('.group, .bg-white').forEach((el) => {
+        observer.observe(el);
+      });
+
+      // Related Products Carousel
+      const productsCarousel = document.getElementById('productsCarousel');
+      const carouselPrevBtn = document.getElementById('carouselPrevBtn');
+      const carouselNextBtn = document.getElementById('carouselNextBtn');
+      const carouselItems = productsCarousel.querySelectorAll('.group');
+      let carouselIndex = 0;
+      const totalProducts = carouselItems.length;
+      const gap = 32; // gap-8 = 2rem = 32px
+
+      // Calculate how many items to show based on screen size
+      function getItemsPerView() {
+        if (window.innerWidth < 768) return 1;
+        if (window.innerWidth < 1024) return 2;
+        return 3;
+      }
+
+      function getItemWidth() {
+        const carousel = document.getElementById('productsCarousel');
+        const carouselWidth = carousel.offsetWidth;
+        const itemsPerView = getItemsPerView();
+        const totalGap = gap * (itemsPerView - 1);
+        return (carouselWidth - totalGap) / itemsPerView;
+      }
+
+      function updateCarouselPosition() {
+        const itemsPerView = getItemsPerView();
+        const itemWidth = getItemWidth();
+        const maxScroll = Math.max(0, totalProducts - itemsPerView);
+
+        // Clamp the index
+        carouselIndex = Math.min(Math.max(carouselIndex, 0), maxScroll);
+
+        // Calculate translation
+        const translateValue = -carouselIndex * (itemWidth + gap);
+        productsCarousel.style.transform = `translateX(${translateValue}px)`;
+
+        // Update card widths
+        carouselItems.forEach((item) => {
+          item.style.minWidth = itemWidth + 'px';
+          item.style.maxWidth = itemWidth + 'px';
+        });
+      }
+
+      // Event listeners
+      carouselPrevBtn.addEventListener('click', () => {
+        carouselIndex = Math.max(0, carouselIndex - 1);
+        updateCarouselPosition();
+      });
+
+      carouselNextBtn.addEventListener('click', () => {
+        const itemsPerView = getItemsPerView();
+        const maxScroll = Math.max(0, totalProducts - itemsPerView);
+        carouselIndex = Math.min(carouselIndex + 1, maxScroll);
+        updateCarouselPosition();
+      });
+
+      // Update on window resize
+      window.addEventListener('resize', () => {
+        updateCarouselPosition();
+      });
+
+      // Initialize
+      setTimeout(() => {
+        updateCarouselPosition();
+      }, 100);
+    </script>
+  </body>
+</html>

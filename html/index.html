@@ -1,0 +1,1047 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Mideast Equipment | Heavy Equipment Marketplace</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="animations.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;family=Oswald:wght@500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              primary: '#F59E0B',
+              'background-light': '#FFFFFF',
+              'background-dark': '#111827',
+              'brand-dark': '#1F2937',
+              'brand-black': '#0F172A',
+            },
+            fontFamily: {
+              display: ['Barlow', 'sans-serif'],
+              sans: ['Inter', 'sans-serif'],
+            },
+            borderRadius: {
+              DEFAULT: '0.5rem',
+              xl: '1rem',
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .textured-orange {
+        background-color: #f59e0b;
+        background-image: radial-gradient(#d97706 0.5px, transparent 0.5px);
+        background-size: 20px 20px;
+      }
+    </style>
+  </head>
+
+  <body
+    class="bg-background-light font-sans text-slate-900 transition-colors duration-200 dark:bg-background-dark dark:text-slate-100"
+  >
+    <div class="hidden lg:block">
+      <div
+        class="flex flex-wrap items-center justify-between bg-brand-black px-4 py-2 text-xs text-white md:px-12"
+      >
+        <div class="flex space-x-6">
+          <span class="flex items-center gap-1"
+            ><i class="material-icons-outlined text-sm">location_on</i> 50 East Dudley Town Road
+            Bloomfield, CT 06002</span
+          >
+          <span class="flex items-center gap-1"
+            ><i class="material-icons-outlined text-sm">email</i> auctions@mideastequip.com</span
+          >
+          <span class="hidden items-center gap-1 md:flex"
+            ><i class="material-icons-outlined text-sm">schedule</i> Mon - Fri 9:00AM - 5:00PM</span
+          >
+        </div>
+        <div class="flex space-x-4">
+          <a href="#" class="transition-colors hover:text-primary">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+          <a href="#" class="transition-colors hover:text-primary">
+            <i class="fa-brands fa-behance"></i>
+          </a>
+          <a href="#" class="transition-colors hover:text-primary">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+          <a href="#" class="transition-colors hover:text-primary">
+            <i class="fa-brands fa-x-twitter"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <header
+      class="sticky top-0 z-50 border-b border-slate-100 bg-white dark:border-slate-800 dark:bg-brand-dark"
+    >
+      <nav class="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 md:px-8">
+        <div class="flex flex-1 items-center gap-4 md:gap-8">
+          <div class="flex items-center gap-2">
+            <div class="leading-tight">
+              <img src="images/mideastlogo.svg" alt="Mideast Equipment Logo" />
+            </div>
+          </div>
+          <div
+            class="hidden items-center gap-2 border-l border-slate-200 pl-8 dark:border-slate-700 lg:flex"
+          >
+            <i class="material-icons-outlined text-primary">phone_in_talk</i>
+            <div>
+              <p class="text-[10px] font-medium text-slate-400">Need help? Talk to an Expert</p>
+              <p class="text-sm font-bold text-slate-700 dark:text-slate-200">860-222-3393</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <button
+          id="menuToggle"
+          class="order-3 p-2 text-slate-600 transition-colors hover:text-primary dark:text-slate-400 lg:hidden"
+        >
+          <i class="material-icons-outlined text-2xl">menu</i>
+        </button>
+
+        <!-- Desktop Navigation -->
+        <div
+          class="hidden items-center space-x-6 text-sm font-semibold text-slate-600 dark:text-slate-300 lg:flex"
+        >
+          <a class="text-primary" href="index.html">HOME</a>
+          <a class="transition-colors hover:text-primary" href="buynow.html">BUY NOW</a>
+          <a class="transition-colors hover:text-primary" href="sell.html">SELL</a>
+          <a class="transition-colors hover:text-primary" href="auctionup.html">AUCTION</a>
+          <a class="transition-colors hover:text-primary" href="#">ABOUT US</a>
+          <a class="transition-colors hover:text-primary" href="contactus.html">CONTACT US</a>
+        </div>
+
+        <!-- Desktop Right Section -->
+        <div class="hidden items-center gap-4 lg:flex">
+          <button class="p-2 text-slate-400 transition-colors hover:text-primary">
+            <i class="material-icons-outlined">search</i>
+          </button>
+          <div class="flex items-center gap-2">
+            <button
+              class="button rounded-3xl bg-primary px-5 py-2 text-sm font-bold uppercase text-white transition-colors hover:bg-orange-600"
+              href="#"
+            >
+              Login
+            </button>
+            <button
+              class="rounded-3xl border-2 border-slate-200 px-5 py-2 text-sm font-bold uppercase transition-colors hover:bg-slate-50 dark:border-slate-700 dark:hover:bg-slate-800"
+              href="#"
+            >
+              Register
+            </button>
+          </div>
+        </div>
+
+        <!-- Mobile Right Section -->
+        <div class="order-2 flex items-center gap-2 lg:hidden">
+          <button class="p-2 text-slate-400 transition-colors hover:text-primary">
+            <i class="material-icons-outlined">search</i>
+          </button>
+        </div>
+      </nav>
+
+      <!-- Mobile Menu -->
+      <div
+        id="mobileMenu"
+        class="hidden max-h-0 overflow-hidden border-t border-slate-100 bg-white transition-all duration-300 dark:border-slate-800 dark:bg-brand-dark lg:hidden"
+      >
+        <div class="space-y-4 px-4 py-6">
+          <a
+            class="block text-sm font-semibold uppercase text-primary transition-colors hover:text-orange-600"
+            href="index.html"
+            >HOME</a
+          >
+          <a
+            class="block text-sm font-semibold uppercase text-slate-600 transition-colors hover:text-primary dark:text-slate-300"
+            href="buynow.html"
+            >BUY NOW</a
+          >
+          <a
+            class="block text-sm font-semibold uppercase text-slate-600 transition-colors hover:text-primary dark:text-slate-300"
+            href="sell.html"
+            >SELL</a
+          >
+          <a
+            class="block text-sm font-semibold uppercase text-slate-600 transition-colors hover:text-primary dark:text-slate-300"
+            href="auctionup.html"
+            >AUCTION</a
+          >
+          <a
+            class="block text-sm font-semibold uppercase text-slate-600 transition-colors hover:text-primary dark:text-slate-300"
+            href="#"
+            >ABOUT US</a
+          >
+          <a
+            class="block text-sm font-semibold uppercase text-slate-600 transition-colors hover:text-primary dark:text-slate-300"
+            href="contactus.html"
+            >CONTACT US</a
+          >
+          <div class="flex gap-2 border-t border-slate-200 pt-4 dark:border-slate-700">
+            <a
+              class="button flex-1 rounded-3xl bg-primary px-4 py-2 text-center text-xs font-bold uppercase text-white transition-colors hover:bg-orange-600"
+              href="#"
+              >Login</a
+            >
+            <a
+              class="flex-1 rounded-3xl border-2 border-slate-200 px-4 py-2 text-center text-xs font-bold uppercase text-slate-600 transition-colors hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+              href="#"
+              >Register</a
+            >
+          </div>
+        </div>
+      </div>
+    </header>
+    <section class="bg-banner relative overflow-hidden dark:bg-slate-900">
+      <div class="mx-auto flex max-w-7xl flex-col items-center px-4 py-20 md:px-8 lg:flex-row">
+        <div class="z-10 w-full space-y-6 lg:w-1/2">
+          <h1
+            class="font-display text-4xl font-bold leading-[1.1] text-slate-800 dark:text-white lg:text-6xl"
+          >
+            QUALITY, USED HEAVY <br />
+            EQUIPMENT <span class="text-primary">FOR SALE</span>
+          </h1>
+          <p class="max-w-xl text-lg text-slate-600 dark:text-slate-400">
+            Since 2004, Mideast Equipment Supply has been a reliable global partner for buying and
+            selling heavy equipment. With trusted worldwide relationships, we deliver seamless
+            transactions, expert support, and exceptional customer service.
+          </p>
+          <button
+            class="group flex items-center gap-2 rounded-full bg-primary px-8 py-4 font-bold uppercase text-white shadow-xl shadow-primary/20 transition-all hover:bg-[#1e293b]"
+          >
+            Explore Equipment
+            <i
+              class="material-icons-outlined text-md rounded-full bg-white p-1 text-primary transition-transform group-hover:translate-x-1"
+              >arrow_forward</i
+            >
+          </button>
+        </div>
+        <div class="banner-transparent relative mt-12 w-full lg:mt-0 lg:w-1/2">
+          <img
+            alt="Large yellow bulldozer"
+            class="slide-bottom relative z-10 w-full transform lg:scale-110"
+            src="images/heavy-machinery-used-construction-industry-engineering 3.png"
+          />
+        </div>
+      </div>
+    </section>
+    <section class="bg-white py-20 dark:bg-background-dark">
+      <div class="mx-auto mb-12 max-w-7xl px-4 text-center md:px-8">
+        <h2 class="font-display text-4xl font-bold uppercase text-brand-dark dark:text-white">
+          Upcoming Auctions
+        </h2>
+        <div class="mx-auto mt-4 h-1 w-16 bg-primary"></div>
+      </div>
+      <div class="mx-auto max-w-6xl px-4">
+        <div
+          class="flex flex-col overflow-hidden rounded-xl border border-slate-100 bg-white shadow-2xl dark:border-slate-800 dark:bg-brand-dark md:flex-row"
+        >
+          <div class="grid h-96 grid-cols-2 md:w-1/2">
+            <!-- First image: full row -->
+            <img
+              alt="Heavy machinery grid 1"
+              class="col-span-2 h-full w-full border-b border-white object-cover dark:border-brand-dark"
+              src="images/dangvm_construction_equipment_bulldozers_-ar_32_-v_6.1_fc02ca1c-0341-4ac2-bbef-d00b37dfeab0_2.jpg.png"
+            />
+
+            <!-- Second image: left half -->
+            <img
+              alt="Heavy machinery grid 2"
+              class="h-full w-full border-r border-white object-cover dark:border-brand-dark"
+              src="images/dangvm_construction_equipment_-ar_32_-v_6.1_e1b8e2d9-7037-4e97-8068-86a46dd229ca_1.jpg.png"
+            />
+
+            <!-- Third image: right half -->
+            <img
+              alt="Heavy machinery grid 3"
+              class="h-full w-full object-cover"
+              src="images/dangvm_construction_equipment_bulldozers_-ar_32_-v_6.1_fb11d441-0a7f-431d-8d55-db7c7e8c46d6_2.jpg.png"
+            />
+          </div>
+
+          <div class="flex flex-col justify-center space-y-6 p-10 md:w-1/2">
+            <h3
+              class="font-display text-3xl font-bold uppercase leading-tight text-slate-800 dark:text-white"
+            >
+              Northeast Regional Equipment &amp; Truck Auction
+            </h3>
+            <div class="space-y-3">
+              <div class="flex items-center gap-3 text-slate-600 dark:text-slate-400">
+                <i class="material-icons-outlined text-primary">calendar_today</i>
+                <span>January 12, 2026</span>
+              </div>
+              <div class="flex items-center gap-3 text-slate-600 dark:text-slate-400">
+                <i class="material-icons-outlined text-primary">schedule</i>
+                <span>10AM ET</span>
+              </div>
+              <div class="flex items-center gap-3 text-slate-600 dark:text-slate-400">
+                <i class="material-icons-outlined text-primary">location_on</i>
+                <span>Various Locations Throughout the Northeast</span>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-4 pt-4">
+              <button
+                class="rounded-3xl bg-primary px-6 py-3 text-sm font-bold uppercase text-white transition-colors hover:bg-orange-600"
+              >
+                Proxibid Bidding
+              </button>
+              <button
+                class="rounded-3xl bg-primary px-6 py-3 text-sm font-bold uppercase text-white transition-colors hover:bg-orange-600"
+              >
+                Equipmentfacts Bidding
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="mt-12 text-center">
+          <button
+            class="group mx-auto flex items-center gap-2 rounded-full bg-primary px-8 py-4 font-bold uppercase text-white shadow-xl shadow-primary/20 transition-all hover:bg-[#1e293b]"
+          >
+            View More Auctions
+            <i
+              class="material-icons-outlined text-md rounded-full bg-white p-1 text-primary transition-transform group-hover:translate-x-1"
+              >arrow_forward</i
+            >
+          </button>
+        </div>
+      </div>
+    </section>
+    <section class="equpment-bg py-20">
+      <div class="mx-auto max-w-7xl px-4 md:px-8">
+        <div class="mb-12 text-center">
+          <p class="mb-2 text-xs font-bold uppercase tracking-widest text-white/80">
+            Reasons to choose us
+          </p>
+          <h2 class="font-display text-4xl font-bold uppercase text-white">
+            Browse Equipment Categories
+          </h2>
+          <div class="mx-auto mt-4 h-1 w-16 bg-white"></div>
+        </div>
+        <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <div class="group relative h-64 overflow-hidden rounded-xl shadow-xl">
+            <img
+              alt="Rollers category"
+              class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+              src="images/Rollers.png"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-black/90 to-transparent"></div>
+            <div class="absolute bottom-6 left-6 right-6">
+              <h3 class="text-center font-display text-2xl font-bold uppercase text-white">
+                Rollers
+              </h3>
+            </div>
+          </div>
+          <div class="group relative h-64 overflow-hidden rounded-xl shadow-xl">
+            <img
+              alt="Wheel Loaders category"
+              class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+              src="images/Wheel Loaders.png"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-black/90 to-transparent"></div>
+            <div class="absolute bottom-6 left-6 right-6">
+              <h3 class="text-center font-display text-2xl font-bold uppercase text-white">
+                Wheel Loaders
+              </h3>
+            </div>
+          </div>
+          <div class="group relative h-64 overflow-hidden rounded-xl shadow-xl">
+            <img
+              alt="Excavator category"
+              class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+              src="images/Excavator.png"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-black/90 to-transparent"></div>
+            <div class="absolute bottom-6 left-6 right-6">
+              <h3 class="text-center font-display text-2xl font-bold uppercase text-white">
+                Excavator
+              </h3>
+            </div>
+          </div>
+          <div class="group relative h-64 overflow-hidden rounded-xl shadow-xl">
+            <img
+              alt="Bulldozers category"
+              class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+              src="images/Bulldozers.png"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-black/90 to-transparent"></div>
+            <div class="absolute bottom-6 left-6 right-6">
+              <h3 class="text-center font-display text-2xl font-bold uppercase text-white">
+                Bulldozers
+              </h3>
+            </div>
+          </div>
+          <div class="group relative h-64 overflow-hidden rounded-xl shadow-xl">
+            <img
+              alt="Dump Truck category"
+              class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+              src="images/Dump Truck.png"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-black/90 to-transparent"></div>
+            <div class="absolute bottom-6 left-6 right-6">
+              <h3 class="text-center font-display text-2xl font-bold uppercase text-white">
+                Dump Truck
+              </h3>
+            </div>
+          </div>
+          <div class="group relative h-64 overflow-hidden rounded-xl shadow-xl">
+            <img
+              alt="Cranes category"
+              class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+              src="images/caspar-rae-ti4MG1kbpUk-unsplash-768x512.jpg.png"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-black/90 to-transparent"></div>
+            <div class="absolute bottom-6 left-6 right-6">
+              <h3 class="text-center font-display text-2xl font-bold uppercase text-white">
+                Cranes
+              </h3>
+            </div>
+          </div>
+        </div>
+        <div class="mt-12 text-center">
+          <button
+            class="group mx-auto flex items-center gap-2 rounded-full bg-white px-10 py-4 font-bold uppercase text-primary transition-all hover:bg-slate-50"
+          >
+            View All Category
+            <i
+              class="material-icons-outlined text-md rounded-full bg-primary p-1 text-white transition-transform group-hover:translate-x-1"
+              >arrow_forward</i
+            >
+          </button>
+        </div>
+      </div>
+    </section>
+    <section class="bg-white py-24 dark:bg-background-dark">
+      <div class="mx-auto flex max-w-7xl flex-col items-center gap-16 px-4 md:px-8 lg:flex-row">
+        <div class="relative w-full lg:w-1/2">
+          <img alt="Construction worker support" class="" src="images/26gcase.png" />
+        </div>
+        <div class="w-full space-y-8 lg:w-1/2">
+          <h2
+            class="font-display text-4xl font-extrabold uppercase leading-tight text-slate-900 dark:text-white"
+          >
+            WE PROVIDE THE BEST QUALITY CONSTRUCTION EQUIPMENT AND EXCELLENT SUPPORT SERVICE
+          </h2>
+          <div class="h-1 w-16 bg-primary"></div>
+          <p class="text-lg text-slate-600 dark:text-slate-400">
+            Our mission is to provide honest, professional services to our customers in the heavy
+            equipment industry. We take pride in our reputation as an ethical and reputable partner
+            for contractors and dealers. We can help you buy or sell your heavy equipment — both
+            locally and worldwide — through our global network of contacts. Our goal is your
+            complete and total satisfaction.
+          </p>
+        </div>
+      </div>
+    </section>
+    <section class="bg-slate-50 py-20 dark:bg-slate-900/50">
+      <div class="mx-auto mb-16 max-w-7xl px-4 text-center md:px-8">
+        <p class="mb-2 text-xs font-bold uppercase tracking-widest text-primary">Our Products</p>
+        <h2 class="font-display text-4xl font-bold uppercase text-brand-dark dark:text-white">
+          Latest Equipment
+        </h2>
+        <div class="mx-auto my-4 h-1 w-16 bg-primary"></div>
+        <p class="mx-auto max-w-2xl text-slate-500">
+          Adhering to the recommended maintenance schedule of your machine is one of the most
+          effective ways to ensure it stays performing at its best.
+        </p>
+      </div>
+      <div
+        class="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 md:grid-cols-2 md:px-8 lg:grid-cols-3"
+      >
+        <div
+          class="flex flex-col overflow-hidden rounded-xl border border-slate-100 bg-white shadow-lg dark:border-slate-800 dark:bg-brand-dark"
+        >
+          <div class="relative h-56">
+            <img
+              alt="HTM 905 Truck"
+              class="h-full w-full object-cover"
+              src="images/chuttersnap-PF1daJne7lA-unsplash-1-768x512.jpg.png"
+            />
+            <span
+              class="absolute left-4 top-4 rounded-full bg-green-500 px-3 py-1 text-[10px] font-bold uppercase text-white shadow-lg"
+              >Newest</span
+            >
+          </div>
+          <div class="flex-grow p-6">
+            <h3
+              class="mb-4 font-display text-xl font-bold uppercase text-slate-800 dark:text-white"
+            >
+              HTM 905 Truck
+            </h3>
+            <div class="mb-6 grid grid-cols-3 gap-4 text-[11px]">
+              <div>
+                <p class="font-medium uppercase text-slate-400">Assembly Weight</p>
+                <p class="font-bold text-slate-700 dark:text-slate-200">3,780 kg</p>
+              </div>
+              <div>
+                <p class="font-medium uppercase text-slate-400">Gross Power</p>
+                <p class="font-bold text-slate-700 dark:text-slate-200">185 KW</p>
+              </div>
+              <div>
+                <p class="font-medium uppercase text-slate-400">Max Speed</p>
+                <p class="font-bold text-slate-700 dark:text-slate-200">50 km/h</p>
+              </div>
+              <div>
+                <p class="font-medium uppercase text-slate-400">Engine</p>
+                <p class="font-bold text-slate-700 dark:text-slate-200">BN455</p>
+              </div>
+              <div>
+                <p class="font-medium uppercase text-slate-400">Hours</p>
+                <p class="font-bold text-slate-700 dark:text-slate-200">6,839</p>
+              </div>
+              <div>
+                <p class="font-medium uppercase text-slate-400">Location</p>
+                <p class="font-bold text-slate-700 dark:text-slate-200">Ohio</p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="flex items-center justify-between border-t border-slate-100 bg-slate-50 p-6 dark:border-slate-800 dark:bg-slate-800/50"
+          >
+            <div>
+              <p class="text-[10px] font-bold uppercase text-slate-400">Retail Price</p>
+              <p class="text-xl font-bold text-primary">$35,199</p>
+            </div>
+            <button
+              class="rounded-3xl bg-primary px-5 py-2 text-xs font-bold uppercase text-white transition-colors hover:bg-orange-600"
+            >
+              View More
+            </button>
+          </div>
+        </div>
+        <div
+          class="flex flex-col overflow-hidden rounded-xl border border-slate-100 bg-white shadow-lg dark:border-slate-800 dark:bg-brand-dark"
+        >
+          <div class="relative h-56">
+            <img
+              alt="Road Roller"
+              class="h-full w-full object-cover"
+              src="images/david-griffiths-G9Nset7BL-Q-unsplash-768x512.jpg.png"
+            />
+            <span
+              class="absolute left-4 top-4 rounded-full bg-blue-500 px-3 py-1 text-[10px] font-bold uppercase text-white shadow-lg"
+              >For Rent</span
+            >
+          </div>
+          <div class="flex-grow p-6">
+            <h3
+              class="mb-4 font-display text-xl font-bold uppercase text-slate-800 dark:text-white"
+            >
+              Road Roller
+            </h3>
+            <div class="mb-6 grid grid-cols-3 gap-4 text-[11px]">
+              <div>
+                <p class="font-medium uppercase text-slate-400">Assembly Weight</p>
+                <p class="font-bold text-slate-700 dark:text-slate-200">3,780 kg</p>
+              </div>
+              <div>
+                <p class="font-medium uppercase text-slate-400">Gross Power</p>
+                <p class="font-bold text-slate-700 dark:text-slate-200">185 KW</p>
+              </div>
+              <div>
+                <p class="font-medium uppercase text-slate-400">Max Speed</p>
+                <p class="font-bold text-slate-700 dark:text-slate-200">50 km/h</p>
+              </div>
+              <div>
+                <p class="font-medium uppercase text-slate-400">Engine</p>
+                <p class="font-bold text-slate-700 dark:text-slate-200">BN455</p>
+              </div>
+              <div>
+                <p class="font-medium uppercase text-slate-400">Hours</p>
+                <p class="font-bold text-slate-700 dark:text-slate-200">6,839</p>
+              </div>
+              <div>
+                <p class="font-medium uppercase text-slate-400">Location</p>
+                <p class="font-bold text-slate-700 dark:text-slate-200">Ohio</p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="flex items-center justify-between border-t border-slate-100 bg-slate-50 p-6 dark:border-slate-800 dark:bg-slate-800/50"
+          >
+            <div>
+              <p class="text-[10px] font-bold uppercase text-slate-400">Retail Price</p>
+              <p class="text-xl font-bold text-primary">$35,199</p>
+            </div>
+            <button
+              class="rounded-3xl bg-primary px-5 py-2 text-xs font-bold uppercase text-white transition-colors hover:bg-orange-600"
+            >
+              View More
+            </button>
+          </div>
+        </div>
+        <div
+          class="flex flex-col overflow-hidden rounded-xl border border-slate-100 bg-white shadow-lg dark:border-slate-800 dark:bg-brand-dark"
+        >
+          <div class="relative h-56">
+            <img
+              alt="Excavator EC300D"
+              class="h-full w-full object-cover"
+              src="images/built-robotics-3xaxYYv1_PI-unsplash-768x512.jpg.png"
+            />
+            <span
+              class="absolute left-4 top-4 rounded-full bg-slate-500 px-3 py-1 text-[10px] font-bold uppercase text-white shadow-lg"
+              >Sold</span
+            >
+          </div>
+          <div class="flex-grow p-6">
+            <h3
+              class="mb-4 font-display text-xl font-bold uppercase text-slate-800 dark:text-white"
+            >
+              Excavator EC300D
+            </h3>
+            <div class="mb-6 grid grid-cols-3 gap-4 text-[11px]">
+              <div>
+                <p class="font-medium uppercase text-slate-400">Assembly Weight</p>
+                <p class="font-bold text-slate-700 dark:text-slate-200">3,780 kg</p>
+              </div>
+              <div>
+                <p class="font-medium uppercase text-slate-400">Gross Power</p>
+                <p class="font-bold text-slate-700 dark:text-slate-200">185 KW</p>
+              </div>
+              <div>
+                <p class="font-medium uppercase text-slate-400">Max Speed</p>
+                <p class="font-bold text-slate-700 dark:text-slate-200">50 km/h</p>
+              </div>
+              <div>
+                <p class="font-medium uppercase text-slate-400">Engine</p>
+                <p class="font-bold text-slate-700 dark:text-slate-200">BN455</p>
+              </div>
+              <div>
+                <p class="font-medium uppercase text-slate-400">Hours</p>
+                <p class="font-bold text-slate-700 dark:text-slate-200">6,839</p>
+              </div>
+              <div>
+                <p class="font-medium uppercase text-slate-400">Location</p>
+                <p class="font-bold text-slate-700 dark:text-slate-200">Ohio</p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="flex items-center justify-between border-t border-slate-100 bg-slate-50 p-6 dark:border-slate-800 dark:bg-slate-800/50"
+          >
+            <div>
+              <p class="text-[10px] font-bold uppercase text-slate-400">Status</p>
+              <p class="text-xl font-bold text-primary">Sold</p>
+            </div>
+            <button
+              class="rounded-3xl bg-primary px-5 py-2 text-xs font-bold uppercase text-white transition-colors hover:bg-orange-600"
+            >
+              View More
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="mt-16 text-center">
+        <button
+          class="group mx-auto flex items-center gap-2 rounded-full bg-primary px-8 py-4 font-bold uppercase text-white shadow-xl shadow-primary/20 transition-all hover:bg-[#1e293b]"
+        >
+          View Equipment's
+          <i
+            class="material-icons-outlined text-md rounded-full bg-white p-1 text-primary transition-transform group-hover:translate-x-1"
+            >arrow_forward</i
+          >
+        </button>
+      </div>
+    </section>
+    <section class="bg-services relative overflow-hidden py-24 text-white">
+      <div class="relative z-10 mx-auto max-w-7xl px-4 md:px-8">
+        <div class="mb-16 text-center">
+          <p class="mb-2 text-xs font-bold uppercase tracking-widest text-primary">Services</p>
+          <h2 class="mx-auto max-w-2xl font-display text-4xl font-bold uppercase text-white">
+            Industry Leader In Construction Equipment Supply
+          </h2>
+          <div class="mx-auto my-4 h-1 w-16 bg-primary"></div>
+        </div>
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <div class="flex flex-col items-center space-y-4 rounded-3xl bg-white p-8 text-center">
+            <img src="images/buy.svg" alt="" />
+            <h3 class="font-display text-xl font-bold uppercase text-brand-dark">Buy</h3>
+            <p class="text-sm text-slate-600">
+              We buy heavy equipment &amp; trucks, one piece to 100+.
+            </p>
+            <button
+              class="rounded-3xl bg-brand-black px-6 py-2 text-xs font-bold uppercase text-white transition-colors hover:bg-primary"
+            >
+              Learn More
+            </button>
+          </div>
+          <div class="flex flex-col items-center space-y-4 rounded-3xl bg-white p-8 text-center">
+            <img src="images/cargo-consignment.svg" alt="" />
+            <h3 class="font-display text-xl font-bold uppercase text-brand-dark">Consignment</h3>
+            <p class="text-sm text-slate-600">
+              Can't come to agreement on a purchase, we can help. We sell equipment on consignment.
+            </p>
+            <button
+              class="rounded-3xl bg-brand-black px-6 py-2 text-xs font-bold uppercase text-white transition-colors hover:bg-primary"
+            >
+              Learn More
+            </button>
+          </div>
+          <div class="flex flex-col items-center space-y-4 rounded-3xl bg-white p-8 text-center">
+            <img src="images/auction.svg" alt="" />
+            <h3 class="font-display text-xl font-bold uppercase text-brand-dark">Auction</h3>
+            <p class="text-sm text-slate-600">
+              Our online auctions provide an effective alternative to sell your used heavy
+              equipment.
+            </p>
+            <button
+              class="rounded-3xl bg-brand-black px-6 py-2 text-xs font-bold uppercase text-white transition-colors hover:bg-primary"
+            >
+              Learn More
+            </button>
+          </div>
+          <div class="flex flex-col items-center space-y-4 rounded-3xl bg-white p-8 text-center">
+            <img src="images/locator 1.svg" alt="" />
+
+            <h3 class="font-display text-xl font-bold uppercase text-brand-dark">EQ-Locators</h3>
+            <p class="text-sm text-slate-600">
+              With our vast network we can help locate any equipment not currently in stock.
+            </p>
+            <button
+              class="rounded-3xl bg-brand-black px-6 py-2 text-xs font-bold uppercase text-white transition-colors hover:bg-primary"
+            >
+              Learn More
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="overflow-hidden bg-white py-24 dark:bg-background-dark">
+      <div class="mx-auto max-w-4xl px-4 text-center">
+        <p class="mb-2 text-xs font-bold uppercase tracking-widest text-primary">Testimonials</p>
+        <h2 class="font-display text-4xl font-bold uppercase text-brand-dark dark:text-white">
+          What Customers Say About Us
+        </h2>
+        <div class="mx-auto my-4 h-1 w-16 bg-primary"></div>
+
+        <!-- Testimonials Carousel -->
+        <div class="relative mt-16">
+          <div id="testimonialCarousel" class="space-y-8 transition-all duration-500">
+            <!-- Testimonial 1 -->
+            <div class="testimonial-slide opacity-100 transition-opacity duration-500">
+              <div class="flex w-full items-center justify-center">
+                <img src="images/quoat.svg" alt="Quote Icon" />
+              </div>
+              <p
+                class="mt-6 text-lg italic leading-relaxed text-slate-600 dark:text-slate-400 sm:text-xl md:text-2xl"
+              >
+                We strive for a complete life-cycle approach in all we do to improve the use of the
+                planet's resources. Together with our suppliers and other partners, we are
+                accelerating a step change toward circularity, rethinking existing production and
+                consumption patterns.
+              </p>
+              <div class="mt-12 flex flex-col items-center">
+                <img
+                  alt="Adam Hoffman Profile"
+                  class="h-16 w-16 rounded-full border-4 border-slate-100 object-cover dark:border-slate-800"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCooN_bIrVG49K7h-6o1WsGmYsaGDYgQTak3PZEyGgzBqC-hKQJtCKilb6NN1bUYH21CldeleLpQVwOYK8KD1MeRzc7RpFgpKMTpVnfCh16Vzg9Bi7ahiOF7x7aHrpolCdDjS56QhPZmK7NVPcM-riuCHT-loBUkWxkBESedahlXqsUHxUtekIooHjsc5Rvhb6zQQ1zzDpxOvt6M73hCt7r4lhVEJ1jOkigy3WigfJ1q5Fd9n-73k2Kcn0oerYSYxLFHzUedEpXxvnm"
+                />
+                <p class="mt-4 font-bold text-slate-800 dark:text-white">Adam Hoffman</p>
+                <p class="text-xs font-semibold uppercase tracking-widest text-slate-400">
+                  CEO OF CONSTRUCTION
+                </p>
+              </div>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div class="testimonial-slide hidden opacity-0 transition-opacity duration-500">
+              <div class="flex w-full items-center justify-center">
+                <img src="images/quoat.svg" alt="Quote Icon" />
+              </div>
+              <p
+                class="mt-6 text-lg italic leading-relaxed text-slate-600 dark:text-slate-400 sm:text-xl md:text-2xl"
+              >
+                Mideast Equipment has been instrumental in helping us scale our operations. Their
+                professionalism and extensive network made finding the right equipment seamless.
+                Highly recommended for any construction company looking to grow.
+              </p>
+              <div class="mt-12 flex flex-col items-center">
+                <img
+                  alt="Sarah Johnson Profile"
+                  class="h-16 w-16 rounded-full border-4 border-slate-100 object-cover dark:border-slate-800"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCooN_bIrVG49K7h-6o1WsGmYsaGDYgQTak3PZEyGgzBqC-hKQJtCKilb6NN1bUYH21CldeleLpQVwOYK8KD1MeRzc7RpFgpKMTpVnfCh16Vzg9Bi7ahiOF7x7aHrpolCdDjS56QhPZmK7NVPcM-riuCHT-loBUkWxkBESedahlXqsUHxUtekIooHjsc5Rvhb6zQQ1zzDpxOvt6M73hCt7r4lhVEJ1jOkigy3WigfJ1q5Fd9n-73k2Kcn0oerYSYxLFHzUedEpXxvnm"
+                />
+                <p class="mt-4 font-bold text-slate-800 dark:text-white">Sarah Johnson</p>
+                <p class="text-xs font-semibold uppercase tracking-widest text-slate-400">
+                  PROJECT MANAGER
+                </p>
+              </div>
+            </div>
+
+            <!-- Testimonial 3 -->
+            <div class="testimonial-slide hidden opacity-0 transition-opacity duration-500">
+              <div class="flex w-full items-center justify-center">
+                <img src="images/quoat.svg" alt="Quote Icon" />
+              </div>
+              <p
+                class="mt-6 text-lg italic leading-relaxed text-slate-600 dark:text-slate-400 sm:text-xl md:text-2xl"
+              >
+                Best equipment supplier in the northeast. Their team is knowledgeable, responsive,
+                and committed to customer satisfaction. We've purchased multiple pieces of equipment
+                from them and never had an issue.
+              </p>
+              <div class="mt-12 flex flex-col items-center">
+                <img
+                  alt="Mike Rodriguez Profile"
+                  class="h-16 w-16 rounded-full border-4 border-slate-100 object-cover dark:border-slate-800"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCooN_bIrVG49K7h-6o1WsGmYsaGDYgQTak3PZEyGgzBqC-hKQJtCKilb6NN1bUYH21CldeleLpQVwOYK8KD1MeRzc7RpFgpKMTpVnfCh16Vzg9Bi7ahiOF7x7aHrpolCdDjS56QhPZmK7NVPcM-riuCHT-loBUkWxkBESedahlXqsUHxUtekIooHjsc5Rvhb6zQQ1zzDpxOvt6M73hCt7r4lhVEJ1jOkigy3WigfJ1q5Fd9n-73k2Kcn0oerYSYxLFHzUedEpXxvnm"
+                />
+                <p class="mt-4 font-bold text-slate-800 dark:text-white">Mike Rodriguez</p>
+                <p class="text-xs font-semibold uppercase tracking-widest text-slate-400">
+                  CONSTRUCTION COMPANY OWNER
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Navigation Controls -->
+          <div class="mt-12 flex flex-wrap items-center justify-center gap-4 md:gap-6">
+            <button id="prevBtn" class="p-2 text-slate-300 transition-colors hover:text-primary">
+              <i class="material-icons-outlined">chevron_left</i>
+              <span class="ml-1 hidden sm:inline">Prev</span>
+            </button>
+            <div class="flex gap-2">
+              <button
+                class="dot-indicator h-2 w-2 rounded-full bg-primary transition-all"
+                data-slide="0"
+              ></button>
+              <button
+                class="dot-indicator h-2 w-2 rounded-full bg-slate-300 transition-all dark:bg-slate-600"
+                data-slide="1"
+              ></button>
+              <button
+                class="dot-indicator h-2 w-2 rounded-full bg-slate-300 transition-all dark:bg-slate-600"
+                data-slide="2"
+              ></button>
+            </div>
+            <button id="nextBtn" class="p-2 text-slate-300 transition-colors hover:text-primary">
+              <span class="mr-1 hidden sm:inline">Next</span>
+              <i class="material-icons-outlined">chevron_right</i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="border-t border-slate-800 bg-black pb-10 pt-20 text-white">
+      <div
+        class="mx-auto mb-16 grid max-w-7xl grid-cols-1 gap-12 px-4 md:grid-cols-2 md:px-8 lg:grid-cols-4"
+      >
+        <div class="space-y-6">
+          <div class="flex items-center gap-2">
+            <img src="images/mideast-logo.png" alt="" />
+          </div>
+          <p class="text-sm leading-relaxed text-slate-400">
+            Our mission is to provide honest, professional services to our customers in the heavy
+            equipment industry. We take pride in our reputation as an ethical and reputable partner
+            for contractors and dealers.
+          </p>
+        </div>
+        <div>
+          <h4 class="mb-6 border-l-4 border-primary pl-3 font-display text-lg font-bold uppercase">
+            About Company
+          </h4>
+          <ul class="space-y-3 text-sm text-slate-400">
+            <li><a class="transition-colors hover:text-primary" href="#">Buy</a></li>
+            <li><a class="transition-colors hover:text-primary" href="sell.html">SELL</a></li>
+            <li><a class="transition-colors hover:text-primary" href="#">About Us</a></li>
+            <li><a class="transition-colors hover:text-primary" href="#">Contact Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="mb-6 border-l-4 border-primary pl-3 font-display text-lg font-bold uppercase">
+            Our Network
+          </h4>
+          <ul class="space-y-3 text-sm text-slate-400">
+            <li><a class="transition-colors hover:text-primary" href="#">Facebook</a></li>
+            <li><a class="transition-colors hover:text-primary" href="#">Behance</a></li>
+            <li><a class="transition-colors hover:text-primary" href="#">Linkedin</a></li>
+            <li><a class="transition-colors hover:text-primary" href="#">Twitter</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="mb-6 border-l-4 border-primary pl-3 font-display text-lg font-bold uppercase">
+            Contact Info
+          </h4>
+          <div class="space-y-4 text-sm">
+            <div>
+              <p class="text-xs text-slate-400">Need help? Talk to an Expert</p>
+              <p class="text-lg font-bold text-primary">860-222-3393</p>
+            </div>
+            <p class="text-slate-400">50 East Dudley Town Road Bloomfield, CT 06002</p>
+            <p class="text-slate-400">auctions@mideastequip.com</p>
+          </div>
+        </div>
+      </div>
+      <div
+        class="mx-auto max-w-7xl border-t border-slate-800 px-4 pt-10 text-center md:px-8 md:text-left"
+      >
+        <div class="flex flex-col items-center justify-between gap-6 md:flex-row">
+          <div class="flex gap-6 text-xs font-semibold text-slate-500">
+            <a class="transition-colors hover:text-white" href="#">Terms of Use</a>
+            <a class="transition-colors hover:text-white" href="#">Policy Privacy</a>
+            <a class="transition-colors hover:text-white" href="#">Contact Us</a>
+          </div>
+          <p class="text-xs text-slate-500">
+            Copyright © Mideast Equipment Supply 2026. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Initialize AOS (Animate On Scroll)
+      AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true,
+        offset: 50,
+      });
+
+      // Mobile Menu Toggle
+      const menuToggle = document.getElementById('menuToggle');
+      const mobileMenu = document.getElementById('mobileMenu');
+
+      menuToggle.addEventListener('click', () => {
+        const isOpen = mobileMenu.classList.contains('hidden');
+        if (isOpen) {
+          mobileMenu.classList.remove('hidden');
+          setTimeout(() => {
+            mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
+          }, 0);
+        } else {
+          mobileMenu.style.maxHeight = '0px';
+          setTimeout(() => {
+            mobileMenu.classList.add('hidden');
+          }, 300);
+        }
+      });
+
+      // Close menu when a link is clicked
+      const mobileLinks = mobileMenu.querySelectorAll('a');
+      mobileLinks.forEach((link) => {
+        link.addEventListener('click', () => {
+          mobileMenu.style.maxHeight = '0px';
+          setTimeout(() => {
+            mobileMenu.classList.add('hidden');
+          }, 300);
+        });
+      });
+
+      // Testimonials Carousel
+      let currentSlide = 0;
+      const slides = document.querySelectorAll('.testimonial-slide');
+      const dots = document.querySelectorAll('.dot-indicator');
+      const totalSlides = slides.length;
+
+      function showSlide(n) {
+        // Hide all slides
+        slides.forEach((slide) => {
+          slide.classList.add('opacity-0', 'hidden');
+          slide.classList.remove('opacity-100');
+        });
+
+        // Show current slide
+        slides[n].classList.remove('opacity-0', 'hidden');
+        slides[n].classList.add('opacity-100');
+
+        // Update dots
+        dots.forEach((dot, index) => {
+          if (index === n) {
+            dot.classList.add('bg-primary');
+            dot.classList.remove('bg-slate-300', 'dark:bg-slate-600');
+          } else {
+            dot.classList.remove('bg-primary');
+            dot.classList.add('bg-slate-300', 'dark:bg-slate-600');
+          }
+        });
+      }
+
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        showSlide(currentSlide);
+      }
+
+      function prevSlide() {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        showSlide(currentSlide);
+      }
+
+      // Add event listeners to buttons
+      document.getElementById('nextBtn').addEventListener('click', nextSlide);
+      document.getElementById('prevBtn').addEventListener('click', prevSlide);
+
+      // Add event listeners to dots
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          currentSlide = index;
+          showSlide(currentSlide);
+        });
+      });
+
+      // Auto-advance carousel every 8 seconds
+      setInterval(nextSlide, 8000);
+
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start',
+            });
+          }
+        });
+      });
+
+      // Add animation to elements on scroll
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px',
+      };
+
+      const observer = new IntersectionObserver(function (entries) {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.animation = 'slideInUp 0.8s ease-out forwards';
+          }
+        });
+      }, observerOptions);
+
+      // Observe all cards and items
+      document.querySelectorAll('.group, .bg-white').forEach((el) => {
+        observer.observe(el);
+      });
+    </script>
+  </body>
+</html>
