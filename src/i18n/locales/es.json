@@ -265,7 +265,8 @@
       "verifiedListing": "Listado Verificado",
       "securePayment": "Pago Seguro",
       "includedTaxes": "Impuestos y Revisión Incluidos",
-      "savingsBadge": "AHORRA $10,000"
+      "savingsBadge": "AHORRA $10,000",
+      "instantSavings":"Ahorros Instantáneos"
     },
     "breadcrumb": {
       "home": "Inicio",
@@ -284,6 +285,9 @@
     "applyFilters": "APLICAR FILTROS",
     "showing": "Mostrando",
     "resultsCount": "de {{total}} Resultados",
+    "clearDate":"Borrar fecha",
+    "error":"No se pudo cargar el equipo. Inténtalo de nuevo más tarde.",
+    "empty":"No se encontró ningún equipo. ¡Vuelva más tarde!",
     "filters": {
       "auctionDate": "Fecha de Subasta",
       "category": "Categoría",
@@ -293,10 +297,33 @@
       "currentBid": "Oferta Actual"
     }
   },
+   "auction":{
+      "title":"Subasta",
+      "searchAuctions":"Buscar subastas",
+      "location":"Ubicación",
+      "search":"buscar",
+      "upcoming":"próximo",
+      "past":"Pasado",
+      "proxibidBidding": "Licitación Proxibid",
+      "equipmentfactsBidding": "Licitación Equipmentfacts",
+      "auctionDuration":"Duración de la subasta",
+      "starting price":"precio inicial",
+      "bids":"ofertas",
+      "soldFor":"vendido por"
+  },
   "sell": {
     "title": "VENDER Inventario",
     "subtitle": "Vender tu equipo usado es fácil.",
+    "card":{
+      "card1":"Valoración gratuita de equipos con valores proyectados de venta al público y de subasta.",
+      "card2":"Comercializaremos + venderemos su equipo.",
+      "card3":"Te pagan.",
+      "card1OR":"Te hacemos una oferta.",
+      "card2OR":"Verificamos tu equipo",
+      "card3OR":"Te pagan."
+    },
     "getStarted": "¡Comienza a vender tu equipo con Mideast hoy!",
+    "completeForm":"Complete el formulario a continuación o llámenos al",
     "steps": {
       "basicInfo": "Información Básica",
       "details": "Detalles",
@@ -311,7 +338,111 @@
       "equipmentTitle": "Título del Equipo",
       "category": "Categoría",
       "description": "Descripción",
-      "selectCategory": "Seleccionar Categoría"
+      "selectCategory": "Seleccionar Categoría",
+      "details":{
+        "title":"Detalles del equipo",
+        "basic":{
+        "title":"Detalles básicos",
+        "year":"Año",
+        "make":"Marca",
+        "model":"Modelo",
+        "manufacturer":"Fabricante",
+        "engineHours":"Horas del motor",
+        "mileage":"Kilometraje"
+      },
+      "general":{
+        "title":"Especificaciones generales",
+        "transmission":"Transmisión",
+        "engineType":"Tipo de motor",
+        "grossPower":"potencia bruta",
+        "operatingWeight":"Peso operativo",
+        "fuelType":"Tipo de combustible",
+        "cabType":"Tipo de cabina",
+        "tireTrackSize":"Tamaño de neumáticos/pista",
+        "suspensionType":"Tipo de suspensión",
+        "tireTrackWear":"Desgaste de neumáticos/pista"
+      },
+      "condition": {
+        "title": "Resumen de la Condición",
+        "overall": "Condición General",
+        "exterior": "Color Exterior",
+        "interior": "Color Interior",
+        "jumpStart": "Requiere Arranque con Cables",
+        "batteriesHoldCharge": "Las Baterías Mantienen la Carga",
+        "parkingBrake": "El Freno de Estacionamiento Funciona"
+      },
+      "engine": {
+        "title": "Condición del Motor",
+        "overall": "Condición General",
+        "oilLevel": "¿Nivel de Aceite Correcto?",
+        "anyLeaks": "¿Hay Fugas?",
+        "coolantLevel": "Nivel de Refrigerante",
+        "smokeColor": "Color del Humo",
+        "engineNoise": "Ruido del Motor",
+        "coldStartQuality": "Calidad de Arranque en Frío",
+        "checkEngineLight": "Luz de Verificación del Motor"
+      },
+      "hydraulics": {
+        "title":"Hidráulica",
+        "hydraulicPump": "Condición de la Bomba Hidráulica",
+        "cylinderLeaks": "Fugas en los Cilindros",
+        "hoseCondition": "Condición de las Mangueras",
+        "hydraulicResponse": "Respuesta del Sistema Hidráulico",
+        "hydraulicDamage": "Daños en el Sistema Hidráulico"
+      },
+      "cabElectronics": {
+        "title": "Cabina y Electrónica",
+        "dashboardFunctional": "Tablero Funcional",
+        "acHeater": "Aire Acondicionado/Calefacción Funcionando",
+        "displayErrors": "Errores en la Pantalla",
+        "seatCondition": "Condición del Asiento",
+        "controlsWorking": "Controles Funcionando",
+        "lightsWorking": "Luces Funcionando",
+        "sensorsWorking": "Sensores Funcionando"
+      }
+    },
+    "conditionCheckList": {
+      "title": "Lista de Verificación de Condición",
+      "item": "Elemento",
+      "status": "Estado",
+      "photosVideos": "Fotos/Videos",
+      "imageUpload": {
+        "clickHere": "Haz clic aquí",
+        "toUpload": " para subir tu archivo o arrastrarlo.",
+        "formatSupport": "Formatos compatibles: SVG, JPG, MP4 (10 MB cada uno)"
+      },
+      "exteriorLabel": "Exterior",
+      "engineLabel": "Motor",
+      "hydraulicsLabel": "Hidráulicos",
+      "underCarriageLabel": "Tren de Rodaje",
+      "functionalTestLabel": "Prueba Funcional",
+      "exterior": {
+        "title": "Condición Exterior",
+        "bodyPanels": "Paneles de la Carrocería",
+        "glassMirrors": "Vidrios y Espejos",
+        "lightsSignals": "Luces y Señales"
+      },
+      "engine": {
+        "title": "Condición del Motor",
+        "engineBlock": "Bloque del Motor",
+        "transmission": "Transmisión"
+      },
+      "hydraulics": {
+        "title": "Condición del Sistema Hidráulico",
+        "hydraulicPump": "Bomba Hidráulica",
+        "cylinders": "Cilindros"
+      },
+      "underCarriage": {
+        "title": "Tren de Rodaje",
+        "tracksWheels": "Orugas/Ruedas",
+        "suspension": "Suspensión"
+      },
+      "functionalTest": {
+        "title": "Prueba Funcional",
+        "engineStart": "Arranque del Motor",
+        "operationTest": "Prueba de Operación"
+      }
+    }
     },
     "stepDescriptions": {
       "step1": "Proporciona información básica sobre tu equipo",
@@ -321,6 +452,10 @@
       "step5": "Información adicional",
       "step6": "Establece tu precio",
       "step7": "Revisa y envía"
+    },
+    "breadCrumbs":{
+      "home":"INICIO",
+      "sellInventory":"Vender inventario"
     }
   },
   "aboutUs": {
@@ -329,7 +464,19 @@
   },
   "contactUs": {
     "title": "Contáctenos",
-    "comingSoon": "El contenido de la página Contáctenos estará disponible pronto..."
+    "comingSoon": "El contenido de la página Contáctenos estará disponible pronto...",
+    "midEast":"MidEast",
+    "equipmentSupply":"Suministro de equipos",
+    "subtitle":"Desde 2004, Mideast Equipment Supply ha sido un socio global confiable para la compra y venta de equipos pesados.",
+    "needHelp":"¿Necesitas ayuda? Habla con un Experto",
+    "address":"DIRECCIÓN",
+    "email":"Correo Electrónico",
+    "getBack":"Y nos pondremos en contacto con usted.",
+    "info":"Déjanos tu información",
+    "breadCrumbs":{
+      "home":"Inicio",
+      "contact":"Contacto"
+    }
   },
   "footer": {
     "aboutCompany": "Sobre la Compañía",

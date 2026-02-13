@@ -3,6 +3,7 @@ import type { SellFormData } from "../../types/home";
 import { TextInput } from "./TextInput";
 import { SelectInput } from "./SelectInput";
 import RadioGroup from "./RadioInput";
+import { useTranslation } from "../../i18n";
 
 interface Option {
     id: number;
@@ -26,25 +27,26 @@ interface DetailsProps {
 }
 
 const Details = ({ formData, handleChange, options }: DetailsProps) => {
+    const {t}=useTranslation();
     const [wear, setWear] = useState('39');
 
     return (
         <div>
             <h3 className="mb-8 text-xl font-bold uppercase tracking-tight dark:text-slate-300">
-                Equipment Details
+                {t('sell.form.details.title')}
             </h3>
 
             <div className="space-y-12">
                 {/* BASIC DETAILS */}
                 <section className="sell-details-form">
                     <h4 className="mb-6 border-b border-slate-200 pb-3 text-xl font-bold uppercase tracking-wider text-slate-900 dark:border-slate-700 dark:text-slate-300">
-                        Basic Details
+                        {t('sell.form.details.basic.title')}
                     </h4>
 
                     <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
 
                         <TextInput
-                            label="Year"
+                            label={t('sell.form.details.basic.year')}
                             name="year"
                             placeholder="e.g., 2020"
                             value={formData.year || ""}
@@ -53,7 +55,7 @@ const Details = ({ formData, handleChange, options }: DetailsProps) => {
 
 
                         <TextInput
-                            label="Make"
+                            label={t('sell.form.details.basic.make')}
                             name="make"
                             placeholder="Caterpillar"
                             value={formData.make || ""}
@@ -61,7 +63,7 @@ const Details = ({ formData, handleChange, options }: DetailsProps) => {
                         />
 
                         <TextInput
-                            label="Model"
+                            label={t('sell.form.details.basic.model')}
                             name="model"
                             placeholder="e.g., 320D"
                             value={formData.model || ""}
@@ -69,7 +71,7 @@ const Details = ({ formData, handleChange, options }: DetailsProps) => {
                         />
 
                         <TextInput
-                            label="Manufacturer"
+                            label={t('sell.form.details.basic.manufacturer')}
                             name="manufacturer"
                             placeholder="e.g., Caterpillar Inc"
                             value={formData.manufacturer || ""}
@@ -78,7 +80,7 @@ const Details = ({ formData, handleChange, options }: DetailsProps) => {
 
 
                         <TextInput
-                            label="Engine Hours"
+                            label={t('sell.form.details.basic.engineHours')}
                             name="engineHours"
                             placeholder="e.g., 4,750"
                             value={formData.engineHours || ""}
@@ -87,7 +89,7 @@ const Details = ({ formData, handleChange, options }: DetailsProps) => {
 
 
                         <TextInput
-                            label="Mileage"
+                            label={t('sell.form.details.basic.mileage')}
                             name="mileage"
                             placeholder="e.g.,12000"
                             value={formData.mileage || ""}
@@ -100,7 +102,7 @@ const Details = ({ formData, handleChange, options }: DetailsProps) => {
                 {/* GENERAL SPECIFICATIONS */}
                 <section className="sell-details-form">
                    <h4 className="mb-6 border-b border-slate-200 pb-3 text-xl font-bold uppercase tracking-wider text-slate-900 dark:border-slate-700 dark:text-slate-300">
-                        General Specifications
+                        {t('sell.form.details.general.title')}
                     </h4>
 
                     <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -108,7 +110,8 @@ const Details = ({ formData, handleChange, options }: DetailsProps) => {
                         {/* Transmission */}
 
                         <SelectInput
-                            label="Transmission"
+                            placeholder="eg.,hydrostatic"
+                            label={t('sell.form.details.general.transmission')}
                             name="transmission"
                             value={formData.transmission}
                             options={options.transmission}
@@ -117,7 +120,8 @@ const Details = ({ formData, handleChange, options }: DetailsProps) => {
                         {/* Engine Type */}
 
                         <SelectInput
-                            label="Engine Type"
+                            placeholder="e.g., CAT c4.4 ACERT"
+                            label={t('sell.form.details.general.engineType')}
                             name="engineType"
                             value={formData.engineType}
                             options={options.engineType}
@@ -127,10 +131,10 @@ const Details = ({ formData, handleChange, options }: DetailsProps) => {
                         {/* Gross Power */}
 
                         <TextInput
-                            label="Gross Year"
+                            label={t('sell.form.details.general.grossPower')}
                             name="grossYear"
-                            placeholder="e.g., 320"
-                            value={formData.grossYear || ""}
+                            placeholder="e.g., 121"
+                            value={formData.grossPower || ""}
                             onChange={handleChange}
                         />
 
@@ -138,15 +142,16 @@ const Details = ({ formData, handleChange, options }: DetailsProps) => {
                         {/* Operating Weight */}
 
                         <TextInput
-                            label="Operating Weight"
+                            label={t('sell.form.details.general.operatingWeight')}
                             name="operatingWeight"
-                            placeholder="e.g., 52000"
+                            placeholder="e.g., 22000"
                             value={formData.operatingWeight || ""}
                             onChange={handleChange}
                         />
                         {/* Fuel Type */}
                         <SelectInput
-                            label="Fuel Type"
+                            placeholder="e.g., Diesel"
+                            label={t('sell.form.details.general.fuelType')}
                             name="fuelType"
                             value={formData.fuelType}
                             options={options.fuelType}
@@ -155,7 +160,8 @@ const Details = ({ formData, handleChange, options }: DetailsProps) => {
 
                         {/* Cab Type */}
                         <SelectInput
-                            label="Cab Type"
+                            placeholder="e.g., Enclosed ROPS/FOPS"
+                            label={t('sell.form.details.general.cabType')}
                             name="cabType"
                             value={formData.cabType}
                             options={options.cabType}
@@ -166,15 +172,15 @@ const Details = ({ formData, handleChange, options }: DetailsProps) => {
                         {/* Tire/Track Size */}
 
                         <TextInput
-                            label="Tire/Track Size"
+                            label={t('sell.form.details.general.tireTrackSize')}
                             name="tireTrackSize"
-                            placeholder="e.g., 320mm"
+                            placeholder="e.g., 600mm"
                             value={formData.tireTrackSize || ""}
                             onChange={handleChange}
                         />
                         {/* Suspension Type */}
                         <RadioGroup
-                            label="Suspension Type"
+                            label={t('sell.form.details.general.suspensionType')}
                             name="suspension"
                             value={formData.suspension || ""}
                             options={options.suspension}
@@ -189,7 +195,7 @@ const Details = ({ formData, handleChange, options }: DetailsProps) => {
                         {/* Top Row */}
                         <div className="flex items-center justify-between mb-2">
                             <label className="text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300">
-                                Tire/Track Wear
+                                {t('sell.form.details.general.tireTrackWear')}
                             </label>
                             <span className="text-orange-500 font-semibold">
                                 {wear}%
@@ -237,7 +243,7 @@ const Details = ({ formData, handleChange, options }: DetailsProps) => {
                 {/* Condition OverView */}
                  <section className="sell-details-form">
                    <h4 className="mb-6 border-b border-slate-200 pb-3 text-xl font-bold uppercase tracking-wider text-slate-900 dark:border-slate-700 dark:text-slate-300">
-                        Condition Overview
+                        {t('sell.form.details.condition.title')}
                     </h4>
 
                     <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -245,7 +251,8 @@ const Details = ({ formData, handleChange, options }: DetailsProps) => {
                         {/* Overall Condition */}
 
                         <SelectInput
-                            label="Overall Condition"
+                            placeholder="e.g., Good"
+                            label={t('sell.form.details.condition.overall')}
                             name="overallCondition"
                             value={formData.overallCondition}
                             options={options.overAllCondition}
@@ -254,7 +261,8 @@ const Details = ({ formData, handleChange, options }: DetailsProps) => {
                         {/* Exterior Color */}
 
                         <SelectInput
-                            label="Exterior Color"
+                            placeholder="e.g., CAT yellow"
+                            label={t('sell.form.details.condition.exterior')}
                             name="exteriorColor"
                             value={formData.exteriorColor}
                             options={options.exteriorColor}
@@ -264,7 +272,8 @@ const Details = ({ formData, handleChange, options }: DetailsProps) => {
                         {/* Interior color */}
 
                          <SelectInput
-                            label="Interior Color"
+                            placeholder="e.g., Black/Grey"
+                            label={t('sell.form.details.condition.interior')}
                             name="interiorColor"
                             value={formData.interiorColor}
                             options={options.exteriorColor}
@@ -275,7 +284,7 @@ const Details = ({ formData, handleChange, options }: DetailsProps) => {
                         {/* Jump start required*/}
 
                          <RadioGroup
-                            label="Jump Start Required"
+                            label={t('sell.form.details.condition.jumpStart')}
                             name="jumpStartRequired"
                             value={formData.jumpStartRequired || ""}
                             options={options.yesNo}
@@ -284,7 +293,7 @@ const Details = ({ formData, handleChange, options }: DetailsProps) => {
 
                         {/* Batteries Hold charge */}
                          <RadioGroup
-                            label="Batteries Hold Charge"
+                            label={t('sell.form.details.condition.batteriesHoldCharge')}
                             name="batteriesHoldCharge"
                             value={formData.batteriesHoldCharge || ""}
                             options={options.yesNo}
@@ -294,7 +303,7 @@ const Details = ({ formData, handleChange, options }: DetailsProps) => {
 
                         {/* Parking Brake Works*/}
                          <RadioGroup
-                            label="Parking Brake Wroks"
+                            label={t('sell.form.details.condition.parkingBrake')}
                             name="parkingBrakeWorks"
                             value={formData.parkingBrakeWorks || ""}
                             options={options.yesNo}
@@ -308,7 +317,7 @@ const Details = ({ formData, handleChange, options }: DetailsProps) => {
                 {/*Engine Condition */}
                 <section className="sell-details-form">
                    <h4 className="mb-6 border-b border-slate-200 pb-3 text-xl font-bold uppercase tracking-wider text-slate-900 dark:border-slate-700 dark:text-slate-300">
-                        Engine Condition
+                        {t('sell.form.details.engine.title')}
                     </h4>
 
                     <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -316,7 +325,8 @@ const Details = ({ formData, handleChange, options }: DetailsProps) => {
                         {/* Overall Condition */}
 
                         <SelectInput
-                            label="Overall Condition"
+                            placeholder="e.g., Clean"
+                            label={t('sell.form.details.engine.overall')}
                             name="engineCondition.overallCondition"
                             value={formData.engineCondition.overAllCondition}
                             options={options.overAllCondition}
@@ -325,7 +335,7 @@ const Details = ({ formData, handleChange, options }: DetailsProps) => {
                         {/* Oil Level OK? */}
 
                         <RadioGroup
-                            label="Oil Level Ok?"
+                            label={t('sell.form.details.engine.oilLevel')}
                             name="engineCondition.oilLevelOk"
                             value={formData.engineCondition.oilLevelOk||""}
                             options={options.yesNo}
@@ -335,7 +345,7 @@ const Details = ({ formData, handleChange, options }: DetailsProps) => {
                         {/* Any Leaks? */}
 
                          <RadioGroup
-                            label="Any Leaks?"
+                            label={t('sell.form.details.engine.anyLeaks')}
                             name="engineCondition.anyLeaks"
                             value={formData.engineCondition?.anyLeaks||""}
                             options={options.yesNo}
@@ -346,7 +356,8 @@ const Details = ({ formData, handleChange, options }: DetailsProps) => {
                         {/* Coolant level*/}
 
                          <SelectInput
-                            label="Coolant Level"
+                            placeholder="e.g., Good"
+                            label={t('sell.form.details.engine.coolantLevel')}
                             name="engineCondition.coolantLevel"
                             value={formData.engineCondition.coolantLevel || ""}
                             options={options.yesNo}
@@ -355,7 +366,8 @@ const Details = ({ formData, handleChange, options }: DetailsProps) => {
 
                         {/* Smoke Color */}
                          <SelectInput
-                            label="Smoke Color"
+                            placeholder="e.g., Black"
+                            label={t('sell.form.details.engine.smokeColor')}
                             name="engineCondition.smokeColor"
                             value={formData.engineCondition.smokeColor || ""}
                             options={options.yesNo}
@@ -365,7 +377,7 @@ const Details = ({ formData, handleChange, options }: DetailsProps) => {
 
                         {/* Engine Noise*/}
                          <RadioGroup
-                            label="Engine Noise"
+                            label={t('sell.form.details.engine.engineNoise')}
                             name="engineCondition.engineNoise"
                             value={formData.engineCondition.engineNoise || ""}
                             options={options.engineNoise}
@@ -373,7 +385,8 @@ const Details = ({ formData, handleChange, options }: DetailsProps) => {
                         />
                           {/* Cold Start Quality*/}
                         <SelectInput
-                            label="Cold Start Quality"
+                            placeholder="e.g., Black"
+                            label={t('sell.form.details.engine.coldStartQuality')}
                             name="engineCondition.coldStartQuality"
                             value={formData.engineCondition.coldStartQuality}
                             options={options.coldStartQuality}
@@ -382,7 +395,7 @@ const Details = ({ formData, handleChange, options }: DetailsProps) => {
 
                           {/* Check Engine Light*/}
                          <RadioGroup
-                            label="Check Engine Light"
+                            label={t('sell.form.details.engine.checkEngineLight')}
                             name="engineCondition.checkEngineLight"
                             value={formData.engineCondition.checkEngineLight || ""}
                             options={options.yesNo}
@@ -394,7 +407,7 @@ const Details = ({ formData, handleChange, options }: DetailsProps) => {
                  {/*Hydraulics*/}
                 <section className="sell-details-form">
                    <h4 className="mb-6 border-b border-slate-200 pb-3 text-xl font-bold uppercase tracking-wider text-slate-900 dark:border-slate-700 dark:text-slate-300">
-                        Hydraulics
+                        {t('sell.form.details.hydraulics.title')}
                     </h4>
 
                     <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -402,7 +415,8 @@ const Details = ({ formData, handleChange, options }: DetailsProps) => {
                         {/* Hydraulic Pump Conditio */}
 
                         <SelectInput
-                            label="Hydraulic Pump Condition"
+                            placeholder="e.g., Good"
+                            label={t('sell.form.details.hydraulics.hydraulicPump')}
                             name="hydraulics.hydraulicPumpCondition"
                             value={formData.hydraulics.hydraulicPumpCondition}
                             options={options.overAllCondition}
@@ -411,7 +425,7 @@ const Details = ({ formData, handleChange, options }: DetailsProps) => {
                         {/* Cylinder Leaks */}
 
                         <RadioGroup
-                            label="Cylinder Leaks"
+                            label={t('sell.form.details.hydraulics.cylinderLeaks')}
                             name="hydraulics.cylinderLeaks"
                             value={formData.hydraulics.cylinderLeaks||""}
                             options={options.yesNo}
@@ -421,7 +435,8 @@ const Details = ({ formData, handleChange, options }: DetailsProps) => {
                         {/* Hose Condition */}
 
                          <SelectInput
-                            label="Hose Condition"
+                            placeholder="e.g., Good-minor wear"
+                            label={t('sell.form.details.hydraulics.hoseCondition')}
                             name="hydraulics.hoseCondition"
                             value={formData.hydraulics?.hoseCondition||""}
                             options={options.overAllCondition}
@@ -432,7 +447,8 @@ const Details = ({ formData, handleChange, options }: DetailsProps) => {
                         {/* Hydraulic Response*/}
 
                          <SelectInput
-                            label="Hydraulic Response"
+                            placeholder="e.g., Good"
+                            label={t('sell.form.details.hydraulics.hydraulicResponse')}
                             name="hydraulics.hydraulicResponse"
                             value={formData.hydraulics.hydraulicResponse|| ""}
                             options={options.overAllCondition}
@@ -441,7 +457,7 @@ const Details = ({ formData, handleChange, options }: DetailsProps) => {
 
                         {/* Hydraulics Damage*/}
                          <RadioGroup
-                            label="Hydraulics Damage"
+                            label={t('sell.form.details.hydraulics.hydraulicDamage')}
                             name="hydraulics.hydraulicsDamage"
                             value={formData.hydraulics.hydraulicsDamage || ""}
                             options={options.yesNo}
@@ -452,7 +468,7 @@ const Details = ({ formData, handleChange, options }: DetailsProps) => {
                 {/*Cab & Electronics*/}
                 <section className="sell-details-form">
                    <h4 className="mb-6 border-b border-slate-200 pb-3 text-xl font-bold uppercase tracking-wider text-slate-900 dark:border-slate-700 dark:text-slate-300">
-                        Cab & Electronics
+                        {t('sell.form.details.cabElectronics.title')}
                     </h4>
 
                     <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -460,7 +476,7 @@ const Details = ({ formData, handleChange, options }: DetailsProps) => {
                         {/* Dashboard Functional */}
 
                         <RadioGroup
-                            label="Dashboard Functional"
+                            label={t('sell.form.details.cabElectronics.dashboardFunctional')}
                             name="cabElectronics.dashboardFunctional"
                             value={formData.cabElectronics.dashboardFunctional}
                             options={options.yesNo}
@@ -469,7 +485,7 @@ const Details = ({ formData, handleChange, options }: DetailsProps) => {
                         {/* Ac/Heater workng */}
 
                         <RadioGroup
-                            label="Ac/Heater Working"
+                            label={t('sell.form.details.cabElectronics.acHeater')}
                             name="cabElectronics.acHeaterWorking"
                             value={formData.cabElectronics.acHeaterWorking||""}
                             options={options.yesNo}
@@ -479,7 +495,7 @@ const Details = ({ formData, handleChange, options }: DetailsProps) => {
                         {/* Display Errors*/}
 
                          <RadioGroup
-                            label="Display Errors"
+                            label={t('sell.form.details.cabElectronics.displayErrors')}
                             name="cabElectronics.displayErrors"
                             value={formData.cabElectronics.displayErrors||""}
                             options={options.overAllCondition}
@@ -490,7 +506,8 @@ const Details = ({ formData, handleChange, options }: DetailsProps) => {
                         {/* Seat Condition*/}
 
                          <SelectInput
-                            label="Seat Condition"
+                            placeholder="e.g., Good-minor wear"
+                            label={t('sell.form.details.cabElectronics.seatCondition')}
                             name="cabElectronics.seatCondition"
                             value={formData.cabElectronics.seatCondition|| ""}
                             options={options.overAllCondition}
@@ -499,7 +516,7 @@ const Details = ({ formData, handleChange, options }: DetailsProps) => {
 
                         {/* Controls Working*/}
                          <RadioGroup
-                            label="Controls Working"
+                            label={t('sell.form.details.cabElectronics.controlsWorking')}
                             name="cabElectronics.controlsWorking"
                             value={formData.cabElectronics.controlsWorking || ""}
                             options={options.yesNo}
@@ -508,7 +525,7 @@ const Details = ({ formData, handleChange, options }: DetailsProps) => {
                         
                         {/* Lights Working*/}
                          <RadioGroup
-                            label="Lights Working"
+                            label={t('sell.form.details.cabElectronics.lightsWorking')}
                             name="cabElectronics.lightsWorking"
                             value={formData.cabElectronics.lightsWorking || ""}
                             options={options.yesNo}
@@ -517,7 +534,7 @@ const Details = ({ formData, handleChange, options }: DetailsProps) => {
                         
                         {/* Sensors Working*/}
                          <RadioGroup
-                            label="Sensors Working"
+                            label={t('sell.form.details.cabElectronics.sensorsWorking')}
                             name="cabElectronics.sensorsWorking"
                             value={formData.cabElectronics.sensorsWorking || ""}
                             options={options.yesNo}

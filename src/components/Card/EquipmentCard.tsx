@@ -1,11 +1,40 @@
-import { PRODUCT_BADGE_MAP, type Product } from "../../constants/DummyConstant";
+import { type Product, type ProductStatus } from "../../constants/DummyConstant";
+import { useTranslation } from "../../i18n";
 
 type Props = {
   product: Product;
 };
 
+
 export default function ProductCard({ product }: Props) {
-  const badge = PRODUCT_BADGE_MAP[product.status];
+  const { t } = useTranslation();
+
+  const getProductBadge = (status: string) => {
+    switch (status) {
+      case 'for_sale':
+        return {
+          label: t('product.status.forSale'),
+          className: 'bg-orange-400',
+        };
+
+      case 'sold':
+        return {
+          label: t('product.status.sold'),
+          className: 'bg-slate-500',
+        };
+
+      case 'auction':
+        return {
+          label: t('product.status.forAuction'),
+          className: 'bg-purple-500',
+        };
+
+      default:
+        return { label: '', className: '' };
+    }
+  };
+
+  const badge = getProductBadge(product.status);
 
   return (
     <div className="group bg-white rounded-2xl shadow-md transition-all hover:shadow-xl">
@@ -13,30 +42,30 @@ export default function ProductCard({ product }: Props) {
       {/* IMAGE AREA */}
       <div className="relative aspect-[4/3] rounded-t-2xl overflow-hidden">
 
-  {/* IMAGE (scales) */}
-  <img
-    src={product.image}
-    alt={product.title}
-    className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
-  />
+        {/* IMAGE (scales) */}
+        <img
+          src={product.image}
+          alt={product.title}
+          className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+        />
 
-  {/* BADGE — INSIDE IMAGE */}
-  <div
-    className={`absolute top-4 -left-8 rotate-[-45deg] z-20
+        {/* BADGE — INSIDE IMAGE */}
+        <div
+          className={`absolute top-4 -left-8 rotate-[-45deg] z-20
     ${badge.className}
     text-white text-[10px] font-bold px-10 py-1 uppercase shadow`}
-  >
-    {badge.label}
-  </div>
+        >
+          {badge.label}
+        </div>
 
-  {/* BOOKMARK — INSIDE IMAGE */}
-  <button className="absolute top-4 right-4 z-20 bg-black/40 text-white p-2 rounded-full backdrop-blur transition hover:bg-black/60">
-    <span className="material-symbols-outlined text-[18px]">
-      bookmark
-    </span>
-  </button>
+        {/* BOOKMARK — INSIDE IMAGE */}
+        <button className="absolute top-4 right-4 z-20 bg-black/40 text-white p-2 rounded-full backdrop-blur transition hover:bg-black/60">
+          <span className="material-symbols-outlined text-[18px]">
+            bookmark
+          </span>
+        </button>
 
-</div>
+      </div>
 
 
       {/* CONTENT */}
@@ -59,7 +88,7 @@ export default function ProductCard({ product }: Props) {
         <div className="flex justify-between items-center border-t pt-4">
           <div>
             <p className="text-[10px] text-slate-400 uppercase font-bold">
-              Total Price
+              {t('product.totalPrice')}
             </p>
             <p className="text-xl font-bold text-orange-500">
               ${product.price.toLocaleString()}
@@ -67,7 +96,7 @@ export default function ProductCard({ product }: Props) {
           </div>
 
           <button className="bg-orange-400 hover:bg-orange-500 text-white px-5 py-2 rounded-full text-xs font-bold transition">
-            View More
+            {t('product.viewMore')}
           </button>
         </div>
       </div>

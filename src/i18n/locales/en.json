@@ -264,7 +264,8 @@
       "verifiedListing": "Verified Listing",
       "securePayment": "Secure Payment",
       "includedTaxes": "Included Taxes & Checkup",
-      "savingsBadge": "SAVE $10,000"
+      "savingsBadge": "SAVE $10,000",
+      "instantSavings":"Instant Savings"
     },
     "breadcrumb": {
       "home": "Home",
@@ -283,6 +284,9 @@
     "applyFilters": "APPLY FILTERS",
     "showing": "Showing",
     "resultsCount": "of {{total}} Results",
+    "clearDate":"Clear Date",
+    "error":"Failed to load Equipment. Please try agin later.",
+    "empty":"No equipment found. Check back later!",
     "filters": {
       "auctionDate": "Auction Date",
       "category": "Category",
@@ -292,10 +296,33 @@
       "currentBid": "Current Bid"
     }
   },
+  "auction":{
+      "title":"Auction",
+      "searchAuctions":"Search Auctions",
+      "location":"Location",
+      "search":"Search",
+      "upcoming":"Upcoming",
+      "past":"Past",
+       "proxibidBidding": "Proxibid Bidding",
+      "equipmentfactsBidding": "Equipmentfacts Bidding",
+      "auctionDuration":"Auction Duration",
+      "startingPrice":"Starting Price",
+      "bids":"Bids",
+      "soldFor":"Sold For"
+  },
   "sell": {
     "title": "SELL Inventory",
     "subtitle": "Selling your used equipment is easy.",
+    "card":{
+      "card1":"Free equipment valuation with projected retail & auction values.",
+      "card2":"We'll market + sell your equipment.",
+      "card3":"You get paid.",
+      "card1OR":"We make you an offer.",
+      "card2OR":"We verify your equipment",
+      "card3OR":"You get paid."
+    },
     "getStarted": "Get started selling your equipment with Mideast today!",
+    "completeForm":"Complete the form below, or call us at",
     "steps": {
       "basicInfo": "Basic Info",
       "details": "Details",
@@ -310,7 +337,111 @@
       "equipmentTitle": "Equipment Title",
       "category": "Category",
       "description": "Description",
-      "selectCategory": "Select Category"
+      "selectCategory": "Select Category",
+      "details":{
+        "title": "Equipment Details",
+        "basic": {
+          "title": "Basic Details",
+          "year": "Year",
+          "make": "Make",
+          "model":"Model",
+          "manufacturer": "Manufacturer",
+          "engineHours": "Engine Hours",
+          "mileage": "Mileage"
+      },
+      "general":{
+        "title":"General Specifications",
+        "transmission":"Transmission",
+        "engineType":"Engine Type",
+        "grossPower":"Gross Power",
+        "operatingWeight":"Operating Weight",
+        "fuelType":"Fuel Type",
+        "cabType":"Cab Type",
+        "tireTrackSize":"Tire/Track Size",
+        "suspensionType":"Suspension Type",
+        "tireTrackWear":"Tire/Track Wear"
+      },
+      "condition":{
+        "title":"Condition Overview",
+        "overall":"OverAll Condition",
+        "exterior":"Exterior Color",
+        "interior":"Interior Color",
+        "jumpStart":"Jump Start Required",
+        "batteriesHoldCharge":"Batteries Hold Charge",
+        "parkingBrake":"Parking Brake Works"
+      },
+      "engine":{
+        "title":"Engine Condition",
+        "overall":"OverAll Condition",
+        "oilLevel":"Oil Level OK?",
+        "anyLeaks":"Any Leaks?",
+        "coolantLevel":"Coolant Level",
+        "smokeColor":"Smoke Color",
+        "engineNoise":"Engine Noise",
+        "coldStartQuality":"Cold Start Quality",
+        "checkEngineLight":"Check Engine Light"
+      },
+      "hydraulics":{
+        "title":"Hydraulics",
+        "hydraulicPump":"Hydraulic Pump Condition",
+        "cylinderLeaks":"Cylinder Leaks",
+        "hoseCondition":"Hose Condition",
+        "hydraulicResponse":"Hydraulic Response",
+        "hydraulicDamage":"Hydraulics Damage"
+      },
+      "cabElectronics":{
+        "title":"Cab & Electronics",
+        "dashboardFunctional":"Dashboard Functional",
+        "acHeater":"Ac/Heater Working",
+        "displayErrors":"Display Errors",
+        "seatCondition":"Seat Condition",
+        "controlsWorking":"Controls Working",
+        "lightsWorking":"Lights Working",
+        "sensorsWorking":"Sensors Working"
+      }
+    },
+    "conditionCheckList":{
+       "title":"Condition CheckList",
+      "item":"item",
+      "status":"status",
+      "photosVideos":"Photos/Videos",
+      "imageUpload":{
+        "clickHere":"Click here",
+        "toUpload":" to upload your file or drag.",
+        "formatSupport":"Supported Format: SVG, JPG, MP4 (10mb each)"
+      },
+      "exteriorLabel":"exterior",
+      "engineLabel":"engine",
+      "hydraulicsLabel":"hydraulics",
+      "underCarriageLabel":"under carriage",
+      "functionalTestLabel":"Functional Test Label",
+      "exterior":{
+        "title":"Exterior Condition",
+        "bodyPanels":"Body Panels",
+        "glassMirrors":"Glass Mirrors",
+        "lightsSignals":"Lights & Signals"
+      },
+       "engine":{
+        "title":"Engine Condition",
+        "engineBlock":"Engine Block",
+        "transmission":"Transmission"
+      },
+       "hydraulics":{
+        "title":"Hydraulics Condition",
+        "hydraulicPump":"Hydraulic Pump",
+        "cylinders":"Cylinders"
+      },
+      "underCarriage":{
+        "title":"UnderCarriage",
+        "tracksWheels":"Tracks/Wheels",
+        "suspension":"Suspension"
+      },
+      "functionalTest":{
+        "title":"Functional Test",
+        "engineStart":"Engine Start",
+        "operationTest":"OperationTest"
+      }
+    }
     },
     "stepDescriptions": {
       "step1": "Provide basic information about your equipment",
@@ -320,6 +451,10 @@
       "step5": "Additional information",
       "step6": "Set your price",
       "step7": "Review and submit"
+    },
+    "breadCrumbs":{
+      "home":"Home",
+      "sellInventory":"Sell Inventory"
     }
   },
   "aboutUs": {
@@ -328,7 +463,19 @@
   },
   "contactUs": {
     "title": "Contact Us",
-    "comingSoon": "Contact Us page content coming soon..."
+    "comingSoon": "Contact Us page content coming soon...",
+    "midEast":"MidEast",
+    "equipmentSupply":"Equipment Supply",
+    "subtitle":"Since 2004, Mideast Equipment Supply has been a reliable global partner for buying and selling heavy equipment.",
+    "needHelp":"Need help? Talk to an Expert",
+    "address":"address",
+    "getBack":"And we will get back to you.",
+    "info":"Leave us your Info",
+    "email":"Email",
+    "breadCrumbs":{
+      "home":"Home",
+      "contact":"contact"
+    }
   },
   "footer": {
     "aboutCompany": "About Company",

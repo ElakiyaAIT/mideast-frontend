@@ -12,6 +12,7 @@ import auctionBanner from '../../assets/images/auction-banner.png';
 // import auction16 from '../../assets/images/auct16.png';
 // import auction17 from '../../assets/images/auct17.png';
 import { useFilteredAuctions } from '../../hooks/queries/useAuction';
+import { useTranslation } from '../../i18n';
 
 // interface AuctionItem {
 //   id: number;
@@ -198,6 +199,7 @@ type AuctionFilterState={
 };
 
 const AuctionPage = (): JSX.Element => {
+  const {t}=useTranslation();
   const [activeTab, setActiveTab] = useState<string>('upcoming');
   const [draftFilters, setDraftFilters] = useState<AuctionFilterState>({
   auctionName: '',
@@ -347,7 +349,7 @@ console.log(data,'kertyuiop');
         />
         <div className="relative z-10 text-center">
           <h1 className="text-5xl font-bold text-white tracking-tight uppercase">
-            Auction
+            {t('auction.title')}
           </h1>
           <div className="mt-2 text-primary font-medium text-sm flex items-center justify-center gap-2">
             <span className="text-white">Home</span>
@@ -366,7 +368,7 @@ console.log(data,'kertyuiop');
             <div className="relative">
               <input
                 className="w-full py-3 px-4 rounded border-none focus:ring-2 focus:ring-slate-900 bg-white text-sm"
-                placeholder="Search Auctions ..."
+                placeholder={t('auction.searchAuctions')}
                 name="auctionName"
                 value={draftFilters?.auctionName}
                 onChange={handleChange}
@@ -388,7 +390,7 @@ console.log(data,'kertyuiop');
             <div className="relative">
               <input
                 className="w-full py-3 px-4 rounded border-none focus:ring-2 focus:ring-slate-900 bg-white text-sm"
-                placeholder="Locations"
+                placeholder={t('auction.location')}
                 name="location"
                 value={draftFilters?.location}
                 onChange={handleChange}
@@ -397,7 +399,7 @@ console.log(data,'kertyuiop');
             <button 
             onClick={handleSearch}
             className="bg-slate-900 text-white font-bold py-3 px-4 rounded-3xl hover:bg-slate-800 transition-all uppercase tracking-wider">
-              Search
+              {t('auction.search')}
             </button>
           </div>
         </div>
@@ -406,13 +408,11 @@ console.log(data,'kertyuiop');
       {/* Filter & Toggle Section */}
       <section className="max-w-7xl mx-auto px-4 mt-12 flex flex-col md:flex-row justify-between items-center gap-6">
         <div className="text-slate-500 dark:text-slate-400 font-medium">
-          Showing{' '}
-          <span className="text-slate-900 dark:text-white font-bold">{start}-{end}</span>{' '}
-          Of{' '}
-          <span className="text-slate-900 dark:text-white font-bold">
-               {total}
-          </span>{' '}
-          Results
+          <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
+            {t('buy.showing')} {start}-{end} {t('buy.resultsCount', {
+              total: data?.pagination?.total || 0,
+            })}
+            </h2>
         </div>
         
 
@@ -427,7 +427,8 @@ console.log(data,'kertyuiop');
                   : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'
                 }`}
             >
-              {tab}
+                    {t(`auction.${tab}`)}
+
             </button>
           ))}
         </div>
@@ -451,7 +452,7 @@ console.log(data,'kertyuiop');
                     src={item.mainImage}
                   />
                   <div className="absolute top-4 right-4 bg-slate-700/80 text-white text-[10px] font-bold px-3 py-1 rounded-xl uppercase tracking-wider backdrop-blur-sm">
-                    Upcoming
+                    {t('auction.upcoming')}
                   </div>
                   {/* <div className="grid grid-cols-2 gap-1 p-1 bg-white dark:bg-slate-800">
                     {item.thumbnails.map((thumb, idx) => (
@@ -493,10 +494,10 @@ console.log(data,'kertyuiop');
                   </div>
                   <div className="space-y-3">
                     <button className="w-full bg-primary/20 hover:bg-primary/30 text-primary font-black py-3 rounded-2xl transition-colors text-xs uppercase tracking-widest border border-primary/30">
-                      Proxibid Bidding
+                      {t('auction.proxibidBidding')}
                     </button>
                     <button className="w-full bg-primary text-white font-black py-3 rounded-2xl hover:bg-orange-500 transition-colors shadow-lg shadow-orange-500/20 text-xs uppercase tracking-widest">
-                      EquipmentFacts Bidding
+                      {t('auction.equipmentfactsBidding')}
                     </button>
                   </div>
                 </div>
@@ -520,7 +521,7 @@ console.log(data,'kertyuiop');
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       />
                       <div className="absolute top-3 right-3 bg-slate-800/80 text-white text-[10px] font-bold px-3 py-1 rounded uppercase">
-                        PAST
+                        {t('auction.past')}
                       </div>
                     </div>
                     {/* <div className="col-span-1 row-span-1 overflow-hidden">
@@ -557,20 +558,20 @@ console.log(data,'kertyuiop');
                       <span className="material-icons-outlined text-slate-900 dark:text-slate-100 text-sm">
                         schedule
                       </span>
-                      Auction Duration: {item?.duration}
+                      {t('auction.auctionDuration')}: {item?.duration}
                     </div>
                     <div className="flex items-center gap-2">
                       <span className="material-icons-outlined text-slate-900 dark:text-slate-100 text-sm">
                         sell
                       </span>
-                      Starting price:{' '}
+                      {t('auction.startingPrice')}:{' '}
                       <span className="font-bold">{item?.startingPrice}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <span className="material-icons-outlined text-slate-900 dark:text-slate-100 text-sm">
                         gavel
                       </span>
-                      Bids: <span className="font-bold">{item?.bids}</span>
+                      {t('auction.bids')}: <span className="font-bold">{item?.bids}</span>
                     </div>
                     <div className="flex items-center gap-2 col-span-2">
                       <span className="material-icons-outlined text-slate-900 dark:text-slate-100 text-sm">
@@ -581,15 +582,15 @@ console.log(data,'kertyuiop');
                   </div>
                   <div className="flex items-center justify-between pt-6 border-t border-slate-100 dark:border-slate-700">
                     <div>
-                      <p className="text-[10px] uppercase font-bold text-slate-400">
-                        SOLD FOR
+                      <p className="text-[14px] uppercase font-bold text-slate-400">
+                        {t('auction.soldFor')}
                       </p>
                       <p className="text-xl font-extrabold text-primary">
                         {item?.soldFor}
                       </p>
                     </div>
                     <button className="bg-primary/10 hover:bg-primary text-primary hover:text-white font-bold py-2.5 px-6 rounded-2xl transition-all text-sm uppercase">
-                      View More
+                      {t('common.viewMore')}
                     </button>
                   </div>
                 </div>

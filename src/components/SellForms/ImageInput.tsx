@@ -1,6 +1,7 @@
 import { useState, useRef, type ChangeEvent, type JSX } from 'react';
 import { cn } from '../../utils';
 import { Upload, X, AlertCircle } from 'lucide-react';
+import { useTranslation } from '../../i18n';
 
 interface ImagePreview {
   file: File;
@@ -30,6 +31,7 @@ export const ImageUpload = ({
   onRemove,
   disabled,
 }: ImageUploadProps): JSX.Element => {
+  const {t}=useTranslation();
   const [previews, setPreviews] = useState<ImagePreview[]>([]);
   const [dragActive, setDragActive] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -162,11 +164,11 @@ export const ImageUpload = ({
     {/* Text */}
     <div>
       <p className="text-sm font-medium text-slate-700 dark:text-slate-300">
-        <span className="text-primary font-bold">Click here</span> to upload your file or drag.
+        <span className="text-primary font-bold">{t('sell.form.conditionCheckList.imageUpload.clickHere')}</span> {t('sell.form.conditionCheckList.imageUpload.toUpload')}
       </p>
 
       <p className="mt-1 text-xs text-slate-400">
-        Supported Format: SVG, JPG, MP4 (10mb each)
+        {t('sell.form.conditionCheckList.imageUpload.formatSupport')}
       </p>
     </div>
   </div>

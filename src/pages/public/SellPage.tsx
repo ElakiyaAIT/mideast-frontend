@@ -8,6 +8,8 @@ import type { SellFormData } from '../../types/home';
 import BasicInfo from '../../components/SellForms/BasicInfoForm';
 import Details from '../../components/SellForms/DetailsForm';
 import ConditionChecklist from '../../components/SellForms/ConditionCheckListForm';
+import { useTranslation } from '../../i18n';
+import MediaForm from '../../components/SellForms/MediaForm';
 
   const dropdownOptions = {
     transmission: [
@@ -65,6 +67,7 @@ import ConditionChecklist from '../../components/SellForms/ConditionCheckListFor
     ]
   };
 const SellPage = (): JSX.Element => {
+  const {t}=useTranslation();
   const [currentStep,setCurrentStep] = useState<number>(0);
 const formRef = useRef<HTMLDivElement>(null);
 
@@ -78,7 +81,7 @@ const formRef = useRef<HTMLDivElement>(null);
   manufacturer: '',
   engineHours:'',
   mileage:'',
-  grossYear:'',
+  grossPower:'',
   operatingWeight:'',
   tireTrackSize:'',
   suspension:'',
@@ -151,12 +154,27 @@ hydraulics:{
     operationTest:"",
     operationTestImages:[]
   }
+ },
+  media:{
+  exteriorImages:[],
+  engineCompartMentImages:[],
+  underCarriageTracksImages:[],
+  cabInteiorImages:[],
+  otherAttachments:[],
+  videos:[],
  }
+
 });
 
 const nextStep = () => {
   if (currentStep < steps.length - 1) {
     setCurrentStep(prev => prev + 1);
+     requestAnimationFrame(() => {
+      formRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    });
   }
   console.log(formData,'12345')
 };
@@ -164,6 +182,12 @@ const nextStep = () => {
 const prevStep = () => {
   if (currentStep > 0) {
     setCurrentStep(prev => prev - 1);
+   requestAnimationFrame(() => {
+      formRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    });
   }
 };
 
@@ -171,8 +195,8 @@ const renderStep = () => {
   switch (currentStep) {
     case 0:
       return (
-        //  <ConditionChecklist formData={formData}
-        //   handleChange={handleChange}/>
+         
+        
         <BasicInfo
           formData={formData}
           setFormData={setFormData}
@@ -188,6 +212,11 @@ const renderStep = () => {
         return(
           <ConditionChecklist formData={formData}
           handleChange={handleChange}/>
+        )
+      case 3:
+        return(
+          <MediaForm formData={formData}
+          setFormData={setFormData}/>
         )
     
     default:
@@ -220,22 +249,16 @@ const handleChange = (
 
 
   const steps = [
-    { id: 0, icon: 'info', label: 'Basic Info' },
-    { id: 1, icon: 'description', label: 'Details' },
-    { id: 2, icon: 'fact_check', label: 'Condition' },
-    { id: 3, icon: 'photo_library', label: 'Media' },
-    { id: 4, icon: 'add_box', label: 'Additional' },
-    { id: 5, icon: 'payments', label: 'Price' },
-    { id: 6, icon: 'visibility', label: 'Review' },
+    { id: 0, icon: 'info', label: t('sell.steps.basicInfo') },
+    { id: 1, icon: 'description', label: t('sell.steps.details') },
+    { id: 2, icon: 'fact_check', label: t('sell.steps.condition') },
+    { id: 3, icon: 'photo_library', label: t('sell.steps.media') },
+    { id: 4, icon: 'add_box', label: t('sell.steps.additional') },
+    { id: 5, icon: 'payments', label: t('sell.steps.price') },
+    { id: 6, icon: 'visibility', label: t('sell.steps.review') },
   ];
 
-  useEffect(() => {
-  formRef.current?.scrollIntoView({
-    behavior: "smooth",
-    block: "start",
-  });
-}, [currentStep]);
-
+ 
   return (
     <>
       <TopBanner />
@@ -252,14 +275,14 @@ const handleChange = (
         />
         <div className="relative z-10 text-center">
           <h1 className="text-5xl font-bold text-white tracking-tight uppercase">
-            SELL Inventory
+            {t('sell.title')}
           </h1>
           <div className="mt-2 text-primary font-medium text-sm flex items-center justify-center gap-2">
-            <span className="text-white">Home</span>
+            <span className="text-white">{t('sell.breadCrumbs.home')}</span>
             <span className="material-icons text-xs text-white">
               chevron_right
             </span>
-            <span className="text-white">SELL Inventory</span>
+            <span className="text-white">{t('sell.breadCrumbs.sellInventory')}</span>
           </div>
         </div>
       </div>
@@ -268,7 +291,7 @@ const handleChange = (
       <main className="max-w-7xl mx-auto px-6 py-12">
         <section className="max-w-7xl mx-auto px-6 py-16">
           <h2 className="text-3xl font-black mb-8 uppercase tracking-tight border-b-4 border-primary w-fit pb-2">
-            Selling your used equipment is easy.
+            {t('sell.subtitle')}
           </h2>
           <div className="grid md:grid-cols-3 gap-6 mb-12">
             <div className="bg-dark-gray p-8 rounded-2xl flex items-center gap-6 text-white group hover:translate-y-[-4px] transition-all border-b-4 border-primary">
@@ -276,7 +299,7 @@ const handleChange = (
                 1
               </span>
               <p className="font-bold text-lg leading-tight uppercase">
-                Free equipment valuation with projected retail & auction values.
+                {t('sell.card.card1')}
               </p>
             </div>
             <div className="bg-dark-gray p-8 rounded-2xl flex items-center gap-6 text-white group hover:translate-y-[-4px] transition-all border-b-4 border-primary">
@@ -284,7 +307,7 @@ const handleChange = (
                 2
               </span>
               <p className="font-bold text-lg leading-tight uppercase">
-                We'll market + sell your equipment.
+                {t('sell.card.card2')}
               </p>
             </div>
             <div className="bg-dark-gray p-8 rounded-2xl flex items-center gap-6 text-white group hover:translate-y-[-4px] transition-all border-b-4 border-primary">
@@ -292,7 +315,7 @@ const handleChange = (
                 3
               </span>
               <p className="font-bold text-lg leading-tight uppercase">
-                You get paid.
+                {t('sell.card.card3')}
               </p>
             </div>
           </div>
@@ -309,7 +332,7 @@ const handleChange = (
                 1
               </span>
               <p className="font-bold text-lg leading-tight uppercase">
-                We make you an offer.
+                {t('sell.card.card1OR')}
               </p>
             </div>
             <div className="bg-dark-gray p-8 rounded-2xl flex items-center gap-6 text-white group hover:translate-y-[-4px] transition-all border-b-4 border-primary">
@@ -317,7 +340,7 @@ const handleChange = (
                 2
               </span>
               <p className="font-bold text-lg leading-tight uppercase">
-                We verify your equipment
+                {t('sell.card.card2OR')}
               </p>
             </div>
             <div className="bg-dark-gray p-8 rounded-2xl flex items-center gap-6 text-white group hover:translate-y-[-4px] transition-all border-b-4 border-primary">
@@ -325,17 +348,17 @@ const handleChange = (
                 3
               </span>
               <p className="font-bold text-lg leading-tight uppercase">
-                You get paid.
+                {t('sell.card.card3OR')}
               </p>
             </div>
           </div>
 
           <div className="mb-6">
             <h2 className="text-3xl font-black uppercase tracking-tight">
-              Get started selling your equipment with Mideast today!
+              {t('sell.getStarted')}
             </h2>
             <p className="text-slate-500 mt-2">
-              Complete the form below, or call us at{' '}
+              {t('sell.completeForm')}{' '}
               <span className="text-primary font-bold">860-222-3393</span>
             </p>
           </div>
@@ -401,7 +424,7 @@ const handleChange = (
       }
     `}
           >
-            <i className="material-icons">arrow_back</i> PREVIOUS
+            <i className="material-icons">arrow_back</i> {t('common.previous')}
           </button>
         )}
 
@@ -410,7 +433,7 @@ const handleChange = (
           onClick={nextStep}
           className="flex items-center gap-2 px-10 py-3 bg-primary hover:bg-orange-600 text-white rounded-full font-bold shadow-lg shadow-primary/30 transition-all transform hover:scale-105"
         >
-          NEXT <i className="material-icons">arrow_forward</i>
+          {t('common.next')} <i className="material-icons">arrow_forward</i>
         </button>
       </div>
             </div>

@@ -1,15 +1,26 @@
+import { useTranslation } from "../../i18n";
 import type { SellFormData } from "../../types/home";
+import { SelectInput } from "./SelectInput";
+import { TextInput } from "./TextInput";
 
 
 interface Props {
   formData: SellFormData;
   setFormData: React.Dispatch<React.SetStateAction<SellFormData>>;
 }
+const conditionOptions = [
+  { id: 1, value: "Excellent" },
+  { id: 2, value: "Good" },
+  { id: 3, value: "Fair" },
+  { id: 4, value: "Poor" },
+];
 
 const BasicInfo = ({
   formData,
   setFormData,
 }: Props) => {
+  const { t } = useTranslation();
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
@@ -24,48 +35,34 @@ const BasicInfo = ({
   return (
     <div>
       <h3 className="text-xl font-bold uppercase tracking-tight mb-8">
-        Basic Equipment Information
+        {t('sell.form.basicEquipmentInformation')}
       </h3>
 
       <div className="space-y-8">
         {/* Equipment Title */}
-        <div>
-          <label className="block text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300 mb-2">
-            Equipment Title
-          </label>
-          <input
-            name="title"
-            value={formData.title}
-            onChange={handleChange}
-            className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg p-3 focus:ring-primary focus:border-primary"
-            placeholder="e.g., Caterpillar 320 Excavator (2020)"
-            type="text"
-          />
-        </div>
+
+        <TextInput
+          label={t('sell.form.equipmentTitle')}
+          name="title"
+          placeholder="e.g., Caterpillar 320 Excavator (2020)"
+          value={formData.title || ""}
+          onChange={handleChange}
+        />
 
         {/* Category */}
-        <div>
-          <label className="block text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300 mb-2">
-            Category
-          </label>
-          <select
-            name="category"
-            value={formData.category}
-            onChange={handleChange}
-            className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg p-3 focus:ring-primary focus:border-primary"
-          >
-            <option value="">Select Category</option>
-            <option>Excavators</option>
-            <option>Loaders</option>
-            <option>Dozers</option>
-            <option>Compaction</option>
-          </select>
-        </div>
 
+        <SelectInput
+          placeholder="e.g., Excavators"
+          label={t('sell.form.category')}
+          name="category"
+          value={formData.category}
+          options={conditionOptions}
+          onChange={handleChange}
+        />
         {/* Description (Your Original UI Preserved) */}
         <div>
           <label className="block text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300 mb-2">
-            Description
+            {t('sell.form.description')}
           </label>
 
           <div className="border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden">
@@ -112,27 +109,6 @@ const BasicInfo = ({
           </div>
         </div>
       </div>
-
-      {/* Buttons */}
-      {/* <div className="mt-12 pt-8 border-t border-slate-200 dark:border-slate-700 flex justify-between items-center">
-        {prevStep && (
-          <button
-            type="button"
-            onClick={prevStep}
-            className="flex items-center gap-2 px-8 py-3 bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-300 rounded-full font-bold"
-          >
-            <i className="material-icons">arrow_back</i> PREVIOUS
-          </button>
-        )}
-
-        <button
-          type="button"
-          onClick={nextStep}
-          className="flex items-center gap-2 px-10 py-3 bg-primary hover:bg-orange-600 text-white rounded-full font-bold shadow-lg shadow-primary/30 transition-all transform hover:scale-105"
-        >
-          NEXT <i className="material-icons">arrow_forward</i>
-        </button>
-      </div> */}
     </div>
   );
 };

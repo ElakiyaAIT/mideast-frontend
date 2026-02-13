@@ -83,7 +83,7 @@ export interface SellFormData {
   manufacturer?: string;
   engineHours?: string;
   mileage?: string;
-  grossYear?:string;
+  grossPower?:string;
   operatingWeight?:string;
   tireTrackSize?:string;
   suspension?:string;
@@ -156,6 +156,14 @@ functionalTest:{
   operationTest:string;
   operationTestImages:string[],
 }
+ },
+ media:{
+  exteriorImages:string[],
+  engineCompartMentImages:string[],
+  underCarriageTracksImages:string[],
+  cabInteiorImages:string[],
+  otherAttachments:string[],
+  videos:string[],
  }
 
 }

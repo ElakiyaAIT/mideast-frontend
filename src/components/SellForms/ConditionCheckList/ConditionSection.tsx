@@ -1,3 +1,4 @@
+import { useTranslation } from "../../../i18n";
 import { ImageUpload } from "../ImageInput";
 import { SelectInput } from "../SelectInput";
 
@@ -23,27 +24,28 @@ const ConditionSection = ({
   formData,
   handleChange,
 }: Props) => {
+  const {t}=useTranslation();
   return (
     <div className="rounded-2xl bg-slate-50 p-8 dark:bg-slate-900">
       <h4 className="mb-6 border-b-2 border-primary pb-4 text-lg font-bold uppercase dark:text-slate-400">
-        {title}
+        {t(title)}
       </h4>
 
       <div className="space-y-6">
          <div className="hidden md:grid grid-cols-12 gap-6 border-b border-slate-200 pb-6 dark:border-slate-700">
           <div className="md:col-span-3">
             <p className="text-sm font-bold uppercase text-slate-600 dark:text-slate-400">
-              Item
+              {t('sell.form.conditionCheckList.item')}
             </p>
           </div>
           <div className="md:col-span-3">
             <p className="text-sm font-bold uppercase text-slate-600 dark:text-slate-400">
-              Status
+              {t('sell.form.conditionCheckList.status')}
             </p>
           </div>
           <div className="md:col-span-6">
             <p className="text-sm font-bold uppercase text-slate-600 dark:text-slate-400">
-              Photos / Videos
+              {t('sell.form.conditionCheckList.photosVideos')}
             </p>
           </div>
         </div>
@@ -58,12 +60,13 @@ const ConditionSection = ({
           >
             {/* Item */}
             <div className="md:col-span-3 font-semibold dark:text-slate-400">
-              {item.label}
+              {t(item.label)}
             </div>
 
             {/* Select */}
             <div className="md:col-span-3">
               <SelectInput
+              placeholder={"eg.,Good"}
                 name={`checkList.${sectionKey}.${item.key}`}
                 value={
                   formData?.checkList?.[sectionKey]?.[item.key] || ""
@@ -76,7 +79,7 @@ const ConditionSection = ({
             {/* Upload */}
             <div className="md:col-span-6">
               <ImageUpload
-                maxFiles={5}
+                maxFiles={1}
                 value={
                   formData?.checkList?.[sectionKey]?.[
                     `${item.key}Images`

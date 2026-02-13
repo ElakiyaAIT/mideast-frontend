@@ -10,6 +10,7 @@ import AccordionFilter, { type FilterOption }  from '../../components/Filter/Acc
 // Import images
 import buynowBanner from '../../assets/images/buynow-banner.png';
 import type { Equipment } from '../../api/equipmentApi';
+import { useTranslation } from '../../i18n';
 
 const BuyPage = (): JSX.Element => {
   const [page, setPage] = useState(1);
@@ -27,6 +28,7 @@ const BuyPage = (): JSX.Element => {
   // states,
   // currentBid,
 };
+const {t} = useTranslation();
   
 
   const categoryOptions: FilterOption[] = [
@@ -46,12 +48,12 @@ const BuyPage = (): JSX.Element => {
 
   const getStatusBadge = (equipment: Equipment) => {
     if (equipment.status === 'SOLD') {
-      return { label: 'SOLD', className: 'bg-red-500' };
+      return { label: t('product.status.sold'), className: 'bg-red-500' };
     }
     if (equipment.listingType === 'auction' || equipment.listingType === 'both') {
-      return { label: 'FOR AUCTION', className: 'bg-blue-500' };
+      return { label: t('product.status.forAuction'), className: 'bg-blue-500' };
     }
-    return { label: 'AVAILABLE', className: 'bg-green-500' };
+    return { label: t('product.status.newest'), className: 'bg-green-500' };
   };
 
   const formatPrice = (price?: number): string => {
@@ -78,13 +80,18 @@ const BuyPage = (): JSX.Element => {
 
   console.log('Applying filters with payload:', filtersPayload);
 };
+const total = data?.pagination?.total || 0;
+const perPage = data?.pagination?.limit || 6;
+
+const start = total === 0 ? 0 : (page - 1) * perPage + 1;
+const end = Math.min(page * perPage, total);
 
 
   return (
     <>
       <TopBanner />
       <Header />
-
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
       {/* Banner Section */}
       <div className="relative bg-gray-800 h-64 flex items-center justify-center overflow-hidden br-30">
         <img
@@ -94,33 +101,50 @@ const BuyPage = (): JSX.Element => {
         />
         <div className="relative z-10 text-center">
           <h1 className="text-5xl font-bold text-white tracking-tight uppercase">
-            Inventory
+            {t('buy.inventory')}
           </h1>
           <div className="mt-2 text-primary font-medium text-sm flex items-center justify-center gap-2">
-            <span className="text-gray-400">Home</span>
+            <span className="text-gray-400">{t('product.breadcrumb.home')}</span>
             <span className="material-icons text-xs text-gray-500">chevron_right</span>
-            <span>Inventory</span>
+            <span>{t('product.breadcrumb.inventory')}</span>
           </div>
         </div>
       </div>
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="mb-8 flex items-center justify-between border-b border-gray-200 dark:border-gray-800 pb-4">
+          <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
+            {t('buy.showing')} {start}-{end} {t('buy.resultsCount', {
+              total: data?.pagination?.total || 0,
+            })}
+          </h2>
+
+          <div className="flex gap-2">
+            <button className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-white">
+              <span className="material-icons">grid_view</span>
+            </button>
+
+            <button className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 dark:border-gray-700 text-gray-500 dark:text-gray-400">
+              <span className="material-icons">view_list</span>
+            </button>
+          </div>
+        </div>
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Sidebar Filters */}
           <aside className="w-full lg:w-1/4 space-y-6">
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-xl font-bold">Filter</h2>
+              <h2 className="text-xl font-bold">{t('buy.filter')}</h2>
               <button className="text-primary text-sm font-medium hover:underline">
-                Reset
+                {t('buy.reset')}
               </button>
             </div>
             <div className="bg-gray-100 dark:bg-gray-800 p-3 rounded-lg flex justify-between items-center mb-6">
               <span className="text-xs font-bold uppercase tracking-wider opacity-60">
-                Active Results
+                {t('buy.activeResults')}
               </span>
               <span className="bg-primary text-white text-[10px] font-bold px-2 py-1 rounded">
-                {data?.pagination?.total || 0} FOUND
+                {data?.pagination?.total || 0} {t('buy.found')}
               </span>
             </div>
             {/* Filter sections - keeping existing structure */}
@@ -150,7 +174,7 @@ const BuyPage = (): JSX.Element => {
                   <span className={`transition ${isAuctionDateOpen
                       ? 'text-white'
                       : 'text-black dark:text-white'
-                    }`}>Auction Date</span>
+                    }`}>{t('buy.filters.auctionDate')}</span>
                 </div>
 
                 <i
@@ -182,7 +206,7 @@ const BuyPage = (): JSX.Element => {
                       className="mt-3 text-xs   text-black dark:text-white
                       font-medium hover:underline"
                     >
-                      Clear date
+                      {t('buy.clearDate')}
                     </button>
                   )}
                 </div>
@@ -191,7 +215,7 @@ const BuyPage = (): JSX.Element => {
 
             {/* {CATEGORY FILTER} */}
             <AccordionFilter
-              title="Category"
+              title={t('buy.filters.category')}
               icon="category"
               headerColor="orange"
               options={categoryOptions}
@@ -200,7 +224,7 @@ const BuyPage = (): JSX.Element => {
             />
             {/* MAKE FILTER */}
             <AccordionFilter
-              title="Make"
+              title={t('buy.filters.make')}
               icon="precision_manufacturing"
               options={categoryOptions}
               value={makes}
@@ -208,7 +232,7 @@ const BuyPage = (): JSX.Element => {
             />
             {/* YEAR*/}
             <AccordionFilter
-              title="Year"
+              title={t('buy.filters.year')}
               icon="calendar_month"
               options={categoryOptions}
               value={makes}
@@ -216,7 +240,7 @@ const BuyPage = (): JSX.Element => {
             />
             {/* STATE/CITY*/}
             <AccordionFilter
-              title="State/City"
+              title={t('buy.filters.stateCity')}
               icon="map"
               options={categoryOptions}
               value={makes}
@@ -224,7 +248,7 @@ const BuyPage = (): JSX.Element => {
             />
             {/* CURRENT BID */}
             <AccordionFilter
-              title="Current Bid"
+              title={t('buy.filters.currentBid')}
               icon="paid"
               options={categoryOptions}
               value={makes}
@@ -242,11 +266,11 @@ const BuyPage = (): JSX.Element => {
                 }
   `}
             >
-              <span>Apply Filters</span>
+              <span>{t('buy.applyFilters')}</span>
 
               {appliedFiltersCount > 0 && (
                 <span className="ml-2 rounded bg-white/20 px-2 py-0.5 text-[10px] font-semibold text-white">
-                  {appliedFiltersCount} FOUND
+                  {appliedFiltersCount} {t('buy.found')}
                 </span>
               )}
             </button>
@@ -256,21 +280,7 @@ const BuyPage = (): JSX.Element => {
           {/* Products Grid */}
           <section className="flex-1">
             {/* View Toggle and Sort */}
-            <div className="flex justify-between items-center mb-6">
-              <div className="flex gap-2">
-                <button className="p-2 bg-primary text-white rounded-lg">
-                  <span className="material-icons">grid_view</span>
-                </button>
-                <button className="p-2 bg-gray-200 dark:bg-gray-800 rounded-lg">
-                  <span className="material-icons">view_list</span>
-                </button>
-              </div>
-              <select className="px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900">
-                <option>Sort by: Newest</option>
-                <option>Sort by: Price (Low to High)</option>
-                <option>Sort by: Price (High to Low)</option>
-              </select>
-            </div>
+
 
             {/* Loading State */}
             {isLoading && (
@@ -282,7 +292,7 @@ const BuyPage = (): JSX.Element => {
             {/* Error State */}
             {isError && (
               <div className="text-center py-20">
-                <p className="text-red-500">Failed to load equipment. Please try again later.</p>
+                <p className="text-red-500">{t('buy.error')}</p>
               </div>
             )}
 
@@ -290,7 +300,7 @@ const BuyPage = (): JSX.Element => {
             {!isLoading && !isError && equipment.length === 0 && (
               <div className="text-center py-20">
                 <p className="text-gray-500 dark:text-gray-400">
-                  No equipment found. Check back later!
+                  {t('buy.empty')}
                 </p>
               </div>
             )}
@@ -335,7 +345,7 @@ const BuyPage = (): JSX.Element => {
                                 {item.make}
                               </p>
                               <p className="text-[10px] text-gray-400 uppercase font-medium">
-                                Make
+                                {t('product.specs.make')}
                               </p>
                             </div>
                             <div>
@@ -345,7 +355,7 @@ const BuyPage = (): JSX.Element => {
                                 {item.year}
                               </p>
                               <p className="text-[10px] text-gray-400 uppercase font-medium">
-                                Year
+                                {t('product.specs.year')}
                               </p>
                             </div>
                             <div>
@@ -355,7 +365,7 @@ const BuyPage = (): JSX.Element => {
                                 {item.hoursUsed || 'N/A'}
                               </p>
                               <p className="text-[10px] text-gray-400 uppercase font-medium">
-                                Hours
+                                {t('product.specs.hours')}
                               </p>
                             </div>
                             <div>
@@ -365,7 +375,7 @@ const BuyPage = (): JSX.Element => {
                                 {item.models}
                               </p>
                               <p className="text-[10px] text-gray-400 uppercase font-medium">
-                                Model
+                                {t('product.specs.model')}
                               </p>
                             </div>
                             <div>
@@ -375,7 +385,7 @@ const BuyPage = (): JSX.Element => {
                                 {item.condition || 'N/A'}
                               </p>
                               <p className="text-[10px] text-gray-400 uppercase font-medium">
-                                Condition
+                                {t('product.specs.condition')}
                               </p>
                             </div>
                             <div>
@@ -385,14 +395,14 @@ const BuyPage = (): JSX.Element => {
                                 {item.location.state}
                               </p>
                               <p className="text-[10px] text-gray-400 uppercase font-medium">
-                                Location
+                                {t('product.specs.location')}
                               </p>
                             </div>
                           </div>
                           <div className="flex justify-between items-end border-t border-gray-100 dark:border-gray-800 pt-4">
                             <div>
                               <p className="text-[10px] text-gray-400 uppercase font-bold">
-                                {item.listingType === 'buy_now' ? 'Buy Now Price' : 'Starting Bid'}
+                                {t('product.retailPrice')}
                               </p>
                               <p
                                 className={`text-xl font-bold ${isSold ? 'text-gray-500' : 'text-primary'}`}
@@ -402,14 +412,14 @@ const BuyPage = (): JSX.Element => {
                             </div>
                             {isSold ? (
                               <button className="bg-gray-400 text-white px-4 py-2 rounded-2xl text-xs font-bold uppercase cursor-not-allowed">
-                                Sold Out
+                                {t('product.status.sold')}
                               </button>
                             ) : (
                               <Link
                                 to={`${ROUTES.BUY}/${item._id}`}
                                 className="bg-primary hover:bg-orange-600 text-white px-4 py-2 rounded-2xl text-xs font-bold uppercase transition-colors"
                               >
-                                View More
+                                {t('product.viewMore')}
                               </Link>
                             )}
                           </div>

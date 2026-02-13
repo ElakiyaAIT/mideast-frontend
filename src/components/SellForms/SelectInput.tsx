@@ -22,6 +22,8 @@ export const SelectInput = ({
   onChange,
   placeholder,
 }: SelectInputProps) => {
+  const isEmpty = !value;
+
   return (
     <div>
       <label className="mb-2 block text-lg font-bold  tracking-wide  dark:text-slate-300">
@@ -32,12 +34,15 @@ export const SelectInput = ({
         name={name}
         value={value || ""}
         onChange={onChange}
-        className="w-full rounded-lg border border-slate-200 bg-slate-50 p-3 focus:border-primary focus:ring-primary dark:border-slate-700 dark:bg-slate-900"
+        className={`w-full rounded-lg border border-slate-200 bg-slate-50 p-3 focus:border-primary focus:ring-primary dark:border-slate-700 dark:bg-slate-900
+        ${isEmpty ? "text-slate-400" : "text-slate-900 dark:text-white"}`}
+
+
       >
-        <option value="">{placeholder || `Select ${label}`}</option>
+        <option value="" disabled hidden>{placeholder || `Select ${label}`}</option>
 
         {options.map((option) => (
-          <option key={option.id} value={option.id}>
+          <option key={option.id} value={option.id} style={{ color: "#0f172a" }} >
             {option.value}
           </option>
         ))}

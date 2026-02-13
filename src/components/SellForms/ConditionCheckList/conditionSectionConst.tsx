@@ -1,52 +1,53 @@
 export const conditionSections = {
+  
   exterior: {
-    label: "EXTERIOR",
+    label: 'sell.form.conditionCheckList.exteriorLabel',
     icon: "photo_camera",
-    title: "Exterior Condition",
+    title: 'sell.form.conditionCheckList.exterior.title',
     items: [
-      { key: "bodyPanels", label: "Body Panels" },
-      { key: "glassMirrors", label: "Glass & Mirrors" },
-      { key: "lightsSignals", label: "Lights & Signals" },
+      { key: "bodyPanels", label: "sell.form.conditionCheckList.exterior.bodyPanels" },
+      { key: "glassMirrors", label: "sell.form.conditionCheckList.exterior.glassMirrors" },
+      { key: "lightsSignals", label: "sell.form.conditionCheckList.exterior.lightsSignals" },
     ],
   },
 
   engine: {
-    label: "ENGINE",
+    label: 'sell.form.conditionCheckList.engineLabel',
     icon: "precision_manufacturing",
-    title: "Engine Condition",
+    title: 'sell.form.conditionCheckList.engine.title',
     items: [
-      { key: "engineBlock", label: "Engine Block" },
-      { key: "transmission", label: "Transmission" },
+      { key: "engineBlock", label: 'sell.form.conditionCheckList.engine.engineBlock' },
+      { key: "transmission", label: 'sell.form.conditionCheckList.engine.transmission' },
     ],
   },
 
   hydraulics: {
-    label: "HYDRAULICS",
+    label: 'sell.form.conditionCheckList.hydraulicsLabel',
     icon: "plumbing",
-    title: "Hydraulics Condition",
+    title: 'sell.form.conditionCheckList.hydraulics.title',
     items: [
-      { key: "hydraulicPump", label: "Hydraulic Pump" },
-      { key: "cylinders", label: "Cylinders" },
+      { key: "hydraulicPump", label: 'sell.form.conditionCheckList.hydraulics.hydraulicPump' },
+      { key: "cylinders", label: 'sell.form.conditionCheckList.hydraulics.cylinders' },
     ],
   },
 
   underCarriage: {
-    label: "UNDERCARRIAGE",
+    label: 'sell.form.conditionCheckList.underCarriageLabel',
     icon: "directions_car",
-    title: "Undercarriage Condition",
+    title: 'sell.form.conditionCheckList.underCarriage.title',
     items: [
-      { key: "tracksWheels", label: "Tracks/Wheels" },
-      { key: "suspension", label: "Suspension" },
+      { key: "tracksWheels", label: 'sell.form.conditionCheckList.underCarriage.tracksWheels' },
+      { key: "suspension", label: 'sell.form.conditionCheckList.underCarriage.suspension' },
     ],
   },
 
   functionalTest:{
-    label:"FUNCTIONALTEST",
+    label:'sell.form.conditionCheckList.functionalTestLabel',
     icon:"play_circle",
-    title:"Functional Test Condition",
+    title:'sell.form.conditionCheckList.functionalTest.title',
     items:[
-      {key:"engineStart", label:"Engine Start"},
-      {key:"operationTest", label:"Operation Test"},
+      {key:"engineStart", label:'sell.form.conditionCheckList.functionalTest.engineStart'},
+      {key:"operationTest", label:'sell.form.conditionCheckList.functionalTest.operationTest'},
     ]
   }
 };

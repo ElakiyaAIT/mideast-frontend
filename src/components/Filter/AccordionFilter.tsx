@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from '../../i18n';
 
 export type FilterOption = {
   id: string;
@@ -42,6 +43,7 @@ const AccordionFilter = ({
 
   const selectAll = () => onChange(options.map((o) => o.id));
   const unselectAll = () => onChange([]);
+  const {t}=useTranslation();
 
   return (
     <div
@@ -83,8 +85,8 @@ const AccordionFilter = ({
         <div className="px-4 py-4 text-sm bg-white dark:bg-gray-900">
           {type === 'checkbox' && (
             <div className="flex justify-between text-[11px] font-semibold text-gray-400 uppercase mb-3">
-              <button onClick={selectAll}>Select All</button>
-              <button onClick={unselectAll}>Unselect All</button>
+              <button onClick={selectAll}>{t('buy.selectAll')}</button>
+              <button onClick={unselectAll}>{t('buy.unselectAll')}</button>
             </div>
           )}
 

@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { conditionSections } from "./ConditionCheckList/conditionSectionConst";
-import ConditionSection from "./ConditionCheckList/conditionSection";
+import ConditionSection from "./ConditionCheckList/ConditionSection";
+import { useTranslation } from "../../i18n";
+
 
 const ConditionChecklist = ({ formData, handleChange }: any) => {
+  const {t}=useTranslation();
   const [activeTab, setActiveTab] = useState("exterior");
 
   const sections = Object.entries(conditionSections);
@@ -12,7 +15,7 @@ const ConditionChecklist = ({ formData, handleChange }: any) => {
        <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet"/>
       <div>
         <h3 className="mb-8 text-xl font-bold uppercase">
-          Condition Checklist
+          {t('sell.form.conditionCheckList.title')}
         </h3>
 
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
@@ -38,7 +41,7 @@ const ConditionChecklist = ({ formData, handleChange }: any) => {
         `}
                 >
                   {/* Left Side */}
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-3 uppercase">
                     {/* Icon Circle */}
                     <div
                       className={`
@@ -53,8 +56,7 @@ const ConditionChecklist = ({ formData, handleChange }: any) => {
                         {section.icon}
                       </span>
                     </div>
-
-                    {section.label}
+                    {t(section.label)}
                   </div>
 
                   {/* Green Tick for Completed */}
@@ -78,7 +80,7 @@ const ConditionChecklist = ({ formData, handleChange }: any) => {
                 <ConditionSection
                   key={key}
                   sectionKey={key}
-                  title={section.title}
+                  title={t(section.title)}
                   items={section.items}
                   formData={formData}
                   handleChange={handleChange}

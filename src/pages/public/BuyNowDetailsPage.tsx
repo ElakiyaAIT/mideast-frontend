@@ -11,8 +11,10 @@ import buynowDetailsBanner from '../../assets/images/buynow details/buynow-detai
 import ProductCard from '../../components/Card/EquipmentCard';
 import { PRODUCTS } from '../../constants/DummyConstant';
 import React from 'react';
+import { useTranslation } from '../../i18n';
 
 const BuyNowDetailsPage = (): JSX.Element => {
+  const {t}=useTranslation();
   const { id } = useParams<{ id: string }>();
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
@@ -154,11 +156,11 @@ const BuyNowDetailsPage = (): JSX.Element => {
           </h1>
           <div className="mt-2 text-primary font-medium text-sm flex items-center justify-center gap-2">
             <Link to={ROUTES.HOME} className="text-white hover:text-primary transition-colors">
-              Home
+              {t('product.breadcrumb.home')}
             </Link>
             <span className="material-icons text-xs text-white">chevron_right</span>
             <Link to={ROUTES.BUY} className="text-white hover:text-primary transition-colors">
-              Inventory
+              {t('product.breadcrumb.inventory')}
             </Link>
             <span className="material-icons text-xs text-white">chevron_right</span>
             <span>{equipment.title}</span>
@@ -258,7 +260,7 @@ const BuyNowDetailsPage = (): JSX.Element => {
             {/* Product Description */}
             <section className="grid grid-cols-1 lg:grid-cols-[250px_1fr] gap-6">
               <h3 className="text-xl font-bold pl-4  tracking-wide">
-                Product Description
+                {t('product.details.description')}
               </h3>
               <div className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
                 <p>{equipment.description}</p>
@@ -269,7 +271,7 @@ const BuyNowDetailsPage = (): JSX.Element => {
             {/* Equipment Details */}
             <section className="grid grid-cols-1 lg:grid-cols-[250px_1fr] gap-6 mt-12">
               <h3 className="text-xl font-bold pl-4 tracking-wide">
-                Vehicle Details
+                {t('product.details.vehicleDetails')}
               </h3>
 
               <div
@@ -372,7 +374,7 @@ const BuyNowDetailsPage = (): JSX.Element => {
             {/* Location */}
             <section className="grid grid-cols-1 lg:grid-cols-[250px_1fr] gap-6 mt-12">
               <h3 className="text-xl font-bold pl-4 tracking-wide">
-                Location
+                {t('auction.location')}
               </h3>
               <div className='space-y-4'>
                 <div className="flex items-center gap-3 text-sm">
@@ -428,7 +430,7 @@ const BuyNowDetailsPage = (): JSX.Element => {
                           {formatPrice(equipment.buyNowPrice)}
                         </p>
                         <p className="text-xs opacity-90">
-                          Included Taxes & Checkup
+                          {t('product.details.includedTaxes')}
                         </p>
                       </div>
 
@@ -448,7 +450,7 @@ const BuyNowDetailsPage = (): JSX.Element => {
 
                   {/* SAVINGS */}
                   <div className="bg-slate-800 text-white text-center text-xs py-2">
-                    INSTANT SAVINGS: <span className="font-bold">$10,000</span>
+                    {t('product.details.instantSavings')}: <span className="font-bold">$10,000</span>
                   </div>
 
                 </div>
@@ -468,7 +470,7 @@ const BuyNowDetailsPage = (): JSX.Element => {
         shadow
         transition-colors
       ">
-                  Buy Now
+                  {t('product.buyNow')}
                 </button>
 
               </div>
@@ -483,7 +485,7 @@ const BuyNowDetailsPage = (): JSX.Element => {
               ">
 
                 <h4 className="font-bold text-sm mb-2">
-                  Documentation
+                  {t('product.details.documentation')}
                 </h4>
 
                 <div className="space-y-2">
@@ -497,7 +499,7 @@ const BuyNowDetailsPage = (): JSX.Element => {
                       onClick={() => handleDownload()}
                       className="font-medium hover:underline focus:outline-none"
                     >
-                      Service History
+                      {t('product.details.serviceHistory')}
                     </button>
                   </div>
 
@@ -512,7 +514,7 @@ const BuyNowDetailsPage = (): JSX.Element => {
                       onClick={() => handleDownload()}
                       className="font-medium hover:underline focus:outline-none"
                     >
-                      Specification Documentation
+                      {t('product.details.specificationDocumentation')}
                     </button>
                   </div>
 
@@ -531,7 +533,7 @@ const BuyNowDetailsPage = (): JSX.Element => {
           <div className="mb-8 flex items-center justify-between">
             <div>
               <h3 className="font-display text-4xl font-bold uppercase tracking-tight">
-                Related Products
+                {t('product.details.relatedProducts')}
               </h3>
               <div className="mt-2 flex items-center gap-2">
                 <span className='h-[2px] w-10 bg-primary'></span>
