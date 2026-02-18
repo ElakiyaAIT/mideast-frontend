@@ -88,7 +88,7 @@ export const PRODUCTS: Product[] = [
     id: '5',
     title: 'HTM 905 Truck',
     image:
-     'https://lh3.googleusercontent.com/aida-public/AB6AXuCBZBAZ1K1_8EsfRd-cC6QSwF8B52FjylUZxy_Co6Y4GmTuZEHhst8NXI6qYocpZDQVSf2xwQg65SYwCowr5jKfpgRgLrtt9lGNE_xtGjiOfrQt7Q0eH85jivTw6lihoo2kxRcfdu2cXVwD_KMe6BJPa3PvG7tFGoKj579hN7vK0pQzzxkTgxr_NXqPcnfUjF43s97fyK47kNz4Ji_y657vYlHgegBy-OCHNCAYDVMR6LCmrr8cWyF1dabTXrGUJlPxH4ujIdp2SFU',
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuCBZBAZ1K1_8EsfRd-cC6QSwF8B52FjylUZxy_Co6Y4GmTuZEHhst8NXI6qYocpZDQVSf2xwQg65SYwCowr5jKfpgRgLrtt9lGNE_xtGjiOfrQt7Q0eH85jivTw6lihoo2kxRcfdu2cXVwD_KMe6BJPa3PvG7tFGoKj579hN7vK0pQzzxkTgxr_NXqPcnfUjF43s97fyK47kNz4Ji_y657vYlHgegBy-OCHNCAYDVMR6LCmrr8cWyF1dabTXrGUJlPxH4ujIdp2SFU',
     price: 35199,
     status: 'for_sale',
     specs: {
@@ -119,12 +119,7 @@ export const PRODUCTS: Product[] = [
   },
 ];
 
-
-
-export const PRODUCT_BADGE_MAP: Record<
-  ProductStatus,
-  { label: string; className: string }
-> = {
+export const PRODUCT_BADGE_MAP: Record<ProductStatus, { label: string; className: string }> = {
   for_sale: {
     label: 'For Sale',
     className: 'bg-orange-400',

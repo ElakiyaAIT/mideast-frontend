@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 interface Option {
   id: string | number;
@@ -12,6 +12,8 @@ interface SelectInputProps {
   options: Option[];
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
   placeholder?: string;
+  error?: string;
+  required?: boolean;
 }
 
 export const SelectInput = ({
@@ -21,32 +23,36 @@ export const SelectInput = ({
   options,
   onChange,
   placeholder,
+  error,
+  required = false,
 }: SelectInputProps) => {
   const isEmpty = !value;
 
   return (
     <div>
-      <label className="mb-2 block text-lg font-bold  tracking-wide  dark:text-slate-300">
+      <label className='mb-2 block text-lg font-bold  tracking-wide  dark:text-slate-300'>
         {label}
+        {required && <span className='ml-1 text-red-500'>*</span>}
       </label>
 
       <select
         name={name}
-        value={value || ""}
+        value={value || ''}
         onChange={onChange}
-        className={`w-full rounded-lg border border-slate-200 bg-slate-50 p-3 focus:border-primary focus:ring-primary dark:border-slate-700 dark:bg-slate-900
-        ${isEmpty ? "text-slate-400" : "text-slate-900 dark:text-white"}`}
-
-
+        className={`w-full rounded-lg border border-slate-200 bg-slate-10 p-3 focus:border-primary focus:ring-primary dark:border-slate-700 dark:bg-slate-900
+        ${isEmpty ? 'text-slate-400' : 'text-slate-900 dark:text-white'}`}
       >
-        <option value="" disabled hidden>{placeholder || `Select ${label}`}</option>
+        <option value='' disabled hidden>
+          {placeholder || `Select ${label}`}
+        </option>
 
         {options.map((option) => (
-          <option key={option.id} value={option.id} style={{ color: "#0f172a" }} >
+          <option key={option.id} value={option.id} style={{ color: '#0f172a' }}>
             {option.value}
           </option>
         ))}
       </select>
+      {error && <p className='mt-1 text-sm text-red-500'>{error}</p>}
     </div>
   );
 };

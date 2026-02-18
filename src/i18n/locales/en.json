@@ -63,6 +63,168 @@
     },
     "token": {
       "required": "Reset token is required"
+    },
+    "sell": {
+      "title": {
+        "required": "Equipment title is required",
+        "minLength": "Title must be at least 5 characters",
+        "maxLength": "Title cannot exceed 120 characters"
+      },
+      "category": {
+        "required": "Please select a category"
+      },
+      "description": {
+        "required": "Description is required",
+        "minLength": "Description must be at least 20 characters",
+        "maxLength": "Description cannot exceed 2000 characters"
+      },
+      "year": {
+        "required": "Year is required",
+        "number": "Year must be a number",
+        "min": "Year must be after 1900",
+        "max": "Year cannot be in the future"
+      },
+      "make": {
+        "required": "Make is required"
+      },
+      "model": {
+        "required": "Model is required"
+      },
+      "manufacturer": {
+        "required": "Manufacturer is required"
+      },
+      "engineHours": {
+        "required": "Engine hours is required",
+        "number": "Engine hours must be a number",
+        "min": "Engine hours cannot be negative"
+      },
+      "mileage": {
+        "required": "Mileage is required",
+        "number": "Mileage must be a number",
+        "min": "Mileage cannot be negative"
+      },
+      "transmission": {
+        "required": "Transmission is required"
+      },
+      "engineType": {
+        "required": "Engine type is required"
+      },
+      "grossPower": {
+        "required": "Gross power is required",
+        "number": "Gross power must be a number",
+        "min": "Gross power cannot be negative"
+      },
+      "operatingWeight": {
+        "required": "Operating weight is required",
+        "number": "Operating weight must be a number",
+        "min": "Operating weight cannot be negative"
+      },
+      "fuelType": {
+        "required": "Fuel type is required"
+      },
+      "tireTrackSize": {
+        "required": "Tire/Track Size is required"
+      },
+      "cabType": {
+        "required": "Cab type is required"
+      },
+      "tireTrackWear": {
+        "number": "Tire/Track wear must be a number",
+        "min": "Tire/Track wear cannot be less than 0%",
+        "max": "Tire/Track wear cannot exceed 100%",
+        "required": "Tire/Track Wear is required"
+      },
+      "suspension": {
+        "required": "Suspension type is required"
+      },
+      "overallCondition": {
+        "required": "Overall condition is required"
+      },
+      "exteriorColor": {
+        "required": "Exterior color is required"
+      },
+      "interiorColor": {
+        "required": "Interior color is required"
+      },
+      "jumpStartRequired": {
+        "required": "Jump start status is required"
+      },
+      "batteriesHoldCharge": {
+        "required": "Batteries charge status is required"
+      },
+      "parkingBrakeWorks": {
+        "required": "Parking brake status is required"
+      },
+      "engineOverallCondition": {
+        "required": "Engine overall condition is required"
+      },
+      "oilLevelOk": {
+        "required": "Oil level confirmation is required"
+      },
+      "anyLeaks": {
+        "required": "Please confirm if there are any leaks"
+      },
+      "coolantLevel": {
+        "required": "Coolant level status is required"
+      },
+      "smokeColor": {
+        "required": "Smoke color is required"
+      },
+      "engineNoise": {
+        "required": "Engine noise status is required"
+      },
+      "coldStartQuality": {
+        "required": "Cold start quality is required"
+      },
+      "checkEngineLight": {
+        "required": "Check engine light status is required"
+      },
+      "hydraulicPumpCondition": {
+        "required": "Hydraulic pump condition is required"
+      },
+      "cylinderLeaks": {
+        "required": "Cylinder leaks status is required"
+      },
+      "hoseCondition": {
+        "required": "Hose condition is required"
+      },
+      "hydraulicResponse": {
+        "required": "Hydraulic response is required"
+      },
+      "hydraulicsDamage": {
+        "required": "Hydraulics damage status is required"
+      },
+      "dashboardFunctional": {
+        "required": "Dashboard functional status is required"
+      },
+      "acHeaterWorking": {
+        "required": "AC/Heater working status is required"
+      },
+      "displayErrors": {
+        "required": "Display errors status is required"
+      },
+      "seatCondition": {
+        "required": "Seat condition is required"
+      },
+      "controlsWorking": {
+        "required": "Controls working status is required"
+      },
+      "lightsWorking": {
+        "required": "Lights working status is required"
+      },
+      "sensorsWorking": {
+        "required": "Sensors working status is required"
+      },
+      "condition": {
+        "required": "This field is required"
+      },
+      "additionalInformation": {
+        "required": "This field is required",
+        "vinNumberRequired": "VIN Number is required",
+        "location": {
+          "addressRequired": "Address is required"
+        }
+      }
     }
   },
   "auth": {
@@ -176,51 +338,51 @@
       "drillingRigs": "Drilling Rigs",
       "26gCase": "26g Case"
     },
-    "support":{
-      "title":"support",
-      "subtitle":"We Provide The Best Quality Construction Equipment And Excellent Support Service",
-      "description":"Our mission is to provide honest, professional services to our customers in the heavy equipment industry. We take pride in our reputation as an ethical and reputable partner for contractors and dealers. We can help you buy or sell your heavy equipment — both locally and worldwide — through our global network of contacts. Our goal is your complete and total satisfaction."
+    "support": {
+      "title": "support",
+      "subtitle": "We Provide The Best Quality Construction Equipment And Excellent Support Service",
+      "description": "Our mission is to provide honest, professional services to our customers in the heavy equipment industry. We take pride in our reputation as an ethical and reputable partner for contractors and dealers. We can help you buy or sell your heavy equipment — both locally and worldwide — through our global network of contacts. Our goal is your complete and total satisfaction."
     },
     "products": {
       "title": "Our Products",
       "subtitle": "Latest Equipment",
       "viewEquipments": "View Equipment's",
       "description": " Adhering to the recommended maintenance schedule of your machine is one of the most effective ways to ensure it stays performing at its best.",
-      "viewMore":"View More",
-      "best":"Best",
-      "retailPrice":"Retail Price"
+      "viewMore": "View More",
+      "best": "Best",
+      "retailPrice": "Retail Price"
     },
     "services": {
       "title": "Services",
       "subtitle": "Industry Leader In Construction Equipment Supply",
       "auction": "Auction",
       "cargoConsignment": "Cargo Consignment",
-      "buy":{
-          "title":"Buy",
-          "subtitle":"We buy heavy equipment & trucks, one piece to 100+.",
-          "learnMore":"Learn More"
+      "buy": {
+        "title": "Buy",
+        "subtitle": "We buy heavy equipment & trucks, one piece to 100+.",
+        "learnMore": "Learn More"
       },
-      "consignment":{
-        "title":"Consignment",
-        "subtitle":"Can't come to agreement on a purchase, we can help. We sell equipment on consignment.",
-        "learnMore":"Learn More"
+      "consignment": {
+        "title": "Consignment",
+        "subtitle": "Can't come to agreement on a purchase, we can help. We sell equipment on consignment.",
+        "learnMore": "Learn More"
       },
-      "auctions":{
-        "title":"Auctions",
-        "subtitle":"Our online auctions provide an effective alternative to sell your used heavy equipment.",
-        "learnMore":"Learn More"
+      "auctions": {
+        "title": "Auctions",
+        "subtitle": "Our online auctions provide an effective alternative to sell your used heavy equipment.",
+        "learnMore": "Learn More"
       },
-      "eqLocators":{
-        "title":"EQ Locators",
-        "subtitle":"With our vast network we can help locate any equipment not currenly in stock.",
-        "learnMore":"Learn More"
+      "eqLocators": {
+        "title": "EQ Locators",
+        "subtitle": "With our vast network we can help locate any equipment not currenly in stock.",
+        "learnMore": "Learn More"
       }
     },
     "testimonials": {
       "title": "Testimonials",
       "subtitle": "What Customers Say About Us",
-      "prev":"Prev",
-      "next":"Next"
+      "prev": "Prev",
+      "next": "Next"
     }
   },
   "product": {
@@ -265,7 +427,7 @@
       "securePayment": "Secure Payment",
       "includedTaxes": "Included Taxes & Checkup",
       "savingsBadge": "SAVE $10,000",
-      "instantSavings":"Instant Savings"
+      "instantSavings": "Instant Savings"
     },
     "breadcrumb": {
       "home": "Home",
@@ -284,9 +446,9 @@
     "applyFilters": "APPLY FILTERS",
     "showing": "Showing",
     "resultsCount": "of {{total}} Results",
-    "clearDate":"Clear Date",
-    "error":"Failed to load Equipment. Please try agin later.",
-    "empty":"No equipment found. Check back later!",
+    "clearDate": "Clear Date",
+    "error": "Failed to load Equipment. Please try agin later.",
+    "empty": "No equipment found. Check back later!",
     "filters": {
       "auctionDate": "Auction Date",
       "category": "Category",
@@ -296,33 +458,33 @@
       "currentBid": "Current Bid"
     }
   },
-  "auction":{
-      "title":"Auction",
-      "searchAuctions":"Search Auctions",
-      "location":"Location",
-      "search":"Search",
-      "upcoming":"Upcoming",
-      "past":"Past",
-       "proxibidBidding": "Proxibid Bidding",
-      "equipmentfactsBidding": "Equipmentfacts Bidding",
-      "auctionDuration":"Auction Duration",
-      "startingPrice":"Starting Price",
-      "bids":"Bids",
-      "soldFor":"Sold For"
+  "auction": {
+    "title": "Auction",
+    "searchAuctions": "Search Auctions",
+    "location": "Location",
+    "search": "Search",
+    "upcoming": "Upcoming",
+    "past": "Past",
+    "proxibidBidding": "Proxibid Bidding",
+    "equipmentfactsBidding": "Equipmentfacts Bidding",
+    "auctionDuration": "Auction Duration",
+    "startingPrice": "Starting Price",
+    "bids": "Bids",
+    "soldFor": "Sold For"
   },
   "sell": {
     "title": "SELL Inventory",
     "subtitle": "Selling your used equipment is easy.",
-    "card":{
-      "card1":"Free equipment valuation with projected retail & auction values.",
-      "card2":"We'll market + sell your equipment.",
-      "card3":"You get paid.",
-      "card1OR":"We make you an offer.",
-      "card2OR":"We verify your equipment",
-      "card3OR":"You get paid."
+    "card": {
+      "card1": "Free equipment valuation with projected retail & auction values.",
+      "card2": "We'll market + sell your equipment.",
+      "card3": "You get paid.",
+      "card1OR": "We make you an offer.",
+      "card2OR": "We verify your equipment",
+      "card3OR": "You get paid."
     },
     "getStarted": "Get started selling your equipment with Mideast today!",
-    "completeForm":"Complete the form below, or call us at",
+    "completeForm": "Complete the form below, or call us at",
     "steps": {
       "basicInfo": "Basic Info",
       "details": "Details",
@@ -338,110 +500,156 @@
       "category": "Category",
       "description": "Description",
       "selectCategory": "Select Category",
-      "details":{
+      "details": {
         "title": "Equipment Details",
         "basic": {
           "title": "Basic Details",
           "year": "Year",
           "make": "Make",
-          "model":"Model",
+          "model": "Model",
           "manufacturer": "Manufacturer",
           "engineHours": "Engine Hours",
           "mileage": "Mileage"
+        },
+        "general": {
+          "title": "General Specifications",
+          "transmission": "Transmission",
+          "engineType": "Engine Type",
+          "grossPower": "Gross Power",
+          "operatingWeight": "Operating Weight",
+          "fuelType": "Fuel Type",
+          "cabType": "Cab Type",
+          "tireTrackSize": "Tire/Track Size",
+          "suspensionType": "Suspension Type",
+          "tireTrackWear": "Tire/Track Wear"
+        },
+        "condition": {
+          "title": "Condition Overview",
+          "overall": "OverAll Condition",
+          "exterior": "Exterior Color",
+          "interior": "Interior Color",
+          "jumpStart": "Jump Start Required",
+          "batteriesHoldCharge": "Batteries Hold Charge",
+          "parkingBrake": "Parking Brake Works"
+        },
+        "engine": {
+          "title": "Engine Condition",
+          "overall": "OverAll Condition",
+          "oilLevel": "Oil Level OK?",
+          "anyLeaks": "Any Leaks?",
+          "coolantLevel": "Coolant Level",
+          "smokeColor": "Smoke Color",
+          "engineNoise": "Engine Noise",
+          "coldStartQuality": "Cold Start Quality",
+          "checkEngineLight": "Check Engine Light"
+        },
+        "hydraulics": {
+          "title": "Hydraulics",
+          "hydraulicPump": "Hydraulic Pump Condition",
+          "cylinderLeaks": "Cylinder Leaks",
+          "hoseCondition": "Hose Condition",
+          "hydraulicResponse": "Hydraulic Response",
+          "hydraulicDamage": "Hydraulics Damage"
+        },
+        "cabElectronics": {
+          "title": "Cab & Electronics",
+          "dashboardFunctional": "Dashboard Functional",
+          "acHeater": "Ac/Heater Working",
+          "displayErrors": "Display Errors",
+          "seatCondition": "Seat Condition",
+          "controlsWorking": "Controls Working",
+          "lightsWorking": "Lights Working",
+          "sensorsWorking": "Sensors Working"
+        }
       },
-      "general":{
-        "title":"General Specifications",
-        "transmission":"Transmission",
-        "engineType":"Engine Type",
-        "grossPower":"Gross Power",
-        "operatingWeight":"Operating Weight",
-        "fuelType":"Fuel Type",
-        "cabType":"Cab Type",
-        "tireTrackSize":"Tire/Track Size",
-        "suspensionType":"Suspension Type",
-        "tireTrackWear":"Tire/Track Wear"
+      "conditionCheckList": {
+        "title": "Condition CheckList",
+        "item": "item",
+        "status": "status",
+        "photosVideos": "Photos/Videos",
+        "imageUpload": {
+          "clickHere": "Click here",
+          "toUpload": " to upload your file or drag.",
+          "formatSupport": "Supported Format: SVG, JPG, MP4 (10mb each)"
+        },
+        "exteriorLabel": "exterior",
+        "engineLabel": "engine",
+        "hydraulicsLabel": "hydraulics",
+        "underCarriageLabel": "under carriage",
+        "functionalTestLabel": "Functional Test Label",
+        "exterior": {
+          "title": "Exterior Condition",
+          "bodyPanels": "Body Panels",
+          "glassMirrors": "Glass Mirrors",
+          "lightsSignals": "Lights & Signals"
+        },
+        "engine": {
+          "title": "Engine Condition",
+          "engineBlock": "Engine Block",
+          "transmission": "Transmission"
+        },
+        "hydraulics": {
+          "title": "Hydraulics Condition",
+          "hydraulicPump": "Hydraulic Pump",
+          "cylinders": "Cylinders"
+        },
+        "underCarriage": {
+          "title": "UnderCarriage",
+          "tracksWheels": "Tracks/Wheels",
+          "suspension": "Suspension"
+        },
+        "functionalTest": {
+          "title": "Functional Test",
+          "engineStart": "Engine Start",
+          "operationTest": "OperationTest"
+        }
       },
-      "condition":{
-        "title":"Condition Overview",
-        "overall":"OverAll Condition",
-        "exterior":"Exterior Color",
-        "interior":"Interior Color",
-        "jumpStart":"Jump Start Required",
-        "batteriesHoldCharge":"Batteries Hold Charge",
-        "parkingBrake":"Parking Brake Works"
+      "media": {
+        "title": "Upload Equipment Photos & Videos",
+        "exterior": "Exterior",
+        "engineCompartment": "Engine Compartment",
+        "underCarriage": "UnderCarriage/Tracks",
+        "cabInterior": "Cab Interior",
+        "other": "Other Attachments",
+        "videos": "Videos"
       },
-      "engine":{
-        "title":"Engine Condition",
-        "overall":"OverAll Condition",
-        "oilLevel":"Oil Level OK?",
-        "anyLeaks":"Any Leaks?",
-        "coolantLevel":"Coolant Level",
-        "smokeColor":"Smoke Color",
-        "engineNoise":"Engine Noise",
-        "coldStartQuality":"Cold Start Quality",
-        "checkEngineLight":"Check Engine Light"
+      "additionalInformation": {
+        "title": "Additional Equipment Information",
+        "equipmentIdentity": {
+          "title": "Equipment Identity Information",
+          "vinNumber": "VIN Number",
+          "manufacturerDate": "Manufacturer Date",
+          "modelYear": "Model Year Confirmation",
+          "equipmentHasDamage": "If Equipment Has Damage?",
+          "maintainenceRecords": "Maintainence Records Available?",
+          "warrantyAvailable": "Warranty Available?"
+        },
+        "location": {
+          "title": "Location",
+          "address": "Address"
+        },
+        "ownership": {
+          "title": "Ownership & Legal Documents",
+          "ownershipProof": "Ownership Proof",
+          "invoiceBill": "Invoice/Bill of Sale",
+          "governmentRegistration": "Government Registration",
+          "emission": "Emission Test",
+          "insurance": "Insurance Documents",
+          "maintenance": "Recent Maintenance Log"
+        }
       },
-      "hydraulics":{
-        "title":"Hydraulics",
-        "hydraulicPump":"Hydraulic Pump Condition",
-        "cylinderLeaks":"Cylinder Leaks",
-        "hoseCondition":"Hose Condition",
-        "hydraulicResponse":"Hydraulic Response",
-        "hydraulicDamage":"Hydraulics Damage"
+      "pricing": {
+        "condition": "Condition Validation",
+        "detailedValuation": "Detailed Valuation Insights",
+        "valuationConfidence": "Valuation Confidence"
       },
-      "cabElectronics":{
-        "title":"Cab & Electronics",
-        "dashboardFunctional":"Dashboard Functional",
-        "acHeater":"Ac/Heater Working",
-        "displayErrors":"Display Errors",
-        "seatCondition":"Seat Condition",
-        "controlsWorking":"Controls Working",
-        "lightsWorking":"Lights Working",
-        "sensorsWorking":"Sensors Working"
+      "review": {
+        "title": "Review & Sell",
+        "photosVideos": "Photos & Videos",
+        "selectedOption": "Selected Option",
+        "priceRange": "Price Range",
+        "confidence": "Confidence"
       }
-    },
-    "conditionCheckList":{
-       "title":"Condition CheckList",
-      "item":"item",
-      "status":"status",
-      "photosVideos":"Photos/Videos",
-      "imageUpload":{
-        "clickHere":"Click here",
-        "toUpload":" to upload your file or drag.",
-        "formatSupport":"Supported Format: SVG, JPG, MP4 (10mb each)"
-      },
-      "exteriorLabel":"exterior",
-      "engineLabel":"engine",
-      "hydraulicsLabel":"hydraulics",
-      "underCarriageLabel":"under carriage",
-      "functionalTestLabel":"Functional Test Label",
-      "exterior":{
-        "title":"Exterior Condition",
-        "bodyPanels":"Body Panels",
-        "glassMirrors":"Glass Mirrors",
-        "lightsSignals":"Lights & Signals"
-      },
-       "engine":{
-        "title":"Engine Condition",
-        "engineBlock":"Engine Block",
-        "transmission":"Transmission"
-      },
-       "hydraulics":{
-        "title":"Hydraulics Condition",
-        "hydraulicPump":"Hydraulic Pump",
-        "cylinders":"Cylinders"
-      },
-      "underCarriage":{
-        "title":"UnderCarriage",
-        "tracksWheels":"Tracks/Wheels",
-        "suspension":"Suspension"
-      },
-      "functionalTest":{
-        "title":"Functional Test",
-        "engineStart":"Engine Start",
-        "operationTest":"OperationTest"
-      }
-    }
     },
     "stepDescriptions": {
       "step1": "Provide basic information about your equipment",
@@ -452,9 +660,9 @@
       "step6": "Set your price",
       "step7": "Review and submit"
     },
-    "breadCrumbs":{
-      "home":"Home",
-      "sellInventory":"Sell Inventory"
+    "breadCrumbs": {
+      "home": "Home",
+      "sellInventory": "Sell Inventory"
     }
   },
   "aboutUs": {
@@ -464,17 +672,17 @@
   "contactUs": {
     "title": "Contact Us",
     "comingSoon": "Contact Us page content coming soon...",
-    "midEast":"MidEast",
-    "equipmentSupply":"Equipment Supply",
-    "subtitle":"Since 2004, Mideast Equipment Supply has been a reliable global partner for buying and selling heavy equipment.",
-    "needHelp":"Need help? Talk to an Expert",
-    "address":"address",
-    "getBack":"And we will get back to you.",
-    "info":"Leave us your Info",
-    "email":"Email",
-    "breadCrumbs":{
-      "home":"Home",
-      "contact":"contact"
+    "midEast": "MidEast",
+    "equipmentSupply": "Equipment Supply",
+    "subtitle": "Since 2004, Mideast Equipment Supply has been a reliable global partner for buying and selling heavy equipment.",
+    "needHelp": "Need help? Talk to an Expert",
+    "address": "address",
+    "getBack": "And we will get back to you.",
+    "info": "Leave us your Info",
+    "email": "Email",
+    "breadCrumbs": {
+      "home": "Home",
+      "contact": "contact"
     }
   },
   "footer": {

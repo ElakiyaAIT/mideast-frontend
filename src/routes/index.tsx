@@ -30,7 +30,7 @@ export const AppRoutes = (): JSX.Element => {
           path={ROUTES.HOME}
           element={
             <GuestGuard>
-              <Suspense fallback={<SuspenseFallback message="Loading..." />}>
+              <Suspense fallback={<SuspenseFallback message='Loading...' />}>
                 <PublicLayout />
               </Suspense>
             </GuestGuard>
@@ -41,7 +41,7 @@ export const AppRoutes = (): JSX.Element => {
             element={
               <GuestGuard>
                 <Suspense
-                  fallback={<SuspenseFallback message="Loading home..." fullScreen={false} />}
+                  fallback={<SuspenseFallback message='Loading home...' fullScreen={false} />}
                 >
                   <HomePage />
                 </Suspense>
@@ -55,7 +55,7 @@ export const AppRoutes = (): JSX.Element => {
           path={ROUTES.BUY}
           element={
             <GuestGuard>
-              <Suspense fallback={<SuspenseFallback message="Loading buy page..." />}>
+              <Suspense fallback={<SuspenseFallback message='Loading buy page...' />}>
                 <BuyPage />
               </Suspense>
             </GuestGuard>
@@ -68,7 +68,7 @@ export const AppRoutes = (): JSX.Element => {
           path={ROUTES.BUY_DETAILS}
           element={
             <GuestGuard>
-              <Suspense fallback={<SuspenseFallback message="Loading product details..." />}>
+              <Suspense fallback={<SuspenseFallback message='Loading product details...' />}>
                 <BuyNowDetailsPage />
               </Suspense>
             </GuestGuard>
@@ -79,7 +79,7 @@ export const AppRoutes = (): JSX.Element => {
           path={ROUTES.SELL}
           element={
             <GuestGuard>
-              <Suspense fallback={<SuspenseFallback message="Loading sell page..." />}>
+              <Suspense fallback={<SuspenseFallback message='Loading sell page...' />}>
                 <SellPage />
               </Suspense>
             </GuestGuard>
@@ -90,7 +90,7 @@ export const AppRoutes = (): JSX.Element => {
           path={ROUTES.AUCTION}
           element={
             <GuestGuard>
-              <Suspense fallback={<SuspenseFallback message="Loading auction page..." />}>
+              <Suspense fallback={<SuspenseFallback message='Loading auction page...' />}>
                 <AuctionPage />
               </Suspense>
             </GuestGuard>
@@ -101,7 +101,7 @@ export const AppRoutes = (): JSX.Element => {
           path={ROUTES.CONTACT_US}
           element={
             <GuestGuard>
-              <Suspense fallback={<SuspenseFallback message="Loading contact page..." />}>
+              <Suspense fallback={<SuspenseFallback message='Loading contact page...' />}>
                 <ContactUsPage />
               </Suspense>
             </GuestGuard>
@@ -113,7 +113,7 @@ export const AppRoutes = (): JSX.Element => {
           path={ROUTES.LOGIN}
           element={
             <GuestGuard>
-              <Suspense fallback={<SuspenseFallback message="Loading login..." />}>
+              <Suspense fallback={<SuspenseFallback message='Loading login...' />}>
                 <LoginPage />
               </Suspense>
             </GuestGuard>
@@ -124,7 +124,7 @@ export const AppRoutes = (): JSX.Element => {
           path={ROUTES.REGISTER}
           element={
             <GuestGuard>
-              <Suspense fallback={<SuspenseFallback message="Loading registration..." />}>
+              <Suspense fallback={<SuspenseFallback message='Loading registration...' />}>
                 <RegisterPage />
               </Suspense>
             </GuestGuard>
@@ -135,7 +135,7 @@ export const AppRoutes = (): JSX.Element => {
           path={ROUTES.FORGOT_PASSWORD}
           element={
             <GuestGuard>
-              <Suspense fallback={<SuspenseFallback message="Loading Forgot password..." />}>
+              <Suspense fallback={<SuspenseFallback message='Loading Forgot password...' />}>
                 <ForgotPasswordPage />
               </Suspense>
             </GuestGuard>
@@ -146,7 +146,7 @@ export const AppRoutes = (): JSX.Element => {
           path={ROUTES.RESET_PASSWORD}
           element={
             <GuestGuard>
-              <Suspense fallback={<SuspenseFallback message="Loading Reset password..." />}>
+              <Suspense fallback={<SuspenseFallback message='Loading Reset password...' />}>
                 <ResetPasswordPage />
               </Suspense>
             </GuestGuard>
@@ -154,7 +154,7 @@ export const AppRoutes = (): JSX.Element => {
         />
 
         {/* Catch all route */}
-        <Route path="*" element={<Navigate to={ROUTES.HOME} replace />} />
+        <Route path='*' element={<Navigate to={ROUTES.HOME} replace />} />
       </Routes>
     </BrowserRouter>
   );

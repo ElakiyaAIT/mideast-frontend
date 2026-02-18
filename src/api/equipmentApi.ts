@@ -49,9 +49,9 @@ export interface Equipment {
   inquiryCount: number;
   createdAt: string;
   updatedAt: string;
-  fuelType:string;
-  transmission:string;
-  enginePower:string;
+  fuelType: string;
+  transmission: string;
+  enginePower: string;
 }
 
 /**
@@ -90,7 +90,7 @@ export interface EquipmentCategory {
   name: string;
   slug: string;
   description?: string;
-  imageUrl?:string;
+  imageUrl?: string;
   parentId?: {
     _id: string;
     name: string;
@@ -123,7 +123,6 @@ export interface EquipmentCategoryListResponse {
   };
 }
 
-
 /**
  * Equipment API endpoints
  * All use SCOPED loader (default) - doesn't block UI
@@ -139,6 +138,13 @@ export const equipmentApi = {
     const response = await axiosInstance.get<ApiResponse<EquipmentListResponse>>('/equipment', {
       params: filters,
     });
+    return response.data;
+  },
+  /** *
+   * Get latest equipment
+   * */
+  getLatest: async (): Promise<ApiResponse<Equipment[]>> => {
+    const response = await axiosInstance.get<ApiResponse<Equipment[]>>('/equipment/latest');
     return response.data;
   },
 
@@ -186,11 +192,12 @@ export const equipmentCategoryApi = {
   getCategories: async (
     filters: EquipmentCategoryFilters = {},
   ): Promise<ApiResponse<EquipmentCategoryListResponse>> => {
-    const response = await axiosInstance.get<
-      ApiResponse<EquipmentCategoryListResponse>
-    >('/equipment-categories', {
-      params: filters,
-    });
+    const response = await axiosInstance.get<ApiResponse<EquipmentCategoryListResponse>>(
+      '/equipment-categories',
+      {
+        params: filters,
+      },
+    );
 
     return response.data;
   },

@@ -30,13 +30,13 @@ export function TestimonialCarousel(): JSX.Element {
   const testimonial = TESTIMONIALS[index];
 
   return (
-    <div className="space-y-8 text-center">
-      <p className="text-xl italic text-slate-600">{testimonial.message}</p>
+    <div className='space-y-8 text-center'>
+      <p className='text-xl italic text-slate-600'>{testimonial.message}</p>
 
-      <div className="flex flex-col items-center">
-        <img src={testimonial.image} alt={testimonial.name} className="h-16 w-16 rounded-full" />
-        <p className="mt-4 font-bold">{testimonial.name}</p>
-        <p className="text-xs text-slate-400">{testimonial.role}</p>
+      <div className='flex flex-col items-center'>
+        <img src={testimonial.image} alt={testimonial.name} className='h-16 w-16 rounded-full' />
+        <p className='mt-4 font-bold'>{testimonial.name}</p>
+        <p className='text-xs text-slate-400'>{testimonial.role}</p>
       </div>
     </div>
   );

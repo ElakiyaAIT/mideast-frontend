@@ -19,7 +19,7 @@ import consignmentIcon from '../../assets/images/cargo-consignment.svg';
 import auctionIcon from '../../assets/images/auction.svg';
 import locatorIcon from '../../assets/images/locator 1.svg';
 import quoteIcon from '../../assets/images/quoat.svg';
-import { useEquipmentCategories, useEquipmentList } from '../../hooks/queries/useEquipment';
+import { useEquipmentCategories, useLatestEquipment } from '../../hooks/queries/useEquipment';
 import { ProductCard } from '../../components/Home/ProductCard';
 import { useNavigate } from 'react-router-dom';
 import { ROUTES } from '../../constants';
@@ -65,22 +65,23 @@ const CATEGORY_IMAGE_MAP: Record<string, string> = {
 };
 const HomePage = (): JSX.Element => {
   const [currentSlide, setCurrentSlide] = useState<number>(0);
-  
-  const { data: equipmentData } = useEquipmentList({ page: 1, limit: 3 });
+
+  const { data: equipmentData } = useLatestEquipment();
   const navigate = useNavigate();
   const { data: latestAuction } = useLatestAuction();
   const { data: categoryData } = useEquipmentCategories({
     isActive: true,
   });
-  const{data:testimonialData}=useTestimonials();
-  const equipment = equipmentData?.items || [];
-  const TESTIMONIALS=testimonialData?.items||[];
+  const { data: testimonialData } = useTestimonials();
+  const equipment = equipmentData || [];
+  const TESTIMONIALS = testimonialData?.items || [];
   const totalSlides = TESTIMONIALS.length;
   const { t } = useTranslation();
 
+  console.log(equipmentData, 'equip123');
 
-  const getAvatar = (name:string) =>
-  `https://api.dicebear.com/7.x/initials/svg?seed=${name || "User"}`;
+  const getAvatar = (name: string) =>
+    `https://api.dicebear.com/7.x/initials/svg?seed=${name || 'User'}`;
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -98,14 +99,11 @@ const HomePage = (): JSX.Element => {
     setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
   };
 
-const formatText = (text = "") =>
-  text
-    .split(" ")
-    .map(word =>
-      word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
-    )
-    .join(" ");
-
+  const formatText = (text = '') =>
+    text
+      .split(' ')
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+      .join(' ');
 
   return (
     <>
@@ -113,27 +111,29 @@ const formatText = (text = "") =>
       <Header />
 
       {/* Hero Section */}
-      <section className="relative bg-banner dark:bg-slate-900 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 md:px-8 py-20 flex flex-col lg:flex-row items-center">
-          <div className="w-full lg:w-1/2 z-10 space-y-6">
-            <h1 className="text-4xl lg:text-6xl font-display font-bold text-slate-800 dark:text-white leading-[1.1]">
+      <section className='relative bg-banner dark:bg-slate-900 overflow-hidden'>
+        <div className='max-w-7xl mx-auto px-4 md:px-8 py-20 flex flex-col lg:flex-row items-center'>
+          <div className='w-full lg:w-1/2 z-10 space-y-6'>
+            <h1 className='text-4xl lg:text-6xl font-display font-bold text-slate-800 dark:text-white leading-[1.1]'>
               {t('home.hero.title')}
             </h1>
-            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-xl">
-             {t('home.hero.subtitle')}
+            <p className='text-lg text-slate-600 dark:text-slate-400 max-w-xl'>
+              {t('home.hero.subtitle')}
             </p>
-            <button onClick={() => navigate(ROUTES.BUY)}
-              className="flex items-center gap-2 px-8 py-4 bg-primary text-white font-bold uppercase rounded-full hover:bg-[#1e293b] shadow-xl shadow-primary/20 transition-all group">
+            <button
+              onClick={() => navigate(ROUTES.BUY)}
+              className='flex items-center gap-2 px-8 py-4 bg-primary text-white font-bold uppercase rounded-full hover:bg-[#1e293b] shadow-xl shadow-primary/20 transition-all group'
+            >
               {t('home.hero.exploreEquipment')}
-              <i className="material-icons-outlined bg-white text-primary rounded-full p-1 text-md group-hover:translate-x-1 transition-transform">
+              <i className='material-icons-outlined bg-white text-primary rounded-full p-1 text-md group-hover:translate-x-1 transition-transform'>
                 arrow_forward
               </i>
             </button>
           </div>
-          <div className="banner-transparent w-full lg:w-1/2 mt-12 lg:mt-0 relative">
+          <div className='banner-transparent w-full lg:w-1/2 mt-12 lg:mt-0 relative'>
             <img
-              alt="Large yellow bulldozer"
-              className="relative z-10 w-full transform lg:scale-110 slide-bottom"
+              alt='Large yellow bulldozer'
+              className='relative z-10 w-full transform lg:scale-110 slide-bottom'
               src={heavyMachinery}
             />
           </div>
@@ -141,15 +141,15 @@ const formatText = (text = "") =>
       </section>
 
       {/* Upcoming Auctions */}
-      <section className="py-20 bg-white dark:bg-gray-900">
-        <div className="max-w-7xl mx-auto px-4 md:px-8 text-center mb-12">
-          <h2 className="text-4xl font-display font-bold text-gray-900 dark:text-white uppercase">
+      <section className='py-20 bg-white dark:bg-gray-900'>
+        <div className='max-w-7xl mx-auto px-4 md:px-8 text-center mb-12'>
+          <h2 className='text-4xl font-display font-bold text-gray-900 dark:text-white uppercase'>
             {t('home.auctions.title')}
           </h2>
-          <div className="w-16 h-1 bg-primary mx-auto mt-4"></div>
+          <div className='w-16 h-1 bg-primary mx-auto mt-4'></div>
         </div>
         {latestAuction && (
-          <div className="max-w-6xl mx-auto px-4">
+          <div className='max-w-6xl mx-auto px-4'>
             <AuctionCard
               auction={{
                 ...latestAuction,
@@ -176,41 +176,38 @@ const formatText = (text = "") =>
 
       {/* Browse Equipment Categories */}
       {/* Integrated equpipment categories, need image to get and set  */}
-      <section className="py-20 equpment-bg">
-        <div className="max-w-7xl mx-auto px-4 md:px-8">
-          <div className="text-center mb-12">
-            <p className="text-white/80 font-bold text-xs uppercase tracking-widest mb-2">
+      <section className='py-20 equpment-bg'>
+        <div className='max-w-7xl mx-auto px-4 md:px-8'>
+          <div className='text-center mb-12'>
+            <p className='text-white/80 font-bold text-xs uppercase tracking-widest mb-2'>
               {t('home.categories.reasons')}
             </p>
-            <h2 className="text-4xl font-display font-bold text-white uppercase">
+            <h2 className='text-4xl font-display font-bold text-white uppercase'>
               {t('home.categories.title')}
             </h2>
-            <div className="w-16 h-1 bg-white mx-auto mt-4"></div>
+            <div className='w-16 h-1 bg-white mx-auto mt-4'></div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {categoryData?.items
-              .slice(0, 6)
-              .map(category => {
-                const image =
-                  CATEGORY_IMAGE_MAP[category.slug] ?? excavatorImg; // fallback
+          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+            {categoryData?.items.slice(0, 6).map((category) => {
+              const image = CATEGORY_IMAGE_MAP[category.slug] ?? excavatorImg; // fallback
 
-                return (
-                  <CategoryCard
-                    key={category._id}
-                    category={{
-                      id: category._id,
-                      title: category.name,
-                      image: category.imageUrl || image,
-                    }}
-                  />
-                );
-              })}
+              return (
+                <CategoryCard
+                  key={category._id}
+                  category={{
+                    id: category._id,
+                    title: category.name,
+                    image: category.imageUrl || image,
+                  }}
+                />
+              );
+            })}
           </div>
 
-          <div className="mt-12 text-center">
-            <button className="px-10 py-4 bg-white text-primary font-bold uppercase rounded-full hover:bg-slate-50 transition-all group flex items-center gap-2 mx-auto">
+          <div className='mt-12 text-center'>
+            <button className='px-10 py-4 bg-white text-primary font-bold uppercase rounded-full hover:bg-slate-50 transition-all group flex items-center gap-2 mx-auto'>
               {t('home.categories.viewAllCategory')}
-              <i className="material-icons-outlined text-md bg-primary text-white rounded-full p-1 group-hover:translate-x-1 transition-transform">
+              <i className='material-icons-outlined text-md bg-primary text-white rounded-full p-1 group-hover:translate-x-1 transition-transform'>
                 arrow_forward
               </i>
             </button>
@@ -219,17 +216,17 @@ const formatText = (text = "") =>
       </section>
 
       {/* Support Service */}
-      <section className="py-24 bg-white dark:bg-gray-900">
-        <div className="max-w-7xl mx-auto px-4 md:px-8 flex flex-col lg:flex-row items-center gap-16">
-          <div className="w-full lg:w-1/2 relative">
-            <img alt="Construction worker support" src={supportImg} />
+      <section className='py-24 bg-white dark:bg-gray-900'>
+        <div className='max-w-7xl mx-auto px-4 md:px-8 flex flex-col lg:flex-row items-center gap-16'>
+          <div className='w-full lg:w-1/2 relative'>
+            <img alt='Construction worker support' src={supportImg} />
           </div>
-          <div className="w-full lg:w-1/2 space-y-8">
-            <h2 className="text-4xl font-display font-extrabold text-slate-900 dark:text-white leading-tight uppercase">
+          <div className='w-full lg:w-1/2 space-y-8'>
+            <h2 className='text-4xl font-display font-extrabold text-slate-900 dark:text-white leading-tight uppercase'>
               {t('home.support.subtitle')}
             </h2>
-            <div className="w-16 h-1 bg-primary"></div>
-            <p className="text-lg text-slate-600 dark:text-slate-400">
+            <div className='w-16 h-1 bg-primary'></div>
+            <p className='text-lg text-slate-600 dark:text-slate-400'>
               {t('home.support.description')}
             </p>
           </div>
@@ -237,29 +234,29 @@ const formatText = (text = "") =>
       </section>
 
       {/* Latest Equipment */}
-      <section className="py-20 bg-slate-50 dark:bg-slate-900/50">
-        <div className="max-w-7xl mx-auto px-4 md:px-8 text-center mb-16">
-          <p className="text-primary font-bold text-xs uppercase tracking-widest mb-2">
+      <section className='py-20 bg-slate-50 dark:bg-slate-900/50'>
+        <div className='max-w-7xl mx-auto px-4 md:px-8 text-center mb-16'>
+          <p className='text-primary font-bold text-xs uppercase tracking-widest mb-2'>
             {t('home.products.title')}
           </p>
-          <h2 className="text-4xl font-display font-bold text-gray-900 dark:text-white uppercase">
+          <h2 className='text-4xl font-display font-bold text-gray-900 dark:text-white uppercase'>
             {t('home.products.subtitle')}
           </h2>
-          <div className="w-16 h-1 bg-primary mx-auto my-4"></div>
-          <p className="text-slate-500 max-w-2xl mx-auto">
-           {t('home.products.description')}
-          </p>
+          <div className='w-16 h-1 bg-primary mx-auto my-4'></div>
+          <p className='text-slate-500 max-w-2xl mx-auto'>{t('home.products.description')}</p>
         </div>
-        <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className='max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
           {equipment?.map((equipment) => (
             <ProductCard key={equipment._id} product={equipment} />
           ))}
         </div>
-        <div className="mt-16 text-center">
-          <button onClick={() => navigate(ROUTES.BUY)}
-            className="flex items-center gap-2 px-8 py-4 bg-primary text-white font-bold uppercase rounded-full hover:bg-[#1e293b] shadow-xl shadow-primary/20 transition-all group flex items-center gap-2 mx-auto">
+        <div className='mt-16 text-center'>
+          <button
+            onClick={() => navigate(ROUTES.BUY)}
+            className='flex items-center gap-2 px-8 py-4 bg-primary text-white font-bold uppercase rounded-full hover:bg-[#1e293b] shadow-xl shadow-primary/20 transition-all group flex items-center gap-2 mx-auto'
+          >
             {t('home.products.viewEquipments')}
-            <i className="material-icons-outlined bg-white text-primary rounded-full p-1 text-md group-hover:translate-x-1 transition-transform">
+            <i className='material-icons-outlined bg-white text-primary rounded-full p-1 text-md group-hover:translate-x-1 transition-transform'>
               arrow_forward
             </i>
           </button>
@@ -267,63 +264,55 @@ const formatText = (text = "") =>
       </section>
 
       {/* Services Section */}
-      <section className="py-24 bg-services text-white relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
-          <div className="text-center mb-16">
-            <p className="text-primary font-bold text-xs uppercase tracking-widest mb-2">
+      <section className='py-24 bg-services text-white relative overflow-hidden'>
+        <div className='max-w-7xl mx-auto px-4 md:px-8 relative z-10'>
+          <div className='text-center mb-16'>
+            <p className='text-primary font-bold text-xs uppercase tracking-widest mb-2'>
               {t('home.services.title')}
             </p>
-            <h2 className="text-4xl font-display font-bold text-white uppercase max-w-2xl mx-auto">
+            <h2 className='text-4xl font-display font-bold text-white uppercase max-w-2xl mx-auto'>
               {t('home.services.subtitle')}
             </h2>
-            <div className="w-16 h-1 bg-primary mx-auto my-4"></div>
+            <div className='w-16 h-1 bg-primary mx-auto my-4'></div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-white p-8 rounded-3xl flex flex-col items-center text-center space-y-4">
-              <img src={buyIcon} alt="Buy" />
-              <h3 className="text-gray-900 font-display font-bold text-xl uppercase">
+          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
+            <div className='bg-white p-8 rounded-3xl flex flex-col items-center text-center space-y-4'>
+              <img src={buyIcon} alt='Buy' />
+              <h3 className='text-gray-900 font-display font-bold text-xl uppercase'>
                 {t('home.services.buy.title')}
               </h3>
-              <p className="text-slate-600 text-sm">
-                {t('home.services.buy.subtitle')}
-              </p>
-              <button className="bg-slate-900 text-white text-xs font-bold px-6 py-2 rounded-3xl uppercase hover:bg-primary transition-colors">
+              <p className='text-slate-600 text-sm'>{t('home.services.buy.subtitle')}</p>
+              <button className='bg-slate-900 text-white text-xs font-bold px-6 py-2 rounded-3xl uppercase hover:bg-primary transition-colors'>
                 {t('home.services.buy.learnMore')}
               </button>
             </div>
-            <div className="bg-white p-8 rounded-3xl flex flex-col items-center text-center space-y-4">
-              <img src={consignmentIcon} alt="Consignment" />
-              <h3 className="text-gray-900 font-display font-bold text-xl uppercase">
+            <div className='bg-white p-8 rounded-3xl flex flex-col items-center text-center space-y-4'>
+              <img src={consignmentIcon} alt='Consignment' />
+              <h3 className='text-gray-900 font-display font-bold text-xl uppercase'>
                 {t('home.services.consignment.title')}
               </h3>
-              <p className="text-slate-600 text-sm">
-              {t('home.services.consignment.subtitle')}
-              </p>
-              <button className="bg-slate-900 text-white text-xs font-bold px-6 py-2 rounded-3xl uppercase hover:bg-primary transition-colors">
+              <p className='text-slate-600 text-sm'>{t('home.services.consignment.subtitle')}</p>
+              <button className='bg-slate-900 text-white text-xs font-bold px-6 py-2 rounded-3xl uppercase hover:bg-primary transition-colors'>
                 {t('home.services.consignment.learnMore')}
               </button>
             </div>
-            <div className="bg-white p-8 rounded-3xl flex flex-col items-center text-center space-y-4">
-              <img src={auctionIcon} alt="Auction" />
-              <h3 className="text-gray-900 font-display font-bold text-xl uppercase">
+            <div className='bg-white p-8 rounded-3xl flex flex-col items-center text-center space-y-4'>
+              <img src={auctionIcon} alt='Auction' />
+              <h3 className='text-gray-900 font-display font-bold text-xl uppercase'>
                 {t('home.services.auctions.title')}
               </h3>
-              <p className="text-slate-600 text-sm">
-              {t('home.services.auctions.subtitle')}
-              </p>
-              <button className="bg-slate-900 text-white text-xs font-bold px-6 py-2 rounded-3xl uppercase hover:bg-primary transition-colors">
+              <p className='text-slate-600 text-sm'>{t('home.services.auctions.subtitle')}</p>
+              <button className='bg-slate-900 text-white text-xs font-bold px-6 py-2 rounded-3xl uppercase hover:bg-primary transition-colors'>
                 {t('home.services.auctions.learnMore')}
               </button>
             </div>
-            <div className="bg-white p-8 rounded-3xl flex flex-col items-center text-center space-y-4">
-              <img src={locatorIcon} alt="EQ-Locators" />
-              <h3 className="text-brand-dark font-display font-bold text-xl uppercase">
+            <div className='bg-white p-8 rounded-3xl flex flex-col items-center text-center space-y-4'>
+              <img src={locatorIcon} alt='EQ-Locators' />
+              <h3 className='text-brand-dark font-display font-bold text-xl uppercase'>
                 {t('home.services.eqLocators.title')}
               </h3>
-              <p className="text-slate-600 text-sm">
-                {t('home.services.eqLocators.subtitle')}
-              </p>
-              <button className="bg-slate-900 text-white text-xs font-bold px-6 py-2 rounded-3xl uppercase hover:bg-primary transition-colors">
+              <p className='text-slate-600 text-sm'>{t('home.services.eqLocators.subtitle')}</p>
+              <button className='bg-slate-900 text-white text-xs font-bold px-6 py-2 rounded-3xl uppercase hover:bg-primary transition-colors'>
                 {t('home.services.eqLocators.learnMore')}
               </button>
             </div>
@@ -332,73 +321,69 @@ const formatText = (text = "") =>
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-24 bg-white dark:bg-gray-900 overflow-hidden">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <p className="text-primary font-bold text-xs uppercase tracking-widest mb-2">
+      <section className='py-24 bg-white dark:bg-gray-900 overflow-hidden'>
+        <div className='max-w-4xl mx-auto px-4 text-center'>
+          <p className='text-primary font-bold text-xs uppercase tracking-widest mb-2'>
             {t('home.testimonials.title')}
           </p>
-          <h2 className="text-4xl font-display font-bold text-gray-900 dark:text-white uppercase">
+          <h2 className='text-4xl font-display font-bold text-gray-900 dark:text-white uppercase'>
             {t('home.testimonials.subtitle')}
           </h2>
-          <div className="w-16 h-1 bg-primary mx-auto my-4"></div>
+          <div className='w-16 h-1 bg-primary mx-auto my-4'></div>
 
-          <div className="mt-16 relative">
-            <div id="testimonialCarousel" className="space-y-8 transition-all duration-500">
+          <div className='mt-16 relative'>
+            <div id='testimonialCarousel' className='space-y-8 transition-all duration-500'>
               {TESTIMONIALS.map((testimonial, index) => (
                 <div
                   key={index}
-                  className={`testimonial-slide ${index === currentSlide
-                    ? 'opacity-100'
-                    : 'opacity-0 hidden'
-                    } transition-opacity duration-500`}
+                  className={`testimonial-slide ${
+                    index === currentSlide ? 'opacity-100' : 'opacity-0 hidden'
+                  } transition-opacity duration-500`}
                 >
-                  <div className="w-full flex justify-center items-center">
-                    <img src={quoteIcon} alt="Quote Icon" />
+                  <div className='w-full flex justify-center items-center'>
+                    <img src={quoteIcon} alt='Quote Icon' />
                   </div>
-                  <p className="text-lg sm:text-xl md:text-2xl text-slate-600 dark:text-slate-400 italic leading-relaxed mt-6">
+                  <p className='text-lg sm:text-xl md:text-2xl text-slate-600 dark:text-slate-400 italic leading-relaxed mt-6'>
                     {testimonial?.review}
                   </p>
-                  <div className="mt-12 relative flex flex-col items-center">
-
+                  <div className='mt-12 relative flex flex-col items-center'>
                     {/* Avatar */}
-                    <div className="relative">
+                    <div className='relative'>
                       <img
                         alt={`${testimonial.name} Profile`}
-                        className="w-16 h-16 rounded-full object-cover"
+                        className='w-16 h-16 rounded-full object-cover'
                         src={testimonial?.image || getAvatar(testimonial?.name)}
                       />
 
                       {/* Prev Button */}
                       <button
                         onClick={prevSlide}
-                        className="absolute -left-28 top-1/2 -translate-y-1/2 flex items-center gap-2 text-slate-500 hover:text-primary transition-colors"
+                        className='absolute -left-28 top-1/2 -translate-y-1/2 flex items-center gap-2 text-slate-500 hover:text-primary transition-colors'
                       >
-                        <i className="material-icons-outlined text-lg">arrow_back</i>
+                        <i className='material-icons-outlined text-lg'>arrow_back</i>
                         <span>{t('home.testimonials.prev')}</span>
                       </button>
 
                       {/* Next Button */}
                       <button
                         onClick={nextSlide}
-                        className="absolute -right-28 top-1/2 -translate-y-1/2 flex items-center gap-2 text-slate-500 hover:text-primary transition-colors"
+                        className='absolute -right-28 top-1/2 -translate-y-1/2 flex items-center gap-2 text-slate-500 hover:text-primary transition-colors'
                       >
                         <span>{t('home.testimonials.next')}</span>
-                        <i className="material-icons-outlined text-lg">arrow_forward</i>
+                        <i className='material-icons-outlined text-lg'>arrow_forward</i>
                       </button>
                     </div>
 
                     {/* Name */}
-                    <p className="mt-4 font-semibold text-slate-800 dark:text-white">
+                    <p className='mt-4 font-semibold text-slate-800 dark:text-white'>
                       {formatText(testimonial?.name)}
                     </p>
 
                     {/* Role */}
-                    <p className="text-xs text-slate-400 uppercase tracking-widest">
+                    <p className='text-xs text-slate-400 uppercase tracking-widest'>
                       {testimonial?.role}
                     </p>
-
                   </div>
-
                 </div>
               ))}
             </div>

@@ -35,9 +35,9 @@ export const GlobalLoader = (): JSX.Element | null => {
         'backdrop-blur-md backdrop-saturate-150',
         'animate-fadeIn',
       )}
-      role="progressbar"
+      role='progressbar'
       aria-label={message ?? t('common.loading')}
-      aria-live="polite"
+      aria-live='polite'
     >
       <div
         className={cn(
@@ -47,7 +47,7 @@ export const GlobalLoader = (): JSX.Element | null => {
         )}
       >
         {/* Animated Loader */}
-        <div className="relative h-20 w-20">
+        <div className='relative h-20 w-20'>
           {/* Outer ring */}
           <div
             className={cn(
@@ -90,7 +90,7 @@ export const GlobalLoader = (): JSX.Element | null => {
         )}
 
         {/* Loading text */}
-        <div className="flex items-center gap-1">
+        <div className='flex items-center gap-1'>
           <span
             className={cn(
               'text-sm font-semibold',
@@ -100,14 +100,14 @@ export const GlobalLoader = (): JSX.Element | null => {
           >
             {t('common.loading')}
           </span>
-          <span className="flex gap-1">
-            <span className="animate-bounce" style={{ animationDelay: '0ms' }}>
+          <span className='flex gap-1'>
+            <span className='animate-bounce' style={{ animationDelay: '0ms' }}>
               .
             </span>
-            <span className="animate-bounce" style={{ animationDelay: '150ms' }}>
+            <span className='animate-bounce' style={{ animationDelay: '150ms' }}>
               .
             </span>
-            <span className="animate-bounce" style={{ animationDelay: '300ms' }}>
+            <span className='animate-bounce' style={{ animationDelay: '300ms' }}>
               .
             </span>
           </span>

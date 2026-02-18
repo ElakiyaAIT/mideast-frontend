@@ -1,28 +1,50 @@
-import { useTranslation } from "../../i18n";
-import type { SellFormData } from "../../types/home";
-import { SelectInput } from "./SelectInput";
-import { TextInput } from "./TextInput";
+import { useTranslation } from '../../i18n';
+import type { SellFormData } from '../../types/home';
+import { SelectInput } from './SelectInput';
+import { TextInput } from './TextInput';
+import { Editor } from '@tinymce/tinymce-react';
+import React from 'react';
+// Core
+import 'tinymce/tinymce';
+import 'tinymce/models/dom';
 
+// Theme
+import 'tinymce/themes/silver';
+
+// Icons
+import 'tinymce/icons/default';
+
+// Plugins
+import 'tinymce/plugins/advlist';
+import 'tinymce/plugins/link';
+import 'tinymce/plugins/lists';
+import 'tinymce/plugins/code';
+import 'tinymce/plugins/image';
+
+//  ADD THESE
+import 'tinymce/skins/ui/oxide/skin.min.css';
+import 'tinymce/skins/content/default/content.min.css';
+type NestedErrors<T> = {
+  [K in keyof T]?: T[K] extends object ? NestedErrors<T[K]> : string;
+};
 
 interface Props {
   formData: SellFormData;
   setFormData: React.Dispatch<React.SetStateAction<SellFormData>>;
+  errors?: NestedErrors<SellFormData>;
 }
 const conditionOptions = [
-  { id: 1, value: "Excellent" },
-  { id: 2, value: "Good" },
-  { id: 3, value: "Fair" },
-  { id: 4, value: "Poor" },
+  { id: 1, value: 'Excellent' },
+  { id: 2, value: 'Good' },
+  { id: 3, value: 'Fair' },
+  { id: 4, value: 'Poor' },
 ];
 
-const BasicInfo = ({
-  formData,
-  setFormData,
-}: Props) => {
+const BasicInfo = ({ formData, setFormData, errors }: Props) => {
   const { t } = useTranslation();
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
   ) => {
     const { name, value } = e.target;
 
@@ -34,79 +56,64 @@ const BasicInfo = ({
 
   return (
     <div>
-      <h3 className="text-xl font-bold uppercase tracking-tight mb-8">
+      <h3 className='text-xl font-bold uppercase tracking-tight mb-8'>
         {t('sell.form.basicEquipmentInformation')}
       </h3>
 
-      <div className="space-y-8">
+      <div className='space-y-8'>
         {/* Equipment Title */}
 
         <TextInput
+          required={true}
+          error={errors?.title}
           label={t('sell.form.equipmentTitle')}
-          name="title"
-          placeholder="e.g., Caterpillar 320 Excavator (2020)"
-          value={formData.title || ""}
+          name='title'
+          placeholder='e.g., Caterpillar 320 Excavator (2020)'
+          value={formData.title || ''}
           onChange={handleChange}
         />
 
         {/* Category */}
 
         <SelectInput
-          placeholder="e.g., Excavators"
+          required={true}
+          error={errors?.category}
+          placeholder='e.g., Excavators'
           label={t('sell.form.category')}
-          name="category"
+          name='category'
           value={formData.category}
           options={conditionOptions}
           onChange={handleChange}
         />
         {/* Description (Your Original UI Preserved) */}
         <div>
-          <label className="block text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300 mb-2">
-            {t('sell.form.description')}
+          <label className='block text-lg font-bold  tracking-wide dark:text-slate-300 mb-2'>
+            {t('sell.form.description')}<span className='ml-1 text-red-500'>*</span>
           </label>
+          <Editor
+            value={formData.description || ''}
+            onEditorChange={(content) => setFormData((prev) => ({ ...prev, description: content }))}
+            init={{
+              height: 220,
+              menubar: false,
+              branding: false,
 
-          <div className="border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden">
-            {/* Toolbar */}
-            <div className="bg-slate-100 dark:bg-slate-900 p-2 border-b border-slate-200 dark:border-slate-700 flex gap-2 overflow-x-auto">
-              <button type="button" className="p-1 hover:bg-slate-200 dark:hover:bg-slate-800 rounded text-slate-600 dark:text-slate-400">
-                <i className="material-icons text-lg">format_bold</i>
-              </button>
-              <button type="button" className="p-1 hover:bg-slate-200 dark:hover:bg-slate-800 rounded text-slate-600 dark:text-slate-400">
-                <i className="material-icons text-lg">format_italic</i>
-              </button>
-              <button type="button" className="p-1 hover:bg-slate-200 dark:hover:bg-slate-800 rounded text-slate-600 dark:text-slate-400">
-                <i className="material-icons text-lg">format_underlined</i>
-              </button>
+              plugins: ['link', 'lists', 'image', 'media', 'table', 'code', 'advlist'],
 
-              <div className="w-px bg-slate-300 dark:bg-slate-700 mx-1"></div>
+              toolbar:
+                'fontsize | formatselect | forecolor backcolor | ' +
+                'bold italic underline strikethrough | alignleft aligncenter alignright | ' +
+                'bullist numlist | link image media | code',
 
-              <button type="button" className="p-1 hover:bg-slate-200 dark:hover:bg-slate-800 rounded text-slate-600 dark:text-slate-400">
-                <i className="material-icons text-lg">format_list_bulleted</i>
-              </button>
-              <button type="button" className="p-1 hover:bg-slate-200 dark:hover:bg-slate-800 rounded text-slate-600 dark:text-slate-400">
-                <i className="material-icons text-lg">format_list_numbered</i>
-              </button>
+              fontsize_formats: '12px 14px 16px 18px 20px 24px',
 
-              <div className="w-px bg-slate-300 dark:bg-slate-700 mx-1"></div>
+              placeholder:
+                'Provide a detailed description of the equipment, its features, and recent maintenance.',
 
-              <button type="button" className="p-1 hover:bg-slate-200 dark:hover:bg-slate-800 rounded text-slate-600 dark:text-slate-400">
-                <i className="material-icons text-lg">link</i>
-              </button>
-              <button type="button" className="p-1 hover:bg-slate-200 dark:hover:bg-slate-800 rounded text-slate-600 dark:text-slate-400">
-                <i className="material-icons text-lg">image</i>
-              </button>
-            </div>
-
-            {/* Textarea */}
-            <textarea
-              name="description"
-              value={formData.description}
-              onChange={handleChange}
-              className="w-full bg-white dark:bg-slate-900 border-none focus:ring-0 p-4"
-              placeholder="Provide a detailed description of the equipment, its features, and recent maintenance..."
-              rows={8}
-            />
-          </div>
+              automatic_uploads: true,
+              file_picker_types: 'image media file',
+            }}
+          />
         </div>
       </div>
     </div>

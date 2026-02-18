@@ -24,14 +24,14 @@ const LoaderDemoPage = (): JSX.Element => {
   const [showSkeletons, setShowSkeletons] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gray-50 p-8 dark:bg-gray-900">
-      <div className="mx-auto max-w-7xl space-y-12">
+    <div className='min-h-screen bg-gray-50 p-8 dark:bg-gray-900'>
+      <div className='mx-auto max-w-7xl space-y-12'>
         {/* Header */}
         <div>
-          <h1 className="mb-2 text-4xl font-bold text-gray-900 dark:text-white">
+          <h1 className='mb-2 text-4xl font-bold text-gray-900 dark:text-white'>
             Loading System Demo
           </h1>
-          <p className="text-gray-600 dark:text-gray-400">
+          <p className='text-gray-600 dark:text-gray-400'>
             Test all loader types and states in one place
           </p>
         </div>
@@ -40,71 +40,71 @@ const LoaderDemoPage = (): JSX.Element => {
         <GlobalLoaderDemo />
 
         {/* Skeleton Loaders Demo */}
-        <section className="space-y-4">
-          <div className="flex items-center justify-between">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Skeleton Loaders</h2>
-            <Button onClick={() => setShowSkeletons(!showSkeletons)} size="sm">
+        <section className='space-y-4'>
+          <div className='flex items-center justify-between'>
+            <h2 className='text-2xl font-bold text-gray-900 dark:text-white'>Skeleton Loaders</h2>
+            <Button onClick={() => setShowSkeletons(!showSkeletons)} size='sm'>
               {showSkeletons ? 'Hide' : 'Show'} Skeletons
             </Button>
           </div>
 
           {showSkeletons ? (
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+            <div className='grid grid-cols-1 gap-6 md:grid-cols-3'>
               <SkeletonCard />
               <SkeletonCard />
               <SkeletonCard />
             </div>
           ) : (
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+            <div className='grid grid-cols-1 gap-6 md:grid-cols-3'>
               {[1, 2, 3].map((i) => (
                 <div
                   key={i}
-                  className="glass-light rounded-xl border border-gray-200 p-6 dark:border-gray-700"
+                  className='glass-light rounded-xl border border-gray-200 p-6 dark:border-gray-700'
                 >
-                  <div className="mb-4 flex items-center gap-3">
-                    <div className="h-12 w-12 rounded-full bg-primary-500" />
+                  <div className='mb-4 flex items-center gap-3'>
+                    <div className='h-12 w-12 rounded-full bg-primary-500' />
                     <div>
-                      <h3 className="font-semibold text-gray-900 dark:text-white">Product {i}</h3>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">Category</p>
+                      <h3 className='font-semibold text-gray-900 dark:text-white'>Product {i}</h3>
+                      <p className='text-sm text-gray-600 dark:text-gray-400'>Category</p>
                     </div>
                   </div>
-                  <p className="mb-4 text-gray-700 dark:text-gray-300">
+                  <p className='mb-4 text-gray-700 dark:text-gray-300'>
                     This is the actual content that appears after loading completes.
                   </p>
-                  <Button size="sm">View Details</Button>
+                  <Button size='sm'>View Details</Button>
                 </div>
               ))}
             </div>
           )}
 
           {/* Individual Skeleton Variants */}
-          <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-4">
-            <div className="space-y-3">
-              <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+          <div className='mt-8 grid grid-cols-1 gap-6 md:grid-cols-4'>
+            <div className='space-y-3'>
+              <h3 className='text-sm font-semibold text-gray-700 dark:text-gray-300'>
                 Text Skeleton
               </h3>
               <SkeletonText lines={3} />
             </div>
 
-            <div className="space-y-3">
-              <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+            <div className='space-y-3'>
+              <h3 className='text-sm font-semibold text-gray-700 dark:text-gray-300'>
                 Avatar Skeleton
               </h3>
-              <SkeletonAvatar size="64px" />
+              <SkeletonAvatar size='64px' />
             </div>
 
-            <div className="space-y-3">
-              <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+            <div className='space-y-3'>
+              <h3 className='text-sm font-semibold text-gray-700 dark:text-gray-300'>
                 Image Skeleton
               </h3>
-              <SkeletonImage height="100px" />
+              <SkeletonImage height='100px' />
             </div>
 
-            <div className="space-y-3">
-              <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+            <div className='space-y-3'>
+              <h3 className='text-sm font-semibold text-gray-700 dark:text-gray-300'>
                 Custom Skeleton
               </h3>
-              <div className="space-y-2">
+              <div className='space-y-2'>
                 <SkeletonText lines={1} />
                 <SkeletonText lines={1} />
                 <SkeletonText lines={1} />
@@ -150,9 +150,9 @@ const GlobalLoaderDemo = (): JSX.Element => {
   };
 
   return (
-    <section className="glass-light rounded-xl border border-gray-200 p-6 dark:border-gray-700">
-      <h2 className="mb-4 text-2xl font-bold text-gray-900 dark:text-white">Global Loader</h2>
-      <p className="mb-4 text-gray-600 dark:text-gray-400">
+    <section className='glass-light rounded-xl border border-gray-200 p-6 dark:border-gray-700'>
+      <h2 className='mb-4 text-2xl font-bold text-gray-900 dark:text-white'>Global Loader</h2>
+      <p className='mb-4 text-gray-600 dark:text-gray-400'>
         Full-page overlay loader for critical operations (auth, app initialization)
       </p>
       <Button onClick={handleShowGlobal} disabled={isLoading}>
@@ -178,20 +178,20 @@ const SectionLoaderDemo = (): JSX.Element => {
   };
 
   return (
-    <section className="space-y-6">
-      <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Section Loaders</h2>
+    <section className='space-y-6'>
+      <h2 className='text-2xl font-bold text-gray-900 dark:text-white'>Section Loaders</h2>
 
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+      <div className='grid grid-cols-1 gap-6 md:grid-cols-2'>
         {/* Overlay Mode */}
         <div>
-          <h3 className="mb-3 text-lg font-semibold text-gray-900 dark:text-white">Overlay Mode</h3>
-          <SectionLoader isLoading={overlayLoading} overlay={true} message="Refreshing...">
-            <div className="glass-light rounded-xl border border-gray-200 p-6 dark:border-gray-700">
-              <h4 className="mb-2 font-semibold text-gray-900 dark:text-white">Dashboard Stats</h4>
-              <p className="mb-4 text-gray-600 dark:text-gray-400">
+          <h3 className='mb-3 text-lg font-semibold text-gray-900 dark:text-white'>Overlay Mode</h3>
+          <SectionLoader isLoading={overlayLoading} overlay={true} message='Refreshing...'>
+            <div className='glass-light rounded-xl border border-gray-200 p-6 dark:border-gray-700'>
+              <h4 className='mb-2 font-semibold text-gray-900 dark:text-white'>Dashboard Stats</h4>
+              <p className='mb-4 text-gray-600 dark:text-gray-400'>
                 This content is dimmed during loading, and a loader appears on top.
               </p>
-              <Button onClick={triggerOverlay} size="sm" disabled={overlayLoading}>
+              <Button onClick={triggerOverlay} size='sm' disabled={overlayLoading}>
                 Refresh (2s)
               </Button>
             </div>
@@ -200,22 +200,22 @@ const SectionLoaderDemo = (): JSX.Element => {
 
         {/* Replace Mode */}
         <div>
-          <h3 className="mb-3 text-lg font-semibold text-gray-900 dark:text-white">Replace Mode</h3>
-          <div className="glass-light rounded-xl border border-gray-200 dark:border-gray-700">
-            <div className="border-b border-gray-200 p-6 dark:border-gray-700">
-              <Button onClick={triggerReplace} size="sm" disabled={replaceLoading}>
+          <h3 className='mb-3 text-lg font-semibold text-gray-900 dark:text-white'>Replace Mode</h3>
+          <div className='glass-light rounded-xl border border-gray-200 dark:border-gray-700'>
+            <div className='border-b border-gray-200 p-6 dark:border-gray-700'>
+              <Button onClick={triggerReplace} size='sm' disabled={replaceLoading}>
                 Load Data (2s)
               </Button>
             </div>
             <SectionLoader
               isLoading={replaceLoading}
               overlay={false}
-              message="Loading data..."
-              minHeight="200px"
+              message='Loading data...'
+              minHeight='200px'
             >
-              <div className="p-6">
-                <h4 className="mb-2 font-semibold text-gray-900 dark:text-white">Data Content</h4>
-                <p className="text-gray-600 dark:text-gray-400">
+              <div className='p-6'>
+                <h4 className='mb-2 font-semibold text-gray-900 dark:text-white'>Data Content</h4>
+                <p className='text-gray-600 dark:text-gray-400'>
                   This content is completely replaced by the loader.
                 </p>
               </div>
@@ -239,33 +239,33 @@ const ButtonLoadingDemo = (): JSX.Element => {
   };
 
   return (
-    <section className="glass-light rounded-xl border border-gray-200 p-6 dark:border-gray-700">
-      <h2 className="mb-4 text-2xl font-bold text-gray-900 dark:text-white">
+    <section className='glass-light rounded-xl border border-gray-200 p-6 dark:border-gray-700'>
+      <h2 className='mb-4 text-2xl font-bold text-gray-900 dark:text-white'>
         Button Loading States
       </h2>
-      <div className="flex flex-wrap gap-4">
+      <div className='flex flex-wrap gap-4'>
         <Button
-          variant="primary"
+          variant='primary'
           onClick={() => handleClick('primary')}
           isLoading={loading.primary}
         >
           Primary Button
         </Button>
         <Button
-          variant="secondary"
+          variant='secondary'
           onClick={() => handleClick('secondary')}
           isLoading={loading.secondary}
         >
           Secondary Button
         </Button>
         <Button
-          variant="outline"
+          variant='outline'
           onClick={() => handleClick('outline')}
           isLoading={loading.outline}
         >
           Outline Button
         </Button>
-        <Button variant="ghost" onClick={() => handleClick('ghost')} isLoading={loading.ghost}>
+        <Button variant='ghost' onClick={() => handleClick('ghost')} isLoading={loading.ghost}>
           Ghost Button
         </Button>
       </div>
@@ -276,67 +276,67 @@ const ButtonLoadingDemo = (): JSX.Element => {
 // Inline Spinner Demo
 const InlineSpinnerDemo = (): JSX.Element => {
   return (
-    <section className="glass-light rounded-xl border border-gray-200 p-6 dark:border-gray-700">
-      <h2 className="mb-4 text-2xl font-bold text-gray-900 dark:text-white">Inline Spinners</h2>
+    <section className='glass-light rounded-xl border border-gray-200 p-6 dark:border-gray-700'>
+      <h2 className='mb-4 text-2xl font-bold text-gray-900 dark:text-white'>Inline Spinners</h2>
 
-      <div className="space-y-6">
+      <div className='space-y-6'>
         {/* Sizes */}
         <div>
-          <h3 className="mb-3 text-sm font-semibold text-gray-700 dark:text-gray-300">Sizes</h3>
-          <div className="flex items-center gap-6">
-            <div className="flex items-center gap-2">
-              <InlineSpinner size="xs" />
-              <span className="text-sm text-gray-600 dark:text-gray-400">Extra Small</span>
+          <h3 className='mb-3 text-sm font-semibold text-gray-700 dark:text-gray-300'>Sizes</h3>
+          <div className='flex items-center gap-6'>
+            <div className='flex items-center gap-2'>
+              <InlineSpinner size='xs' />
+              <span className='text-sm text-gray-600 dark:text-gray-400'>Extra Small</span>
             </div>
-            <div className="flex items-center gap-2">
-              <InlineSpinner size="sm" />
-              <span className="text-sm text-gray-600 dark:text-gray-400">Small</span>
+            <div className='flex items-center gap-2'>
+              <InlineSpinner size='sm' />
+              <span className='text-sm text-gray-600 dark:text-gray-400'>Small</span>
             </div>
-            <div className="flex items-center gap-2">
-              <InlineSpinner size="md" />
-              <span className="text-sm text-gray-600 dark:text-gray-400">Medium</span>
+            <div className='flex items-center gap-2'>
+              <InlineSpinner size='md' />
+              <span className='text-sm text-gray-600 dark:text-gray-400'>Medium</span>
             </div>
-            <div className="flex items-center gap-2">
-              <InlineSpinner size="lg" />
-              <span className="text-sm text-gray-600 dark:text-gray-400">Large</span>
+            <div className='flex items-center gap-2'>
+              <InlineSpinner size='lg' />
+              <span className='text-sm text-gray-600 dark:text-gray-400'>Large</span>
             </div>
           </div>
         </div>
 
         {/* Variants */}
         <div>
-          <h3 className="mb-3 text-sm font-semibold text-gray-700 dark:text-gray-300">Variants</h3>
-          <div className="flex items-center gap-6">
-            <div className="flex items-center gap-2">
-              <InlineSpinner variant="primary" />
-              <span className="text-sm text-gray-600 dark:text-gray-400">Primary</span>
+          <h3 className='mb-3 text-sm font-semibold text-gray-700 dark:text-gray-300'>Variants</h3>
+          <div className='flex items-center gap-6'>
+            <div className='flex items-center gap-2'>
+              <InlineSpinner variant='primary' />
+              <span className='text-sm text-gray-600 dark:text-gray-400'>Primary</span>
             </div>
-            <div className="flex items-center gap-2">
-              <InlineSpinner variant="secondary" />
-              <span className="text-sm text-gray-600 dark:text-gray-400">Secondary</span>
+            <div className='flex items-center gap-2'>
+              <InlineSpinner variant='secondary' />
+              <span className='text-sm text-gray-600 dark:text-gray-400'>Secondary</span>
             </div>
-            <div className="flex items-center gap-2 rounded bg-primary-500 px-3 py-1">
-              <InlineSpinner variant="white" />
-              <span className="text-sm text-white">White</span>
+            <div className='flex items-center gap-2 rounded bg-primary-500 px-3 py-1'>
+              <InlineSpinner variant='white' />
+              <span className='text-sm text-white'>White</span>
             </div>
           </div>
         </div>
 
         {/* Use Cases */}
         <div>
-          <h3 className="mb-3 text-sm font-semibold text-gray-700 dark:text-gray-300">Use Cases</h3>
-          <div className="space-y-3">
-            <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
-              <InlineSpinner size="sm" />
+          <h3 className='mb-3 text-sm font-semibold text-gray-700 dark:text-gray-300'>Use Cases</h3>
+          <div className='space-y-3'>
+            <div className='flex items-center gap-2 text-gray-700 dark:text-gray-300'>
+              <InlineSpinner size='sm' />
               <span>Loading search results...</span>
             </div>
-            <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
+            <div className='flex items-center gap-2 text-gray-700 dark:text-gray-300'>
               <span>Saving draft</span>
-              <InlineSpinner size="xs" />
+              <InlineSpinner size='xs' />
             </div>
-            <button className="flex items-center gap-2 text-red-600 hover:text-red-700">
+            <button className='flex items-center gap-2 text-red-600 hover:text-red-700'>
               <span>Delete</span>
-              <InlineSpinner size="xs" variant="current" />
+              <InlineSpinner size='xs' variant='current' />
             </button>
           </div>
         </div>
@@ -362,21 +362,21 @@ const ReactQueryDemo = (): JSX.Element => {
   });
 
   return (
-    <section className="glass-light rounded-xl border border-gray-200 p-6 dark:border-gray-700">
-      <h2 className="mb-4 text-2xl font-bold text-gray-900 dark:text-white">
+    <section className='glass-light rounded-xl border border-gray-200 p-6 dark:border-gray-700'>
+      <h2 className='mb-4 text-2xl font-bold text-gray-900 dark:text-white'>
         React Query Integration
       </h2>
-      <p className="mb-4 text-gray-600 dark:text-gray-400">
+      <p className='mb-4 text-gray-600 dark:text-gray-400'>
         Leveraging React Query's built-in loading states
       </p>
 
-      <div className="space-y-4">
-        <div className="flex gap-2">
-          <Button onClick={() => refetch()} disabled={isLoading || isRefetching} size="sm">
+      <div className='space-y-4'>
+        <div className='flex gap-2'>
+          <Button onClick={() => refetch()} disabled={isLoading || isRefetching} size='sm'>
             {isLoading ? 'Loading...' : 'Fetch Data'}
           </Button>
           {data && (
-            <Button onClick={() => refetch()} isLoading={isRefetching} size="sm">
+            <Button onClick={() => refetch()} isLoading={isRefetching} size='sm'>
               Refresh
             </Button>
           )}
@@ -386,23 +386,23 @@ const ReactQueryDemo = (): JSX.Element => {
           <SkeletonText lines={3} />
         ) : data ? (
           <SectionLoader isLoading={isRefetching} overlay={true}>
-            <div className="grid grid-cols-3 gap-4 rounded-lg bg-gray-100 p-4 dark:bg-gray-800">
+            <div className='grid grid-cols-3 gap-4 rounded-lg bg-gray-100 p-4 dark:bg-gray-800'>
               <div>
-                <p className="text-sm text-gray-600 dark:text-gray-400">Users</p>
-                <p className="text-2xl font-bold text-gray-900 dark:text-white">{data.users}</p>
+                <p className='text-sm text-gray-600 dark:text-gray-400'>Users</p>
+                <p className='text-2xl font-bold text-gray-900 dark:text-white'>{data.users}</p>
               </div>
               <div>
-                <p className="text-sm text-gray-600 dark:text-gray-400">Revenue</p>
-                <p className="text-2xl font-bold text-gray-900 dark:text-white">{data.revenue}</p>
+                <p className='text-sm text-gray-600 dark:text-gray-400'>Revenue</p>
+                <p className='text-2xl font-bold text-gray-900 dark:text-white'>{data.revenue}</p>
               </div>
               <div>
-                <p className="text-sm text-gray-600 dark:text-gray-400">Orders</p>
-                <p className="text-2xl font-bold text-gray-900 dark:text-white">{data.orders}</p>
+                <p className='text-sm text-gray-600 dark:text-gray-400'>Orders</p>
+                <p className='text-2xl font-bold text-gray-900 dark:text-white'>{data.orders}</p>
               </div>
             </div>
           </SectionLoader>
         ) : (
-          <p className="italic text-gray-500 dark:text-gray-400">Click "Fetch Data" to load</p>
+          <p className='italic text-gray-500 dark:text-gray-400'>Click "Fetch Data" to load</p>
         )}
       </div>
     </section>
@@ -423,9 +423,9 @@ const ScopedLoaderDemo = (): JSX.Element => {
   };
 
   return (
-    <section className="glass-light rounded-xl border border-gray-200 p-6 dark:border-gray-700">
-      <h2 className="mb-4 text-2xl font-bold text-gray-900 dark:text-white">Scoped Loader Hook</h2>
-      <p className="mb-4 text-gray-600 dark:text-gray-400">
+    <section className='glass-light rounded-xl border border-gray-200 p-6 dark:border-gray-700'>
+      <h2 className='mb-4 text-2xl font-bold text-gray-900 dark:text-white'>Scoped Loader Hook</h2>
+      <p className='mb-4 text-gray-600 dark:text-gray-400'>
         Component-specific loader with automatic cleanup and minimum display time (300ms)
       </p>
 
@@ -434,10 +434,10 @@ const ScopedLoaderDemo = (): JSX.Element => {
       </Button>
 
       {isLoading && (
-        <div className="mt-4 rounded-lg border border-blue-200 bg-blue-50 p-4 dark:border-blue-800 dark:bg-blue-900/20">
-          <div className="flex items-center gap-2">
-            <InlineSpinner size="sm" />
-            <span className="text-blue-900 dark:text-blue-200">
+        <div className='mt-4 rounded-lg border border-blue-200 bg-blue-50 p-4 dark:border-blue-800 dark:bg-blue-900/20'>
+          <div className='flex items-center gap-2'>
+            <InlineSpinner size='sm' />
+            <span className='text-blue-900 dark:text-blue-200'>
               Scoped loader is active (minimum 300ms display)
             </span>
           </div>
@@ -467,33 +467,33 @@ const ApiLoaderDemo = (): JSX.Element => {
   };
 
   return (
-    <section className="glass-light rounded-xl border border-gray-200 p-6 dark:border-gray-700">
-      <h2 className="mb-4 text-2xl font-bold text-gray-900 dark:text-white">
+    <section className='glass-light rounded-xl border border-gray-200 p-6 dark:border-gray-700'>
+      <h2 className='mb-4 text-2xl font-bold text-gray-900 dark:text-white'>
         API Loader Hook (Namespace Tracking)
       </h2>
-      <p className="mb-4 text-gray-600 dark:text-gray-400">
+      <p className='mb-4 text-gray-600 dark:text-gray-400'>
         Track multiple concurrent requests by namespace
       </p>
 
-      <div className="space-y-4">
+      <div className='space-y-4'>
         <Button onClick={handleMultipleRequests} disabled={isLoading}>
           Simulate 3 Concurrent Requests
         </Button>
 
-        <div className="rounded-lg bg-gray-100 p-4 dark:bg-gray-800">
-          <div className="flex items-center justify-between">
-            <span className="text-sm text-gray-700 dark:text-gray-300">
+        <div className='rounded-lg bg-gray-100 p-4 dark:bg-gray-800'>
+          <div className='flex items-center justify-between'>
+            <span className='text-sm text-gray-700 dark:text-gray-300'>
               Active Requests in 'demo-namespace':
             </span>
-            <span className="text-lg font-bold text-primary-600 dark:text-primary-400">
+            <span className='text-lg font-bold text-primary-600 dark:text-primary-400'>
               {requestCount}
             </span>
           </div>
-          <div className="mt-2 flex items-center gap-2">
+          <div className='mt-2 flex items-center gap-2'>
             <div
               className={`h-3 w-3 rounded-full ${isLoading ? 'animate-pulse bg-green-500' : 'bg-gray-400'}`}
             />
-            <span className="text-sm text-gray-600 dark:text-gray-400">
+            <span className='text-sm text-gray-600 dark:text-gray-400'>
               {isLoading ? 'Loading' : 'Idle'}
             </span>
           </div>
@@ -525,33 +525,33 @@ const AsyncLoaderDemo = (): JSX.Element => {
   };
 
   return (
-    <section className="glass-light rounded-xl border border-gray-200 p-6 dark:border-gray-700">
-      <h2 className="mb-4 text-2xl font-bold text-gray-900 dark:text-white">
+    <section className='glass-light rounded-xl border border-gray-200 p-6 dark:border-gray-700'>
+      <h2 className='mb-4 text-2xl font-bold text-gray-900 dark:text-white'>
         Async Loader Hook (with Debouncing)
       </h2>
-      <p className="mb-4 text-gray-600 dark:text-gray-400">
+      <p className='mb-4 text-gray-600 dark:text-gray-400'>
         Wraps async operations with loading state, debouncing (500ms), and error handling
       </p>
 
-      <div className="space-y-4">
-        <div className="relative">
+      <div className='space-y-4'>
+        <div className='relative'>
           <input
-            type="text"
+            type='text'
             value={searchTerm}
             onChange={(e) => handleSearch(e.target.value)}
-            placeholder="Type to search (debounced 500ms)..."
-            className="w-full rounded-lg border border-gray-300 bg-white px-4 py-2 pr-10 text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-800 dark:text-white"
+            placeholder='Type to search (debounced 500ms)...'
+            className='w-full rounded-lg border border-gray-300 bg-white px-4 py-2 pr-10 text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-800 dark:text-white'
           />
           {isLoading && (
-            <div className="absolute right-3 top-1/2 -translate-y-1/2">
-              <InlineSpinner size="sm" />
+            <div className='absolute right-3 top-1/2 -translate-y-1/2'>
+              <InlineSpinner size='sm' />
             </div>
           )}
         </div>
 
         {error && (
-          <div className="rounded-lg border border-red-200 bg-red-50 p-3 dark:border-red-800 dark:bg-red-900/20">
-            <p className="text-sm text-red-900 dark:text-red-200">Error: {error.message}</p>
+          <div className='rounded-lg border border-red-200 bg-red-50 p-3 dark:border-red-800 dark:bg-red-900/20'>
+            <p className='text-sm text-red-900 dark:text-red-200'>Error: {error.message}</p>
           </div>
         )}
       </div>

@@ -1,6 +1,5 @@
-
-import type { ApiResponse } from "../dto/api.dto";
-import axiosInstance from "./axiosInstance";
+import type { ApiResponse } from '../dto/api.dto';
+import axiosInstance from './axiosInstance';
 
 export interface TestimonialDto {
   _id: string;
@@ -34,13 +33,13 @@ export const testimonialApi = {
   getTestimonials: async (
     filters?: FilterTestimonialDto,
   ): Promise<PaginatedResponseDto<TestimonialDto>> => {
-    const response = await axiosInstance.get<ApiResponse<
-      PaginatedResponseDto<TestimonialDto>>
-    >('/testimonials', {
-      params: filters,
-    });
+    const response = await axiosInstance.get<ApiResponse<PaginatedResponseDto<TestimonialDto>>>(
+      '/testimonials',
+      {
+        params: filters,
+      },
+    );
 
     return response.data.data;
   },
-
 };

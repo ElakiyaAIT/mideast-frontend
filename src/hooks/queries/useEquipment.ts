@@ -21,6 +21,7 @@ export const equipmentKeys = {
   detail: (id: string) => [...equipmentKeys.details(), id] as const,
   featured: () => [...equipmentKeys.all, 'featured'] as const,
   search: (query: string) => [...equipmentKeys.all, 'search', query] as const,
+  latest: () => [...equipmentKeys.all, 'latest'] as const,
 };
 
 /**
@@ -164,6 +165,24 @@ export const useEquipmentCategories = (
       return response.data;
     },
     staleTime: 1000 * 60 * 10, // 10 minutes
+    retry: 2,
+  });
+};
+
+export const useLatestEquipment = (): UseQueryResult<Equipment[], Error> => {
+  return useQuery({
+    queryKey: equipmentKeys.latest(),
+    queryFn: async (): Promise<Equipment[]> => {
+      const response = await equipmentApi.getLatest();
+
+      // if your API wraps response
+      if (!response.success) {
+        throw new Error(response.message ?? 'Failed to fetch latest equipment');
+      }
+
+      return response.data;
+    },
+    staleTime: 1000 * 60 * 5, // 5 minutes
     retry: 2,
   });
 };

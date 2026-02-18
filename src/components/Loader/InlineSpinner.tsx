@@ -66,11 +66,11 @@ export const InlineSpinner = ({
         variants[variant],
         className,
       )}
-      role="status"
+      role='status'
       aria-label={label}
-      aria-live="polite"
+      aria-live='polite'
     >
-      <span className="sr-only">{label}</span>
+      <span className='sr-only'>{label}</span>
     </span>
   );
 };

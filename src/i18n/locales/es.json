@@ -63,6 +63,168 @@
     },
     "token": {
       "required": "El token de restablecimiento es requerido"
+    },
+    "sell": {
+      "title": {
+        "required": "El título del equipo es obligatorio",
+        "minLength": "El título debe tener al menos 5 caracteres",
+        "maxLength": "El título no puede exceder los 120 caracteres"
+      },
+      "category": {
+        "required": "Por favor seleccione una categoría"
+      },
+      "description": {
+        "required": "La descripción es obligatoria",
+        "minLength": "La descripción debe tener al menos 20 caracteres",
+        "maxLength": "La descripción no puede exceder los 2000 caracteres"
+      },
+      "year": {
+        "required": "El año es obligatorio",
+        "number": "El año debe ser un número",
+        "min": "El año debe ser posterior a 1900",
+        "max": "El año no puede estar en el futuro"
+      },
+      "make": {
+        "required": "La marca es obligatoria"
+      },
+      "model": {
+        "required": "El modelo es obligatorio"
+      },
+      "manufacturer": {
+        "required": "El fabricante es obligatorio"
+      },
+      "engineHours": {
+        "required": "Las horas del motor son obligatorias",
+        "number": "Las horas del motor deben ser un número",
+        "min": "Las horas del motor no pueden ser negativas"
+      },
+      "mileage": {
+        "required": "El kilometraje es obligatorio",
+        "number": "El kilometraje debe ser un número",
+        "min": "El kilometraje no puede ser negativo"
+      },
+      "transmission": {
+        "required": "La transmisión es obligatoria"
+      },
+      "engineType": {
+        "required": "El tipo de motor es obligatorio"
+      },
+      "grossPower": {
+        "required": "La potencia bruta es obligatoria",
+        "number": "La potencia bruta debe ser un número",
+        "min": "La potencia bruta no puede ser negativa"
+      },
+      "operatingWeight": {
+        "required": "El peso operativo es obligatorio",
+        "number": "El peso operativo debe ser un número",
+        "min": "El peso operativo no puede ser negativo"
+      },
+      "fuelType": {
+        "required": "El tipo de combustible es obligatorio"
+      },
+      "tireTrackSize": {
+        "required": "El tamaño de llantas/orugas es obligatorio"
+      },
+      "cabType": {
+        "required": "El tipo de cabina es obligatorio"
+      },
+      "tireTrackWear": {
+        "number": "El desgaste de llantas/orugas debe ser un número",
+        "min": "El desgaste de llantas/orugas no puede ser menor al 0%",
+        "max": "El desgaste de llantas/orugas no puede exceder el 100%",
+        "required": "El desgaste de llantas/orugas es obligatorio"
+      },
+      "suspension": {
+        "required": "El tipo de suspensión es obligatorio"
+      },
+      "overallCondition": {
+        "required": "La condición general es obligatoria"
+      },
+      "exteriorColor": {
+        "required": "El color exterior es obligatorio"
+      },
+      "interiorColor": {
+        "required": "El color interior es obligatorio"
+      },
+      "jumpStartRequired": {
+        "required": "El estado de arranque con cables es obligatorio"
+      },
+      "batteriesHoldCharge": {
+        "required": "El estado de carga de las baterías es obligatorio"
+      },
+      "parkingBrakeWorks": {
+        "required": "El estado del freno de estacionamiento es obligatorio"
+      },
+      "engineOverallCondition": {
+        "required": "La condición general del motor es obligatoria"
+      },
+      "oilLevelOk": {
+        "required": "La confirmación del nivel de aceite es obligatoria"
+      },
+      "anyLeaks": {
+        "required": "Por favor confirme si hay fugas"
+      },
+      "coolantLevel": {
+        "required": "El estado del nivel de refrigerante es obligatorio"
+      },
+      "smokeColor": {
+        "required": "El color del humo es obligatorio"
+      },
+      "engineNoise": {
+        "required": "El estado del ruido del motor es obligatorio"
+      },
+      "coldStartQuality": {
+        "required": "La calidad de arranque en frío es obligatoria"
+      },
+      "checkEngineLight": {
+        "required": "El estado de la luz de verificación del motor es obligatorio"
+      },
+      "hydraulicPumpCondition": {
+        "required": "La condición de la bomba hidráulica es obligatoria"
+      },
+      "cylinderLeaks": {
+        "required": "El estado de fugas en los cilindros es obligatorio"
+      },
+      "hoseCondition": {
+        "required": "La condición de las mangueras es obligatoria"
+      },
+      "hydraulicResponse": {
+        "required": "La respuesta hidráulica es obligatoria"
+      },
+      "hydraulicsDamage": {
+        "required": "El estado de daños en el sistema hidráulico es obligatorio"
+      },
+      "dashboardFunctional": {
+        "required": "El estado funcional del tablero es obligatorio"
+      },
+      "acHeaterWorking": {
+        "required": "El estado de funcionamiento del AC/Calefacción es obligatorio"
+      },
+      "displayErrors": {
+        "required": "El estado de errores en la pantalla es obligatorio"
+      },
+      "seatCondition": {
+        "required": "La condición del asiento es obligatoria"
+      },
+      "controlsWorking": {
+        "required": "El estado de funcionamiento de los controles es obligatorio"
+      },
+      "lightsWorking": {
+        "required": "El estado de funcionamiento de las luces es obligatorio"
+      },
+      "sensorsWorking": {
+        "required": "El estado de funcionamiento de los sensores es obligatorio"
+      },
+      "condition": {
+        "required": "Este campo es obligatorio"
+      },
+      "additionalInformation": {
+        "required": "Este campo es obligatorio",
+        "vinNumberRequired": "El número de VIN es obligatorio",
+        "location": {
+          "addressRequired": "La dirección es obligatoria"
+        }
+      }
     }
   },
   "auth": {
@@ -176,52 +338,51 @@
       "drillingRigs": "Equipos de Perforación",
       "26gCase": "Case 26g"
     },
-    "support":{
-        "title":"Apoyo",
-        "subtitle":"Ofrecemos equipos de construcción de la mejor calidad y un excelente servicio de soporte.",
-        "description":"Nuestra misión es brindar servicios honestos y profesionales a nuestros clientes en la industria de equipo pesado. Nos enorgullecemos de nuestra reputación como socio ético y de confianza para contratistas y distribuidores. Podemos ayudarle a comprar o vender su equipo pesado, tanto a nivel local como internacional, a través de nuestra red global de contactos. Nuestro objetivo es su completa y total satisfacción."
+    "support": {
+      "title": "Apoyo",
+      "subtitle": "Ofrecemos equipos de construcción de la mejor calidad y un excelente servicio de soporte.",
+      "description": "Nuestra misión es brindar servicios honestos y profesionales a nuestros clientes en la industria de equipo pesado. Nos enorgullecemos de nuestra reputación como socio ético y de confianza para contratistas y distribuidores. Podemos ayudarle a comprar o vender su equipo pesado, tanto a nivel local como internacional, a través de nuestra red global de contactos. Nuestro objetivo es su completa y total satisfacción."
     },
     "products": {
       "title": "Nuestros Productos",
       "subtitle": "Últimos Equipos",
       "viewEquipments": "Ver Equipos",
       "description": "Cumplir con el programa de mantenimiento recomendado para su máquina es una de las formas más efectivas de garantizar que siga funcionando de manera óptima.",
-      "viewMore":"Ver Más",
-      "best":"mejor",
-      "retailPrice":"Precio de Venta"
+      "viewMore": "Ver Más",
+      "best": "mejor",
+      "retailPrice": "Precio de Venta"
     },
     "services": {
       "title": "Servicios",
       "subtitle": "Líder de la Industria en Suministro de Equipos de Construcción",
       "auction": "Subasta",
       "cargoConsignment": "Consignación de Carga",
-        "buy": {
-          "title": "Comprar",
-          "subtitle": "Compramos equipos pesados y camiones, desde una pieza hasta 100+.",
-          "learnMore": "Más información"
-        },
-          "consignment":{
-        "title":"Consignación",
-        "subtitle":"Si no llegan a un acuerdo de compra, podemos ayudarle. Vendemos equipos en consignación.",
-        "learnMore":"Más información"
+      "buy": {
+        "title": "Comprar",
+        "subtitle": "Compramos equipos pesados y camiones, desde una pieza hasta 100+.",
+        "learnMore": "Más información"
       },
-       "auctions":{
-        "title":"Subasta",
-        "subtitle":"Nuestras subastas en línea brindan una alternativa eficaz para vender su equipo pesado usado.",
-        "learnMore":"Más información"
+      "consignment": {
+        "title": "Consignación",
+        "subtitle": "Si no llegan a un acuerdo de compra, podemos ayudarle. Vendemos equipos en consignación.",
+        "learnMore": "Más información"
       },
-       "eqLocators":{
-        "title":"Localizadores EQ",
-        "subtitle":"Con nuestra amplia red podemos ayudarle a localizar cualquier equipo que no se encuentre actualmente en stock.",
-        "learnMore":"Más información"
+      "auctions": {
+        "title": "Subasta",
+        "subtitle": "Nuestras subastas en línea brindan una alternativa eficaz para vender su equipo pesado usado.",
+        "learnMore": "Más información"
+      },
+      "eqLocators": {
+        "title": "Localizadores EQ",
+        "subtitle": "Con nuestra amplia red podemos ayudarle a localizar cualquier equipo que no se encuentre actualmente en stock.",
+        "learnMore": "Más información"
       }
-
     },
     "testimonials": {
       "title": "Testimonios",
       "subtitle": "Lo Que Dicen Nuestros Clientes",
-      "prev":"Anterior",
-      "next":"Siguiente"
+      "prev": "Anterior",
+      "next": "Siguiente"
     }
   },
   "product": {
@@ -266,7 +427,7 @@
       "securePayment": "Pago Seguro",
       "includedTaxes": "Impuestos y Revisión Incluidos",
       "savingsBadge": "AHORRA $10,000",
-      "instantSavings":"Ahorros Instantáneos"
+      "instantSavings": "Ahorros Instantáneos"
     },
     "breadcrumb": {
       "home": "Inicio",
@@ -285,9 +446,9 @@
     "applyFilters": "APLICAR FILTROS",
     "showing": "Mostrando",
     "resultsCount": "de {{total}} Resultados",
-    "clearDate":"Borrar fecha",
-    "error":"No se pudo cargar el equipo. Inténtalo de nuevo más tarde.",
-    "empty":"No se encontró ningún equipo. ¡Vuelva más tarde!",
+    "clearDate": "Borrar fecha",
+    "error": "No se pudo cargar el equipo. Inténtalo de nuevo más tarde.",
+    "empty": "No se encontró ningún equipo. ¡Vuelva más tarde!",
     "filters": {
       "auctionDate": "Fecha de Subasta",
       "category": "Categoría",
@@ -297,33 +458,33 @@
       "currentBid": "Oferta Actual"
     }
   },
-   "auction":{
-      "title":"Subasta",
-      "searchAuctions":"Buscar subastas",
-      "location":"Ubicación",
-      "search":"buscar",
-      "upcoming":"próximo",
-      "past":"Pasado",
-      "proxibidBidding": "Licitación Proxibid",
-      "equipmentfactsBidding": "Licitación Equipmentfacts",
-      "auctionDuration":"Duración de la subasta",
-      "starting price":"precio inicial",
-      "bids":"ofertas",
-      "soldFor":"vendido por"
+  "auction": {
+    "title": "Subasta",
+    "searchAuctions": "Buscar subastas",
+    "location": "Ubicación",
+    "search": "buscar",
+    "upcoming": "próximo",
+    "past": "Pasado",
+    "proxibidBidding": "Licitación Proxibid",
+    "equipmentfactsBidding": "Licitación Equipmentfacts",
+    "auctionDuration": "Duración de la subasta",
+    "starting price": "precio inicial",
+    "bids": "ofertas",
+    "soldFor": "vendido por"
   },
   "sell": {
     "title": "VENDER Inventario",
     "subtitle": "Vender tu equipo usado es fácil.",
-    "card":{
-      "card1":"Valoración gratuita de equipos con valores proyectados de venta al público y de subasta.",
-      "card2":"Comercializaremos + venderemos su equipo.",
-      "card3":"Te pagan.",
-      "card1OR":"Te hacemos una oferta.",
-      "card2OR":"Verificamos tu equipo",
-      "card3OR":"Te pagan."
+    "card": {
+      "card1": "Valoración gratuita de equipos con valores proyectados de venta al público y de subasta.",
+      "card2": "Comercializaremos + venderemos su equipo.",
+      "card3": "Te pagan.",
+      "card1OR": "Te hacemos una oferta.",
+      "card2OR": "Verificamos tu equipo",
+      "card3OR": "Te pagan."
     },
     "getStarted": "¡Comienza a vender tu equipo con Mideast hoy!",
-    "completeForm":"Complete el formulario a continuación o llámenos al",
+    "completeForm": "Complete el formulario a continuación o llámenos al",
     "steps": {
       "basicInfo": "Información Básica",
       "details": "Detalles",
@@ -339,110 +500,156 @@
       "category": "Categoría",
       "description": "Descripción",
       "selectCategory": "Seleccionar Categoría",
-      "details":{
-        "title":"Detalles del equipo",
-        "basic":{
-        "title":"Detalles básicos",
-        "year":"Año",
-        "make":"Marca",
-        "model":"Modelo",
-        "manufacturer":"Fabricante",
-        "engineHours":"Horas del motor",
-        "mileage":"Kilometraje"
+      "details": {
+        "title": "Detalles del equipo",
+        "basic": {
+          "title": "Detalles básicos",
+          "year": "Año",
+          "make": "Marca",
+          "model": "Modelo",
+          "manufacturer": "Fabricante",
+          "engineHours": "Horas del motor",
+          "mileage": "Kilometraje"
+        },
+        "general": {
+          "title": "Especificaciones generales",
+          "transmission": "Transmisión",
+          "engineType": "Tipo de motor",
+          "grossPower": "potencia bruta",
+          "operatingWeight": "Peso operativo",
+          "fuelType": "Tipo de combustible",
+          "cabType": "Tipo de cabina",
+          "tireTrackSize": "Tamaño de neumáticos/pista",
+          "suspensionType": "Tipo de suspensión",
+          "tireTrackWear": "Desgaste de neumáticos/pista"
+        },
+        "condition": {
+          "title": "Resumen de la Condición",
+          "overall": "Condición General",
+          "exterior": "Color Exterior",
+          "interior": "Color Interior",
+          "jumpStart": "Requiere Arranque con Cables",
+          "batteriesHoldCharge": "Las Baterías Mantienen la Carga",
+          "parkingBrake": "El Freno de Estacionamiento Funciona"
+        },
+        "engine": {
+          "title": "Condición del Motor",
+          "overall": "Condición General",
+          "oilLevel": "¿Nivel de Aceite Correcto?",
+          "anyLeaks": "¿Hay Fugas?",
+          "coolantLevel": "Nivel de Refrigerante",
+          "smokeColor": "Color del Humo",
+          "engineNoise": "Ruido del Motor",
+          "coldStartQuality": "Calidad de Arranque en Frío",
+          "checkEngineLight": "Luz de Verificación del Motor"
+        },
+        "hydraulics": {
+          "title": "Hidráulica",
+          "hydraulicPump": "Condición de la Bomba Hidráulica",
+          "cylinderLeaks": "Fugas en los Cilindros",
+          "hoseCondition": "Condición de las Mangueras",
+          "hydraulicResponse": "Respuesta del Sistema Hidráulico",
+          "hydraulicDamage": "Daños en el Sistema Hidráulico"
+        },
+        "cabElectronics": {
+          "title": "Cabina y Electrónica",
+          "dashboardFunctional": "Tablero Funcional",
+          "acHeater": "Aire Acondicionado/Calefacción Funcionando",
+          "displayErrors": "Errores en la Pantalla",
+          "seatCondition": "Condición del Asiento",
+          "controlsWorking": "Controles Funcionando",
+          "lightsWorking": "Luces Funcionando",
+          "sensorsWorking": "Sensores Funcionando"
+        }
       },
-      "general":{
-        "title":"Especificaciones generales",
-        "transmission":"Transmisión",
-        "engineType":"Tipo de motor",
-        "grossPower":"potencia bruta",
-        "operatingWeight":"Peso operativo",
-        "fuelType":"Tipo de combustible",
-        "cabType":"Tipo de cabina",
-        "tireTrackSize":"Tamaño de neumáticos/pista",
-        "suspensionType":"Tipo de suspensión",
-        "tireTrackWear":"Desgaste de neumáticos/pista"
+      "conditionCheckList": {
+        "title": "Lista de Verificación de Condición",
+        "item": "Elemento",
+        "status": "Estado",
+        "photosVideos": "Fotos/Videos",
+        "imageUpload": {
+          "clickHere": "Haz clic aquí",
+          "toUpload": " para subir tu archivo o arrastrarlo.",
+          "formatSupport": "Formatos compatibles: SVG, JPG, MP4 (10 MB cada uno)"
+        },
+        "exteriorLabel": "Exterior",
+        "engineLabel": "Motor",
+        "hydraulicsLabel": "Hidráulicos",
+        "underCarriageLabel": "Tren de Rodaje",
+        "functionalTestLabel": "Prueba Funcional",
+        "exterior": {
+          "title": "Condición Exterior",
+          "bodyPanels": "Paneles de la Carrocería",
+          "glassMirrors": "Vidrios y Espejos",
+          "lightsSignals": "Luces y Señales"
+        },
+        "engine": {
+          "title": "Condición del Motor",
+          "engineBlock": "Bloque del Motor",
+          "transmission": "Transmisión"
+        },
+        "hydraulics": {
+          "title": "Condición del Sistema Hidráulico",
+          "hydraulicPump": "Bomba Hidráulica",
+          "cylinders": "Cilindros"
+        },
+        "underCarriage": {
+          "title": "Tren de Rodaje",
+          "tracksWheels": "Orugas/Ruedas",
+          "suspension": "Suspensión"
+        },
+        "functionalTest": {
+          "title": "Prueba Funcional",
+          "engineStart": "Arranque del Motor",
+          "operationTest": "Prueba de Operación"
+        }
       },
-      "condition": {
-        "title": "Resumen de la Condición",
-        "overall": "Condición General",
-        "exterior": "Color Exterior",
-        "interior": "Color Interior",
-        "jumpStart": "Requiere Arranque con Cables",
-        "batteriesHoldCharge": "Las Baterías Mantienen la Carga",
-        "parkingBrake": "El Freno de Estacionamiento Funciona"
+      "media": {
+        "title": "Subir Fotos y Videos del Equipo",
+        "exterior": "Exterior",
+        "engineCompartment": "Compartimiento del Motor",
+        "underCarriage": "Tren de Rodaje/Orugas",
+        "cabInterior": "Interior de la Cabina",
+        "other": "Otros Accesorios",
+        "videos": "Videos"
       },
-      "engine": {
-        "title": "Condición del Motor",
-        "overall": "Condición General",
-        "oilLevel": "¿Nivel de Aceite Correcto?",
-        "anyLeaks": "¿Hay Fugas?",
-        "coolantLevel": "Nivel de Refrigerante",
-        "smokeColor": "Color del Humo",
-        "engineNoise": "Ruido del Motor",
-        "coldStartQuality": "Calidad de Arranque en Frío",
-        "checkEngineLight": "Luz de Verificación del Motor"
+      "additionalInformation": {
+        "title": "Información Adicional del Equipo",
+        "equipmentIdentity": {
+          "title": "Información de Identidad del Equipo",
+          "vinNumber": "Número de VIN",
+          "manufacturerDate": "Fecha de Fabricación",
+          "modelYear": "Confirmación del Año del Modelo",
+          "equipmentHasDamage": "¿El Equipo Tiene Daños?",
+          "maintainenceRecords": "¿Registros de Mantenimiento Disponibles?",
+          "warrantyAvailable": "¿Garantía Disponible?"
+        },
+        "location": {
+          "title": "Ubicación",
+          "address": "Dirección"
+        },
+        "ownership": {
+          "title": "Propiedad y Documentos Legales",
+          "ownershipProof": "Comprobante de Propiedad",
+          "invoiceBill": "Factura/Contrato de Compraventa",
+          "governmentRegistration": "Registro Gubernamental",
+          "emission": "Prueba de Emisiones",
+          "insurance": "Documentos de Seguro",
+          "maintenance": "Registro de Mantenimiento Reciente"
+        }
       },
-      "hydraulics": {
-        "title":"Hidráulica",
-        "hydraulicPump": "Condición de la Bomba Hidráulica",
-        "cylinderLeaks": "Fugas en los Cilindros",
-        "hoseCondition": "Condición de las Mangueras",
-        "hydraulicResponse": "Respuesta del Sistema Hidráulico",
-        "hydraulicDamage": "Daños en el Sistema Hidráulico"
+      "pricing": {
+        "condition": "Validación de Condición",
+        "detailedValuation": "Análisis Detallado de Valoración",
+        "valuationConfidence": "Confianza en la Valoración"
       },
-      "cabElectronics": {
-        "title": "Cabina y Electrónica",
-        "dashboardFunctional": "Tablero Funcional",
-        "acHeater": "Aire Acondicionado/Calefacción Funcionando",
-        "displayErrors": "Errores en la Pantalla",
-        "seatCondition": "Condición del Asiento",
-        "controlsWorking": "Controles Funcionando",
-        "lightsWorking": "Luces Funcionando",
-        "sensorsWorking": "Sensores Funcionando"
+      "review": {
+        "title": "Revisar y Vender",
+        "photosVideos": "Fotos y Videos",
+        "selectedOption": "Opción Seleccionada",
+        "priceRange": "Rango de Precio",
+        "confidence": "Confianza"
       }
-    },
-    "conditionCheckList": {
-      "title": "Lista de Verificación de Condición",
-      "item": "Elemento",
-      "status": "Estado",
-      "photosVideos": "Fotos/Videos",
-      "imageUpload": {
-        "clickHere": "Haz clic aquí",
-        "toUpload": " para subir tu archivo o arrastrarlo.",
-        "formatSupport": "Formatos compatibles: SVG, JPG, MP4 (10 MB cada uno)"
-      },
-      "exteriorLabel": "Exterior",
-      "engineLabel": "Motor",
-      "hydraulicsLabel": "Hidráulicos",
-      "underCarriageLabel": "Tren de Rodaje",
-      "functionalTestLabel": "Prueba Funcional",
-      "exterior": {
-        "title": "Condición Exterior",
-        "bodyPanels": "Paneles de la Carrocería",
-        "glassMirrors": "Vidrios y Espejos",
-        "lightsSignals": "Luces y Señales"
-      },
-      "engine": {
-        "title": "Condición del Motor",
-        "engineBlock": "Bloque del Motor",
-        "transmission": "Transmisión"
-      },
-      "hydraulics": {
-        "title": "Condición del Sistema Hidráulico",
-        "hydraulicPump": "Bomba Hidráulica",
-        "cylinders": "Cilindros"
-      },
-      "underCarriage": {
-        "title": "Tren de Rodaje",
-        "tracksWheels": "Orugas/Ruedas",
-        "suspension": "Suspensión"
-      },
-      "functionalTest": {
-        "title": "Prueba Funcional",
-        "engineStart": "Arranque del Motor",
-        "operationTest": "Prueba de Operación"
-      }
-    }
     },
     "stepDescriptions": {
       "step1": "Proporciona información básica sobre tu equipo",
@@ -453,9 +660,9 @@
       "step6": "Establece tu precio",
       "step7": "Revisa y envía"
     },
-    "breadCrumbs":{
-      "home":"INICIO",
-      "sellInventory":"Vender inventario"
+    "breadCrumbs": {
+      "home": "INICIO",
+      "sellInventory": "Vender inventario"
     }
   },
   "aboutUs": {
@@ -465,17 +672,17 @@
   "contactUs": {
     "title": "Contáctenos",
     "comingSoon": "El contenido de la página Contáctenos estará disponible pronto...",
-    "midEast":"MidEast",
-    "equipmentSupply":"Suministro de equipos",
-    "subtitle":"Desde 2004, Mideast Equipment Supply ha sido un socio global confiable para la compra y venta de equipos pesados.",
-    "needHelp":"¿Necesitas ayuda? Habla con un Experto",
-    "address":"DIRECCIÓN",
-    "email":"Correo Electrónico",
-    "getBack":"Y nos pondremos en contacto con usted.",
-    "info":"Déjanos tu información",
-    "breadCrumbs":{
-      "home":"Inicio",
-      "contact":"Contacto"
+    "midEast": "MidEast",
+    "equipmentSupply": "Suministro de equipos",
+    "subtitle": "Desde 2004, Mideast Equipment Supply ha sido un socio global confiable para la compra y venta de equipos pesados.",
+    "needHelp": "¿Necesitas ayuda? Habla con un Experto",
+    "address": "DIRECCIÓN",
+    "email": "Correo Electrónico",
+    "getBack": "Y nos pondremos en contacto con usted.",
+    "info": "Déjanos tu información",
+    "breadCrumbs": {
+      "home": "Inicio",
+      "contact": "Contacto"
     }
   },
   "footer": {

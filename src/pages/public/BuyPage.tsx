@@ -5,40 +5,39 @@ import { useEquipmentList } from '../../hooks/queries/useEquipment';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../../constants';
 import { InlineSpinner } from '../../components/Loader';
-import AccordionFilter, { type FilterOption }  from '../../components/Filter/AccordionFilter';
+import AccordionFilter, { type FilterOption } from '../../components/Filter/AccordionFilter';
 
 // Import images
 import buynowBanner from '../../assets/images/buynow-banner.png';
+import defaultImage from '../../assets/images/Dump Truck.png';
 import type { Equipment } from '../../api/equipmentApi';
 import { useTranslation } from '../../i18n';
 
 const BuyPage = (): JSX.Element => {
   const [page, setPage] = useState(1);
   const limit = 9;
-  const[isAuctionDateOpen, setIsAuctionDateOpen]=useState(false);
-  const[auctionDate, setAuctionDate]=useState<string|null>(null);
+  const [isAuctionDateOpen, setIsAuctionDateOpen] = useState(false);
+  const [auctionDate, setAuctionDate] = useState<string | null>(null);
   const [categories, setCategories] = useState<string[]>([]);
   const [makes, setMakes] = useState<string[]>([]);
   const filtersPayload = {
-  auctionDate,          // string | null
-  categories,           // string[]
-  makes,                // string[]
-  // later:
-  // years,
-  // states,
-  // currentBid,
-};
-const {t} = useTranslation();
-  
+    auctionDate, // string | null
+    categories, // string[]
+    makes, // string[]
+    // later:
+    // years,
+    // states,
+    // currentBid,
+  };
+  const { t } = useTranslation();
 
   const categoryOptions: FilterOption[] = [
-  { id: 'articulated', label: 'Articulated Trucks', count: 2 },
-  { id: 'belt', label: 'Belt Trailers', count: 1 },
-  { id: 'drilling', label: 'Drilling Rigs', count: 3 },
-  { id: 'dump', label: 'Dump Trucks', count: 6 },
-  { id: 'excavators', label: 'Excavators', count: 2 },
-];
-
+    { id: 'articulated', label: 'Articulated Trucks', count: 2 },
+    { id: 'belt', label: 'Belt Trailers', count: 1 },
+    { id: 'drilling', label: 'Drilling Rigs', count: 3 },
+    { id: 'dump', label: 'Dump Trucks', count: 6 },
+    { id: 'excavators', label: 'Excavators', count: 2 },
+  ];
 
   // Fetch equipment with pagination
   const { data, isLoading, isError } = useEquipmentList({ page, limit });
@@ -65,85 +64,82 @@ const {t} = useTranslation();
     }).format(price);
   };
 
-  const appliedFiltersCount = Object.values(filtersPayload).reduce(
-    (count, value) => {
-      if (Array.isArray(value)) return value.length > 0 ? count + value.length : count;
-      return value ? count + 1 : count;
-    },
-    0
-  );
+  const appliedFiltersCount = Object.values(filtersPayload).reduce((count, value) => {
+    if (Array.isArray(value)) return value.length > 0 ? count + value.length : count;
+    return value ? count + 1 : count;
+  }, 0);
 
   const handleApplyFilters = () => {
-  //API call goes here
-  // example:
-  // fetchEquipment(filtersPayload)
+    //API call goes here
+    // example:
+    // fetchEquipment(filtersPayload)
 
-  console.log('Applying filters with payload:', filtersPayload);
-};
-const total = data?.pagination?.total || 0;
-const perPage = data?.pagination?.limit || 6;
+    console.log('Applying filters with payload:', filtersPayload);
+  };
+  const total = data?.pagination?.total || 0;
+  const perPage = data?.pagination?.limit || 6;
 
-const start = total === 0 ? 0 : (page - 1) * perPage + 1;
-const end = Math.min(page * perPage, total);
-
+  const start = total === 0 ? 0 : (page - 1) * perPage + 1;
+  const end = Math.min(page * perPage, total);
 
   return (
     <>
       <TopBanner />
       <Header />
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+      <link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet' />
       {/* Banner Section */}
-      <div className="relative bg-gray-800 h-64 flex items-center justify-center overflow-hidden br-30">
+      <div className='relative bg-gray-800 h-64 flex items-center justify-center overflow-hidden br-30'>
         <img
-          alt="Construction background"
-          className="absolute inset-0 w-full h-full object-cover"
+          alt='Construction background'
+          className='absolute inset-0 w-full h-full object-cover'
           src={buynowBanner}
         />
-        <div className="relative z-10 text-center">
-          <h1 className="text-5xl font-bold text-white tracking-tight uppercase">
+        <div className='relative z-10 text-center'>
+          <h1 className='text-5xl font-bold text-white tracking-tight uppercase'>
             {t('buy.inventory')}
           </h1>
-          <div className="mt-2 text-primary font-medium text-sm flex items-center justify-center gap-2">
-            <span className="text-gray-400">{t('product.breadcrumb.home')}</span>
-            <span className="material-icons text-xs text-gray-500">chevron_right</span>
+          <div className='mt-2 text-primary font-medium text-sm flex items-center justify-center gap-2'>
+            <span className='text-gray-400'>{t('product.breadcrumb.home')}</span>
+            <span className='material-icons text-xs text-gray-500'>chevron_right</span>
             <span>{t('product.breadcrumb.inventory')}</span>
           </div>
         </div>
       </div>
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="mb-8 flex items-center justify-between border-b border-gray-200 dark:border-gray-800 pb-4">
-          <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
-            {t('buy.showing')} {start}-{end} {t('buy.resultsCount', {
+      <main className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12'>
+        <div className='mb-8 flex items-center justify-between border-b border-gray-200 dark:border-gray-800 pb-4'>
+          <h2 className='text-lg font-semibold text-gray-800 dark:text-gray-200'>
+            {t('buy.showing')} {start}-{end}{' '}
+            {t('buy.resultsCount', {
               total: data?.pagination?.total || 0,
             })}
           </h2>
 
-          <div className="flex gap-2">
-            <button className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-white">
-              <span className="material-icons">grid_view</span>
+          <div className='flex gap-2'>
+            <button className='flex h-10 w-10 items-center justify-center rounded-full bg-primary text-white'>
+              <span className='material-icons'>grid_view</span>
             </button>
 
-            <button className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 dark:border-gray-700 text-gray-500 dark:text-gray-400">
-              <span className="material-icons">view_list</span>
+            <button className='flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 dark:border-gray-700 text-gray-500 dark:text-gray-400'>
+              <span className='material-icons'>view_list</span>
             </button>
           </div>
         </div>
-        <div className="flex flex-col lg:flex-row gap-8">
+        <div className='flex flex-col lg:flex-row gap-8'>
           {/* Sidebar Filters */}
-          <aside className="w-full lg:w-1/4 space-y-6">
-            <div className="flex justify-between items-center mb-4">
-              <h2 className="text-xl font-bold">{t('buy.filter')}</h2>
-              <button className="text-primary text-sm font-medium hover:underline">
+          <aside className='w-full lg:w-1/4 space-y-6'>
+            <div className='flex justify-between items-center mb-4'>
+              <h2 className='text-xl font-bold'>{t('buy.filter')}</h2>
+              <button className='text-primary text-sm font-medium hover:underline'>
                 {t('buy.reset')}
               </button>
             </div>
-            <div className="bg-gray-100 dark:bg-gray-800 p-3 rounded-lg flex justify-between items-center mb-6">
-              <span className="text-xs font-bold uppercase tracking-wider opacity-60">
+            <div className='bg-gray-100 dark:bg-gray-800 p-3 rounded-lg flex justify-between items-center mb-6'>
+              <span className='text-xs font-bold uppercase tracking-wider opacity-60'>
                 {t('buy.activeResults')}
               </span>
-              <span className="bg-primary text-white text-[10px] font-bold px-2 py-1 rounded">
+              <span className='bg-primary text-white text-[10px] font-bold px-2 py-1 rounded'>
                 {data?.pagination?.total || 0} {t('buy.found')}
               </span>
             </div>
@@ -152,18 +148,19 @@ const end = Math.min(page * perPage, total);
               Filters coming soon...
             </div> */}
             {/* AUCTION DATE FILTER */}
-            <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden">
+            <div className='bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden'>
               <button
-                type="button"
+                type='button'
                 onClick={() => setIsAuctionDateOpen((prev) => !prev)}
                 className={`w-full flex items-center justify-between px-4 py-3 text-sm font-semibold transition
-      ${isAuctionDateOpen
-                    ? 'bg-yellow-500 text-white'
-                    : 'bg-white dark:bg-gray-900 text-gray-800 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-800'
-                  }
+      ${
+        isAuctionDateOpen
+          ? 'bg-yellow-500 text-white'
+          : 'bg-white dark:bg-gray-900 text-gray-800 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-800'
+      }
     `}
               >
-                <div className="flex items-center gap-2">
+                <div className='flex items-center gap-2'>
                   <i
                     className={`material-icons-outlined text-base transition
           ${isAuctionDateOpen ? 'text-white' : 'text-yellow-500'}
@@ -171,10 +168,13 @@ const end = Math.min(page * perPage, total);
                   >
                     calendar_month
                   </i>
-                  <span className={`transition ${isAuctionDateOpen
-                      ? 'text-white'
-                      : 'text-black dark:text-white'
-                    }`}>{t('buy.filters.auctionDate')}</span>
+                  <span
+                    className={`transition ${
+                      isAuctionDateOpen ? 'text-white' : 'text-black dark:text-white'
+                    }`}
+                  >
+                    {t('buy.filters.auctionDate')}
+                  </span>
                 </div>
 
                 <i
@@ -187,24 +187,24 @@ const end = Math.min(page * perPage, total);
               </button>
 
               {isAuctionDateOpen && (
-                <div className="px-4 pb-2 bg-white dark:bg-gray-900  text-black dark:text-white">
+                <div className='px-4 pb-2 bg-white dark:bg-gray-900  text-black dark:text-white'>
                   <input
-                    type="date"
+                    type='date'
                     value={auctionDate || ''}
                     onChange={(e) => setAuctionDate(e.target.value)}
-                    className="w-full px-3 py-2 text-sm rounded-xl
+                    className='w-full px-3 py-2 text-sm rounded-xl
                    border border-gray-300 dark:border-gray-700
                    bg-white dark:bg-gray-900
                      text-black dark:text-white
                    focus:outline-none focus:ring-2 focus:ring-primary
-                       dark:[color-scheme:dark]"
+                       dark:[color-scheme:dark]'
                   />
 
                   {auctionDate && (
                     <button
                       onClick={() => setAuctionDate(null)}
-                      className="mt-3 text-xs   text-black dark:text-white
-                      font-medium hover:underline"
+                      className='mt-3 text-xs   text-black dark:text-white
+                      font-medium hover:underline'
                     >
                       {t('buy.clearDate')}
                     </button>
@@ -216,8 +216,8 @@ const end = Math.min(page * perPage, total);
             {/* {CATEGORY FILTER} */}
             <AccordionFilter
               title={t('buy.filters.category')}
-              icon="category"
-              headerColor="orange"
+              icon='category'
+              headerColor='orange'
               options={categoryOptions}
               value={categories}
               onChange={setCategories}
@@ -225,7 +225,7 @@ const end = Math.min(page * perPage, total);
             {/* MAKE FILTER */}
             <AccordionFilter
               title={t('buy.filters.make')}
-              icon="precision_manufacturing"
+              icon='precision_manufacturing'
               options={categoryOptions}
               value={makes}
               onChange={setMakes}
@@ -233,7 +233,7 @@ const end = Math.min(page * perPage, total);
             {/* YEAR*/}
             <AccordionFilter
               title={t('buy.filters.year')}
-              icon="calendar_month"
+              icon='calendar_month'
               options={categoryOptions}
               value={makes}
               onChange={setMakes}
@@ -241,7 +241,7 @@ const end = Math.min(page * perPage, total);
             {/* STATE/CITY*/}
             <AccordionFilter
               title={t('buy.filters.stateCity')}
-              icon="map"
+              icon='map'
               options={categoryOptions}
               value={makes}
               onChange={setMakes}
@@ -249,77 +249,74 @@ const end = Math.min(page * perPage, total);
             {/* CURRENT BID */}
             <AccordionFilter
               title={t('buy.filters.currentBid')}
-              icon="paid"
+              icon='paid'
               options={categoryOptions}
               value={makes}
               onChange={setMakes}
             />
             <button
-              type="button"
+              type='button'
               onClick={handleApplyFilters}
               disabled={appliedFiltersCount === 0}
               className={`w-full mt-6 flex items-center justify-between px-4 py-3
     rounded-xl font-semibold transition
-    ${appliedFiltersCount === 0
-                  ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                  : 'bg-primary text-white hover:bg-orange-600'
-                }
+    ${
+      appliedFiltersCount === 0
+        ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+        : 'bg-primary text-white hover:bg-orange-600'
+    }
   `}
             >
               <span>{t('buy.applyFilters')}</span>
 
               {appliedFiltersCount > 0 && (
-                <span className="ml-2 rounded bg-white/20 px-2 py-0.5 text-[10px] font-semibold text-white">
+                <span className='ml-2 rounded bg-white/20 px-2 py-0.5 text-[10px] font-semibold text-white'>
                   {appliedFiltersCount} {t('buy.found')}
                 </span>
               )}
             </button>
-
           </aside>
 
           {/* Products Grid */}
-          <section className="flex-1">
+          <section className='flex-1'>
             {/* View Toggle and Sort */}
-
 
             {/* Loading State */}
             {isLoading && (
-              <div className="flex justify-center items-center py-20">
+              <div className='flex justify-center items-center py-20'>
                 <InlineSpinner />
               </div>
             )}
 
             {/* Error State */}
             {isError && (
-              <div className="text-center py-20">
-                <p className="text-red-500">{t('buy.error')}</p>
+              <div className='text-center py-20'>
+                <p className='text-red-500'>{t('buy.error')}</p>
               </div>
             )}
 
             {/* Empty State */}
             {!isLoading && !isError && equipment.length === 0 && (
-              <div className="text-center py-20">
-                <p className="text-gray-500 dark:text-gray-400">
-                  {t('buy.empty')}
-                </p>
+              <div className='text-center py-20'>
+                <p className='text-gray-500 dark:text-gray-400'>{t('buy.empty')}</p>
               </div>
             )}
 
             {/* Products Grid */}
             {!isLoading && !isError && equipment.length > 0 && (
               <>
-                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6'>
                   {equipment.map((item) => {
                     const badge = getStatusBadge(item);
                     const isSold = item.status === 'SOLD';
-                    const primaryImage = item.images?.[0] || '/placeholder-equipment.jpg';
+                    const primaryImage = item.images?.[0] || defaultImage;
 
                     return (
                       <div
                         key={item._id}
-                        className="bg-white dark:bg-gray-900 rounded-2xl shadow-md overflow-hidden group hover:shadow-xl transition-all border border-gray-100 dark:border-gray-800"
+                        className='bg-white dark:bg-gray-900 rounded-2xl shadow-md overflow-hidden group hover:shadow-xl transition-all border border-gray-100 dark:border-gray-800'
                       >
-                        <div className="relative overflow-hidden aspect-[4/3]">
+                        <div className='relative overflow-hidden aspect-[4/3]'>
                           <div
                             className={`absolute top-4 left-4 ${badge.className} text-white text-[10px] font-bold px-3 py-1 uppercase rounded-full shadow-lg z-10`}
                           >
@@ -327,7 +324,7 @@ const end = Math.min(page * perPage, total);
                           </div>
                           <img
                             alt={item.title}
-                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                            className='w-full h-full object-cover group-hover:scale-110 transition-transform duration-500'
                             src={primaryImage}
                             onError={(e) => {
                               const target = e.target as HTMLImageElement;
@@ -336,15 +333,15 @@ const end = Math.min(page * perPage, total);
                           />
                         </div>
                         <div className={`p-5 ${isSold ? 'opacity-75' : ''}`}>
-                          <h3 className="text-lg font-bold mb-4 truncate">{item.title}</h3>
-                          <div className="grid grid-cols-3 gap-4 mb-6">
+                          <h3 className='text-lg font-bold mb-4 truncate'>{item.title}</h3>
+                          <div className='grid grid-cols-3 gap-4 mb-6'>
                             <div>
                               <p
                                 className={`text-[14px] font-bold ${isSold ? 'text-gray-400 line-through' : ''}`}
                               >
                                 {item.make}
                               </p>
-                              <p className="text-[10px] text-gray-400 uppercase font-medium">
+                              <p className='text-[10px] text-gray-400 uppercase font-medium'>
                                 {t('product.specs.make')}
                               </p>
                             </div>
@@ -354,7 +351,7 @@ const end = Math.min(page * perPage, total);
                               >
                                 {item.year}
                               </p>
-                              <p className="text-[10px] text-gray-400 uppercase font-medium">
+                              <p className='text-[10px] text-gray-400 uppercase font-medium'>
                                 {t('product.specs.year')}
                               </p>
                             </div>
@@ -364,7 +361,7 @@ const end = Math.min(page * perPage, total);
                               >
                                 {item.hoursUsed || 'N/A'}
                               </p>
-                              <p className="text-[10px] text-gray-400 uppercase font-medium">
+                              <p className='text-[10px] text-gray-400 uppercase font-medium'>
                                 {t('product.specs.hours')}
                               </p>
                             </div>
@@ -374,7 +371,7 @@ const end = Math.min(page * perPage, total);
                               >
                                 {item.models}
                               </p>
-                              <p className="text-[10px] text-gray-400 uppercase font-medium">
+                              <p className='text-[10px] text-gray-400 uppercase font-medium'>
                                 {t('product.specs.model')}
                               </p>
                             </div>
@@ -384,7 +381,7 @@ const end = Math.min(page * perPage, total);
                               >
                                 {item.condition || 'N/A'}
                               </p>
-                              <p className="text-[10px] text-gray-400 uppercase font-medium">
+                              <p className='text-[10px] text-gray-400 uppercase font-medium'>
                                 {t('product.specs.condition')}
                               </p>
                             </div>
@@ -394,14 +391,14 @@ const end = Math.min(page * perPage, total);
                               >
                                 {item.location.state}
                               </p>
-                              <p className="text-[10px] text-gray-400 uppercase font-medium">
+                              <p className='text-[10px] text-gray-400 uppercase font-medium'>
                                 {t('product.specs.location')}
                               </p>
                             </div>
                           </div>
-                          <div className="flex justify-between items-end border-t border-gray-100 dark:border-gray-800 pt-4">
+                          <div className='flex justify-between items-end border-t border-gray-100 dark:border-gray-800 pt-4'>
                             <div>
-                              <p className="text-[10px] text-gray-400 uppercase font-bold">
+                              <p className='text-[10px] text-gray-400 uppercase font-bold'>
                                 {t('product.retailPrice')}
                               </p>
                               <p
@@ -411,13 +408,13 @@ const end = Math.min(page * perPage, total);
                               </p>
                             </div>
                             {isSold ? (
-                              <button className="bg-gray-400 text-white px-4 py-2 rounded-2xl text-xs font-bold uppercase cursor-not-allowed">
+                              <button className='bg-gray-400 text-white px-4 py-2 rounded-2xl text-xs font-bold uppercase cursor-not-allowed'>
                                 {t('product.status.sold')}
                               </button>
                             ) : (
                               <Link
                                 to={`${ROUTES.BUY}/${item._id}`}
-                                className="bg-primary hover:bg-orange-600 text-white px-4 py-2 rounded-2xl text-xs font-bold uppercase transition-colors"
+                                className='bg-primary hover:bg-orange-600 text-white px-4 py-2 rounded-2xl text-xs font-bold uppercase transition-colors'
                               >
                                 {t('product.viewMore')}
                               </Link>
@@ -431,13 +428,13 @@ const end = Math.min(page * perPage, total);
 
                 {/* Pagination */}
                 {totalPages > 1 && (
-                  <div className="flex justify-center items-center gap-2 mt-10">
+                  <div className='flex justify-center items-center gap-2 mt-10'>
                     <button
                       onClick={() => setPage((p) => Math.max(1, p - 1))}
                       disabled={page === 1}
-                      className="p-2 rounded-lg border border-gray-300 dark:border-gray-700 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-100 dark:hover:bg-gray-800"
+                      className='p-2 rounded-lg border border-gray-300 dark:border-gray-700 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-100 dark:hover:bg-gray-800'
                     >
-                      <span className="material-icons">chevron_left</span>
+                      <span className='material-icons'>chevron_left</span>
                     </button>
 
                     {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
@@ -460,9 +457,9 @@ const end = Math.min(page * perPage, total);
                     <button
                       onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
                       disabled={page === totalPages}
-                      className="p-2 rounded-lg border border-gray-300 dark:border-gray-700 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-100 dark:hover:bg-gray-800"
+                      className='p-2 rounded-lg border border-gray-300 dark:border-gray-700 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-100 dark:hover:bg-gray-800'
                     >
-                      <span className="material-icons">chevron_right</span>
+                      <span className='material-icons'>chevron_right</span>
                     </button>
                   </div>
                 )}
