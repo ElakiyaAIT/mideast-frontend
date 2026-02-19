@@ -14,6 +14,8 @@ import auctionBanner from '../../assets/images/auction-banner.png';
 // import auction17 from '../../assets/images/auct17.png';
 import { useFilteredAuctions } from '../../hooks/queries/useAuction';
 import { useTranslation } from '../../i18n';
+import { Link } from 'react-router-dom';
+import { ROUTES } from '../../constants';
 
 // interface AuctionItem {
 //   id: number;
@@ -327,7 +329,7 @@ const AuctionPage = (): JSX.Element => {
     <>
       <TopBanner />
       <Header />
-      <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Material+Icons' />
+      {/* <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Material+Icons' /> */}
       {/* Banner */}
       <div className='relative bg-gray-800 h-64 flex items-center justify-center overflow-hidden rounded-b-[30px]'>
         <img
@@ -340,9 +342,11 @@ const AuctionPage = (): JSX.Element => {
             {t('auction.title')}
           </h1>
           <div className='mt-2 text-primary font-medium text-sm flex items-center justify-center gap-2'>
-            <span className='text-white'>Home</span>
+            <Link to={ROUTES.HOME} className='text-white hover:text-primary transition-colors'>
+              {t('product.breadcrumb.home')}
+            </Link>
             <span className='material-icons text-xs text-white'>chevron_right</span>
-            <span className='text-white'>Auction</span>
+            <span className='text-primary'>Auction</span>
           </div>
         </div>
       </div>

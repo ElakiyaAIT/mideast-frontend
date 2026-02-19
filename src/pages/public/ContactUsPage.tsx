@@ -6,6 +6,8 @@ import React, { useState, type FormEvent } from 'react';
 import contactBanner from '../../assets/images/contact_banner.png';
 import contactLeft from '../../assets/images/contact_left.png';
 import { useTranslation } from '../../i18n';
+import { Link } from 'react-router-dom';
+import { ROUTES } from '../../constants';
 
 const ContactUsPage = (): JSX.Element => {
   const { t } = useTranslation();
@@ -30,7 +32,6 @@ const ContactUsPage = (): JSX.Element => {
     <>
       <TopBanner />
       <Header />
-      <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Material+Icons' />
       {/* Banner */}
       <div className='relative bg-gray-800 h-64 flex items-center justify-center overflow-hidden rounded-b-[30px]'>
         <img
@@ -43,9 +44,11 @@ const ContactUsPage = (): JSX.Element => {
             {t('contactUs.title')}
           </h1>
           <div className='mt-2 text-primary font-medium text-sm flex items-center justify-center gap-2'>
-            <span className='text-white'>{t('contactUs.breadCrumbs.home')}</span>
+            <Link to={ROUTES.HOME} className='text-white hover:text-primary transition-colors'>
+              {t('product.breadcrumb.home')}
+            </Link>
             <span className='material-icons text-xs text-white'>chevron_right</span>
-            <span className='text-white'>{t('contactUs.breadCrumbs.contact')}</span>
+            <span className='text-primary'>{t('contactUs.breadCrumbs.contact')}</span>
           </div>
         </div>
       </div>
@@ -74,58 +77,54 @@ const ContactUsPage = (): JSX.Element => {
                   </p>
                   <div className='space-y-8'>
                     <div className='flex gap-4'>
-                      <span className='material-icons text-primary'>phone_in_talk</span>
+                      <span className='material-icons'>phone_in_talk</span>
                       <div>
-                        <p className='text-xs uppercase text-slate-400 font-bold mb-1'>
+                        <p className='text-xs uppercase text-primary font-bold mb-1'>
                           {t('contactUs.needHelp')}
                         </p>
-                        <p className='text-lg font-bold'>860-222-3393</p>
+                        <p className='text-lg'>860-222-3393</p>
                       </div>
                     </div>
                     <div className='flex gap-4'>
-                      <span className='material-icons text-primary'>location_on</span>
+                      <span className='material-icons'>location_on</span>
                       <div>
-                        <p className='text-xs uppercase text-slate-400 font-bold mb-1'>
+                        <p className='text-xs uppercase text-primary font-bold mb-1'>
                           {t('contactUs.address')}
                         </p>
-                        <p className='text-lg font-bold'>
-                          50 East Dudley Town Road Bloomfield, CT 06002
-                        </p>
+                        <p className='text-lg'>50 East Dudley Town Road Bloomfield, CT 06002</p>
                       </div>
                     </div>
                     <div className='flex gap-4'>
-                      <span className='material-icons text-primary'>mail</span>
+                      <span className='material-icons'>mail</span>
                       <div>
-                        <p className='text-xs uppercase text-slate-400 font-bold mb-1'>
+                        <p className='text-xs uppercase text-primary font-bold mb-1'>
                           {t('contactUs.email')}
                         </p>
-                        <p className='text-lg font-bold'>auctions@mideastequip.com</p>
+                        <p className='text-lg '>auctions@mideastequip.com</p>
                       </div>
                     </div>
                   </div>
                   <div className='flex gap-4 mt-12'>
                     <a
-                      className='w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-all duration-300 group/icon'
+                      className='w-10 h-10 rounded-full bg-[#fbac43] flex items-center justify-center hover:bg-primary transition-all duration-300 group/icon'
                       href='#'
                     >
-                      <span className='material-icons text-lg group-hover/icon:scale-110'>
-                        facebook
-                      </span>
+                      <i className='fa-brands fa-facebook-f text-sm text-white'></i>
                     </a>
                     <a
-                      className='w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-all duration-300 group/icon'
+                      className='w-10 h-10 rounded-full bg-[#fbac43] flex items-center justify-center hover:bg-primary transition-all duration-300 group/icon'
                       href='#'
                     >
-                      <i className='fa-brands fa-x-twitter'></i>
+                      <i className='fa-brands fa-x-twitter text-sm text-white'></i>
                     </a>
                     <a
-                      className='w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-all duration-300 group/icon'
+                      className='w-10 h-10 rounded-full bg-[#fbac43] flex items-center justify-center hover:bg-primary transition-all duration-300 group/icon'
                       href='#'
                     >
                       <i className='fa-brands fa-linkedin-in'></i>
                     </a>
                     <a
-                      className='w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-all duration-300 group/icon'
+                      className='w-10 h-10 rounded-full bg-[#fbac43] flex items-center justify-center hover:bg-primary transition-all duration-300 group/icon'
                       href='#'
                     >
                       <i className='fa-brands fa-behance'></i>
@@ -137,7 +136,7 @@ const ContactUsPage = (): JSX.Element => {
               {/* Right Side - Contact Form */}
               <div className='lg:col-span-6'>
                 <div className='mb-10'>
-                  <p className='text-primary font-bold uppercase tracking-[0.2em] text-xs mb-2'>
+                  <p className='text-[#FDAD3E] uppercase tracking-[0.2em] text-sm'>
                     {t('contactUs.getBack')}
                   </p>
                   <h2 className='font-display text-4xl md:text-5xl font-black text-slate-800 dark:text-white uppercase mb-4'>
@@ -181,13 +180,14 @@ const ContactUsPage = (): JSX.Element => {
                     ></textarea>
                   </div>
                   <button
-                    className='group relative bg-primary hover:bg-orange-600 text-white font-bold uppercase py-4 px-10 rounded shadow-lg transition-all flex items-center gap-3 overflow-hidden'
+                    className='group relative bg-primary hover:bg-orange-600 text-white font-bold uppercase py-4 px-6 rounded-full shadow-lg transition-all flex items-center gap-6 overflow-hidden'
                     type='submit'
                   >
-                    <span className='relative z-10 tracking-widest'>{t('common.submit')}</span>
-                    <span className='material-icons text-xl relative z-10 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1'>
-                      north_east
-                    </span>
+                    <span className='tracking-widest whitespace-nowrap'>{t('common.submit')}</span>
+
+                    <div className='bg-white w-12 h-12 rounded-full flex items-center justify-center transition-transform duration-300 group-hover:rotate-45'>
+                      <span className='material-icons text-primary text-2xl'>north_east</span>
+                    </div>
                   </button>
                 </form>
               </div>

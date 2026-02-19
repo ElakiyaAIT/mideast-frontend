@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useTranslation } from '../../../i18n';
 import type { SellFormData } from '../../../types/home';
 import { ImageUpload } from '../ImageInput';
@@ -35,12 +34,13 @@ const ConditionSection = ({
   handleChange,
 }: Props) => {
   const { t } = useTranslation();
-  const [uploadingItem, setUploadingItem] = useState<string | null>(null);
+  // const [uploadingItem, setUploadingItem] = useState<string | null>(null);
   // Inside your Parent Component
   const handleConditionUpload = async (itemKey: string, files: File[]) => {
     if (files.length === 0) return;
 
-    setUploadingItem(itemKey);
+    // setUploadingItem(itemKey);
+
     try {
       const uploadData = new FormData();
       files.forEach((file) => uploadData.append('images', file));
@@ -52,42 +52,64 @@ const ConditionSection = ({
 
       if (!response.ok) throw new Error('Upload failed');
 
-      const data = await response.json();
-      const uploadedUrls: string[] = data.imageUrls;
+      const data: { imageUrls: string[] } = await response.json();
+      const uploadedUrls = data.imageUrls;
 
-      setFormData((prev) => ({
-        ...prev,
-        checkList: {
-          ...prev.checkList,
-          [sectionKey]: {
-            ...prev.checkList[sectionKey],
-            [`${itemKey}Images`]: [
-              ...((prev.checkList[sectionKey] as any)?.[`${itemKey}Images`] || []),
-              ...uploadedUrls,
-            ],
+      setFormData((prev) => {
+        const section = prev.checkList[sectionKey];
+        const imagesKey = `${itemKey}Images`;
+
+        const existingImages =
+          typeof section === 'object' &&
+          section !== null &&
+          imagesKey in section &&
+          Array.isArray((section as Record<string, unknown>)[imagesKey])
+            ? ((section as Record<string, unknown>)[imagesKey] as string[])
+            : [];
+
+        return {
+          ...prev,
+          checkList: {
+            ...prev.checkList,
+            [sectionKey]: {
+              ...section,
+              [imagesKey]: [...existingImages, ...uploadedUrls],
+            },
           },
-        },
-      }));
+        };
+      });
     } catch (error) {
       console.error('Condition Upload Error:', error);
     } finally {
-      setUploadingItem(null);
+      // setUploadingItem(null);
     }
   };
 
   const handleConditionRemove = (itemKey: string, index: number) => {
-    setFormData((prev) => ({
-      ...prev,
-      checkList: {
-        ...prev.checkList,
-        [sectionKey]: {
-          ...prev.checkList[sectionKey],
-          [`${itemKey}Images`]: (
-            (prev.checkList[sectionKey] as any)?.[`${itemKey}Images`] || []
-          ).filter((_: string, i: number) => i !== index),
+    setFormData((prev) => {
+      const section = prev.checkList[sectionKey];
+
+      const imagesKey = `${itemKey}Images`;
+
+      const existingImages =
+        typeof section === 'object' &&
+        section !== null &&
+        imagesKey in section &&
+        Array.isArray((section as Record<string, unknown>)[imagesKey])
+          ? ((section as Record<string, unknown>)[imagesKey] as string[])
+          : [];
+
+      return {
+        ...prev,
+        checkList: {
+          ...prev.checkList,
+          [sectionKey]: {
+            ...section,
+            [imagesKey]: existingImages.filter((_: string, i: number) => i !== index),
+          },
         },
-      },
-    }));
+      };
+    });
   };
 
   console.log(errors, 'er123e');
@@ -151,9 +173,9 @@ const ConditionSection = ({
                 onChange={(files) => handleConditionUpload(item.key, files)}
                 onRemove={(idx) => handleConditionRemove(item.key, idx)}
               />
-              {uploadingItem === item.key && (
+              {/* {uploadingItem === item.key && (
                 <span className='text-xs text-primary animate-pulse'>Uploading...</span>
-              )}
+              )} */}
             </div>
           </div>
         ))}

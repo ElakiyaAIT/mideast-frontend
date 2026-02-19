@@ -32,6 +32,8 @@ interface Props {
   formData: SellFormData;
   setFormData: React.Dispatch<React.SetStateAction<SellFormData>>;
   errors?: NestedErrors<SellFormData>;
+  handleChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
+  setErrors: React.Dispatch<React.SetStateAction<NestedErrors<SellFormData>>>;
 }
 const conditionOptions = [
   { id: 1, value: 'Excellent' },
@@ -40,19 +42,8 @@ const conditionOptions = [
   { id: 4, value: 'Poor' },
 ];
 
-const BasicInfo = ({ formData, setFormData, errors }: Props) => {
+const BasicInfo = ({ formData, setFormData, handleChange, errors, setErrors }: Props) => {
   const { t } = useTranslation();
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
-  ) => {
-    const { name, value } = e.target;
-
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
 
   return (
     <div>
@@ -88,11 +79,22 @@ const BasicInfo = ({ formData, setFormData, errors }: Props) => {
         {/* Description (Your Original UI Preserved) */}
         <div>
           <label className='block text-lg font-bold  tracking-wide dark:text-slate-300 mb-2'>
-            {t('sell.form.description')}<span className='ml-1 text-red-500'>*</span>
+            {t('sell.form.description')}
+            <span className='ml-1 text-red-500'>*</span>
           </label>
           <Editor
             value={formData.description || ''}
-            onEditorChange={(content) => setFormData((prev) => ({ ...prev, description: content }))}
+            onEditorChange={(content) => {
+              setFormData((prev) => {
+                return { ...prev, description: content };
+              });
+
+              setErrors((prev) => {
+                const newErrors = { ...prev };
+                delete newErrors.description;
+                return newErrors;
+              });
+            }}
             init={{
               height: 220,
               menubar: false,
@@ -114,6 +116,11 @@ const BasicInfo = ({ formData, setFormData, errors }: Props) => {
               file_picker_types: 'image media file',
             }}
           />
+          {errors?.description && (
+            <span style={{ color: 'red', fontSize: '12px', marginTop: '5px' }}>
+              {errors.description}
+            </span>
+          )}
         </div>
       </div>
     </div>

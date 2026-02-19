@@ -62,14 +62,14 @@ export function ProductCard({ product }: ProductCardProps): JSX.Element {
           <p className='text-xs font-semibold uppercase text-gray-400'>
             {t('home.products.retailPrice')}
           </p>
-          <p className='text-xl font-bold text-orange-500'>
+          <p className='text-xl font-bold text-[#fdad3e]'>
             ${product?.buyNowPrice?.toLocaleString()}
           </p>
         </div>
 
         <button
           onClick={() => navigate(`${ROUTES.BUY}/${product._id}`)}
-          className='rounded-full bg-orange-400 px-6 py-2 text-sm font-bold uppercase text-white'
+          className='rounded-full bg-[#fdad3e] px-6 py-2 text-sm font-bold uppercase text-white'
         >
           {t('home.products.viewMore')}
         </button>
@@ -81,8 +81,8 @@ export function ProductCard({ product }: ProductCardProps): JSX.Element {
 function Spec({ label, value }: { label: string; value?: string | number | undefined }) {
   return (
     <div>
-      <p className='font-medium uppercase text-slate-400'>{label}</p>
-      <p className='font-bold'>{value}</p>
+      <p className='font-bold mb-0.5'>{value}</p>
+      <p className='text-xs'>{label}</p>
     </div>
   );
 }

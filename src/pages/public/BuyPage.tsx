@@ -30,7 +30,6 @@ const BuyPage = (): JSX.Element => {
     // currentBid,
   };
   const { t } = useTranslation();
-
   const categoryOptions: FilterOption[] = [
     { id: 'articulated', label: 'Articulated Trucks', count: 2 },
     { id: 'belt', label: 'Belt Trailers', count: 1 },
@@ -39,6 +38,11 @@ const BuyPage = (): JSX.Element => {
     { id: 'excavators', label: 'Excavators', count: 2 },
   ];
 
+  const radiusOptions: FilterOption[] = [
+    { id: '50 miles', label: '50 miles' },
+    { id: '100 miles', label: '100 miles' },
+    { id: '250 miles', label: '250 miles' },
+  ];
   // Fetch equipment with pagination
   const { data, isLoading, isError } = useEquipmentList({ page, limit });
 
@@ -86,7 +90,6 @@ const BuyPage = (): JSX.Element => {
     <>
       <TopBanner />
       <Header />
-      <link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet' />
       {/* Banner Section */}
       <div className='relative bg-gray-800 h-64 flex items-center justify-center overflow-hidden br-30'>
         <img
@@ -99,7 +102,9 @@ const BuyPage = (): JSX.Element => {
             {t('buy.inventory')}
           </h1>
           <div className='mt-2 text-primary font-medium text-sm flex items-center justify-center gap-2'>
-            <span className='text-gray-400'>{t('product.breadcrumb.home')}</span>
+            <Link to={ROUTES.HOME} className='text-white hover:text-primary transition-colors'>
+              {t('product.breadcrumb.home')}
+            </Link>
             <span className='material-icons text-xs text-gray-500'>chevron_right</span>
             <span>{t('product.breadcrumb.inventory')}</span>
           </div>
@@ -129,152 +134,160 @@ const BuyPage = (): JSX.Element => {
         <div className='flex flex-col lg:flex-row gap-8'>
           {/* Sidebar Filters */}
           <aside className='w-full lg:w-1/4 space-y-6'>
-            <div className='flex justify-between items-center mb-4'>
-              <h2 className='text-xl font-bold'>{t('buy.filter')}</h2>
-              <button className='text-primary text-sm font-medium hover:underline'>
-                {t('buy.reset')}
-              </button>
-            </div>
-            <div className='bg-gray-100 dark:bg-gray-800 p-3 rounded-lg flex justify-between items-center mb-6'>
-              <span className='text-xs font-bold uppercase tracking-wider opacity-60'>
-                {t('buy.activeResults')}
-              </span>
-              <span className='bg-primary text-white text-[10px] font-bold px-2 py-1 rounded'>
-                {data?.pagination?.total || 0} {t('buy.found')}
-              </span>
-            </div>
-            {/* Filter sections - keeping existing structure */}
-            {/* <div className="text-sm text-gray-500 dark:text-gray-400">
-              Filters coming soon...
-            </div> */}
-            {/* AUCTION DATE FILTER */}
-            <div className='bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden'>
-              <button
-                type='button'
-                onClick={() => setIsAuctionDateOpen((prev) => !prev)}
-                className={`w-full flex items-center justify-between px-4 py-3 text-sm font-semibold transition
+            <div className='bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-2xl p-5 shadow-sm'>
+              <div className='flex justify-between items-center mb-4'>
+                <h2 className='text-xl font-bold'>{t('buy.filter')}</h2>
+                <button className='text-primary text-sm font-medium hover:underline'>
+                  {t('buy.reset')}
+                </button>
+              </div>
+              <div className='bg-gray-100 dark:bg-gray-800 p-3 rounded-lg flex justify-between items-center mb-6'>
+                <span className='text-xs font-bold uppercase tracking-wider opacity-60'>
+                  {t('buy.activeResults')}
+                </span>
+                <span className='bg-primary text-white text-[10px] font-bold px-2 py-1 rounded'>
+                  {data?.pagination?.total || 0} {t('buy.found')}
+                </span>
+              </div>
+              {/* Filter sections - keeping existing structure */}
+              {/* AUCTION DATE FILTER */}
+              <div className='mb-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden'>
+                <button
+                  type='button'
+                  onClick={() => setIsAuctionDateOpen((prev) => !prev)}
+                  className={`w-full flex items-center justify-between px-4 py-3 text-sm font-semibold transition
       ${
         isAuctionDateOpen
-          ? 'bg-yellow-500 text-white'
+          ? 'bg-[#fdad3e] text-white'
           : 'bg-white dark:bg-gray-900 text-gray-800 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-800'
       }
     `}
-              >
-                <div className='flex items-center gap-2'>
-                  <i
-                    className={`material-icons-outlined text-base transition
-          ${isAuctionDateOpen ? 'text-white' : 'text-yellow-500'}
+                >
+                  <div className='flex items-center gap-2'>
+                    <i
+                      className={`material-icons-outlined text-base transition
+          ${isAuctionDateOpen ? 'text-white' : 'text-[#fdad3e]'}
         `}
-                  >
-                    calendar_month
-                  </i>
-                  <span
-                    className={`transition ${
-                      isAuctionDateOpen ? 'text-white' : 'text-black dark:text-white'
-                    }`}
-                  >
-                    {t('buy.filters.auctionDate')}
-                  </span>
-                </div>
+                    >
+                      calendar_month
+                    </i>
+                    <span
+                      className={`transition ${
+                        isAuctionDateOpen ? 'text-white' : 'text-black dark:text-white'
+                      }`}
+                    >
+                      {t('buy.filters.auctionDate')}
+                    </span>
+                  </div>
 
-                <i
-                  className={`material-icons-outlined transition
+                  <i
+                    className={`material-icons-outlined transition
         ${isAuctionDateOpen ? 'text-white' : 'text-gray-400'}
       `}
-                >
-                  {isAuctionDateOpen ? 'expand_less' : 'expand_more'}
-                </i>
-              </button>
+                  >
+                    {isAuctionDateOpen ? 'remove' : 'add'}
+                  </i>
+                </button>
 
-              {isAuctionDateOpen && (
-                <div className='px-4 pb-2 bg-white dark:bg-gray-900  text-black dark:text-white'>
-                  <input
-                    type='date'
-                    value={auctionDate || ''}
-                    onChange={(e) => setAuctionDate(e.target.value)}
-                    className='w-full px-3 py-2 text-sm rounded-xl
+                {isAuctionDateOpen && (
+                  <div className='px-4 pb-2 bg-white dark:bg-gray-900  text-black dark:text-white'>
+                    <input
+                      type='date'
+                      value={auctionDate || ''}
+                      onChange={(e) => setAuctionDate(e.target.value)}
+                      className='w-full px-3 py-2 text-sm rounded-xl
                    border border-gray-300 dark:border-gray-700
                    bg-white dark:bg-gray-900
                      text-black dark:text-white
-                   focus:outline-none focus:ring-2 focus:ring-primary
+                   focus:outline-none focus:ring-2 focus:ring-[#fdad3e]
                        dark:[color-scheme:dark]'
-                  />
+                    />
 
-                  {auctionDate && (
-                    <button
-                      onClick={() => setAuctionDate(null)}
-                      className='mt-3 text-xs   text-black dark:text-white
+                    {auctionDate && (
+                      <button
+                        onClick={() => setAuctionDate(null)}
+                        className='mt-3 text-xs text-black dark:text-white
                       font-medium hover:underline'
-                    >
-                      {t('buy.clearDate')}
-                    </button>
-                  )}
-                </div>
-              )}
-            </div>
-
-            {/* {CATEGORY FILTER} */}
-            <AccordionFilter
-              title={t('buy.filters.category')}
-              icon='category'
-              headerColor='orange'
-              options={categoryOptions}
-              value={categories}
-              onChange={setCategories}
-            />
-            {/* MAKE FILTER */}
-            <AccordionFilter
-              title={t('buy.filters.make')}
-              icon='precision_manufacturing'
-              options={categoryOptions}
-              value={makes}
-              onChange={setMakes}
-            />
-            {/* YEAR*/}
-            <AccordionFilter
-              title={t('buy.filters.year')}
-              icon='calendar_month'
-              options={categoryOptions}
-              value={makes}
-              onChange={setMakes}
-            />
-            {/* STATE/CITY*/}
-            <AccordionFilter
-              title={t('buy.filters.stateCity')}
-              icon='map'
-              options={categoryOptions}
-              value={makes}
-              onChange={setMakes}
-            />
-            {/* CURRENT BID */}
-            <AccordionFilter
-              title={t('buy.filters.currentBid')}
-              icon='paid'
-              options={categoryOptions}
-              value={makes}
-              onChange={setMakes}
-            />
-            <button
-              type='button'
-              onClick={handleApplyFilters}
-              disabled={appliedFiltersCount === 0}
-              className={`w-full mt-6 flex items-center justify-between px-4 py-3
-    rounded-xl font-semibold transition
+                      >
+                        {t('buy.clearDate')}
+                      </button>
+                    )}
+                  </div>
+                )}
+              </div>
+              {/* Zip Radius*/}
+              <AccordionFilter
+                title={t('buy.filters.zip')}
+                icon='location_on'
+                headerColor='orange'
+                options={radiusOptions}
+                value={categories}
+                onChange={setCategories}
+                radio={true}
+              />
+              {/* {CATEGORY FILTER} */}
+              <AccordionFilter
+                title={t('buy.filters.category')}
+                icon='category'
+                headerColor='orange'
+                options={categoryOptions}
+                value={categories}
+                onChange={setCategories}
+              />
+              {/* MAKE FILTER */}
+              <AccordionFilter
+                title={t('buy.filters.make')}
+                icon='precision_manufacturing'
+                options={categoryOptions}
+                value={makes}
+                onChange={setMakes}
+              />
+              {/* YEAR*/}
+              <AccordionFilter
+                title={t('buy.filters.year')}
+                icon='calendar_month'
+                options={categoryOptions}
+                value={makes}
+                onChange={setMakes}
+              />
+              {/* STATE/CITY*/}
+              <AccordionFilter
+                title={t('buy.filters.stateCity')}
+                icon='map'
+                options={categoryOptions}
+                value={makes}
+                onChange={setMakes}
+              />
+              {/* CURRENT BID */}
+              <AccordionFilter
+                title={t('buy.filters.currentBid')}
+                icon='paid'
+                options={categoryOptions}
+                value={makes}
+                onChange={setMakes}
+              />
+              <button
+                type='button'
+                onClick={handleApplyFilters}
+                disabled={appliedFiltersCount === 0}
+                className={`w-full mt-6 flex items-center justify-between px-4 py-3
+    rounded-3xl font-semibold transition
     ${
       appliedFiltersCount === 0
         ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-        : 'bg-primary text-white hover:bg-orange-600'
+        : 'bg-primary text-white'
     }
   `}
-            >
-              <span>{t('buy.applyFilters')}</span>
+              >
+                <span>{t('buy.applyFilters')}</span>
 
-              {appliedFiltersCount > 0 && (
-                <span className='ml-2 rounded bg-white/20 px-2 py-0.5 text-[10px] font-semibold text-white'>
-                  {appliedFiltersCount} {t('buy.found')}
-                </span>
-              )}
-            </button>
+                {appliedFiltersCount > 0 && (
+                  <span className='ml-2 rounded bg-white/20 px-2 py-0.5 text-[10px] font-semibold text-white'>
+                    {appliedFiltersCount} {t('buy.found')}
+                  </span>
+                )}
+              </button>
+            </div>
           </aside>
 
           {/* Products Grid */}
@@ -316,7 +329,7 @@ const BuyPage = (): JSX.Element => {
                         key={item._id}
                         className='bg-white dark:bg-gray-900 rounded-2xl shadow-md overflow-hidden group hover:shadow-xl transition-all border border-gray-100 dark:border-gray-800'
                       >
-                        <div className='relative overflow-hidden aspect-[4/3]'>
+                        <div className='relative overflow-hidden aspect-[16/9]'>
                           <div
                             className={`absolute top-4 left-4 ${badge.className} text-white text-[10px] font-bold px-3 py-1 uppercase rounded-full shadow-lg z-10`}
                           >
@@ -332,73 +345,73 @@ const BuyPage = (): JSX.Element => {
                             }}
                           />
                         </div>
-                        <div className={`p-5 ${isSold ? 'opacity-75' : ''}`}>
-                          <h3 className='text-lg font-bold mb-4 truncate'>{item.title}</h3>
-                          <div className='grid grid-cols-3 gap-4 mb-6'>
+                        <div className={`p-3 ${isSold ? 'opacity-75' : ''}`}>
+                          <h3 className='text-base font-bold mb-2 truncate'>{item.title}</h3>
+                          <div className='grid grid-cols-3 gap-3 mb-4'>
                             <div>
                               <p
-                                className={`text-[14px] font-bold ${isSold ? 'text-gray-400 line-through' : ''}`}
+                                className={`text-sm font-bold ${isSold ? 'text-gray-400 line-through' : ''}`}
                               >
                                 {item.make}
                               </p>
-                              <p className='text-[10px] text-gray-400 uppercase font-medium'>
+                              <p className='text-xs text-gray-400  font-medium'>
                                 {t('product.specs.make')}
                               </p>
                             </div>
                             <div>
                               <p
-                                className={`text-[14px] font-bold ${isSold ? 'text-gray-400 line-through' : ''}`}
+                                className={`text-sm font-bold ${isSold ? 'text-gray-400 line-through' : ''}`}
                               >
                                 {item.year}
                               </p>
-                              <p className='text-[10px] text-gray-400 uppercase font-medium'>
+                              <p className='text-xs text-gray-400 font-medium'>
                                 {t('product.specs.year')}
                               </p>
                             </div>
                             <div>
                               <p
-                                className={`text-[14px] font-bold ${isSold ? 'text-gray-400 line-through' : ''}`}
+                                className={`text-sm font-bold ${isSold ? 'text-gray-400 line-through' : ''}`}
                               >
                                 {item.hoursUsed || 'N/A'}
                               </p>
-                              <p className='text-[10px] text-gray-400 uppercase font-medium'>
+                              <p className='text-xs text-gray-400  font-medium'>
                                 {t('product.specs.hours')}
                               </p>
                             </div>
                             <div>
                               <p
-                                className={`text-[14px] font-bold ${isSold ? 'text-gray-400 line-through' : ''}`}
+                                className={`text-sm font-bold ${isSold ? 'text-gray-400 line-through' : ''}`}
                               >
                                 {item.models}
                               </p>
-                              <p className='text-[10px] text-gray-400 uppercase font-medium'>
+                              <p className='text-xs text-gray-400 font-medium'>
                                 {t('product.specs.model')}
                               </p>
                             </div>
                             <div>
                               <p
-                                className={`text-[14px] font-bold ${isSold ? 'text-gray-400 line-through' : ''}`}
+                                className={`text-sm font-bold ${isSold ? 'text-gray-400 line-through' : ''}`}
                               >
                                 {item.condition || 'N/A'}
                               </p>
-                              <p className='text-[10px] text-gray-400 uppercase font-medium'>
+                              <p className='text-xs text-gray-400 font-medium'>
                                 {t('product.specs.condition')}
                               </p>
                             </div>
                             <div>
                               <p
-                                className={`text-[14px] font-bold ${isSold ? 'text-gray-400 line-through' : ''}`}
+                                className={`text-sm font-bold ${isSold ? 'text-gray-400 line-through' : ''}`}
                               >
                                 {item.location.state}
                               </p>
-                              <p className='text-[10px] text-gray-400 uppercase font-medium'>
+                              <p className='text-xs text-gray-400 font-medium'>
                                 {t('product.specs.location')}
                               </p>
                             </div>
                           </div>
-                          <div className='flex justify-between items-end border-t border-gray-100 dark:border-gray-800 pt-4'>
+                          <div className='flex justify-between items-end border-t border-gray-100 dark:border-gray-800 pt-3'>
                             <div>
-                              <p className='text-[10px] text-gray-400 uppercase font-bold'>
+                              <p className='text-xs text-gray-400 font-bold'>
                                 {t('product.retailPrice')}
                               </p>
                               <p
@@ -414,7 +427,7 @@ const BuyPage = (): JSX.Element => {
                             ) : (
                               <Link
                                 to={`${ROUTES.BUY}/${item._id}`}
-                                className='bg-primary hover:bg-orange-600 text-white px-4 py-2 rounded-2xl text-xs font-bold uppercase transition-colors'
+                                className='bg-primary text-white px-4 py-2 rounded-2xl text-xs font-bold uppercase transition-colors'
                               >
                                 {t('product.viewMore')}
                               </Link>
@@ -432,9 +445,9 @@ const BuyPage = (): JSX.Element => {
                     <button
                       onClick={() => setPage((p) => Math.max(1, p - 1))}
                       disabled={page === 1}
-                      className='p-2 rounded-lg border border-gray-300 dark:border-gray-700 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-100 dark:hover:bg-gray-800'
+                      className='p-1 rounded-full w-10 h-10 bg-[#f2f2f2] dark:border-gray-700 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#f2f2f2] dark:hover:bg-gray-800'
                     >
-                      <span className='material-icons'>chevron_left</span>
+                      <span className='material-icons mt-0.5'>keyboard_double_arrow_left</span>
                     </button>
 
                     {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
@@ -443,10 +456,10 @@ const BuyPage = (): JSX.Element => {
                         <button
                           key={pageNum}
                           onClick={() => setPage(pageNum)}
-                          className={`px-4 py-2 rounded-lg font-medium ${
+                          className={`px-4 py-2 rounded-3xl font-medium ${
                             page === pageNum
-                              ? 'bg-primary text-white'
-                              : 'border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800'
+                              ? 'bg-primary text-[white]'
+                              : ' bg-[#f2f2f2] text-[#86919b] dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800'
                           }`}
                         >
                           {pageNum}
@@ -457,9 +470,9 @@ const BuyPage = (): JSX.Element => {
                     <button
                       onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
                       disabled={page === totalPages}
-                      className='p-2 rounded-lg border border-gray-300 dark:border-gray-700 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-100 dark:hover:bg-gray-800'
+                      className='p-1 rounded-full w-10 h-10 bg-[#f2f2f2] dark:border-gray-700 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#f2f2f2] dark:hover:bg-gray-800'
                     >
-                      <span className='material-icons'>chevron_right</span>
+                      <span className='material-icons mt-0.5'>keyboard_double_arrow_right</span>
                     </button>
                   </div>
                 )}

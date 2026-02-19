@@ -450,6 +450,7 @@
     "error": "No se pudo cargar el equipo. Inténtalo de nuevo más tarde.",
     "empty": "No se encontró ningún equipo. ¡Vuelva más tarde!",
     "filters": {
+      "zip": "Radio del Código Postal",
       "auctionDate": "Fecha de Subasta",
       "category": "Categoría",
       "make": "Marca",

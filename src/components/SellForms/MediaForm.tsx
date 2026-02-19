@@ -60,7 +60,9 @@ const MediaForm = ({ formData, setFormData }: MediaFormProps) => {
             <span className='material-icons text-white text-[18px]'>{icon}</span>
           </div>
 
-          <span className='text-[#FDAD3E] font-medium text-sm'>{title} <span className='ml-1 text-red-500'>*</span></span>
+          <span className='text-[#FDAD3E] font-medium text-sm'>
+            {title} <span className='ml-1 text-red-500'>*</span>
+          </span>
         </div>
 
         <ImageUpload

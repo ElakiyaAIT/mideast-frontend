@@ -244,16 +244,9 @@ const Details = ({ formData, handleChange, options, setFormData, errors }: Detai
                 type='range'
                 min='0'
                 max='100'
+                name='general.tireTrackWear'
                 value={formData.general.tireTrackWear || '0'}
-                onChange={(e) =>
-                  setFormData((prev) => ({
-                    ...prev,
-                    general: {
-                      ...prev.general,
-                      tireTrackWear: e.target.value, // ✅ stored as string
-                    },
-                  }))
-                }
+                onChange={handleChange}
                 className='relative z-10 w-full appearance-none bg-transparent cursor-pointer
         [&::-webkit-slider-thumb]:appearance-none
         [&::-webkit-slider-thumb]:h-5

@@ -16,7 +16,7 @@ interface DetailsProps {
   formData: SellFormData;
   handleChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
   setFormData: React.Dispatch<React.SetStateAction<SellFormData>>;
-  errors?: NestedErrors<SellFormData>; 
+  errors?: NestedErrors<SellFormData>;
   options: {
     transmission: Option[];
     engineType: Option[];
@@ -31,7 +31,13 @@ interface DetailsProps {
   };
 }
 
-const AdditionalInformation = ({ formData, handleChange, options, errors, setFormData }: DetailsProps) => {
+const AdditionalInformation = ({
+  formData,
+  handleChange,
+  options,
+  errors,
+  setFormData,
+}: DetailsProps) => {
   const { t } = useTranslation();
   const getGoogleMapsEmbedUrl = (address?: string) => {
     if (address && address.trim() !== '') {

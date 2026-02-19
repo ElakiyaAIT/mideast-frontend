@@ -1,43 +1,110 @@
-import { useEffect, useState, type JSX } from 'react';
-import type { Testimonial } from '../../types/home';
+import { useState } from 'react';
+import { useTranslation } from '../../i18n';
 
-const TESTIMONIALS: readonly Testimonial[] = [
-  {
-    name: 'Adam Hoffman',
-    role: 'CEO OF CONSTRUCTION',
-    message: 'We strive for a complete life-cycle approach...',
-    image: 'https://lh3.googleusercontent.com/...',
-  },
-  {
-    name: 'Sarah Johnson',
-    role: 'PROJECT MANAGER',
-    message: 'Mideast Equipment has been instrumental...',
-    image: 'https://lh3.googleusercontent.com/...',
-  },
-];
 
-export function TestimonialCarousel(): JSX.Element {
-  const [index, setIndex] = useState<number>(0);
+interface Testimonial {
+  review: string;
+  name: string;
+  role: string;
+  image?: string;
+}
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setIndex((prev) => (prev + 1) % TESTIMONIALS.length);
-    }, 8000);
+interface TestimonialCarouselProps {
+  testimonials: Testimonial[];
+  quoteIcon: string;
+  getAvatar: (name: string) => string;
+  formatText: (text: string) => string;
+}
 
-    return () => clearInterval(timer);
-  }, []);
+const TestimonialCarousel = ({
+  testimonials,
+  quoteIcon,
+  getAvatar,
+  formatText,
+}: TestimonialCarouselProps) => {
+  const { t } = useTranslation();
+  const [currentSlide, setCurrentSlide] = useState(0);
 
-  const testimonial = TESTIMONIALS[index];
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
+  };
+
+  if (!testimonials || testimonials.length === 0) return null;
 
   return (
-    <div className='space-y-8 text-center'>
-      <p className='text-xl italic text-slate-600'>{testimonial.message}</p>
+    <section className='py-18 bg-white dark:bg-gray-900 overflow-hidden'>
+      <div className='max-w-4xl mx-auto px-4 text-center'>
+        <p className='text-primary font-bold text-xs uppercase tracking-widest mb-2'>
+          {t('home.testimonials.title')}
+        </p>
+        <h2 className='text-4xl font-display font-bold text-gray-900 dark:text-white uppercase'>
+          {t('home.testimonials.subtitle')}
+        </h2>
+        <div className='w-16 h-1 bg-primary mx-auto my-4'></div>
 
-      <div className='flex flex-col items-center'>
-        <img src={testimonial.image} alt={testimonial.name} className='h-16 w-16 rounded-full' />
-        <p className='mt-4 font-bold'>{testimonial.name}</p>
-        <p className='text-xs text-slate-400'>{testimonial.role}</p>
+        <div className='mt-16 relative'>
+          <div id='testimonialCarousel' className='space-y-8'>
+            {testimonials.map((testimonial, index) => (
+              <div
+                key={index}
+                className={`testimonial-slide transition-all duration-500 ${
+                  index === currentSlide ? 'opacity-100 block' : 'opacity-0 hidden'
+                }`}
+              >
+                <div className='w-full flex justify-center items-center'>
+                  <img src={quoteIcon} alt='Quote Icon' />
+                </div>
+
+                <p className='text-lg sm:text-xl md:text-2xl text-slate-600 dark:text-slate-400 italic leading-relaxed mt-6'>
+                  {testimonial?.review}
+                </p>
+
+                <div className='mt-12 relative flex flex-col items-center'>
+                  <div className='relative'>
+                    <img
+                      alt={`${testimonial.name} Profile`}
+                      className='w-16 h-16 rounded-full object-cover'
+                      src={testimonial?.image || getAvatar(testimonial?.name)}
+                    />
+
+                    {/* Prev Button */}
+                    <button
+                      onClick={prevSlide}
+                      className='absolute -left-28 top-1/2 -translate-y-1/2 hidden md:flex items-center gap-2 text-slate-500 hover:text-primary transition-colors'
+                    >
+                      <i className='material-icons-outlined text-lg'>arrow_back</i>
+                      <span>{t('home.testimonials.prev')}</span>
+                    </button>
+
+                    {/* Next Button */}
+                    <button
+                      onClick={nextSlide}
+                      className='absolute -right-28 top-1/2 -translate-y-1/2 hidden md:flex items-center gap-2 text-slate-500 hover:text-primary transition-colors'
+                    >
+                      <span>{t('home.testimonials.next')}</span>
+                      <i className='material-icons-outlined text-lg'>arrow_forward</i>
+                    </button>
+                  </div>
+
+                  <p className='mt-4 font-semibold text-slate-800 dark:text-white'>
+                    {formatText(testimonial?.name)}
+                  </p>
+
+                  <p className='text-xs text-slate-400 uppercase tracking-widest'>
+                    {testimonial?.role}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
   );
-}
+};
+
+export default TestimonialCarousel;

@@ -13,8 +13,15 @@ import MediaForm from '../../components/SellForms/MediaForm';
 import AdditionalInformation from '../../components/SellForms/AdditionalInformationform';
 import PriceForm from '../../components/SellForms/priceForm';
 import ReviewForm from '../../components/SellForms/ReviewForm';
-import { additionalInformationSchema, basicInfoSchema, conditionSchema, detailsSchema } from '../../utils';
+import {
+  additionalInformationSchema,
+  basicInfoSchema,
+  conditionSchema,
+  detailsSchema,
+} from '../../utils';
 import * as yup from 'yup';
+import { Link } from 'react-router-dom';
+import { ROUTES } from '../../constants';
 
 const dropdownOptions = {
   transmission: [
@@ -211,13 +218,13 @@ const SellPage = (): JSX.Element => {
           schema = basicInfoSchema;
           break;
         case 1:
-          schema= detailsSchema;
+          schema = detailsSchema;
           break;
         case 2:
           schema = conditionSchema;
           break;
-        case 3:
-          schema= additionalInformationSchema;
+        case 4:
+          schema = additionalInformationSchema;
           break;
         default:
           return true;
@@ -236,24 +243,30 @@ const SellPage = (): JSX.Element => {
           if (!e.path) return;
 
           const pathParts = e.path.split('.'); // e.g., "basicDetails.mileage"
-          let current: any = newErrors;
+          let current: unknown = newErrors;
 
           pathParts.forEach((part, index) => {
+            if (typeof current !== 'object' || current === null) return;
+
+            const obj = current as Record<string, unknown>;
+
             if (index === pathParts.length - 1) {
-              current[part] = e.message; // assign error message
+              obj[part] = e.message;
             } else {
-              if (!current[part]) current[part] = {};
-              current = current[part];
+              if (!(part in obj) || typeof obj[part] !== 'object' || obj[part] === null) {
+                obj[part] = {};
+              }
+
+              current = obj[part];
             }
           });
         });
 
-        console.log('Errors set:', newErrors); // debug
+        console.log('Errors set:', newErrors);
         setErrors(newErrors);
       } else {
         console.error('Unexpected error', err);
       }
-
       return false;
     }
   };
@@ -292,7 +305,15 @@ const SellPage = (): JSX.Element => {
   const renderStep = () => {
     switch (currentStep) {
       case 0:
-        return <BasicInfo formData={formData} setFormData={setFormData} errors={errors} />;
+        return (
+          <BasicInfo
+            formData={formData}
+            setErrors={setErrors}
+            handleChange={handleChange}
+            setFormData={setFormData}
+            errors={errors}
+          />
+        );
       case 1:
         return (
           <Details
@@ -327,7 +348,7 @@ const SellPage = (): JSX.Element => {
       case 5:
         return <PriceForm />;
       case 6:
-        return <ReviewForm setCurrentStep={setCurrentStep} />;
+        return <ReviewForm formData={formData} setCurrentStep={setCurrentStep} />;
       default:
         return null;
     }
@@ -358,14 +379,20 @@ const SellPage = (): JSX.Element => {
     });
     setErrors((prev) => {
       const newErrors = { ...prev };
-      let current: any = newErrors;
+      let current: unknown = newErrors;
 
       for (let i = 0; i < keys.length - 1; i++) {
-        if (!current[keys[i]]) return newErrors;
-        current = current[keys[i]];
+        if (typeof current !== 'object' || current === null || !(keys[i] in current)) {
+          return newErrors;
+        }
+
+        current = (current as Record<string, unknown>)[keys[i]];
       }
 
-      delete current[keys[keys.length - 1]];
+      if (typeof current === 'object' && current !== null) {
+        delete (current as Record<string, unknown>)[keys[keys.length - 1]];
+      }
+
       return newErrors;
     });
   };
@@ -385,7 +412,6 @@ const SellPage = (): JSX.Element => {
     <>
       <TopBanner />
       <Header />
-      <link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet' />
 
       {/* Banner Section */}
       <div className='relative bg-gray-800 h-64 flex items-center justify-center overflow-hidden br-30'>
@@ -399,9 +425,11 @@ const SellPage = (): JSX.Element => {
             {t('sell.title')}
           </h1>
           <div className='mt-2 text-primary font-medium text-sm flex items-center justify-center gap-2'>
-            <span className='text-white'>{t('sell.breadCrumbs.home')}</span>
+            <Link to={ROUTES.HOME} className='text-white hover:text-primary transition-colors'>
+              {t('product.breadcrumb.home')}
+            </Link>
             <span className='material-icons text-xs text-white'>chevron_right</span>
-            <span className='text-white'>{t('sell.breadCrumbs.sellInventory')}</span>
+            <span className='text-primary'>{t('sell.breadCrumbs.sellInventory')}</span>
           </div>
         </div>
       </div>

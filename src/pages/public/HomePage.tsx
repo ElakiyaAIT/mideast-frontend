@@ -1,7 +1,5 @@
 import { TopBanner, Header, Footer } from '../../components/layout';
 import type { JSX } from 'react';
-import { useState, useEffect } from 'react';
-
 // Import images
 import heavyMachinery from '../../assets/images/heavy-machinery-used-construction-industry-engineering 3.png';
 import auction1 from '../../assets/images/dangvm_construction_equipment_bulldozers_-ar_32_-v_6.1_fc02ca1c-0341-4ac2-bbef-d00b37dfeab0_2.jpg.png';
@@ -28,6 +26,7 @@ import { AuctionCard } from '../../components/Home/AuctionCard';
 import { CategoryCard } from '../../components/Home/CategoryCard';
 import { useTestimonials } from '../../hooks/queries/useTestimonial';
 import { useTranslation } from '../../i18n';
+import TestimonialCarousel from '../../components/Home/TestimonialCarousel';
 
 // const TESTIMONIALS = [
 //   {
@@ -64,8 +63,6 @@ const CATEGORY_IMAGE_MAP: Record<string, string> = {
   cranes: cranesImg,
 };
 const HomePage = (): JSX.Element => {
-  const [currentSlide, setCurrentSlide] = useState<number>(0);
-
   const { data: equipmentData } = useLatestEquipment();
   const navigate = useNavigate();
   const { data: latestAuction } = useLatestAuction();
@@ -75,29 +72,12 @@ const HomePage = (): JSX.Element => {
   const { data: testimonialData } = useTestimonials();
   const equipment = equipmentData || [];
   const TESTIMONIALS = testimonialData?.items || [];
-  const totalSlides = TESTIMONIALS.length;
   const { t } = useTranslation();
 
   console.log(equipmentData, 'equip123');
 
   const getAvatar = (name: string) =>
     `https://api.dicebear.com/7.x/initials/svg?seed=${name || 'User'}`;
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % totalSlides);
-    }, 8000);
-
-    return () => clearInterval(timer);
-  }, [totalSlides]);
-
-  const nextSlide = (): void => {
-    setCurrentSlide((prev) => (prev + 1) % totalSlides);
-  };
-
-  const prevSlide = (): void => {
-    setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
-  };
 
   const formatText = (text = '') =>
     text
@@ -319,109 +299,14 @@ const HomePage = (): JSX.Element => {
           </div>
         </div>
       </section>
-
       {/* Testimonials Section */}
-      <section className='py-24 bg-white dark:bg-gray-900 overflow-hidden'>
-        <div className='max-w-4xl mx-auto px-4 text-center'>
-          <p className='text-primary font-bold text-xs uppercase tracking-widest mb-2'>
-            {t('home.testimonials.title')}
-          </p>
-          <h2 className='text-4xl font-display font-bold text-gray-900 dark:text-white uppercase'>
-            {t('home.testimonials.subtitle')}
-          </h2>
-          <div className='w-16 h-1 bg-primary mx-auto my-4'></div>
 
-          <div className='mt-16 relative'>
-            <div id='testimonialCarousel' className='space-y-8 transition-all duration-500'>
-              {TESTIMONIALS.map((testimonial, index) => (
-                <div
-                  key={index}
-                  className={`testimonial-slide ${
-                    index === currentSlide ? 'opacity-100' : 'opacity-0 hidden'
-                  } transition-opacity duration-500`}
-                >
-                  <div className='w-full flex justify-center items-center'>
-                    <img src={quoteIcon} alt='Quote Icon' />
-                  </div>
-                  <p className='text-lg sm:text-xl md:text-2xl text-slate-600 dark:text-slate-400 italic leading-relaxed mt-6'>
-                    {testimonial?.review}
-                  </p>
-                  <div className='mt-12 relative flex flex-col items-center'>
-                    {/* Avatar */}
-                    <div className='relative'>
-                      <img
-                        alt={`${testimonial.name} Profile`}
-                        className='w-16 h-16 rounded-full object-cover'
-                        src={testimonial?.image || getAvatar(testimonial?.name)}
-                      />
-
-                      {/* Prev Button */}
-                      <button
-                        onClick={prevSlide}
-                        className='absolute -left-28 top-1/2 -translate-y-1/2 flex items-center gap-2 text-slate-500 hover:text-primary transition-colors'
-                      >
-                        <i className='material-icons-outlined text-lg'>arrow_back</i>
-                        <span>{t('home.testimonials.prev')}</span>
-                      </button>
-
-                      {/* Next Button */}
-                      <button
-                        onClick={nextSlide}
-                        className='absolute -right-28 top-1/2 -translate-y-1/2 flex items-center gap-2 text-slate-500 hover:text-primary transition-colors'
-                      >
-                        <span>{t('home.testimonials.next')}</span>
-                        <i className='material-icons-outlined text-lg'>arrow_forward</i>
-                      </button>
-                    </div>
-
-                    {/* Name */}
-                    <p className='mt-4 font-semibold text-slate-800 dark:text-white'>
-                      {formatText(testimonial?.name)}
-                    </p>
-
-                    {/* Role */}
-                    <p className='text-xs text-slate-400 uppercase tracking-widest'>
-                      {testimonial?.role}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* <div className="flex items-center justify-center gap-4 md:gap-6 mt-12 flex-wrap">
-              <button
-                id="prevBtn"
-                onClick={prevSlide}
-                className="p-2 text-slate-300 hover:text-primary transition-colors"
-              >
-                <i className="material-icons-outlined">chevron_left</i>
-                <span className="hidden sm:inline ml-1">Prev</span>
-              </button>
-              <div className="flex gap-2">
-                {TESTIMONIALS.map((_, index) => (
-                  <button
-                    key={index}
-                    className={`dot-indicator h-2 w-2 rounded-full transition-all ${index === currentSlide
-                      ? 'bg-primary'
-                      : 'bg-slate-300 dark:bg-slate-600'
-                      }`}
-                    onClick={() => goToSlide(index)}
-                    data-slide={index}
-                  ></button>
-                ))}
-              </div>
-              <button
-                id="nextBtn"
-                onClick={nextSlide}
-                className="p-2 text-slate-300 hover:text-primary transition-colors"
-              >
-                <span className="hidden sm:inline mr-1">Next</span>
-                <i className="material-icons-outlined">chevron_right</i>
-              </button>
-            </div> */}
-          </div>
-        </div>
-      </section>
+      <TestimonialCarousel
+        testimonials={TESTIMONIALS}
+        quoteIcon={quoteIcon}
+        getAvatar={getAvatar}
+        formatText={formatText}
+      />
 
       <Footer />
     </>

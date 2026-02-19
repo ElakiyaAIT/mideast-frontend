@@ -130,7 +130,7 @@
       },
       "tireTrackWear": {
         "number": "Tire/Track wear must be a number",
-        "min": "Tire/Track wear cannot be less than 0%",
+        "min": "Tire/Track wear cannot be less than 1%",
         "max": "Tire/Track wear cannot exceed 100%",
         "required": "Tire/Track Wear is required"
       },
@@ -450,6 +450,7 @@
     "error": "Failed to load Equipment. Please try agin later.",
     "empty": "No equipment found. Check back later!",
     "filters": {
+      "zip":"Zip Radius",
       "auctionDate": "Auction Date",
       "category": "Category",
       "make": "Make",

@@ -12,6 +12,15 @@ const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>
 // Strip HTML tags for TinyMCE validation
 const stripHtml = (value: string) => value?.replace(/<[^>]*>/g, '').trim();
 
+const getCleanText = (value?: string): string => {
+  if (!value) return '';
+
+  return stripHtml(value)
+    .replace(/&nbsp;/gi, ' ') // remove non-breaking spaces
+    .replace(/\s+/g, ' ') // collapse multiple spaces
+    .trim(); // trim start/end
+};
+
 // Email validation
 export const emailSchema = yup
   .string()
@@ -88,27 +97,24 @@ export const basicInfoSchema = yup.object({
     .transform((value) => (value?.trim() === '' ? undefined : value))
     .required(() => t('validation.sell.description.required'))
     .test(
-      'not-empty-html',
+      'not-empty',
       () => t('validation.sell.description.required'),
       (value) => {
-        if (!value) return false;
-        return stripHtml(value).length >= 20;
+        return getCleanText(value).length > 0;
       },
     )
     .test(
       'min-length',
       () => t('validation.sell.description.minLength'),
       (value) => {
-        if (!value) return false;
-        return stripHtml(value).length >= 20;
+        return getCleanText(value).length >= 20;
       },
     )
     .test(
       'max-length',
       () => t('validation.sell.description.maxLength'),
       (value) => {
-        if (!value) return false;
-        return stripHtml(value).length <= 2000;
+        return getCleanText(value).length <= 2000;
       },
     ),
 });
@@ -186,7 +192,7 @@ export const detailsSchema = yup.object({
       .required(() => t('validation.sell.cabType.required')),
     tireTrackSize: yup
       .string()
-      .transform((value, originalValue) => (originalValue === '' ? undefined : value))
+      .trim()
       .required(() => t('validation.sell.tireTrackSize.required')),
     suspension: yup
       .string()
@@ -201,7 +207,7 @@ export const detailsSchema = yup.object({
       })
       .required(() => t('validation.sell.tireTrackWear.required'))
       .typeError(() => t('validation.sell.tireTrackWear.number'))
-      .min(0, () => t('validation.sell.tireTrackWear.min'))
+      .min(1, () => t('validation.sell.tireTrackWear.min'))
       .max(100, () => t('validation.sell.tireTrackWear.max')),
   }),
 
@@ -278,52 +284,52 @@ export const conditionSchema = yup.object({
   }),
 });
 
-export const additionalInformationSchema =  yup.object({
-  additionalInformation:yup.object({
-  equipmentIdentity: yup.object({
-    vinNumber: yup
-      .string()
-      .transform((value) => (value?.trim() === '' ? undefined : value))
-      .required(() => t('validation.sell.additionalInformation.vinNumberRequired')),
+export const additionalInformationSchema = yup.object({
+  additionalInformation: yup.object({
+    equipmentIdentity: yup.object({
+      vinNumber: yup
+        .string()
+        .transform((value) => (value?.trim() === '' ? undefined : value))
+        .required(() => t('validation.sell.additionalInformation.vinNumberRequired')),
 
-    manufacturerDate: yup
-      .string()
-      .transform((value) => (value?.trim() === '' ? undefined : value))
-      .required(() => t('validation.sell.additionalInformation.required')),
+      manufacturerDate: yup
+        .string()
+        .transform((value) => (value?.trim() === '' ? undefined : value))
+        .required(() => t('validation.sell.additionalInformation.required')),
 
-    modelYearConfirmation: yup
-      .string()
-      .required(() => t('validation.sell.additionalInformation.required')),
+      modelYearConfirmation: yup
+        .string()
+        .required(() => t('validation.sell.additionalInformation.required')),
 
-    equipmentHasDamage: yup
-      .string()
-      .required(() => t('validation.sell.additionalInformation.required')),
+      equipmentHasDamage: yup
+        .string()
+        .required(() => t('validation.sell.additionalInformation.required')),
 
-    maintainenceRecords: yup
-      .string()
-      .required(() => t('validation.sell.additionalInformation.required')),
+      maintainenceRecords: yup
+        .string()
+        .required(() => t('validation.sell.additionalInformation.required')),
 
-    warrantyAvailable: yup
-      .string()
-      .required(() => t('validation.sell.additionalInformation.required')),
+      warrantyAvailable: yup
+        .string()
+        .required(() => t('validation.sell.additionalInformation.required')),
+    }),
+
+    location: yup.object({
+      address: yup
+        .string()
+        .transform((value) => (value?.trim() === '' ? undefined : value))
+        .required(() => t('validation.sell.additionalInformation.location.addressRequired')),
+    }),
+
+    ownership: yup.object({
+      ownershipProof: yup.array().of(yup.string()),
+      invoiceBillOfSale: yup.array().of(yup.string()),
+      governmentRegistration: yup.array().of(yup.string()),
+      emissionTest: yup.array().of(yup.string()),
+      insurance: yup.array().of(yup.string()),
+      maintenanceLog: yup.array().of(yup.string()),
+    }),
   }),
-
-  location: yup.object({
-    address: yup
-      .string()
-      .transform((value) => (value?.trim() === '' ? undefined : value))
-      .required(() => t('validation.sell.additionalInformation.location.addressRequired')),
-  }),
-
-  ownership: yup.object({
-    ownershipProof: yup.array().of(yup.string()),
-    invoiceBillOfSale: yup.array().of(yup.string()),
-    governmentRegistration: yup.array().of(yup.string()),
-    emissionTest: yup.array().of(yup.string()),
-    insurance: yup.array().of(yup.string()),
-    maintenanceLog: yup.array().of(yup.string()),
-  }),
-})
 });
 
 // Type exports for form data

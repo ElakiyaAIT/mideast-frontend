@@ -1,7 +1,9 @@
 import type { Dispatch, SetStateAction } from 'react';
 import { useTranslation } from '../../i18n';
 import { ConditionPill } from './StatusChip';
+import type { SellFormData } from '../../types/home';
 interface ReviewFormProps {
+  formData: SellFormData;
   setCurrentStep: Dispatch<SetStateAction<number>>;
 }
 const dummyImages = [
@@ -16,8 +18,36 @@ const dummyImages = [
   'https://picsum.photos/400/300?random=9',
 ];
 
-export default function ReviewForm({ setCurrentStep }: ReviewFormProps) {
+export default function ReviewForm({ formData, setCurrentStep }: ReviewFormProps) {
   const { t } = useTranslation();
+  const truncate = (
+    text: string | undefined | null,
+    wordLimit: number = 50,
+    charLimit: number = 150,
+  ) => {
+    if (!text) return '-';
+
+    // 1. Create a temporary element to let the browser decode HTML entities
+    // If you are server-side rendering, use a basic .replace(/&nbsp;/g, ' ') instead.
+    const doc = new DOMParser().parseFromString(text, 'text/html');
+    let plainText = doc.body.textContent || '';
+
+    // 2. Clean up extra whitespace and trim
+    plainText = plainText.replace(/\s+/g, ' ').trim();
+
+    // 3. Word-based truncation
+    const words = plainText.split(' ');
+    if (words.length > wordLimit) {
+      return words.slice(0, wordLimit).join(' ') + '...';
+    }
+
+    // 4. Character-based truncation (The "aaaaa" fail-safe)
+    if (plainText.length > charLimit) {
+      return plainText.substring(0, charLimit) + '...';
+    }
+
+    return plainText;
+  };
   return (
     <>
       <link
@@ -63,17 +93,17 @@ export default function ReviewForm({ setCurrentStep }: ReviewFormProps) {
             {/* Left Column */}
             <div>
               <p className='text-sm text-gray-500 mb-1'>{t('sell.form.equipmentTitle')}</p>
-              <p className='font-medium'>Caterpillar 320 GC Excavator (2018)</p>
+              <p className='font-medium'>{formData?.title || '-'}</p>
             </div>
 
             <div>
               <p className='text-sm text-gray-500 mb-1'>{t('sell.form.category')}</p>
-              <p className='font-medium'>Excavators</p>
+              <p className='font-medium'>{formData?.category || '-'}</p>
             </div>
 
             <div className='col-span-2'>
               <p className='text-sm text-gray-500 mb-1'>{t('sell.form.description')}</p>
-              <p className='font-medium'>Heavy automated machine</p>
+              <p>{truncate(formData.description, 20, 50)}</p>
             </div>
           </div>
         </div>
@@ -110,19 +140,19 @@ export default function ReviewForm({ setCurrentStep }: ReviewFormProps) {
             {/* Left Column */}
             <div>
               <p className='text-sm text-gray-500 mb-1'>{t('sell.form.details.basic.make')}</p>
-              <p className='font-medium'>Caterpillar</p>
+              <p className='font-medium'>{formData?.basicDetails?.make || '-'}</p>
             </div>
 
             <div>
               <p className='text-sm text-gray-500 mb-1'>{t('sell.form.details.basic.model')}</p>
-              <p className='font-medium'>Excavators</p>
+              <p className='font-medium'>{formData?.basicDetails?.model || '-'}</p>
             </div>
 
             <div>
               <p className='text-sm text-gray-500 mb-1'>
                 {t('sell.form.details.general.operatingWeight')}
               </p>
-              <p className='font-medium'>22,000 Kg</p>
+              <p className='font-medium'>{formData?.general?.operatingWeight}</p>
             </div>
           </div>
           <div className='grid grid-cols-3 gap-y-6 gap-x-12'>
@@ -136,14 +166,14 @@ export default function ReviewForm({ setCurrentStep }: ReviewFormProps) {
               <p className='text-sm text-gray-500 mb-1'>
                 {t('sell.form.details.general.transmission')}
               </p>
-              <p className='font-medium'>Automatic</p>
+              <p className='font-medium'>{formData?.general?.transmission || '-'}</p>
             </div>
 
             <div>
               <p className='text-sm text-gray-500 mb-1'>
                 {t('sell.form.details.general.engineType')}
               </p>
-              <p className='font-medium'>CAT C4</p>
+              <p className='font-medium'>{formData?.general?.engineType || '-'}</p>
             </div>
           </div>
         </div>
@@ -270,14 +300,18 @@ export default function ReviewForm({ setCurrentStep }: ReviewFormProps) {
               <p className='text-sm text-gray-500 mb-1'>
                 {t('sell.form.additionalInformation.equipmentIdentity.vinNumber')}
               </p>
-              <p className='font-medium'>CAT0320GCXYZ123</p>
+              <p className='font-medium'>
+                {formData?.additionalInformation?.equipmentIdentity?.vinNumber || '-'}
+              </p>
             </div>
 
             <div>
               <p className='text-sm text-gray-500 mb-1'>
                 {t('sell.form.additionalInformation.equipmentIdentity.manufacturerDate')}
               </p>
-              <p className='font-medium'>12/05/2015</p>
+              <p className='font-medium'>
+                {formData?.additionalInformation?.equipmentIdentity?.manufacturerDate || '-'}
+              </p>
             </div>
 
             <div>
@@ -293,7 +327,9 @@ export default function ReviewForm({ setCurrentStep }: ReviewFormProps) {
               <p className='text-sm text-gray-500 mb-1'>
                 {t('sell.form.additionalInformation.location.title')}
               </p>
-              <p className='font-medium'>1234 Industrial Bluvd, Italy</p>
+              <p className='font-medium'>
+                {formData?.additionalInformation?.location?.address || '-'}
+              </p>
             </div>
 
             <div>

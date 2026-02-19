@@ -125,12 +125,6 @@ const BuyNowDetailsPage = (): JSX.Element => {
     <>
       <TopBanner />
       <Header />
-      <link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet' />
-
-      <link
-        rel='stylesheet'
-        href='https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined'
-      />
 
       {/* Banner Start */}
       <div className='relative bg-gray-800 h-64 flex items-center justify-center overflow-hidden br-30'>
