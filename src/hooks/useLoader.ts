@@ -219,12 +219,35 @@ export const useAsyncLoader = <T = void>(options?: {
 
   const execute = useCallback(
     async (asyncFn: () => Promise<T>) => {
-      // Clear any pending debounce
+      const executeImmediate = async (asyncFn: () => Promise<T>): Promise<void> => {
+        startTimeRef.current = Date.now();
+        setIsLoading(true);
+        setError(null);
+
+        try {
+          const result = await asyncFn();
+          options?.onSuccess?.(result);
+
+          const elapsed = Date.now() - (startTimeRef.current ?? 0);
+          const remaining = Math.max(0, minDisplayTime - elapsed);
+
+          if (remaining > 0) {
+            await new Promise((resolve) => setTimeout(resolve, remaining));
+          }
+        } catch (err) {
+          const error = err instanceof Error ? err : new Error(String(err));
+          setError(error);
+          options?.onError?.(error);
+        } finally {
+          setIsLoading(false);
+          startTimeRef.current = null;
+        }
+      };
+
       if (debounceTimeoutRef.current) {
         clearTimeout(debounceTimeoutRef.current);
       }
 
-      // Debounce if configured
       if (debounceTime > 0) {
         return new Promise<void>((resolve) => {
           debounceTimeoutRef.current = setTimeout(() => {
@@ -238,31 +261,34 @@ export const useAsyncLoader = <T = void>(options?: {
     [debounceTime, minDisplayTime, options],
   );
 
-  const executeImmediate = async (asyncFn: () => Promise<T>): Promise<void> => {
-    startTimeRef.current = Date.now();
-    setIsLoading(true);
-    setError(null);
+  // ✅ Remove this outer, unused executeImmediate
+  // const executeImmediate = async (asyncFn: () => Promise<T>) => { ... };
 
-    try {
-      const result = await asyncFn();
-      options?.onSuccess?.(result);
+  // const executeImmediate = async (asyncFn: () => Promise<T>): Promise<void> => {
+  //   startTimeRef.current = Date.now();
+  //   setIsLoading(true);
+  //   setError(null);
 
-      // Ensure minimum display time
-      const elapsed = Date.now() - (startTimeRef.current ?? 0);
-      const remaining = Math.max(0, minDisplayTime - elapsed);
+  //   try {
+  //     const result = await asyncFn();
+  //     options?.onSuccess?.(result);
 
-      if (remaining > 0) {
-        await new Promise((resolve) => setTimeout(resolve, remaining));
-      }
-    } catch (err) {
-      const error = err instanceof Error ? err : new Error(String(err));
-      setError(error);
-      options?.onError?.(error);
-    } finally {
-      setIsLoading(false);
-      startTimeRef.current = null;
-    }
-  };
+  //     // Ensure minimum display time
+  //     const elapsed = Date.now() - (startTimeRef.current ?? 0);
+  //     const remaining = Math.max(0, minDisplayTime - elapsed);
+
+  //     if (remaining > 0) {
+  //       await new Promise((resolve) => setTimeout(resolve, remaining));
+  //     }
+  //   } catch (err) {
+  //     const error = err instanceof Error ? err : new Error(String(err));
+  //     setError(error);
+  //     options?.onError?.(error);
+  //   } finally {
+  //     setIsLoading(false);
+  //     startTimeRef.current = null;
+  //   }
+  // };
 
   // Cleanup on unmount
   useEffect(() => {

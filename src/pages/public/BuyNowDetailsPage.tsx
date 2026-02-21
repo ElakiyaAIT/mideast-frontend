@@ -21,7 +21,7 @@ const BuyNowDetailsPage = (): JSX.Element => {
 
   // Fetch equipment details
   const { data: response, isLoading, isError } = useEquipmentDetail(id || '');
-  console.log(response, '----------------------');
+  // console.log(response, '----------------------');
   const equipment = response;
 
   const formatPrice = (price?: number): string => {
@@ -118,7 +118,7 @@ const BuyNowDetailsPage = (): JSX.Element => {
   const selectedImage = images[selectedImageIndex] || defaultImage;
 
   const handleDownload = async () => {
-    console.log('Download document');
+    console.warn('Download document');
   };
 
   return (

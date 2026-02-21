@@ -262,7 +262,7 @@ const SellPage = (): JSX.Element => {
           });
         });
 
-        console.log('Errors set:', newErrors);
+        console.error('Errors set:', newErrors);
         setErrors(newErrors);
       } else {
         console.error('Unexpected error', err);
@@ -273,8 +273,6 @@ const SellPage = (): JSX.Element => {
 
   const nextStep = async () => {
     const isValid = await validateCurrentStep();
-    console.log(errors, 'er123');
-
     if (!isValid) return;
     if (currentStep < steps.length - 1) {
       setCurrentStep((prev) => prev + 1);
@@ -300,7 +298,7 @@ const SellPage = (): JSX.Element => {
   };
 
   const handleSubmit = () => {
-    console.log(formData, 'formData123');
+    console.warn(formData, 'formData123');
   };
   const renderStep = () => {
     switch (currentStep) {

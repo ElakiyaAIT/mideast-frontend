@@ -74,8 +74,6 @@ const HomePage = (): JSX.Element => {
   const TESTIMONIALS = testimonialData?.items || [];
   const { t } = useTranslation();
 
-  console.log(equipmentData, 'equip123');
-
   const getAvatar = (name: string) =>
     `https://api.dicebear.com/7.x/initials/svg?seed=${name || 'User'}`;
 

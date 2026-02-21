@@ -509,7 +509,7 @@ const AsyncLoaderDemo = (): JSX.Element => {
     minDisplayTime: 300,
     debounceTime: 500,
     onSuccess: () => {
-      console.log('Operation completed!');
+      // console.log('Operation completed!');
     },
   });
 

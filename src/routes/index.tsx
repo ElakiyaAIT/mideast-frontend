@@ -19,6 +19,7 @@ const SellPage = lazy(() => import('../pages/public/SellPage'));
 const AuctionPage = lazy(() => import('../pages/public/AuctionPage'));
 const ContactUsPage = lazy(() => import('../pages/public/ContactUsPage'));
 import LoaderDemoPage from '../pages/LoaderDemoPage';
+import ContentPage from '../pages/public/ContentPage';
 
 export const AppRoutes = (): JSX.Element => {
   return (
@@ -152,7 +153,7 @@ export const AppRoutes = (): JSX.Element => {
             </GuestGuard>
           }
         />
-
+        <Route path={ROUTES.CONTENT} element={<ContentPage />} />
         {/* Catch all route */}
         <Route path='*' element={<Navigate to={ROUTES.HOME} replace />} />
       </Routes>

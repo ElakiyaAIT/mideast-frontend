@@ -30,7 +30,7 @@ export const ImageUpload = ({
   maxFiles = 10,
   value = [],
   onChange,
-  onRemove,
+  // onRemove,
   disabled,
   mode = 'image',
 }: ImageUploadProps): JSX.Element => {
@@ -111,9 +111,9 @@ export const ImageUpload = ({
     });
   };
 
-  const handleRemoveExisting = (index: number): void => {
-    onRemove?.(index);
-  };
+  // const handleRemoveExisting = (index: number): void => {
+  //   onRemove?.(index);
+  // };
 
   const handleClick = (): void => {
     if (!disabled && canAddMore) {

@@ -78,7 +78,7 @@ const BuyPage = (): JSX.Element => {
     // example:
     // fetchEquipment(filtersPayload)
 
-    console.log('Applying filters with payload:', filtersPayload);
+    console.warn('Applying filters with payload:', filtersPayload);
   };
   const total = data?.pagination?.total || 0;
   const perPage = data?.pagination?.limit || 6;

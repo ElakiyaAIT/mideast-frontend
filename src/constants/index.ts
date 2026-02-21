@@ -20,6 +20,7 @@ export const ROUTES = {
   AUCTION: '/auction',
   ABOUT_US: '/about-us',
   CONTACT_US: '/contact-us',
+  CONTENT: '/*',
 } as const;
 
 export const STORAGE_KEYS = {

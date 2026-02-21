@@ -324,7 +324,6 @@ const AuctionPage = (): JSX.Element => {
     <div>Loading....</div>;
   }
 
-  console.log(data, 'kertyuiop');
   return (
     <>
       <TopBanner />

@@ -14,7 +14,7 @@ interface Option {
 interface DetailsProps {
   formData: SellFormData;
   handleChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
-  setFormData: React.Dispatch<React.SetStateAction<SellFormData>>;
+  setFormData?: React.Dispatch<React.SetStateAction<SellFormData>>;
   errors?: NestedErrors<SellFormData>;
   options: {
     transmission: Option[];
@@ -30,9 +30,8 @@ interface DetailsProps {
   };
 }
 
-const Details = ({ formData, handleChange, options, setFormData, errors }: DetailsProps) => {
+const Details = ({ formData, handleChange, options, errors }: DetailsProps) => {
   const { t } = useTranslation();
-  console.log(formData, 'ttt');
 
   return (
     <div>

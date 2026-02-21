@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom';
 import { type Product } from '../../constants/DummyConstant';
 import { useTranslation } from '../../i18n';
 
@@ -8,7 +7,6 @@ type Props = {
 
 export default function ProductCard({ product }: Props) {
   const { t } = useTranslation();
-  const navigate = useNavigate();
 
   const getProductBadge = (status: string) => {
     switch (status) {

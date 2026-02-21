@@ -112,8 +112,6 @@ const ConditionSection = ({
     });
   };
 
-  console.log(errors, 'er123e');
-
   return (
     <div className='rounded-2xl bg-slate-50 p-8 dark:bg-slate-900'>
       <h4 className='mb-6 border-b-2 border-primary pb-4 text-lg font-bold uppercase dark:text-slate-400'>
