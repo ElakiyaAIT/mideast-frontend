@@ -2,7 +2,7 @@ import { useState, type JSX } from 'react';
 import type { NavItem } from '../../types/home';
 import mideastLogo from '../../assets/images/mideastlogo.svg';
 import { ROUTES } from '../../constants';
-import { useLocation } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { useTranslation } from '../../i18n';
 
 export function Header(): JSX.Element {
@@ -57,13 +57,13 @@ export function Header(): JSX.Element {
           {NAV_ITEMS.map((item) => {
             const active = isActive(item.href);
             return (
-              <a
+              <NavLink
                 key={item.label}
                 className={`${active ? 'text-primary' : 'hover:text-primary'} transition-colors`}
-                href={item.href}
+                to={item.href}
               >
                 {item.label}
-              </a>
+              </NavLink>
             );
           })}
         </div>
@@ -74,18 +74,18 @@ export function Header(): JSX.Element {
             <i className='material-icons-outlined'>search</i>
           </button>
           <div className='flex items-center gap-2'>
-            <a
+            <NavLink
               className='button rounded-3xl bg-primary px-5 py-2 text-sm font-bold uppercase text-white transition-colors hover:bg-orange-600'
-              href={ROUTES.LOGIN}
+              to={ROUTES.LOGIN}
             >
               {t('nav.login')}
-            </a>
-            <a
+            </NavLink>
+            <NavLink
               className='rounded-3xl border-2 border-slate-200 px-5 py-2 text-sm font-bold uppercase transition-colors hover:bg-slate-50 dark:border-slate-700 dark:hover:bg-slate-800'
-              href={ROUTES.REGISTER}
+              to={ROUTES.REGISTER}
             >
               {t('nav.register')}
-            </a>
+            </NavLink>
           </div>
         </div>
 

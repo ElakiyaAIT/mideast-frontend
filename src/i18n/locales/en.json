@@ -450,7 +450,7 @@
     "error": "Failed to load Equipment. Please try agin later.",
     "empty": "No equipment found. Check back later!",
     "filters": {
-      "zip":"Zip Radius",
+      "zip": "Zip Radius",
       "auctionDate": "Auction Date",
       "category": "Category",
       "make": "Make",

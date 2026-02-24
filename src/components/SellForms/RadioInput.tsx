@@ -51,6 +51,7 @@ const RadioGroup = ({
               checked={value === option.value}
               onChange={onChange}
               className='mr-2 accent-primary'
+              data-error={!!error}
             />
             {formatLabel(option.label || option.value)}
           </label>

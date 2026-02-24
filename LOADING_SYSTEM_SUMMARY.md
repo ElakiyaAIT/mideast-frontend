@@ -245,9 +245,9 @@ const LoginPage = () => {
         mutate(data);
       }}
     >
-      <Input name="email" />
-      <Input name="password" />
-      <Button type="submit" isLoading={isPending}>
+      <Input name='email' />
+      <Input name='password' />
+      <Button type='submit' isLoading={isPending}>
         Login
       </Button>
     </form>
@@ -270,7 +270,7 @@ const ProductList = () => {
 
   if (isLoading) {
     return (
-      <div className="grid grid-cols-3 gap-4">
+      <div className='grid grid-cols-3 gap-4'>
         {Array.from({ length: 6 }).map((_, i) => (
           <SkeletonCard key={i} />
         ))}
@@ -279,7 +279,7 @@ const ProductList = () => {
   }
 
   return (
-    <div className="grid grid-cols-3 gap-4">
+    <div className='grid grid-cols-3 gap-4'>
       {data.map((product) => (
         <ProductCard key={product.id} {...product} />
       ))}
@@ -300,7 +300,7 @@ const DashboardCard = () => {
   });
 
   return (
-    <div className="card">
+    <div className='card'>
       <button onClick={() => refetch()}>Refresh</button>
 
       <SectionLoader isLoading={isRefetching} overlay={true}>
@@ -329,11 +329,11 @@ const SearchBar = () => {
   };
 
   return (
-    <div className="relative">
+    <div className='relative'>
       <input onChange={(e) => handleSearch(e.target.value)} />
       {isLoading && (
-        <div className="absolute right-3 top-3">
-          <InlineSpinner size="sm" />
+        <div className='absolute right-3 top-3'>
+          <InlineSpinner size='sm' />
         </div>
       )}
     </div>

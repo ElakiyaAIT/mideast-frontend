@@ -39,8 +39,11 @@ export const SelectInput = ({
         name={name}
         value={value || ''}
         onChange={onChange}
+        data-error={!!error}
         className={`w-full rounded-lg border border-slate-200 bg-slate-10 p-3 focus:border-primary focus:ring-primary dark:border-slate-700 dark:bg-slate-900
-        ${isEmpty ? 'text-slate-400' : 'text-slate-900 dark:text-white'}`}
+        ${isEmpty ? 'text-slate-400' : 'text-slate-900 dark:text-white'}
+        ${error && 'border-red-500 focus:ring-red-500 focus:border-red-500'}
+       `}
       >
         <option value='' disabled hidden>
           {placeholder || `Select ${label}`}

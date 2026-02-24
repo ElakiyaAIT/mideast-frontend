@@ -1,4 +1,4 @@
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import DOMPurify from 'dompurify';
 import { useCmsPage } from '../../hooks/queries/useStaticPageApi';

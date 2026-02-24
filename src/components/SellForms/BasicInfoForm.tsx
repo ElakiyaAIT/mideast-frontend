@@ -96,7 +96,7 @@ const BasicInfo = ({ formData, setFormData, handleChange, errors, setErrors }: P
               });
             }}
             init={{
-              height: 220,
+              height: 360,
               menubar: false,
               branding: false,
 

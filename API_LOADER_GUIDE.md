@@ -151,7 +151,7 @@ const ProductList = () => {
 
   if (isLoading) {
     return (
-      <div className="grid grid-cols-3 gap-4">
+      <div className='grid grid-cols-3 gap-4'>
         {Array.from({ length: 6 }).map((_, i) => (
           <SkeletonCard key={i} />
         ))}
@@ -160,7 +160,7 @@ const ProductList = () => {
   }
 
   return (
-    <div className="grid grid-cols-3 gap-4">
+    <div className='grid grid-cols-3 gap-4'>
       {data.map((product) => (
         <ProductCard key={product.id} {...product} />
       ))}
@@ -207,13 +207,13 @@ const DashboardCard = () => {
   });
 
   return (
-    <div className="card">
+    <div className='card'>
       <button onClick={() => refetch()}>Refresh</button>
 
       <SectionLoader isLoading={isRefetching} overlay={true}>
-        <div className="stats">
-          <Stat label="Users" value={data?.users} />
-          <Stat label="Revenue" value={data?.revenue} />
+        <div className='stats'>
+          <Stat label='Users' value={data?.users} />
+          <Stat label='Revenue' value={data?.revenue} />
         </div>
       </SectionLoader>
     </div>
@@ -391,9 +391,9 @@ const LoginPage = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Input name="email" />
-      <Input name="password" type="password" />
-      <Button type="submit" isLoading={isPending}>
+      <Input name='email' />
+      <Input name='password' type='password' />
+      <Button type='submit' isLoading={isPending}>
         Login
       </Button>
     </form>
@@ -454,9 +454,9 @@ const DashboardPage = () => {
   });
 
   return (
-    <div className="dashboard">
+    <div className='dashboard'>
       {/* Stats Section - Skeleton while loading */}
-      <section className="stats-grid">
+      <section className='stats-grid'>
         {statsQuery.isLoading ? (
           <>
             <SkeletonCard />
@@ -469,17 +469,17 @@ const DashboardPage = () => {
       </section>
 
       {/* Activity Feed - Section loader */}
-      <section className="activity">
+      <section className='activity'>
         <h2>Recent Activity</h2>
-        <SectionLoader isLoading={activityQuery.isLoading} overlay={false} minHeight="400px">
+        <SectionLoader isLoading={activityQuery.isLoading} overlay={false} minHeight='400px'>
           <ActivityFeed data={activityQuery.data} />
         </SectionLoader>
       </section>
 
       {/* Charts - Skeleton */}
-      <section className="charts">
+      <section className='charts'>
         {chartsQuery.isLoading ? (
-          <SkeletonImage height="400px" />
+          <SkeletonImage height='400px' />
         ) : (
           <Chart data={chartsQuery.data} />
         )}
@@ -582,15 +582,15 @@ const SearchBar = () => {
 
   return (
     <div>
-      <div className="relative">
+      <div className='relative'>
         <input
           value={query}
           onChange={(e) => handleSearch(e.target.value)}
-          placeholder="Search..."
+          placeholder='Search...'
         />
         {isLoading && (
-          <div className="absolute right-3 top-3">
-            <InlineSpinner size="sm" />
+          <div className='absolute right-3 top-3'>
+            <InlineSpinner size='sm' />
           </div>
         )}
       </div>
@@ -635,17 +635,17 @@ const FileUpload = () => {
 
   return (
     <div>
-      <input type="file" onChange={(e) => handleUpload(e.target.files[0])} disabled={uploading} />
+      <input type='file' onChange={(e) => handleUpload(e.target.files[0])} disabled={uploading} />
 
       {uploading && (
-        <div className="mt-4">
-          <div className="mb-2 flex items-center gap-2">
-            <InlineSpinner size="sm" />
+        <div className='mt-4'>
+          <div className='mb-2 flex items-center gap-2'>
+            <InlineSpinner size='sm' />
             <span>Uploading... {progress}%</span>
           </div>
-          <div className="h-2 overflow-hidden rounded-full bg-gray-200">
+          <div className='h-2 overflow-hidden rounded-full bg-gray-200'>
             <div
-              className="h-full bg-primary-500 transition-all"
+              className='h-full bg-primary-500 transition-all'
               style={{ width: `${progress}%` }}
             />
           </div>
@@ -675,7 +675,7 @@ const InfiniteList = () => {
   // Initial loading - show skeletons
   if (isLoading) {
     return (
-      <div className="space-y-4">
+      <div className='space-y-4'>
         {Array.from({ length: 5 }).map((_, i) => (
           <SkeletonCard key={i} />
         ))}
@@ -689,15 +689,15 @@ const InfiniteList = () => {
 
       {/* Load More Button - button loading state */}
       {hasNextPage && (
-        <Button onClick={() => fetchNextPage()} isLoading={isFetchingNextPage} className="mt-4">
+        <Button onClick={() => fetchNextPage()} isLoading={isFetchingNextPage} className='mt-4'>
           Load More
         </Button>
       )}
 
       {/* Or infinite scroll with inline spinner */}
       {isFetchingNextPage && (
-        <div className="flex justify-center p-4">
-          <InlineSpinner size="md" />
+        <div className='flex justify-center p-4'>
+          <InlineSpinner size='md' />
         </div>
       )}
     </div>

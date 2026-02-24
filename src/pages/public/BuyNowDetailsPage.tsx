@@ -189,7 +189,7 @@ const BuyNowDetailsPage = (): JSX.Element => {
             <img
               src={selectedImage}
               alt={equipment.title}
-              className='w-full h-full object-cover group-hover:scale-105 transition-transform duration-700'
+              className='w-full h-full object-contain group-hover:scale-105 transition-transform duration-700'
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
                 target.src = '/placeholder-equipment.jpg';

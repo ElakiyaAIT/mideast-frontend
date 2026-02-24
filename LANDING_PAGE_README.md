@@ -24,7 +24,7 @@ A reusable wrapper component for consistent page layouts.
 **Usage:**
 
 ```tsx
-<Container size="xl">
+<Container size='xl'>
   <YourContent />
 </Container>
 ```
@@ -360,7 +360,7 @@ All components are fully typed with TypeScript:
 import { HomePage } from './pages/public/HomePage';
 
 // Rendered through React Router
-<Route path="/" element={<HomePage />} />;
+<Route path='/' element={<HomePage />} />;
 ```
 
 ### Standalone Landing Page
@@ -369,7 +369,7 @@ import { HomePage } from './pages/public/HomePage';
 import { LandingPage } from './pages/LandingPage';
 
 // Use without PublicLayout wrapper
-<Route path="/landing" element={<LandingPage />} />;
+<Route path='/landing' element={<LandingPage />} />;
 ```
 
 ### Custom Component Usage
@@ -380,7 +380,7 @@ import { Hero, LatestEquipment } from './components/landing';
 const CustomPage = () => {
   return (
     <div>
-      <Hero title="Custom Title" onButtonClick={() => console.log('Clicked!')} />
+      <Hero title='Custom Title' onButtonClick={() => console.log('Clicked!')} />
       <LatestEquipment
         equipment={myEquipmentData}
         onViewDetails={(id) => navigate(`/equipment/${id}`)}

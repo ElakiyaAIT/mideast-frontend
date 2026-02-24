@@ -21,6 +21,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
         <input
           ref={ref}
           type={type}
+          data-error={!!error}
           className={cn(
             'w-full rounded-lg border bg-slate-10 dark:bg-slate-900',
             'border-slate-200 dark:border-slate-700',

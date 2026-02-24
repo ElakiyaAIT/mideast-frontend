@@ -264,6 +264,19 @@ const SellPage = (): JSX.Element => {
 
         console.error('Errors set:', newErrors);
         setErrors(newErrors);
+        //SCROLL TO TOP MOST ERROR
+        setTimeout(() => {
+          const firstErrorElement = document.querySelector('[data-error="true"]');
+
+          if (firstErrorElement) {
+            firstErrorElement.scrollIntoView({
+              behavior: 'smooth',
+              block: 'center',
+            });
+
+            (firstErrorElement as HTMLElement).focus();
+          }
+        }, 0);
       } else {
         console.error('Unexpected error', err);
       }
