@@ -205,7 +205,7 @@ const HomePage = () => {
 
   if (isLoading) {
     return (
-      <div className='grid grid-cols-1 gap-6 md:grid-cols-3'>
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
         {Array.from({ length: 6 }).map((_, i) => (
           <SkeletonCard key={i} />
         ))}
@@ -214,7 +214,7 @@ const HomePage = () => {
   }
 
   return (
-    <div className='grid grid-cols-1 gap-6 md:grid-cols-3'>
+    <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
       {data?.map((product) => (
         <ProductCard key={product.id} {...product} />
       ))}
@@ -282,21 +282,21 @@ const DashboardStatsCard = () => {
   const { data, isLoading, refetch, isRefetching } = useDashboard();
 
   return (
-    <div className='card'>
-      <div className='card-header'>
+    <div className="card">
+      <div className="card-header">
         <h3>Statistics</h3>
         <button onClick={() => refetch()}>Refresh</button>
       </div>
 
-      <SectionLoader isLoading={isRefetching} overlay={true} message='Refreshing...'>
-        <div className='stats-grid'>
+      <SectionLoader isLoading={isRefetching} overlay={true} message="Refreshing...">
+        <div className="stats-grid">
           {isLoading ? (
             <SkeletonText lines={3} />
           ) : (
             <>
-              <Stat label='Users' value={data.users} />
-              <Stat label='Revenue' value={data.revenue} />
-              <Stat label='Orders' value={data.orders} />
+              <Stat label="Users" value={data.users} />
+              <Stat label="Revenue" value={data.revenue} />
+              <Stat label="Orders" value={data.orders} />
             </>
           )}
         </div>

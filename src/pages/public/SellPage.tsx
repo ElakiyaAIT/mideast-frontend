@@ -425,117 +425,107 @@ const SellPage = (): JSX.Element => {
       <Header />
 
       {/* Banner Section */}
-      <div className='relative bg-gray-800 h-64 flex items-center justify-center overflow-hidden br-30'>
+      <div className="br-30 relative flex h-64 items-center justify-center overflow-hidden bg-gray-800">
         <img
-          alt='Construction background'
-          className='absolute inset-0 w-full h-full'
+          alt="Construction background"
+          className="absolute inset-0 h-full w-full"
           src={sellBanner}
         />
-        <div className='relative z-10 text-center'>
-          <h1 className='text-5xl font-bold text-white tracking-tight uppercase'>
+        <div className="relative z-10 text-center">
+          <h1 className="text-5xl font-bold uppercase tracking-tight text-white">
             {t('sell.title')}
           </h1>
-          <div className='mt-2 text-primary font-medium text-sm flex items-center justify-center gap-2'>
-            <Link to={ROUTES.HOME} className='text-white hover:text-primary transition-colors'>
+          <div className="mt-2 flex items-center justify-center gap-2 text-sm font-medium text-primary">
+            <Link to={ROUTES.HOME} className="text-white transition-colors hover:text-primary">
               {t('product.breadcrumb.home')}
             </Link>
-            <span className='material-icons text-xs text-white'>chevron_right</span>
-            <span className='text-primary'>{t('sell.breadCrumbs.sellInventory')}</span>
+            <span className="material-icons text-xs text-white">chevron_right</span>
+            <span className="text-primary">{t('sell.breadCrumbs.sellInventory')}</span>
           </div>
         </div>
       </div>
 
       {/* Main Content */}
-      <main className='max-w-7xl mx-auto px-6 py-12'>
-        <section className='max-w-7xl mx-auto px-6 py-16'>
-          <h2 className='text-3xl font-black mb-8 uppercase tracking-tight border-b-4 border-primary w-fit pb-2'>
+      <main className="mx-auto max-w-7xl px-6 py-12">
+        <section className="mx-auto max-w-7xl px-6 py-16">
+          <h2 className="mb-8 w-fit border-b-4 border-primary pb-2 text-3xl font-black uppercase tracking-tight">
             {t('sell.subtitle')}
           </h2>
-          <div className='grid md:grid-cols-3 gap-6 mb-12'>
-            <div className='bg-dark-gray p-8 rounded-2xl flex items-center gap-6 text-white group hover:translate-y-[-4px] transition-all border-b-4 border-primary'>
-              <span className='text-7xl font-black text-primary/40 group-hover:text-primary transition-colors'>
+          <div className="mb-12 grid gap-6 md:grid-cols-3">
+            <div className="bg-dark-gray group flex items-center gap-6 rounded-2xl border-b-4 border-primary p-8 text-white transition-all hover:translate-y-[-4px]">
+              <span className="text-7xl font-black text-primary/40 transition-colors group-hover:text-primary">
                 1
               </span>
-              <p className='font-bold text-lg leading-tight uppercase'>{t('sell.card.card1')}</p>
+              <p className="text-lg font-bold uppercase leading-tight">{t('sell.card.card1')}</p>
             </div>
-            <div className='bg-dark-gray p-8 rounded-2xl flex items-center gap-6 text-white group hover:translate-y-[-4px] transition-all border-b-4 border-primary'>
-              <span className='text-7xl font-black text-primary/40 group-hover:text-primary transition-colors'>
+            <div className="bg-dark-gray group flex items-center gap-6 rounded-2xl border-b-4 border-primary p-8 text-white transition-all hover:translate-y-[-4px]">
+              <span className="text-7xl font-black text-primary/40 transition-colors group-hover:text-primary">
                 2
               </span>
-              <p className='font-bold text-lg leading-tight uppercase'>{t('sell.card.card2')}</p>
+              <p className="text-lg font-bold uppercase leading-tight">{t('sell.card.card2')}</p>
             </div>
-            <div className='bg-dark-gray p-8 rounded-2xl flex items-center gap-6 text-white group hover:translate-y-[-4px] transition-all border-b-4 border-primary'>
-              <span className='text-7xl font-black text-primary/40 group-hover:text-primary transition-colors'>
+            <div className="bg-dark-gray group flex items-center gap-6 rounded-2xl border-b-4 border-primary p-8 text-white transition-all hover:translate-y-[-4px]">
+              <span className="text-7xl font-black text-primary/40 transition-colors group-hover:text-primary">
                 3
               </span>
-              <p className='font-bold text-lg leading-tight uppercase'>{t('sell.card.card3')}</p>
+              <p className="text-lg font-bold uppercase leading-tight">{t('sell.card.card3')}</p>
             </div>
           </div>
 
-          <div className='flex items-center justify-center gap-4 mb-12'>
-            <div className='h-px bg-slate-300 dark:bg-slate-700 flex-grow'></div>
-            <span className='font-black text-2xl text-slate-400'>OR</span>
-            <div className='h-px bg-slate-300 dark:bg-slate-700 flex-grow'></div>
+          <div className="mb-12 flex items-center justify-center gap-4">
+            <div className="h-px flex-grow bg-slate-300 dark:bg-slate-700"></div>
+            <span className="text-2xl font-black text-slate-400">OR</span>
+            <div className="h-px flex-grow bg-slate-300 dark:bg-slate-700"></div>
           </div>
 
-          <div className='grid md:grid-cols-3 gap-6 mb-20'>
-            <div className='bg-dark-gray p-8 rounded-2xl flex items-center gap-6 text-white group hover:translate-y-[-4px] transition-all border-b-4 border-primary'>
-              <span className='text-7xl font-black text-primary/40 group-hover:text-primary transition-colors'>
+          <div className="mb-20 grid gap-6 md:grid-cols-3">
+            <div className="bg-dark-gray group flex items-center gap-6 rounded-2xl border-b-4 border-primary p-8 text-white transition-all hover:translate-y-[-4px]">
+              <span className="text-7xl font-black text-primary/40 transition-colors group-hover:text-primary">
                 1
               </span>
-              <p className='font-bold text-lg leading-tight uppercase'>{t('sell.card.card1OR')}</p>
+              <p className="text-lg font-bold uppercase leading-tight">{t('sell.card.card1OR')}</p>
             </div>
-            <div className='bg-dark-gray p-8 rounded-2xl flex items-center gap-6 text-white group hover:translate-y-[-4px] transition-all border-b-4 border-primary'>
-              <span className='text-7xl font-black text-primary/40 group-hover:text-primary transition-colors'>
+            <div className="bg-dark-gray group flex items-center gap-6 rounded-2xl border-b-4 border-primary p-8 text-white transition-all hover:translate-y-[-4px]">
+              <span className="text-7xl font-black text-primary/40 transition-colors group-hover:text-primary">
                 2
               </span>
-              <p className='font-bold text-lg leading-tight uppercase'>{t('sell.card.card2OR')}</p>
+              <p className="text-lg font-bold uppercase leading-tight">{t('sell.card.card2OR')}</p>
             </div>
-            <div className='bg-dark-gray p-8 rounded-2xl flex items-center gap-6 text-white group hover:translate-y-[-4px] transition-all border-b-4 border-primary'>
-              <span className='text-7xl font-black text-primary/40 group-hover:text-primary transition-colors'>
+            <div className="bg-dark-gray group flex items-center gap-6 rounded-2xl border-b-4 border-primary p-8 text-white transition-all hover:translate-y-[-4px]">
+              <span className="text-7xl font-black text-primary/40 transition-colors group-hover:text-primary">
                 3
               </span>
-              <p className='font-bold text-lg leading-tight uppercase'>{t('sell.card.card3OR')}</p>
+              <p className="text-lg font-bold uppercase leading-tight">{t('sell.card.card3OR')}</p>
             </div>
           </div>
 
-          <div className='mb-6'>
-            <h2 className='text-3xl font-black uppercase tracking-tight'>{t('sell.getStarted')}</h2>
-            <p className='text-slate-500 mt-2'>
-              {t('sell.completeForm')} <span className='text-primary font-bold'>860-222-3393</span>
+          <div className="mb-6">
+            <h2 className="text-3xl font-black uppercase tracking-tight">{t('sell.getStarted')}</h2>
+            <p className="mt-2 text-slate-500">
+              {t('sell.completeForm')} <span className="font-bold text-primary">860-222-3393</span>
             </p>
           </div>
 
           <div
             ref={formRef}
-            className='bg-white dark:bg-slate-800 rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-700'
+            className="rounded-3xl border border-slate-200 bg-white shadow-2xl dark:border-slate-700 dark:bg-slate-800"
           >
             {/* Progress Stepper */}
-            <div className='bg-[#DE9A4F33] dark:bg-slate-900/50 rounded-t-3xl p-8 border-b border-slate-200 dark:border-slate-700'>
-              <div className='overflow-x-auto no-scrollbar'>
-                <div
-                  className='
-          flex items-center
-          min-w-max
-          sm:min-w-0
-          justify-start
-          sm:justify-between
-          gap-8
-          sm:gap-0
-        '
-                >
+            <div className="rounded-t-3xl border-b border-slate-200 bg-[#DE9A4F33] p-8 dark:border-slate-700 dark:bg-slate-900/50">
+              <div className="no-scrollbar overflow-x-auto">
+                <div className="flex min-w-max items-center justify-start gap-8 sm:min-w-0 sm:justify-between sm:gap-0">
                   {steps.map((step, index) => (
-                    <div key={step.id} className='flex items-center flex-shrink-0'>
+                    <div key={step.id} className="flex flex-shrink-0 items-center">
                       {/* Step Icon + Label */}
-                      <div className='flex flex-col items-center gap-2'>
+                      <div className="flex flex-col items-center gap-2">
                         <div
-                          className={`w-12 h-12 rounded-full flex items-center justify-center ${
+                          className={`flex h-12 w-12 items-center justify-center rounded-full ${
                             index <= currentStep
                               ? 'bg-primary text-white shadow-lg shadow-primary/30'
-                              : 'bg-black dark:bg-slate-700 text-white'
+                              : 'bg-black text-white dark:bg-slate-700'
                           }`}
                         >
-                          <i className='material-icons'>{step.icon}</i>
+                          <i className="material-icons">{step.icon}</i>
                         </div>
 
                         <span
@@ -549,9 +539,9 @@ const SellPage = (): JSX.Element => {
 
                       {/* Connector Line */}
                       {index < steps.length - 1 && (
-                        <div className='flex items-center px-6'>
+                        <div className="flex items-center px-6">
                           <div
-                            className={`w-10 h-[2px] ${
+                            className={`h-[2px] w-10 ${
                               index < currentStep ? 'bg-primary' : 'bg-slate-400 dark:bg-slate-600'
                             }`}
                           ></div>
@@ -564,32 +554,32 @@ const SellPage = (): JSX.Element => {
             </div>
 
             {/* Form Content */}
-            <div className='p-8 lg:p-8'>
+            <div className="p-8 lg:p-8">
               {renderStep()}
 
-              <div className='mt-8 pt-4 flex justify-between items-center'>
+              <div className="mt-8 flex items-center justify-between pt-4">
                 <button
-                  type='button'
+                  type="button"
                   onClick={prevStep}
                   disabled={currentStep === 0}
-                  className={`flex items-center gap-2 px-8 py-3 rounded-full font-bold transition-all ${
+                  className={`flex items-center gap-2 rounded-full px-8 py-3 font-bold transition-all ${
                     currentStep === 0
-                      ? 'bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-300 opacity-50 cursor-not-allowed'
+                      ? 'cursor-not-allowed bg-slate-100 text-slate-500 opacity-50 dark:bg-slate-700 dark:text-slate-300'
                       : 'bg-[#151515] text-white hover:bg-[#222222]'
                   }`}
                 >
-                  <i className='material-icons'>arrow_back</i>
+                  <i className="material-icons">arrow_back</i>
                   {t('common.previous')}
                 </button>
 
                 <button
-                  type='button'
+                  type="button"
                   onClick={isLastStep ? handleSubmit : nextStep}
-                  className='flex items-center gap-2 px-10 py-3 bg-primary hover:bg-orange-600 text-white rounded-full font-bold shadow-lg shadow-primary/30 transition-all transform hover:scale-105'
+                  className="flex transform items-center gap-2 rounded-full bg-primary px-10 py-3 font-bold text-white shadow-lg shadow-primary/30 transition-all hover:scale-105 hover:bg-orange-600"
                 >
                   {isLastStep ? t('common.submit') : t('common.next')}
 
-                  <i className='material-icons'>arrow_forward</i>
+                  <i className="material-icons">arrow_forward</i>
                 </button>
               </div>
             </div>

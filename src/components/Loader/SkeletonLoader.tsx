@@ -87,27 +87,27 @@ const SkeletonItem = ({
   if (variant === 'card') {
     return (
       <div className={cn(baseStyles, variants.card, className)} style={style}>
-        <div className='space-y-4'>
+        <div className="space-y-4">
           {/* Header */}
-          <div className='flex items-center gap-3'>
-            <div className='h-12 w-12 rounded-full bg-gray-300 dark:bg-gray-600' />
-            <div className='flex-1 space-y-2'>
-              <div className='h-4 w-3/4 rounded bg-gray-300 dark:bg-gray-600' />
-              <div className='h-3 w-1/2 rounded bg-gray-300 dark:bg-gray-600' />
+          <div className="flex items-center gap-3">
+            <div className="h-12 w-12 rounded-full bg-gray-300 dark:bg-gray-600" />
+            <div className="flex-1 space-y-2">
+              <div className="h-4 w-3/4 rounded bg-gray-300 dark:bg-gray-600" />
+              <div className="h-3 w-1/2 rounded bg-gray-300 dark:bg-gray-600" />
             </div>
           </div>
 
           {/* Content */}
-          <div className='space-y-2'>
-            <div className='h-3 w-full rounded bg-gray-300 dark:bg-gray-600' />
-            <div className='h-3 w-5/6 rounded bg-gray-300 dark:bg-gray-600' />
-            <div className='h-3 w-4/6 rounded bg-gray-300 dark:bg-gray-600' />
+          <div className="space-y-2">
+            <div className="h-3 w-full rounded bg-gray-300 dark:bg-gray-600" />
+            <div className="h-3 w-5/6 rounded bg-gray-300 dark:bg-gray-600" />
+            <div className="h-3 w-4/6 rounded bg-gray-300 dark:bg-gray-600" />
           </div>
 
           {/* Footer */}
-          <div className='flex gap-2'>
-            <div className='h-8 w-20 rounded bg-gray-300 dark:bg-gray-600' />
-            <div className='h-8 w-20 rounded bg-gray-300 dark:bg-gray-600' />
+          <div className="flex gap-2">
+            <div className="h-8 w-20 rounded bg-gray-300 dark:bg-gray-600" />
+            <div className="h-8 w-20 rounded bg-gray-300 dark:bg-gray-600" />
           </div>
         </div>
       </div>
@@ -138,7 +138,7 @@ export const SkeletonLoader = ({
   }
 
   return (
-    <div className='space-y-3'>
+    <div className="space-y-3">
       {Array.from({ length: count }).map((_, index) => (
         <SkeletonItem
           key={index}
@@ -158,7 +158,7 @@ export const SkeletonLoader = ({
  */
 
 export const SkeletonCard = ({ className }: { className?: string }): JSX.Element => (
-  <SkeletonLoader variant='card' className={className} />
+  <SkeletonLoader variant="card" className={className} />
 );
 
 export const SkeletonText = ({
@@ -167,7 +167,7 @@ export const SkeletonText = ({
 }: {
   lines?: number;
   className?: string;
-}): JSX.Element => <SkeletonLoader variant='text' count={lines} className={className} />;
+}): JSX.Element => <SkeletonLoader variant="text" count={lines} className={className} />;
 
 export const SkeletonAvatar = ({
   size = '48px',
@@ -176,7 +176,7 @@ export const SkeletonAvatar = ({
   size?: string;
   className?: string;
 }): JSX.Element => (
-  <SkeletonLoader variant='circle' width={size} height={size} className={className} />
+  <SkeletonLoader variant="circle" width={size} height={size} className={className} />
 );
 
 export const SkeletonImage = ({
@@ -188,5 +188,5 @@ export const SkeletonImage = ({
   height?: string;
   className?: string;
 }): JSX.Element => (
-  <SkeletonLoader variant='rectangle' width={width} height={height} className={className} />
+  <SkeletonLoader variant="rectangle" width={width} height={height} className={className} />
 );

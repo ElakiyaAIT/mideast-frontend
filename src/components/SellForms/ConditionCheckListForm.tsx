@@ -27,17 +27,17 @@ const ConditionChecklist = ({ formData, setFormData, errors, handleChange }: Pro
   return (
     <>
       <link
-        href='https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined'
-        rel='stylesheet'
+        href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined"
+        rel="stylesheet"
       />
       <div>
-        <h3 className='mb-8 text-xl font-bold uppercase'>
+        <h3 className="mb-8 text-xl font-bold uppercase">
           {t('sell.form.conditionCheckList.title')}
         </h3>
 
-        <div className='grid grid-cols-1 lg:grid-cols-4 gap-8'>
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
           {/* LEFT SIDEBAR */}
-          <div className='space-y-4'>
+          <div className="space-y-4">
             {sections.map(([key, section], index) => {
               const isActive = activeTab === key;
               const activeIndex = sections.findIndex(([k]) => k === activeTab);
@@ -47,34 +47,27 @@ const ConditionChecklist = ({ formData, setFormData, errors, handleChange }: Pro
                 <button
                   key={key}
                   onClick={() => setActiveTab(key)}
-                  className={`
-          relative flex w-full items-center justify-between
-          rounded-full px-4 py-2 font-bold transition-all duration-300
-          ${
-            isActive
-              ? 'bg-primary text-white shadow-lg text-sm'
-              : 'border border-slate-400 text-sm text-slate-700 bg-transparent hover:border-primary dark:border-slate-600 dark:text-slate-300'
-          }
-        `}
+                  className={`relative flex w-full items-center justify-between rounded-full px-4 py-2 font-bold transition-all duration-300 ${
+                    isActive
+                      ? 'bg-primary text-sm text-white shadow-lg'
+                      : 'border border-slate-400 bg-transparent text-sm text-slate-700 hover:border-primary dark:border-slate-600 dark:text-slate-300'
+                  } `}
                 >
                   {/* Left Side */}
-                  <div className='flex items-center gap-3 uppercase'>
+                  <div className="flex items-center gap-3 uppercase">
                     {/* Icon Circle */}
                     <div
-                      className={`
-              w-10 h-10 flex items-center justify-center rounded-full
-              ${isActive ? 'bg-white/20' : 'bg-slate-700 text-white'}
-            `}
+                      className={`flex h-10 w-10 items-center justify-center rounded-full ${isActive ? 'bg-white/20' : 'bg-slate-700 text-white'} `}
                     >
-                      <span className='material-symbols-outlined'>{section.icon}</span>
+                      <span className="material-symbols-outlined">{section.icon}</span>
                     </div>
                     {t(section.label)}
                   </div>
 
                   {/* Green Tick for Completed */}
                   {isCompleted && (
-                    <div className='absolute right-4'>
-                      <div className='w-6 h-6 rounded-full bg-green-500 flex items-center justify-center text-white text-sm'>
+                    <div className="absolute right-4">
+                      <div className="flex h-6 w-6 items-center justify-center rounded-full bg-green-500 text-sm text-white">
                         ✓
                       </div>
                     </div>
@@ -85,7 +78,7 @@ const ConditionChecklist = ({ formData, setFormData, errors, handleChange }: Pro
           </div>
 
           {/* RIGHT CONTENT */}
-          <div className='lg:col-span-3'>
+          <div className="lg:col-span-3">
             {sections.map(([key, section]) =>
               activeTab === key ? (
                 <ConditionSection

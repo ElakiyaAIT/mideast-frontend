@@ -194,7 +194,7 @@ src/
 All components accept props with defaults:
 
 ```tsx
-<Hero title='Custom Title' description='Custom description' buttonText='Custom Button' />
+<Hero title="Custom Title" description="Custom description" buttonText="Custom Button" />
 ```
 
 ### Add Route
@@ -202,7 +202,7 @@ All components accept props with defaults:
 In `src/routes/index.tsx`:
 
 ```tsx
-<Route path='/my-page' element={<MyPage />} />
+<Route path="/my-page" element={<MyPage />} />
 ```
 
 ---

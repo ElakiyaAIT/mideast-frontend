@@ -91,83 +91,79 @@ const BuyPage = (): JSX.Element => {
       <TopBanner />
       <Header />
       {/* Banner Section */}
-      <div className='relative bg-gray-800 h-64 flex items-center justify-center overflow-hidden br-30'>
+      <div className="br-30 relative flex h-64 items-center justify-center overflow-hidden bg-gray-800">
         <img
-          alt='Construction background'
-          className='absolute inset-0 w-full h-full object-cover'
+          alt="Construction background"
+          className="absolute inset-0 h-full w-full object-cover"
           src={buynowBanner}
         />
-        <div className='relative z-10 text-center'>
-          <h1 className='text-5xl font-bold text-white tracking-tight uppercase'>
+        <div className="relative z-10 text-center">
+          <h1 className="text-5xl font-bold uppercase tracking-tight text-white">
             {t('buy.inventory')}
           </h1>
-          <div className='mt-2 text-primary font-medium text-sm flex items-center justify-center gap-2'>
-            <Link to={ROUTES.HOME} className='text-white hover:text-primary transition-colors'>
+          <div className="mt-2 flex items-center justify-center gap-2 text-sm font-medium text-primary">
+            <Link to={ROUTES.HOME} className="text-white transition-colors hover:text-primary">
               {t('product.breadcrumb.home')}
             </Link>
-            <span className='material-icons text-xs text-gray-500'>chevron_right</span>
+            <span className="material-icons text-xs text-gray-500">chevron_right</span>
             <span>{t('product.breadcrumb.inventory')}</span>
           </div>
         </div>
       </div>
 
       {/* Main Content */}
-      <main className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12'>
-        <div className='mb-8 flex items-center justify-between border-b border-gray-200 dark:border-gray-800 pb-4'>
-          <h2 className='text-lg font-semibold text-gray-800 dark:text-gray-200'>
+      <main className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <div className="mb-8 flex items-center justify-between border-b border-gray-200 pb-4 dark:border-gray-800">
+          <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
             {t('buy.showing')} {start}-{end}{' '}
             {t('buy.resultsCount', {
               total: data?.pagination?.total || 0,
             })}
           </h2>
 
-          <div className='flex gap-2'>
-            <button className='flex h-10 w-10 items-center justify-center rounded-full bg-primary text-white'>
-              <span className='material-icons'>grid_view</span>
+          <div className="flex gap-2">
+            <button className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-white">
+              <span className="material-icons">grid_view</span>
             </button>
 
-            <button className='flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 dark:border-gray-700 text-gray-500 dark:text-gray-400'>
-              <span className='material-icons'>view_list</span>
+            <button className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 text-gray-500 dark:border-gray-700 dark:text-gray-400">
+              <span className="material-icons">view_list</span>
             </button>
           </div>
         </div>
-        <div className='flex flex-col lg:flex-row gap-8'>
+        <div className="flex flex-col gap-8 lg:flex-row">
           {/* Sidebar Filters */}
-          <aside className='w-full lg:w-1/4 space-y-6'>
-            <div className='bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-2xl p-5 shadow-sm'>
-              <div className='flex justify-between items-center mb-4'>
-                <h2 className='text-xl font-bold'>{t('buy.filter')}</h2>
-                <button className='text-primary text-sm font-medium hover:underline'>
+          <aside className="w-full space-y-6 lg:w-1/4">
+            <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm dark:border-gray-700 dark:bg-gray-900">
+              <div className="mb-4 flex items-center justify-between">
+                <h2 className="text-xl font-bold">{t('buy.filter')}</h2>
+                <button className="text-sm font-medium text-primary hover:underline">
                   {t('buy.reset')}
                 </button>
               </div>
-              <div className='bg-gray-100 dark:bg-gray-800 p-3 rounded-lg flex justify-between items-center mb-6'>
-                <span className='text-xs font-bold uppercase tracking-wider opacity-60'>
+              <div className="mb-6 flex items-center justify-between rounded-lg bg-gray-100 p-3 dark:bg-gray-800">
+                <span className="text-xs font-bold uppercase tracking-wider opacity-60">
                   {t('buy.activeResults')}
                 </span>
-                <span className='bg-primary text-white text-[10px] font-bold px-2 py-1 rounded'>
+                <span className="rounded bg-primary px-2 py-1 text-[10px] font-bold text-white">
                   {data?.pagination?.total || 0} {t('buy.found')}
                 </span>
               </div>
               {/* Filter sections - keeping existing structure */}
               {/* AUCTION DATE FILTER */}
-              <div className='mb-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden'>
+              <div className="mb-4 overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-900">
                 <button
-                  type='button'
+                  type="button"
                   onClick={() => setIsAuctionDateOpen((prev) => !prev)}
-                  className={`w-full flex items-center justify-between px-4 py-3 text-sm font-semibold transition
-      ${
-        isAuctionDateOpen
-          ? 'bg-[#fdad3e] text-white'
-          : 'bg-white dark:bg-gray-900 text-gray-800 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-800'
-      }
-    `}
+                  className={`flex w-full items-center justify-between px-4 py-3 text-sm font-semibold transition ${
+                    isAuctionDateOpen
+                      ? 'bg-[#fdad3e] text-white'
+                      : 'bg-white text-gray-800 hover:bg-gray-50 dark:bg-gray-900 dark:text-white dark:hover:bg-gray-800'
+                  } `}
                 >
-                  <div className='flex items-center gap-2'>
+                  <div className="flex items-center gap-2">
                     <i
-                      className={`material-icons-outlined text-base transition
-          ${isAuctionDateOpen ? 'text-white' : 'text-[#fdad3e]'}
-        `}
+                      className={`material-icons-outlined text-base transition ${isAuctionDateOpen ? 'text-white' : 'text-[#fdad3e]'} `}
                     >
                       calendar_month
                     </i>
@@ -181,33 +177,25 @@ const BuyPage = (): JSX.Element => {
                   </div>
 
                   <i
-                    className={`material-icons-outlined transition
-        ${isAuctionDateOpen ? 'text-white' : 'text-gray-400'}
-      `}
+                    className={`material-icons-outlined transition ${isAuctionDateOpen ? 'text-white' : 'text-gray-400'} `}
                   >
                     {isAuctionDateOpen ? 'remove' : 'add'}
                   </i>
                 </button>
 
                 {isAuctionDateOpen && (
-                  <div className='px-4 pb-2 bg-white dark:bg-gray-900  text-black dark:text-white'>
+                  <div className="bg-white px-4 pb-2 text-black dark:bg-gray-900 dark:text-white">
                     <input
-                      type='date'
+                      type="date"
                       value={auctionDate || ''}
                       onChange={(e) => setAuctionDate(e.target.value)}
-                      className='w-full px-3 py-2 text-sm rounded-xl
-                   border border-gray-300 dark:border-gray-700
-                   bg-white dark:bg-gray-900
-                     text-black dark:text-white
-                   focus:outline-none focus:ring-2 focus:ring-[#fdad3e]
-                       dark:[color-scheme:dark]'
+                      className="w-full rounded-xl border border-gray-300 bg-white px-3 py-2 text-sm text-black focus:outline-none focus:ring-2 focus:ring-[#fdad3e] dark:border-gray-700 dark:bg-gray-900 dark:text-white dark:[color-scheme:dark]"
                     />
 
                     {auctionDate && (
                       <button
                         onClick={() => setAuctionDate(null)}
-                        className='mt-3 text-xs text-black dark:text-white
-                      font-medium hover:underline'
+                        className="mt-3 text-xs font-medium text-black hover:underline dark:text-white"
                       >
                         {t('buy.clearDate')}
                       </button>
@@ -218,8 +206,8 @@ const BuyPage = (): JSX.Element => {
               {/* Zip Radius*/}
               <AccordionFilter
                 title={t('buy.filters.zip')}
-                icon='location_on'
-                headerColor='orange'
+                icon="location_on"
+                headerColor="orange"
                 options={radiusOptions}
                 value={categories}
                 onChange={setCategories}
@@ -228,8 +216,8 @@ const BuyPage = (): JSX.Element => {
               {/* {CATEGORY FILTER} */}
               <AccordionFilter
                 title={t('buy.filters.category')}
-                icon='category'
-                headerColor='orange'
+                icon="category"
+                headerColor="orange"
                 options={categoryOptions}
                 value={categories}
                 onChange={setCategories}
@@ -237,7 +225,7 @@ const BuyPage = (): JSX.Element => {
               {/* MAKE FILTER */}
               <AccordionFilter
                 title={t('buy.filters.make')}
-                icon='precision_manufacturing'
+                icon="precision_manufacturing"
                 options={categoryOptions}
                 value={makes}
                 onChange={setMakes}
@@ -245,7 +233,7 @@ const BuyPage = (): JSX.Element => {
               {/* YEAR*/}
               <AccordionFilter
                 title={t('buy.filters.year')}
-                icon='calendar_month'
+                icon="calendar_month"
                 options={categoryOptions}
                 value={makes}
                 onChange={setMakes}
@@ -253,7 +241,7 @@ const BuyPage = (): JSX.Element => {
               {/* STATE/CITY*/}
               <AccordionFilter
                 title={t('buy.filters.stateCity')}
-                icon='map'
+                icon="map"
                 options={categoryOptions}
                 value={makes}
                 onChange={setMakes}
@@ -261,28 +249,25 @@ const BuyPage = (): JSX.Element => {
               {/* CURRENT BID */}
               <AccordionFilter
                 title={t('buy.filters.currentBid')}
-                icon='paid'
+                icon="paid"
                 options={categoryOptions}
                 value={makes}
                 onChange={setMakes}
               />
               <button
-                type='button'
+                type="button"
                 onClick={handleApplyFilters}
                 disabled={appliedFiltersCount === 0}
-                className={`w-full mt-6 flex items-center justify-between px-4 py-3
-    rounded-3xl font-semibold transition
-    ${
-      appliedFiltersCount === 0
-        ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-        : 'bg-primary text-white'
-    }
-  `}
+                className={`mt-6 flex w-full items-center justify-between rounded-3xl px-4 py-3 font-semibold transition ${
+                  appliedFiltersCount === 0
+                    ? 'cursor-not-allowed bg-gray-300 text-gray-500'
+                    : 'bg-primary text-white'
+                } `}
               >
                 <span>{t('buy.applyFilters')}</span>
 
                 {appliedFiltersCount > 0 && (
-                  <span className='ml-2 rounded bg-white/20 px-2 py-0.5 text-[10px] font-semibold text-white'>
+                  <span className="ml-2 rounded bg-white/20 px-2 py-0.5 text-[10px] font-semibold text-white">
                     {appliedFiltersCount} {t('buy.found')}
                   </span>
                 )}
@@ -291,34 +276,34 @@ const BuyPage = (): JSX.Element => {
           </aside>
 
           {/* Products Grid */}
-          <section className='flex-1'>
+          <section className="flex-1">
             {/* View Toggle and Sort */}
 
             {/* Loading State */}
             {isLoading && (
-              <div className='flex justify-center items-center py-20'>
+              <div className="flex items-center justify-center py-20">
                 <InlineSpinner />
               </div>
             )}
 
             {/* Error State */}
             {isError && (
-              <div className='text-center py-20'>
-                <p className='text-red-500'>{t('buy.error')}</p>
+              <div className="py-20 text-center">
+                <p className="text-red-500">{t('buy.error')}</p>
               </div>
             )}
 
             {/* Empty State */}
             {!isLoading && !isError && equipment.length === 0 && (
-              <div className='text-center py-20'>
-                <p className='text-gray-500 dark:text-gray-400'>{t('buy.empty')}</p>
+              <div className="py-20 text-center">
+                <p className="text-gray-500 dark:text-gray-400">{t('buy.empty')}</p>
               </div>
             )}
 
             {/* Products Grid */}
             {!isLoading && !isError && equipment.length > 0 && (
               <>
-                <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6'>
+                <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
                   {equipment.map((item) => {
                     const badge = getStatusBadge(item);
                     const isSold = item.status === 'SOLD';
@@ -327,17 +312,17 @@ const BuyPage = (): JSX.Element => {
                     return (
                       <div
                         key={item._id}
-                        className='bg-white dark:bg-gray-900 rounded-2xl shadow-md overflow-hidden group hover:shadow-xl transition-all border border-gray-100 dark:border-gray-800'
+                        className="group overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-md transition-all hover:shadow-xl dark:border-gray-800 dark:bg-gray-900"
                       >
-                        <div className='relative overflow-hidden aspect-[16/9]'>
+                        <div className="relative aspect-[16/9] overflow-hidden">
                           <div
-                            className={`absolute top-4 left-4 ${badge.className} text-white text-[10px] font-bold px-3 py-1 uppercase rounded-full shadow-lg z-10`}
+                            className={`absolute left-4 top-4 ${badge.className} z-10 rounded-full px-3 py-1 text-[10px] font-bold uppercase text-white shadow-lg`}
                           >
                             {badge.label}
                           </div>
                           <img
                             alt={item.title}
-                            className='w-full h-full object-cover group-hover:scale-110 transition-transform duration-500'
+                            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                             src={primaryImage}
                             onError={(e) => {
                               const target = e.target as HTMLImageElement;
@@ -346,15 +331,15 @@ const BuyPage = (): JSX.Element => {
                           />
                         </div>
                         <div className={`p-3 ${isSold ? 'opacity-75' : ''}`}>
-                          <h3 className='text-base font-bold mb-2 truncate'>{item.title}</h3>
-                          <div className='grid grid-cols-3 gap-3 mb-4'>
+                          <h3 className="mb-2 truncate text-base font-bold">{item.title}</h3>
+                          <div className="mb-4 grid grid-cols-3 gap-3">
                             <div>
                               <p
                                 className={`text-sm font-bold ${isSold ? 'text-gray-400 line-through' : ''}`}
                               >
                                 {item.make}
                               </p>
-                              <p className='text-xs text-gray-400  font-medium'>
+                              <p className="text-xs font-medium text-gray-400">
                                 {t('product.specs.make')}
                               </p>
                             </div>
@@ -364,7 +349,7 @@ const BuyPage = (): JSX.Element => {
                               >
                                 {item.year}
                               </p>
-                              <p className='text-xs text-gray-400 font-medium'>
+                              <p className="text-xs font-medium text-gray-400">
                                 {t('product.specs.year')}
                               </p>
                             </div>
@@ -374,7 +359,7 @@ const BuyPage = (): JSX.Element => {
                               >
                                 {item.hoursUsed || 'N/A'}
                               </p>
-                              <p className='text-xs text-gray-400  font-medium'>
+                              <p className="text-xs font-medium text-gray-400">
                                 {t('product.specs.hours')}
                               </p>
                             </div>
@@ -384,7 +369,7 @@ const BuyPage = (): JSX.Element => {
                               >
                                 {item.models}
                               </p>
-                              <p className='text-xs text-gray-400 font-medium'>
+                              <p className="text-xs font-medium text-gray-400">
                                 {t('product.specs.model')}
                               </p>
                             </div>
@@ -394,7 +379,7 @@ const BuyPage = (): JSX.Element => {
                               >
                                 {item.condition || 'N/A'}
                               </p>
-                              <p className='text-xs text-gray-400 font-medium'>
+                              <p className="text-xs font-medium text-gray-400">
                                 {t('product.specs.condition')}
                               </p>
                             </div>
@@ -404,14 +389,14 @@ const BuyPage = (): JSX.Element => {
                               >
                                 {item.location.state}
                               </p>
-                              <p className='text-xs text-gray-400 font-medium'>
+                              <p className="text-xs font-medium text-gray-400">
                                 {t('product.specs.location')}
                               </p>
                             </div>
                           </div>
-                          <div className='flex justify-between items-end border-t border-gray-100 dark:border-gray-800 pt-3'>
+                          <div className="flex items-end justify-between border-t border-gray-100 pt-3 dark:border-gray-800">
                             <div>
-                              <p className='text-xs text-gray-400 font-bold'>
+                              <p className="text-xs font-bold text-gray-400">
                                 {t('product.retailPrice')}
                               </p>
                               <p
@@ -421,13 +406,13 @@ const BuyPage = (): JSX.Element => {
                               </p>
                             </div>
                             {isSold ? (
-                              <button className='bg-gray-400 text-white px-4 py-2 rounded-2xl text-xs font-bold uppercase cursor-not-allowed'>
+                              <button className="cursor-not-allowed rounded-2xl bg-gray-400 px-4 py-2 text-xs font-bold uppercase text-white">
                                 {t('product.status.sold')}
                               </button>
                             ) : (
                               <Link
                                 to={`${ROUTES.BUY}/${item._id}`}
-                                className='bg-primary text-white px-4 py-2 rounded-2xl text-xs font-bold uppercase transition-colors'
+                                className="rounded-2xl bg-primary px-4 py-2 text-xs font-bold uppercase text-white transition-colors"
                               >
                                 {t('product.viewMore')}
                               </Link>
@@ -441,13 +426,13 @@ const BuyPage = (): JSX.Element => {
 
                 {/* Pagination */}
                 {totalPages > 1 && (
-                  <div className='flex justify-center items-center gap-2 mt-10'>
+                  <div className="mt-10 flex items-center justify-center gap-2">
                     <button
                       onClick={() => setPage((p) => Math.max(1, p - 1))}
                       disabled={page === 1}
-                      className='p-1 rounded-full w-10 h-10 bg-[#f2f2f2] dark:border-gray-700 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#f2f2f2] dark:hover:bg-gray-800'
+                      className="h-10 w-10 rounded-full bg-[#f2f2f2] p-1 hover:bg-[#f2f2f2] disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:hover:bg-gray-800"
                     >
-                      <span className='material-icons mt-0.5'>keyboard_double_arrow_left</span>
+                      <span className="material-icons mt-0.5">keyboard_double_arrow_left</span>
                     </button>
 
                     {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
@@ -456,10 +441,10 @@ const BuyPage = (): JSX.Element => {
                         <button
                           key={pageNum}
                           onClick={() => setPage(pageNum)}
-                          className={`px-4 py-2 rounded-3xl font-medium ${
+                          className={`rounded-3xl px-4 py-2 font-medium ${
                             page === pageNum
                               ? 'bg-primary text-[white]'
-                              : ' bg-[#f2f2f2] text-[#86919b] dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800'
+                              : 'bg-[#f2f2f2] text-[#86919b] hover:bg-gray-100 dark:border-gray-700 dark:hover:bg-gray-800'
                           }`}
                         >
                           {pageNum}
@@ -470,9 +455,9 @@ const BuyPage = (): JSX.Element => {
                     <button
                       onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
                       disabled={page === totalPages}
-                      className='p-1 rounded-full w-10 h-10 bg-[#f2f2f2] dark:border-gray-700 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#f2f2f2] dark:hover:bg-gray-800'
+                      className="h-10 w-10 rounded-full bg-[#f2f2f2] p-1 hover:bg-[#f2f2f2] disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:hover:bg-gray-800"
                     >
-                      <span className='material-icons mt-0.5'>keyboard_double_arrow_right</span>
+                      <span className="material-icons mt-0.5">keyboard_double_arrow_right</span>
                     </button>
                   </div>
                 )}

@@ -24,15 +24,15 @@ const ContentPage = () => {
     }
   }, [page]);
 
-  if (isLoading) return <div className='p-10'>Loading...</div>;
-  if (isError || !page) return <div className='p-10 text-red-500'>Page not found</div>;
+  if (isLoading) return <div className="p-10">Loading...</div>;
+  if (isError || !page) return <div className="p-10 text-red-500">Page not found</div>;
 
   return (
-    <div className='container px-6 py-10 max-w-4xl'>
-      <h1 className='text-3xl font-bold mb-6'>{page.title}</h1>
+    <div className="container max-w-4xl px-6 py-10">
+      <h1 className="mb-6 text-3xl font-bold">{page.title}</h1>
 
       <div
-        className='prose max-w-none text-left'
+        className="prose max-w-none text-left"
         dangerouslySetInnerHTML={{
           __html: DOMPurify.sanitize(page.content || ''),
         }}

@@ -15,7 +15,7 @@ export const AuthGuard = ({ children }: AuthGuardProps): JSX.Element => {
   // CRITICAL: Wait for auth check to complete before making decisions
   if (isLoading) {
     // Show loading state while checking authentication
-    return <SuspenseFallback message='Checking authentication...' />;
+    return <SuspenseFallback message="Checking authentication..." />;
   }
 
   if (isError || !user) {

@@ -122,29 +122,24 @@ export const ImageUpload = ({
   };
 
   return (
-    <div className='w-full'>
+    <div className="w-full">
       {label && (
-        <label className='mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300'>
+        <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
           {label}
-          {required && <span className='ml-1 text-red-500'>*</span>}
+          {required && <span className="ml-1 text-red-500">*</span>}
         </label>
       )}
 
       {/* Drop Zone */}
       {/* Drop Zone */}
       <div
-        className={`
-    relative rounded-3xl border-2 border-dashed p-1 text-center transition-all bg-white dark:bg-black
-    ${
-      dragActive
-        ? 'border-primary bg-primary/5'
-        : hasError
-          ? 'border-red-500'
-          : 'border-slate-300 dark:border-slate-600'
-    }
-    ${!disabled && canAddMore && 'cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-800'}
-    ${disabled && 'cursor-not-allowed opacity-50'}
-  `}
+        className={`relative rounded-3xl border-2 border-dashed bg-white p-1 text-center transition-all dark:bg-black ${
+          dragActive
+            ? 'border-primary bg-primary/5'
+            : hasError
+              ? 'border-red-500'
+              : 'border-slate-300 dark:border-slate-600'
+        } ${!disabled && canAddMore && 'cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-800'} ${disabled && 'cursor-not-allowed opacity-50'} `}
         onDragEnter={handleDrag}
         onDragLeave={handleDrag}
         onDragOver={handleDrag}
@@ -153,30 +148,30 @@ export const ImageUpload = ({
       >
         <input
           ref={fileInputRef}
-          type='file'
+          type="file"
           multiple
           accept={mode === 'video' ? 'video/*' : 'image/*'}
           onChange={handleFileChange}
           disabled={disabled || !canAddMore}
-          className='hidden'
+          className="hidden"
         />
 
-        <div className='flex flex-col items-center justify-center gap-3'>
+        <div className="flex flex-col items-center justify-center gap-3">
           {/* Icon Circle */}
-          <div className='flex h-10 w-10 items-center justify-center rounded-full bg-slate-200 dark:bg-slate-700'>
-            <span className='material-icons-outlined text-lg text-primary'>upload_file</span>
+          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-200 dark:bg-slate-700">
+            <span className="material-icons-outlined text-lg text-primary">upload_file</span>
           </div>
 
           {/* Text */}
           <div>
-            <p className='text-sm font-medium text-slate-700 dark:text-slate-300'>
-              <span className='text-primary font-bold'>
+            <p className="text-sm font-medium text-slate-700 dark:text-slate-300">
+              <span className="font-bold text-primary">
                 {t('sell.form.conditionCheckList.imageUpload.clickHere')}
               </span>{' '}
               {t('sell.form.conditionCheckList.imageUpload.toUpload')}
             </p>
 
-            <p className='mt-1 text-xs text-slate-400'>
+            <p className="mt-1 text-xs text-slate-400">
               {t('sell.form.conditionCheckList.imageUpload.formatSupport')}
             </p>
           </div>
@@ -185,7 +180,7 @@ export const ImageUpload = ({
 
       {/* Image Previews */}
       {(value.length > 0 || previews.length > 0) && (
-        <div className='mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4'>
+        <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
           {/* Existing images */}
           {/* {value.map((url, index) => (
             <div key={`existing-${index}`} className="group relative">
@@ -215,34 +210,34 @@ export const ImageUpload = ({
 
           {/* New preview images */}
           {previews.map((preview, index) => (
-            <div key={`preview-${index}`} className='group relative'>
-              <div className='glass-light overflow-hidden rounded-xl border border-primary-300 dark:border-primary-700'>
+            <div key={`preview-${index}`} className="group relative">
+              <div className="glass-light overflow-hidden rounded-xl border border-primary-300 dark:border-primary-700">
                 {mode === 'image' ? (
                   <img
                     src={preview.url}
                     alt={`Preview ${index + 1}`}
-                    className='h-32 w-full object-cover'
+                    className="h-32 w-full object-cover"
                   />
                 ) : (
-                  <video src={preview.url} className='h-32 w-full object-cover' controls />
+                  <video src={preview.url} className="h-32 w-full object-cover" controls />
                 )}
               </div>
               {!disabled && (
                 <button
-                  type='button'
+                  type="button"
                   onClick={() => handleRemovePreview(index)}
                   className={cn(
                     'absolute -right-2 -top-2 rounded-full bg-red-500 p-1.5 text-white',
                     'opacity-0 transition-opacity group-hover:opacity-100',
                     'hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2',
                   )}
-                  aria-label='Remove preview'
+                  aria-label="Remove preview"
                 >
                   <X size={14} />
                 </button>
               )}
-              <div className='absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent px-2 py-1'>
-                <p className='truncate text-xs text-white'>{preview.file.name}</p>
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent px-2 py-1">
+                <p className="truncate text-xs text-white">{preview.file.name}</p>
               </div>
             </div>
           ))}
@@ -251,14 +246,14 @@ export const ImageUpload = ({
 
       {/* Helper / Error text */}
       {helperText && !hasError && (
-        <div className='mt-2 flex items-start gap-1 text-sm text-gray-500 dark:text-gray-400'>
+        <div className="mt-2 flex items-start gap-1 text-sm text-gray-500 dark:text-gray-400">
           <span>{helperText}</span>
         </div>
       )}
 
       {hasError && (
-        <div className='mt-2 flex items-start gap-1 text-sm text-red-600 dark:text-red-400'>
-          <AlertCircle size={16} className='mt-0.5 flex-shrink-0' />
+        <div className="mt-2 flex items-start gap-1 text-sm text-red-600 dark:text-red-400">
+          <AlertCircle size={16} className="mt-0.5 flex-shrink-0" />
           <span>{error}</span>
         </div>
       )}

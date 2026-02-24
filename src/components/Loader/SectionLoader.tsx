@@ -61,7 +61,7 @@ const Spinner = ({ size = 'md' }: { size?: 'sm' | 'md' | 'lg' }): JSX.Element =>
   };
 
   return (
-    <div className='relative' style={{ width: 'fit-content' }}>
+    <div className="relative" style={{ width: 'fit-content' }}>
       {/* Outer ring */}
       <div className={cn(sizes[size], 'rounded-full border-gray-200 dark:border-gray-700')} />
 
@@ -94,7 +94,7 @@ export const SectionLoader = ({
     return (
       <div className={cn('relative', className)}>
         {/* Original content (dimmed) */}
-        <div className='opacity-50 blur-sm'>{children}</div>
+        <div className="opacity-50 blur-sm">{children}</div>
 
         {/* Loading overlay */}
         <div

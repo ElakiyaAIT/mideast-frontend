@@ -247,7 +247,7 @@ const AuctionPage = (): JSX.Element => {
 
   const { data, isLoading } = useFilteredAuctions(params);
   if (!data?.pagination || !data?.items) {
-    return <div className='text-slate-400'>Loading results…</div>;
+    return <div className="text-slate-400">Loading results…</div>;
   }
 
   const { page, limit, total } = data.pagination;
@@ -330,45 +330,45 @@ const AuctionPage = (): JSX.Element => {
       <Header />
       {/* <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Material+Icons' /> */}
       {/* Banner */}
-      <div className='relative bg-gray-800 h-64 flex items-center justify-center overflow-hidden rounded-b-[30px]'>
+      <div className="relative flex h-64 items-center justify-center overflow-hidden rounded-b-[30px] bg-gray-800">
         <img
-          alt='Construction background'
-          className='absolute inset-0 w-full h-full object-cover'
+          alt="Construction background"
+          className="absolute inset-0 h-full w-full object-cover"
           src={auctionBanner}
         />
-        <div className='relative z-10 text-center'>
-          <h1 className='text-5xl font-bold text-white tracking-tight uppercase'>
+        <div className="relative z-10 text-center">
+          <h1 className="text-5xl font-bold uppercase tracking-tight text-white">
             {t('auction.title')}
           </h1>
-          <div className='mt-2 text-primary font-medium text-sm flex items-center justify-center gap-2'>
-            <Link to={ROUTES.HOME} className='text-white hover:text-primary transition-colors'>
+          <div className="mt-2 flex items-center justify-center gap-2 text-sm font-medium text-primary">
+            <Link to={ROUTES.HOME} className="text-white transition-colors hover:text-primary">
               {t('product.breadcrumb.home')}
             </Link>
-            <span className='material-icons text-xs text-white'>chevron_right</span>
-            <span className='text-primary'>Auction</span>
+            <span className="material-icons text-xs text-white">chevron_right</span>
+            <span className="text-primary">Auction</span>
           </div>
         </div>
       </div>
 
       {/* Search Section */}
-      <section className='max-w-7xl mx-auto px-4 -mt-16 relative z-20'>
-        <div className='bg-primary p-8 rounded-lg shadow-2xl'>
-          <div className='grid grid-cols-1 md:grid-cols-4 gap-4'>
-            <div className='relative'>
+      <section className="relative z-20 mx-auto -mt-16 max-w-7xl px-4">
+        <div className="rounded-lg bg-primary p-8 shadow-2xl">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
+            <div className="relative">
               <input
-                className='w-full py-3 px-4 rounded border-none focus:ring-2 focus:ring-slate-900 bg-white text-sm'
+                className="w-full rounded border-none bg-white px-4 py-3 text-sm focus:ring-2 focus:ring-slate-900"
                 placeholder={t('auction.searchAuctions')}
-                name='auctionName'
+                name="auctionName"
                 value={draftFilters?.auctionName}
                 onChange={handleChange}
               />
             </div>
-            <div className='relative'>
+            <div className="relative">
               <input
-                className='w-full py-3 px-4 rounded border-none focus:ring-2 focus:ring-slate-900 bg-white text-sm'
-                placeholder='DD/MM/YYYY'
-                name='startDate'
-                type='date'
+                className="w-full rounded border-none bg-white px-4 py-3 text-sm focus:ring-2 focus:ring-slate-900"
+                placeholder="DD/MM/YYYY"
+                name="startDate"
+                type="date"
                 value={draftFilters?.startDate}
                 onChange={handleChange}
               />
@@ -376,18 +376,18 @@ const AuctionPage = (): JSX.Element => {
                 calendar_today
               </span> */}
             </div>
-            <div className='relative'>
+            <div className="relative">
               <input
-                className='w-full py-3 px-4 rounded border-none focus:ring-2 focus:ring-slate-900 bg-white text-sm'
+                className="w-full rounded border-none bg-white px-4 py-3 text-sm focus:ring-2 focus:ring-slate-900"
                 placeholder={t('auction.location')}
-                name='location'
+                name="location"
                 value={draftFilters?.location}
                 onChange={handleChange}
               />
             </div>
             <button
               onClick={handleSearch}
-              className='bg-slate-900 text-white font-bold py-3 px-4 rounded-3xl hover:bg-slate-800 transition-all uppercase tracking-wider'
+              className="rounded-3xl bg-slate-900 px-4 py-3 font-bold uppercase tracking-wider text-white transition-all hover:bg-slate-800"
             >
               {t('auction.search')}
             </button>
@@ -396,9 +396,9 @@ const AuctionPage = (): JSX.Element => {
       </section>
 
       {/* Filter & Toggle Section */}
-      <section className='max-w-7xl mx-auto px-4 mt-12 flex flex-col md:flex-row justify-between items-center gap-6'>
-        <div className='text-slate-500 dark:text-slate-400 font-medium'>
-          <h2 className='text-lg font-semibold text-gray-800 dark:text-gray-200'>
+      <section className="mx-auto mt-12 flex max-w-7xl flex-col items-center justify-between gap-6 px-4 md:flex-row">
+        <div className="font-medium text-slate-500 dark:text-slate-400">
+          <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
             {t('buy.showing')} {start}-{end}{' '}
             {t('buy.resultsCount', {
               total: data?.pagination?.total || 0,
@@ -406,13 +406,13 @@ const AuctionPage = (): JSX.Element => {
           </h2>
         </div>
 
-        <div className='bg-slate-200 dark:bg-slate-800 p-1 rounded-3xl flex'>
+        <div className="flex rounded-3xl bg-slate-200 p-1 dark:bg-slate-800">
           {tabs.map((tab) => (
             <button
               key={tab}
-              type='button'
+              type="button"
               onClick={() => handleTabChange(tab)}
-              className={`px-8 py-2 rounded-2xl font-bold text-xs uppercase transition-colors ${
+              className={`rounded-2xl px-8 py-2 text-xs font-bold uppercase transition-colors ${
                 activeTab === tab
                   ? 'bg-slate-900 text-white'
                   : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'
@@ -425,18 +425,18 @@ const AuctionPage = (): JSX.Element => {
       </section>
 
       {/* Main Content */}
-      <main className='max-w-7xl mx-auto px-6 py-12'>
+      <main className="mx-auto max-w-7xl px-6 py-12">
         {activeTab === 'upcoming' ? (
           /* Upcoming Auctions */
-          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {filteredAuctions?.map((item) => (
               <div
                 key={item.id}
-                className='bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-md group hover:-translate-y-1 transition-all duration-300 border border-slate-100 dark:border-slate-700'
+                className="group overflow-hidden rounded-xl border border-slate-100 bg-white shadow-md transition-all duration-300 hover:-translate-y-1 dark:border-slate-700 dark:bg-slate-800"
               >
-                <div className='relative'>
-                  <img alt={item.title} className='w-full h-48 object-cover' src={item.mainImage} />
-                  <div className='absolute top-4 right-4 bg-slate-700/80 text-white text-[10px] font-bold px-3 py-1 rounded-xl uppercase tracking-wider backdrop-blur-sm'>
+                <div className="relative">
+                  <img alt={item.title} className="h-48 w-full object-cover" src={item.mainImage} />
+                  <div className="absolute right-4 top-4 rounded-xl bg-slate-700/80 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white backdrop-blur-sm">
                     {t('auction.upcoming')}
                   </div>
                   {/* <div className="grid grid-cols-2 gap-1 p-1 bg-white dark:bg-slate-800">
@@ -450,38 +450,38 @@ const AuctionPage = (): JSX.Element => {
                     ))}
                   </div> */}
                 </div>
-                <div className='p-6'>
-                  <h3 className='text-xl font-bold mb-2 dark:text-white leading-tight'>
+                <div className="p-6">
+                  <h3 className="mb-2 text-xl font-bold leading-tight dark:text-white">
                     {item.title}
                   </h3>
-                  <p className='text-xs text-slate-500 dark:text-slate-400 mb-6 leading-relaxed  line-clamp-2 cursor-help'>
+                  <p className="mb-6 line-clamp-2 cursor-help text-xs leading-relaxed text-slate-500 dark:text-slate-400">
                     {item.description}
                   </p>
-                  <div className='space-y-3 mb-8'>
-                    <div className='flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300'>
-                      <span className='material-icons text-slate-900 dark:text-slate-100 text-base'>
+                  <div className="mb-8 space-y-3">
+                    <div className="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
+                      <span className="material-icons text-base text-slate-900 dark:text-slate-100">
                         calendar_today
                       </span>
                       <span>{item.date}</span>
                     </div>
-                    <div className='flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300'>
-                      <span className='material-icons text-slate-900 dark:text-slate-100 text-base'>
+                    <div className="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
+                      <span className="material-icons text-base text-slate-900 dark:text-slate-100">
                         schedule
                       </span>
                       <span>{item.time}</span>
                     </div>
-                    <div className='flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300'>
-                      <span className='material-icons text-slate-900 dark:text-slate-100 text-base'>
+                    <div className="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
+                      <span className="material-icons text-base text-slate-900 dark:text-slate-100">
                         location_on
                       </span>
                       <span>{item.location}</span>
                     </div>
                   </div>
-                  <div className='space-y-3'>
-                    <button className='w-full bg-primary/20 hover:bg-primary/30 text-primary font-black py-3 rounded-2xl transition-colors text-xs uppercase tracking-widest border border-primary/30'>
+                  <div className="space-y-3">
+                    <button className="w-full rounded-2xl border border-primary/30 bg-primary/20 py-3 text-xs font-black uppercase tracking-widest text-primary transition-colors hover:bg-primary/30">
                       {t('auction.proxibidBidding')}
                     </button>
-                    <button className='w-full bg-primary text-white font-black py-3 rounded-2xl hover:bg-orange-500 transition-colors shadow-lg shadow-orange-500/20 text-xs uppercase tracking-widest'>
+                    <button className="w-full rounded-2xl bg-primary py-3 text-xs font-black uppercase tracking-widest text-white shadow-lg shadow-orange-500/20 transition-colors hover:bg-orange-500">
                       {t('auction.equipmentfactsBidding')}
                     </button>
                   </div>
@@ -491,21 +491,21 @@ const AuctionPage = (): JSX.Element => {
           </div>
         ) : (
           /* Past Auctions */
-          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {filteredAuctions?.map((item) => (
               <div
                 key={item.id}
-                className='group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 dark:border-slate-700'
+                className="group overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm transition-all duration-300 hover:shadow-xl dark:border-slate-700 dark:bg-slate-800"
               >
-                <div className='relative overflow-hidden'>
-                  <div className=' h-[240px] gap-1'>
-                    <div className='col-span-3 row-span-1 overflow-hidden relative'>
+                <div className="relative overflow-hidden">
+                  <div className="h-[240px] gap-1">
+                    <div className="relative col-span-3 row-span-1 overflow-hidden">
                       <img
                         src={item.mainImage}
                         alt={item.title}
-                        className='w-full h-full object-cover group-hover:scale-110 transition-transform duration-500'
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                       />
-                      <div className='absolute top-3 right-3 bg-slate-800/80 text-white text-[10px] font-bold px-3 py-1 rounded uppercase'>
+                      <div className="absolute right-3 top-3 rounded bg-slate-800/80 px-3 py-1 text-[10px] font-bold uppercase text-white">
                         {t('auction.past')}
                       </div>
                     </div>
@@ -525,54 +525,54 @@ const AuctionPage = (): JSX.Element => {
                     </div> */}
                   </div>
                 </div>
-                <div className='p-6'>
-                  <h3 className='text-lg font-bold mb-2 group-hover:text-primary transition-colors leading-tight'>
+                <div className="p-6">
+                  <h3 className="mb-2 text-lg font-bold leading-tight transition-colors group-hover:text-primary">
                     {item?.title}
                   </h3>
-                  <p className='text-xs text-slate-500 dark:text-slate-400 mb-6 leading-relaxed line-clamp-2'>
+                  <p className="mb-6 line-clamp-2 text-xs leading-relaxed text-slate-500 dark:text-slate-400">
                     {item?.description}
                   </p>
-                  <div className='grid grid-cols-2 gap-y-3 mb-6 text-xs text-slate-600 dark:text-slate-300'>
-                    <div className='flex items-center gap-2'>
-                      <span className='material-icons-outlined text-slate-900 dark:text-slate-100 text-sm'>
+                  <div className="mb-6 grid grid-cols-2 gap-y-3 text-xs text-slate-600 dark:text-slate-300">
+                    <div className="flex items-center gap-2">
+                      <span className="material-icons-outlined text-sm text-slate-900 dark:text-slate-100">
                         calendar_today
                       </span>
                       {item.date}
                     </div>
-                    <div className='flex items-center gap-2'>
-                      <span className='material-icons-outlined text-slate-900 dark:text-slate-100 text-sm'>
+                    <div className="flex items-center gap-2">
+                      <span className="material-icons-outlined text-sm text-slate-900 dark:text-slate-100">
                         schedule
                       </span>
                       {t('auction.auctionDuration')}: {item?.duration}
                     </div>
-                    <div className='flex items-center gap-2'>
-                      <span className='material-icons-outlined text-slate-900 dark:text-slate-100 text-sm'>
+                    <div className="flex items-center gap-2">
+                      <span className="material-icons-outlined text-sm text-slate-900 dark:text-slate-100">
                         sell
                       </span>
                       {t('auction.startingPrice')}:{' '}
-                      <span className='font-bold'>{item?.startingPrice}</span>
+                      <span className="font-bold">{item?.startingPrice}</span>
                     </div>
-                    <div className='flex items-center gap-2'>
-                      <span className='material-icons-outlined text-slate-900 dark:text-slate-100 text-sm'>
+                    <div className="flex items-center gap-2">
+                      <span className="material-icons-outlined text-sm text-slate-900 dark:text-slate-100">
                         gavel
                       </span>
-                      {t('auction.bids')}: <span className='font-bold'>{item?.bids}</span>
+                      {t('auction.bids')}: <span className="font-bold">{item?.bids}</span>
                     </div>
-                    <div className='flex items-center gap-2 col-span-2'>
-                      <span className='material-icons-outlined text-slate-900 dark:text-slate-100 text-sm'>
+                    <div className="col-span-2 flex items-center gap-2">
+                      <span className="material-icons-outlined text-sm text-slate-900 dark:text-slate-100">
                         location_on
                       </span>
                       {item?.location}
                     </div>
                   </div>
-                  <div className='flex items-center justify-between pt-6 border-t border-slate-100 dark:border-slate-700'>
+                  <div className="flex items-center justify-between border-t border-slate-100 pt-6 dark:border-slate-700">
                     <div>
-                      <p className='text-[14px] uppercase font-bold text-slate-400'>
+                      <p className="text-[14px] font-bold uppercase text-slate-400">
                         {t('auction.soldFor')}
                       </p>
-                      <p className='text-xl font-extrabold text-primary'>{item?.soldFor}</p>
+                      <p className="text-xl font-extrabold text-primary">{item?.soldFor}</p>
                     </div>
-                    <button className='bg-primary/10 hover:bg-primary text-primary hover:text-white font-bold py-2.5 px-6 rounded-2xl transition-all text-sm uppercase'>
+                    <button className="rounded-2xl bg-primary/10 px-6 py-2.5 text-sm font-bold uppercase text-primary transition-all hover:bg-primary hover:text-white">
                       {t('common.viewMore')}
                     </button>
                   </div>
@@ -584,23 +584,19 @@ const AuctionPage = (): JSX.Element => {
 
         {/* Pagination */}
         {totalPages > 1 && (
-          <div className='mt-16 flex flex-col items-center gap-4'>
+          <div className="mt-16 flex flex-col items-center gap-4">
             {/* Showing Info */}
-            <div className='text-sm text-slate-500'>
+            <div className="text-sm text-slate-500">
               Showing {start} – {end} of {total} results
             </div>
 
             {/* Pagination Buttons */}
-            <div className='flex justify-center items-center gap-3'>
+            <div className="flex items-center justify-center gap-3">
               {/* Previous */}
               <button
                 disabled={currentPage === 1}
                 onClick={() => handlePageChange(currentPage - 1)}
-                className='w-10 h-10 rounded-full bg-white dark:bg-slate-800
-                   disabled:opacity-50 disabled:cursor-not-allowed
-                   text-slate-600 dark:text-slate-300
-                   hover:bg-slate-100 dark:hover:bg-slate-700
-                   font-bold flex items-center justify-center border transition-all'
+                className="flex h-10 w-10 items-center justify-center rounded-full border bg-white font-bold text-slate-600 transition-all hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700"
               >
                 ‹
               </button>
@@ -610,13 +606,11 @@ const AuctionPage = (): JSX.Element => {
                 <button
                   key={num}
                   onClick={() => handlePageChange(num)}
-                  className={`w-10 h-10 rounded-full font-bold flex items-center justify-center transition-all
-            ${
-              num === currentPage
-                ? 'bg-primary text-white shadow-lg shadow-orange-500/30'
-                : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 border'
-            }
-          `}
+                  className={`flex h-10 w-10 items-center justify-center rounded-full font-bold transition-all ${
+                    num === currentPage
+                      ? 'bg-primary text-white shadow-lg shadow-orange-500/30'
+                      : 'border bg-white text-slate-600 hover:bg-slate-100 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700'
+                  } `}
                 >
                   {num}
                 </button>
@@ -626,11 +620,7 @@ const AuctionPage = (): JSX.Element => {
               <button
                 disabled={currentPage === totalPages}
                 onClick={() => handlePageChange(currentPage + 1)}
-                className='w-10 h-10 rounded-full bg-white dark:bg-slate-800
-                   disabled:opacity-50 disabled:cursor-not-allowed
-                   text-slate-600 dark:text-slate-300
-                   hover:bg-slate-100 dark:hover:bg-slate-700
-                   font-bold flex items-center justify-center border transition-all'
+                className="flex h-10 w-10 items-center justify-center rounded-full border bg-white font-bold text-slate-600 transition-all hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700"
               >
                 ›
               </button>

@@ -54,19 +54,19 @@ const MediaForm = ({ formData, setFormData }: MediaFormProps) => {
 
   const MediaSection = ({ title, icon, images, onUpload, onRemove }: MediaSectionProps) => {
     return (
-      <div className='mb-12'>
-        <div className='flex items-center gap-3 mb-6'>
-          <div className='w-8 h-8 rounded-full bg-[#FDAD3E] flex items-center justify-center'>
-            <span className='material-icons text-white text-[18px]'>{icon}</span>
+      <div className="mb-12">
+        <div className="mb-6 flex items-center gap-3">
+          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#FDAD3E]">
+            <span className="material-icons text-[18px] text-white">{icon}</span>
           </div>
 
-          <span className='text-[#FDAD3E] font-medium text-sm'>
-            {title} <span className='ml-1 text-red-500'>*</span>
+          <span className="text-sm font-medium text-[#FDAD3E]">
+            {title} <span className="ml-1 text-red-500">*</span>
           </span>
         </div>
 
         <ImageUpload
-          label=''
+          label=""
           required
           maxFiles={1}
           value={images}
@@ -113,11 +113,11 @@ const MediaForm = ({ formData, setFormData }: MediaFormProps) => {
 
   return (
     <div>
-      <h3 className='mb-4 text-lg font-bold uppercase tracking-wide text-slate-800'>
+      <h3 className="mb-4 text-lg font-bold uppercase tracking-wide text-slate-800">
         {t('sell.form.media.title')}
       </h3>
 
-      <div className='h-px bg-slate-300 mb-6' />
+      <div className="mb-6 h-px bg-slate-300" />
 
       {/* Map Here Itself */}
       {(Object.keys(mediaSections) as MediaKey[]).map((key) => {

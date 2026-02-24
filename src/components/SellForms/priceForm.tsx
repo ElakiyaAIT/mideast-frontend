@@ -127,63 +127,63 @@ const PriceForm: React.FC = () => {
   };
 
   return (
-    <div className='mx-auto max-w-6xl'>
+    <div className="mx-auto max-w-6xl">
       {/* ================= HEADER ================= */}
-      <div className='mb-12 flex flex-col items-center justify-center'>
-        <h2 className='mb-2 text-3xl font-bold text-slate-900 dark:text-white'>
+      <div className="mb-12 flex flex-col items-center justify-center">
+        <h2 className="mb-2 text-3xl font-bold text-slate-900 dark:text-white">
           {valuation.title}
         </h2>
-        <p className='text-slate-600 dark:text-slate-400'>{valuation.subtitle}</p>
+        <p className="text-slate-600 dark:text-slate-400">{valuation.subtitle}</p>
       </div>
 
       {/* ================= PRICING CARDS ================= */}
-      <div className='mx-auto mb-12 grid w-full max-w-4xl grid-cols-1 gap-6 md:grid-cols-3'>
+      <div className="mx-auto mb-12 grid w-full max-w-4xl grid-cols-1 gap-6 md:grid-cols-3">
         <PricingCard
-          title='Auction Range'
+          title="Auction Range"
           icon={auction}
           price={formatRange(valuation.auction.min, valuation.auction.max)}
           description={valuation.auction.description}
-          buttonText='View Auction Insights'
+          buttonText="View Auction Insights"
         />
 
         <PricingCard
-          title='Retail Range'
+          title="Retail Range"
           icon={retailPrice}
           price={formatRange(valuation.retail.min, valuation.retail.max)}
           description={valuation.retail.description}
-          buttonText='Explore Retail Listings'
+          buttonText="Explore Retail Listings"
         />
 
         <PricingCard
-          title='Cash Offer'
+          title="Cash Offer"
           icon={cashOffer}
           price={formatValue(valuation.cashOffer.value)}
           description={valuation.cashOffer.description}
-          buttonText='Get My Offer'
+          buttonText="Get My Offer"
         />
       </div>
 
       {/* ================= CONDITION SECTION ================= */}
-      <section className='mb-8 rounded-2xl bg-slate-50 p-8 dark:bg-slate-800'>
-        <h3 className='mb-6 text-lg font-bold text-slate-900 dark:text-white'>
+      <section className="mb-8 rounded-2xl bg-slate-50 p-8 dark:bg-slate-800">
+        <h3 className="mb-6 text-lg font-bold text-slate-900 dark:text-white">
           {t('sell.form.pricing.condition')}
         </h3>
 
-        <div className='space-y-3'>
+        <div className="space-y-3">
           {valuation.condition.map((item, index) => {
             const styles = getStatusStyles(item.status);
 
             return (
-              <div key={index} className='flex items-start gap-3'>
+              <div key={index} className="flex items-start gap-3">
                 <div
                   className={`flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full ${styles.bg}`}
                 >
                   <i className={`material-icons text-sm ${styles.text}`}>{styles.icon}</i>
                 </div>
 
-                <p className='text-sm font-semibold text-slate-900 dark:text-white'>
+                <p className="text-sm font-semibold text-slate-900 dark:text-white">
                   {item.label}:{' '}
-                  <span className='font-normal text-slate-600 dark:text-slate-400'>
+                  <span className="font-normal text-slate-600 dark:text-slate-400">
                     {item.text}
                   </span>
                 </p>
@@ -194,20 +194,20 @@ const PriceForm: React.FC = () => {
       </section>
 
       {/* ================= DETAILED VALUATION ================= */}
-      <section className='rounded-2xl bg-slate-50 p-8 dark:bg-slate-800'>
-        <h3 className='mb-6 text-lg font-bold text-slate-900 dark:text-white'>
+      <section className="rounded-2xl bg-slate-50 p-8 dark:bg-slate-800">
+        <h3 className="mb-6 text-lg font-bold text-slate-900 dark:text-white">
           {t('sell.form.pricing.detailedValuation')}
         </h3>
 
-        <div className='mb-6'>
-          <div className='mb-3 flex items-center gap-2'>
-            <i className='material-icons text-slate-600 dark:text-slate-400'>info</i>
-            <h4 className='font-semibold text-slate-900 dark:text-white'>
+        <div className="mb-6">
+          <div className="mb-3 flex items-center gap-2">
+            <i className="material-icons text-slate-600 dark:text-slate-400">info</i>
+            <h4 className="font-semibold text-slate-900 dark:text-white">
               Data Sources & Disclaimer
             </h4>
           </div>
 
-          <ul className='ml-8 list-disc space-y-2 text-sm text-slate-600 dark:text-slate-400'>
+          <ul className="ml-8 list-disc space-y-2 text-sm text-slate-600 dark:text-slate-400">
             {valuation.disclaimer.map((item, index) => (
               <li key={index}>{item}</li>
             ))}
@@ -216,21 +216,21 @@ const PriceForm: React.FC = () => {
 
         {/* Confidence */}
         <div>
-          <div className='mb-2 flex items-center justify-between'>
-            <h4 className='font-semibold text-slate-900 dark:text-white'>
+          <div className="mb-2 flex items-center justify-between">
+            <h4 className="font-semibold text-slate-900 dark:text-white">
               {t('sell.form.pricing.valuationConfidence')}
             </h4>
-            <span className='text-sm font-bold text-orange-500'>{valuation.confidenceLabel}</span>
+            <span className="text-sm font-bold text-orange-500">{valuation.confidenceLabel}</span>
           </div>
 
-          <div className='h-2 w-full rounded-full bg-slate-200 dark:bg-slate-700'>
+          <div className="h-2 w-full rounded-full bg-slate-200 dark:bg-slate-700">
             <div
-              className='h-2 rounded-full bg-orange-500 transition-all duration-500'
+              className="h-2 rounded-full bg-orange-500 transition-all duration-500"
               style={{ width: `${valuation.confidence}%` }}
             />
           </div>
 
-          <p className='mt-2 text-xs text-slate-500 dark:text-slate-400'>
+          <p className="mt-2 text-xs text-slate-500 dark:text-slate-400">
             Based on strong market data availability and recent comparable sales
           </p>
         </div>
@@ -255,21 +255,21 @@ interface CardProps {
 
 const PricingCard: React.FC<CardProps> = ({ title, icon, price, description, buttonText }) => {
   return (
-    <div className='rounded-3xl bg-[#fdad3e] pt-5 shadow-sm'>
-      <h3 className='text-center text-xs font-bold uppercase tracking-wider text-white'>{title}</h3>
+    <div className="rounded-3xl bg-[#fdad3e] pt-5 shadow-sm">
+      <h3 className="text-center text-xs font-bold uppercase tracking-wider text-white">{title}</h3>
 
-      <div className='mt-4 rounded-2xl bg-[#fdc06a] pt-6'>
-        <div className='flex justify-center'>
-          <img src={icon} alt={title} className='h-12 w-12' />
+      <div className="mt-4 rounded-2xl bg-[#fdc06a] pt-6">
+        <div className="flex justify-center">
+          <img src={icon} alt={title} className="h-12 w-12" />
         </div>
 
-        <div className='mt-4 px-6 text-left'>
-          <p className='text-xs text-orange-100'>{description}</p>
-          <p className='mt-2 text-2xl font-bold text-white'>{price}</p>
+        <div className="mt-4 px-6 text-left">
+          <p className="text-xs text-orange-100">{description}</p>
+          <p className="mt-2 text-2xl font-bold text-white">{price}</p>
         </div>
 
-        <div className='mt-6 flex justify-center pb-12'>
-          <button className='rounded-full bg-orange-500 px-6 py-2 text-xs font-semibold text-white transition hover:bg-orange-600'>
+        <div className="mt-6 flex justify-center pb-12">
+          <button className="rounded-full bg-orange-500 px-6 py-2 text-xs font-semibold text-white transition hover:bg-orange-600">
             {buttonText}
           </button>
         </div>

@@ -113,25 +113,25 @@ const ConditionSection = ({
   };
 
   return (
-    <div className='rounded-2xl bg-slate-50 p-8 dark:bg-slate-900'>
-      <h4 className='mb-6 border-b-2 border-primary pb-4 text-lg font-bold uppercase dark:text-slate-400'>
+    <div className="rounded-2xl bg-slate-50 p-8 dark:bg-slate-900">
+      <h4 className="mb-6 border-b-2 border-primary pb-4 text-lg font-bold uppercase dark:text-slate-400">
         {t(title)}
       </h4>
 
-      <div className='space-y-6'>
-        <div className='hidden md:grid grid-cols-12 gap-6 border-b border-slate-200 pb-6 dark:border-slate-700'>
-          <div className='md:col-span-3'>
-            <p className='text-sm font-bold uppercase text-slate-600 dark:text-slate-400'>
+      <div className="space-y-6">
+        <div className="hidden grid-cols-12 gap-6 border-b border-slate-200 pb-6 dark:border-slate-700 md:grid">
+          <div className="md:col-span-3">
+            <p className="text-sm font-bold uppercase text-slate-600 dark:text-slate-400">
               {t('sell.form.conditionCheckList.item')}
             </p>
           </div>
-          <div className='md:col-span-3'>
-            <p className='text-sm font-bold uppercase text-slate-600 dark:text-slate-400'>
+          <div className="md:col-span-3">
+            <p className="text-sm font-bold uppercase text-slate-600 dark:text-slate-400">
               {t('sell.form.conditionCheckList.status')}
             </p>
           </div>
-          <div className='md:col-span-6'>
-            <p className='text-sm font-bold uppercase text-slate-600 dark:text-slate-400'>
+          <div className="md:col-span-6">
+            <p className="text-sm font-bold uppercase text-slate-600 dark:text-slate-400">
               {t('sell.form.conditionCheckList.photosVideos')}
             </p>
           </div>
@@ -146,13 +146,13 @@ const ConditionSection = ({
             }`}
           >
             {/* Item */}
-            <div className='md:col-span-3 font-semibold dark:text-slate-400'>
+            <div className="font-semibold dark:text-slate-400 md:col-span-3">
               {t(item.label)}
-              <span className='ml-1 text-red-500'>*</span>
+              <span className="ml-1 text-red-500">*</span>
             </div>
 
             {/* Select */}
-            <div className='md:col-span-3'>
+            <div className="md:col-span-3">
               <SelectInput
                 placeholder={'eg.,Good'}
                 name={`checkList.${sectionKey}.${item.key}`}
@@ -164,7 +164,7 @@ const ConditionSection = ({
             </div>
 
             {/* Upload */}
-            <div className='md:col-span-6'>
+            <div className="md:col-span-6">
               <ImageUpload
                 maxFiles={1}
                 value={formData?.checkList?.[sectionKey]?.[`${item.key}Images`] || []}

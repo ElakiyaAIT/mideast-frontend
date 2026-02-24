@@ -47,19 +47,19 @@ const BasicInfo = ({ formData, setFormData, handleChange, errors, setErrors }: P
 
   return (
     <div>
-      <h3 className='text-xl font-bold uppercase tracking-tight mb-8'>
+      <h3 className="mb-8 text-xl font-bold uppercase tracking-tight">
         {t('sell.form.basicEquipmentInformation')}
       </h3>
 
-      <div className='space-y-8'>
+      <div className="space-y-8">
         {/* Equipment Title */}
 
         <TextInput
           required={true}
           error={errors?.title}
           label={t('sell.form.equipmentTitle')}
-          name='title'
-          placeholder='e.g., Caterpillar 320 Excavator (2020)'
+          name="title"
+          placeholder="e.g., Caterpillar 320 Excavator (2020)"
           value={formData.title || ''}
           onChange={handleChange}
         />
@@ -69,18 +69,18 @@ const BasicInfo = ({ formData, setFormData, handleChange, errors, setErrors }: P
         <SelectInput
           required={true}
           error={errors?.category}
-          placeholder='e.g., Excavators'
+          placeholder="e.g., Excavators"
           label={t('sell.form.category')}
-          name='category'
+          name="category"
           value={formData.category}
           options={conditionOptions}
           onChange={handleChange}
         />
         {/* Description (Your Original UI Preserved) */}
         <div>
-          <label className='block text-lg font-bold  tracking-wide dark:text-slate-300 mb-2'>
+          <label className="mb-2 block text-lg font-bold tracking-wide dark:text-slate-300">
             {t('sell.form.description')}
-            <span className='ml-1 text-red-500'>*</span>
+            <span className="ml-1 text-red-500">*</span>
           </label>
           <Editor
             value={formData.description || ''}

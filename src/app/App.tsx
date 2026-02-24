@@ -66,7 +66,7 @@ const AppContent = (): JSX.Element => {
       <GlobalLoader />
       <AppRoutes />
       <Toaster
-        position='top-right'
+        position="top-right"
         toastOptions={{
           className: 'dark:bg-gray-800 dark:text-white',
           duration: 4000,

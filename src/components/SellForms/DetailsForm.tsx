@@ -35,24 +35,24 @@ const Details = ({ formData, handleChange, options, errors }: DetailsProps) => {
 
   return (
     <div>
-      <h3 className='mb-8 text-xl font-bold uppercase tracking-tight dark:text-slate-300'>
+      <h3 className="mb-8 text-xl font-bold uppercase tracking-tight dark:text-slate-300">
         {t('sell.form.details.title')}
       </h3>
 
-      <div className='space-y-12'>
+      <div className="space-y-12">
         {/* BASIC DETAILS */}
-        <section className='sell-details-form'>
-          <h4 className='mb-6 border-b border-slate-200 pb-3 text-xl font-bold uppercase tracking-wider text-slate-900 dark:border-slate-700 dark:text-slate-300'>
+        <section className="sell-details-form">
+          <h4 className="mb-6 border-b border-slate-200 pb-3 text-xl font-bold uppercase tracking-wider text-slate-900 dark:border-slate-700 dark:text-slate-300">
             {t('sell.form.details.basic.title')}
           </h4>
 
-          <div className='grid grid-cols-1 gap-6 md:grid-cols-2'>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             <TextInput
               error={errors?.basicDetails?.year}
               required={true}
               label={t('sell.form.details.basic.year')}
-              name='basicDetails.year'
-              placeholder='e.g., 2020'
+              name="basicDetails.year"
+              placeholder="e.g., 2020"
               value={formData.basicDetails.year || ''}
               onChange={handleChange}
             />
@@ -61,8 +61,8 @@ const Details = ({ formData, handleChange, options, errors }: DetailsProps) => {
               error={errors?.basicDetails?.make}
               required={true}
               label={t('sell.form.details.basic.make')}
-              name='basicDetails.make'
-              placeholder='Caterpillar'
+              name="basicDetails.make"
+              placeholder="Caterpillar"
               value={formData.basicDetails.make || ''}
               onChange={handleChange}
             />
@@ -71,8 +71,8 @@ const Details = ({ formData, handleChange, options, errors }: DetailsProps) => {
               error={errors?.basicDetails?.model}
               required={true}
               label={t('sell.form.details.basic.model')}
-              name='basicDetails.model'
-              placeholder='e.g., 320D'
+              name="basicDetails.model"
+              placeholder="e.g., 320D"
               value={formData.basicDetails.model || ''}
               onChange={handleChange}
             />
@@ -81,8 +81,8 @@ const Details = ({ formData, handleChange, options, errors }: DetailsProps) => {
               error={errors?.basicDetails?.manufacturer}
               required={true}
               label={t('sell.form.details.basic.manufacturer')}
-              name='basicDetails.manufacturer'
-              placeholder='e.g., Caterpillar Inc'
+              name="basicDetails.manufacturer"
+              placeholder="e.g., Caterpillar Inc"
               value={formData.basicDetails.manufacturer || ''}
               onChange={handleChange}
             />
@@ -91,8 +91,8 @@ const Details = ({ formData, handleChange, options, errors }: DetailsProps) => {
               error={errors?.basicDetails?.engineHours}
               required={true}
               label={t('sell.form.details.basic.engineHours')}
-              name='basicDetails.engineHours'
-              placeholder='e.g., 4,750'
+              name="basicDetails.engineHours"
+              placeholder="e.g., 4,750"
               value={formData.basicDetails.engineHours || ''}
               onChange={handleChange}
             />
@@ -101,8 +101,8 @@ const Details = ({ formData, handleChange, options, errors }: DetailsProps) => {
               error={errors?.basicDetails?.mileage}
               required={true}
               label={t('sell.form.details.basic.mileage')}
-              name='basicDetails.mileage'
-              placeholder='e.g.,12000'
+              name="basicDetails.mileage"
+              placeholder="e.g.,12000"
               value={formData.basicDetails.mileage || ''}
               onChange={handleChange}
             />
@@ -110,20 +110,20 @@ const Details = ({ formData, handleChange, options, errors }: DetailsProps) => {
         </section>
 
         {/* GENERAL SPECIFICATIONS */}
-        <section className='sell-details-form'>
-          <h4 className='mb-6 border-b border-slate-200 pb-3 text-xl font-bold uppercase tracking-wider text-slate-900 dark:border-slate-700 dark:text-slate-300'>
+        <section className="sell-details-form">
+          <h4 className="mb-6 border-b border-slate-200 pb-3 text-xl font-bold uppercase tracking-wider text-slate-900 dark:border-slate-700 dark:text-slate-300">
             {t('sell.form.details.general.title')}
           </h4>
 
-          <div className='grid grid-cols-1 gap-6 md:grid-cols-2'>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             {/* Transmission */}
 
             <SelectInput
               required={true}
               error={errors?.general?.transmission}
-              placeholder='eg.,hydrostatic'
+              placeholder="eg.,hydrostatic"
               label={t('sell.form.details.general.transmission')}
-              name='general.transmission'
+              name="general.transmission"
               value={formData.general.transmission}
               options={options.transmission}
               onChange={handleChange}
@@ -131,9 +131,9 @@ const Details = ({ formData, handleChange, options, errors }: DetailsProps) => {
             {/* Engine Type */}
 
             <SelectInput
-              placeholder='e.g., CAT c4.4 ACERT'
+              placeholder="e.g., CAT c4.4 ACERT"
               label={t('sell.form.details.general.engineType')}
-              name='general.engineType'
+              name="general.engineType"
               value={formData.general.engineType}
               required={true}
               error={errors?.general?.engineType}
@@ -145,8 +145,8 @@ const Details = ({ formData, handleChange, options, errors }: DetailsProps) => {
 
             <TextInput
               label={t('sell.form.details.general.grossPower')}
-              name='general.grossPower'
-              placeholder='e.g., 121'
+              name="general.grossPower"
+              placeholder="e.g., 121"
               value={formData.general.grossPower || ''}
               required={true}
               error={errors?.general?.grossPower}
@@ -157,8 +157,8 @@ const Details = ({ formData, handleChange, options, errors }: DetailsProps) => {
 
             <TextInput
               label={t('sell.form.details.general.operatingWeight')}
-              name='general.operatingWeight'
-              placeholder='e.g., 22000'
+              name="general.operatingWeight"
+              placeholder="e.g., 22000"
               value={formData.general.operatingWeight || ''}
               required={true}
               error={errors?.general?.operatingWeight}
@@ -166,9 +166,9 @@ const Details = ({ formData, handleChange, options, errors }: DetailsProps) => {
             />
             {/* Fuel Type */}
             <SelectInput
-              placeholder='e.g., Diesel'
+              placeholder="e.g., Diesel"
               label={t('sell.form.details.general.fuelType')}
-              name='general.fuelType'
+              name="general.fuelType"
               value={formData.general.fuelType}
               required={true}
               error={errors?.general?.fuelType}
@@ -178,9 +178,9 @@ const Details = ({ formData, handleChange, options, errors }: DetailsProps) => {
 
             {/* Cab Type */}
             <SelectInput
-              placeholder='e.g., Enclosed ROPS/FOPS'
+              placeholder="e.g., Enclosed ROPS/FOPS"
               label={t('sell.form.details.general.cabType')}
-              name='general.cabType'
+              name="general.cabType"
               value={formData.general.cabType}
               required={true}
               error={errors?.general?.cabType}
@@ -192,8 +192,8 @@ const Details = ({ formData, handleChange, options, errors }: DetailsProps) => {
 
             <TextInput
               label={t('sell.form.details.general.tireTrackSize')}
-              name='general.tireTrackSize'
-              placeholder='e.g., 600mm'
+              name="general.tireTrackSize"
+              placeholder="e.g., 600mm"
               value={formData.general.tireTrackSize || ''}
               required={true}
               error={errors?.general?.tireTrackSize}
@@ -202,7 +202,7 @@ const Details = ({ formData, handleChange, options, errors }: DetailsProps) => {
             {/* Suspension Type */}
             <RadioGroup
               label={t('sell.form.details.general.suspensionType')}
-              name='general.suspension'
+              name="general.suspension"
               value={formData.general.suspension || ''}
               required={true}
               error={errors?.general?.suspension}
@@ -214,25 +214,25 @@ const Details = ({ formData, handleChange, options, errors }: DetailsProps) => {
           </div>
           <div>
             {/* Top Row */}
-            <div className='flex items-center justify-between mb-2'>
-              <label className='text-lg font-bold  tracking-wide  dark:text-slate-300'>
+            <div className="mb-2 flex items-center justify-between">
+              <label className="text-lg font-bold tracking-wide dark:text-slate-300">
                 {t('sell.form.details.general.tireTrackWear')}
-                <span className='ml-1 text-red-500'>*</span>
+                <span className="ml-1 text-red-500">*</span>
               </label>
 
-              <span className='text-orange-500 font-semibold'>
+              <span className="font-semibold text-orange-500">
                 {formData.general.tireTrackWear || '0'}%
               </span>
             </div>
 
             {/* Slider */}
-            <div className='relative w-full mb-2'>
+            <div className="relative mb-2 w-full">
               {/* Background Track */}
-              <div className='absolute top-1/2 -translate-y-1/2 h-2 w-full rounded-full bg-slate-200 dark:bg-slate-700'></div>
+              <div className="absolute top-1/2 h-2 w-full -translate-y-1/2 rounded-full bg-slate-200 dark:bg-slate-700"></div>
 
               {/* Filled Track */}
               <div
-                className='absolute top-1/2 -translate-y-1/2 h-2 rounded-full bg-orange-500 transition-all duration-200'
+                className="absolute top-1/2 h-2 -translate-y-1/2 rounded-full bg-orange-500 transition-all duration-200"
                 style={{
                   width: `${formData.general.tireTrackWear || '0'}%`,
                 }}
@@ -240,31 +240,23 @@ const Details = ({ formData, handleChange, options, errors }: DetailsProps) => {
 
               {/* Range Input */}
               <input
-                type='range'
-                min='0'
-                max='100'
-                name='general.tireTrackWear'
+                type="range"
+                min="0"
+                max="100"
+                name="general.tireTrackWear"
                 value={formData.general.tireTrackWear || '0'}
                 onChange={handleChange}
-                className='relative z-10 w-full appearance-none bg-transparent cursor-pointer
-        [&::-webkit-slider-thumb]:appearance-none
-        [&::-webkit-slider-thumb]:h-5
-        [&::-webkit-slider-thumb]:w-5
-        [&::-webkit-slider-thumb]:rounded-full
-        [&::-webkit-slider-thumb]:bg-white
-        [&::-webkit-slider-thumb]:border
-        [&::-webkit-slider-thumb]:border-slate-300
-        [&::-webkit-slider-thumb]:shadow'
+                className="relative z-10 w-full cursor-pointer appearance-none bg-transparent [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:border [&::-webkit-slider-thumb]:border-slate-300 [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:shadow"
               />
             </div>
 
             {/* Bottom Labels */}
-            <div className='flex justify-between text-sm text-slate-500 dark:text-slate-400'>
+            <div className="flex justify-between text-sm text-slate-500 dark:text-slate-400">
               <span>0%</span>
               <span>100%</span>
             </div>
             {errors?.general?.tireTrackWear && (
-              <p className='mt-1 text-xs text-red-600 dark:text-red-400'>
+              <p className="mt-1 text-xs text-red-600 dark:text-red-400">
                 {errors.general?.tireTrackWear}
               </p>
             )}
@@ -272,18 +264,18 @@ const Details = ({ formData, handleChange, options, errors }: DetailsProps) => {
         </section>
 
         {/* Condition OverView */}
-        <section className='sell-details-form'>
-          <h4 className='mb-6 border-b border-slate-200 pb-3 text-xl font-bold uppercase tracking-wider text-slate-900 dark:border-slate-700 dark:text-slate-300'>
+        <section className="sell-details-form">
+          <h4 className="mb-6 border-b border-slate-200 pb-3 text-xl font-bold uppercase tracking-wider text-slate-900 dark:border-slate-700 dark:text-slate-300">
             {t('sell.form.details.condition.title')}
           </h4>
 
-          <div className='grid grid-cols-1 gap-6 md:grid-cols-2'>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             {/* Overall Condition */}
 
             <SelectInput
-              placeholder='e.g., Good'
+              placeholder="e.g., Good"
               label={t('sell.form.details.condition.overall')}
-              name='condition.overallCondition'
+              name="condition.overallCondition"
               value={formData.condition.overallCondition}
               required={true}
               error={errors?.condition?.overallCondition}
@@ -293,9 +285,9 @@ const Details = ({ formData, handleChange, options, errors }: DetailsProps) => {
             {/* Exterior Color */}
 
             <SelectInput
-              placeholder='e.g., CAT yellow'
+              placeholder="e.g., CAT yellow"
               label={t('sell.form.details.condition.exterior')}
-              name='condition.exteriorColor'
+              name="condition.exteriorColor"
               value={formData.condition.exteriorColor}
               required={true}
               error={errors?.condition?.exteriorColor}
@@ -306,9 +298,9 @@ const Details = ({ formData, handleChange, options, errors }: DetailsProps) => {
             {/* Interior color */}
 
             <SelectInput
-              placeholder='e.g., Black/Grey'
+              placeholder="e.g., Black/Grey"
               label={t('sell.form.details.condition.interior')}
-              name='condition.interiorColor'
+              name="condition.interiorColor"
               value={formData.condition.interiorColor}
               required={true}
               error={errors?.condition?.interiorColor}
@@ -320,7 +312,7 @@ const Details = ({ formData, handleChange, options, errors }: DetailsProps) => {
 
             <RadioGroup
               label={t('sell.form.details.condition.jumpStart')}
-              name='condition.jumpStartRequired'
+              name="condition.jumpStartRequired"
               value={formData.condition.jumpStartRequired || ''}
               required={true}
               error={errors?.condition?.jumpStartRequired}
@@ -331,7 +323,7 @@ const Details = ({ formData, handleChange, options, errors }: DetailsProps) => {
             {/* Batteries Hold charge */}
             <RadioGroup
               label={t('sell.form.details.condition.batteriesHoldCharge')}
-              name='condition.batteriesHoldCharge'
+              name="condition.batteriesHoldCharge"
               value={formData.condition.batteriesHoldCharge || ''}
               required={true}
               error={errors?.condition?.batteriesHoldCharge}
@@ -342,7 +334,7 @@ const Details = ({ formData, handleChange, options, errors }: DetailsProps) => {
             {/* Parking Brake Works*/}
             <RadioGroup
               label={t('sell.form.details.condition.parkingBrake')}
-              name='condition.parkingBrakeWorks'
+              name="condition.parkingBrakeWorks"
               value={formData.condition.parkingBrakeWorks || ''}
               required={true}
               error={errors?.condition?.parkingBrakeWorks}
@@ -353,18 +345,18 @@ const Details = ({ formData, handleChange, options, errors }: DetailsProps) => {
         </section>
 
         {/*Engine Condition */}
-        <section className='sell-details-form'>
-          <h4 className='mb-6 border-b border-slate-200 pb-3 text-xl font-bold uppercase tracking-wider text-slate-900 dark:border-slate-700 dark:text-slate-300'>
+        <section className="sell-details-form">
+          <h4 className="mb-6 border-b border-slate-200 pb-3 text-xl font-bold uppercase tracking-wider text-slate-900 dark:border-slate-700 dark:text-slate-300">
             {t('sell.form.details.engine.title')}
           </h4>
 
-          <div className='grid grid-cols-1 gap-6 md:grid-cols-2'>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             {/* Overall Condition */}
 
             <SelectInput
-              placeholder='e.g., Clean'
+              placeholder="e.g., Clean"
               label={t('sell.form.details.engine.overall')}
-              name='engineCondition.overAllCondition'
+              name="engineCondition.overAllCondition"
               value={formData.engineCondition.overAllCondition}
               required={true}
               error={errors?.engineCondition?.overAllCondition}
@@ -375,7 +367,7 @@ const Details = ({ formData, handleChange, options, errors }: DetailsProps) => {
 
             <RadioGroup
               label={t('sell.form.details.engine.oilLevel')}
-              name='engineCondition.oilLevelOk'
+              name="engineCondition.oilLevelOk"
               value={formData.engineCondition.oilLevelOk || ''}
               required={true}
               error={errors?.engineCondition?.oilLevelOk}
@@ -387,7 +379,7 @@ const Details = ({ formData, handleChange, options, errors }: DetailsProps) => {
 
             <RadioGroup
               label={t('sell.form.details.engine.anyLeaks')}
-              name='engineCondition.anyLeaks'
+              name="engineCondition.anyLeaks"
               value={formData.engineCondition?.anyLeaks || ''}
               required={true}
               error={errors?.engineCondition?.anyLeaks}
@@ -398,9 +390,9 @@ const Details = ({ formData, handleChange, options, errors }: DetailsProps) => {
             {/* Coolant level*/}
 
             <SelectInput
-              placeholder='e.g., Good'
+              placeholder="e.g., Good"
               label={t('sell.form.details.engine.coolantLevel')}
-              name='engineCondition.coolantLevel'
+              name="engineCondition.coolantLevel"
               value={formData.engineCondition.coolantLevel || ''}
               required={true}
               error={errors?.engineCondition?.coolantLevel}
@@ -410,9 +402,9 @@ const Details = ({ formData, handleChange, options, errors }: DetailsProps) => {
 
             {/* Smoke Color */}
             <SelectInput
-              placeholder='e.g., Black'
+              placeholder="e.g., Black"
               label={t('sell.form.details.engine.smokeColor')}
-              name='engineCondition.smokeColor'
+              name="engineCondition.smokeColor"
               value={formData.engineCondition.smokeColor || ''}
               required={true}
               error={errors?.engineCondition?.smokeColor}
@@ -423,7 +415,7 @@ const Details = ({ formData, handleChange, options, errors }: DetailsProps) => {
             {/* Engine Noise*/}
             <RadioGroup
               label={t('sell.form.details.engine.engineNoise')}
-              name='engineCondition.engineNoise'
+              name="engineCondition.engineNoise"
               value={formData.engineCondition.engineNoise || ''}
               required={true}
               error={errors?.engineCondition?.engineNoise}
@@ -432,9 +424,9 @@ const Details = ({ formData, handleChange, options, errors }: DetailsProps) => {
             />
             {/* Cold Start Quality*/}
             <SelectInput
-              placeholder='e.g., Black'
+              placeholder="e.g., Black"
               label={t('sell.form.details.engine.coldStartQuality')}
-              name='engineCondition.coldStartQuality'
+              name="engineCondition.coldStartQuality"
               value={formData.engineCondition.coldStartQuality}
               required={true}
               error={errors?.engineCondition?.coldStartQuality}
@@ -445,7 +437,7 @@ const Details = ({ formData, handleChange, options, errors }: DetailsProps) => {
             {/* Check Engine Light*/}
             <RadioGroup
               label={t('sell.form.details.engine.checkEngineLight')}
-              name='engineCondition.checkEngineLight'
+              name="engineCondition.checkEngineLight"
               value={formData.engineCondition.checkEngineLight || ''}
               required={true}
               error={errors?.engineCondition?.checkEngineLight}
@@ -455,18 +447,18 @@ const Details = ({ formData, handleChange, options, errors }: DetailsProps) => {
           </div>
         </section>
         {/*Hydraulics*/}
-        <section className='sell-details-form'>
-          <h4 className='mb-6 border-b border-slate-200 pb-3 text-xl font-bold uppercase tracking-wider text-slate-900 dark:border-slate-700 dark:text-slate-300'>
+        <section className="sell-details-form">
+          <h4 className="mb-6 border-b border-slate-200 pb-3 text-xl font-bold uppercase tracking-wider text-slate-900 dark:border-slate-700 dark:text-slate-300">
             {t('sell.form.details.hydraulics.title')}
           </h4>
 
-          <div className='grid grid-cols-1 gap-6 md:grid-cols-2'>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             {/* Hydraulic Pump Conditio */}
 
             <SelectInput
-              placeholder='e.g., Good'
+              placeholder="e.g., Good"
               label={t('sell.form.details.hydraulics.hydraulicPump')}
-              name='hydraulics.hydraulicPumpCondition'
+              name="hydraulics.hydraulicPumpCondition"
               value={formData.hydraulics.hydraulicPumpCondition}
               required={true}
               error={errors?.hydraulics?.hydraulicPumpCondition}
@@ -477,7 +469,7 @@ const Details = ({ formData, handleChange, options, errors }: DetailsProps) => {
 
             <RadioGroup
               label={t('sell.form.details.hydraulics.cylinderLeaks')}
-              name='hydraulics.cylinderLeaks'
+              name="hydraulics.cylinderLeaks"
               value={formData.hydraulics.cylinderLeaks || ''}
               required={true}
               error={errors?.hydraulics?.cylinderLeaks}
@@ -488,9 +480,9 @@ const Details = ({ formData, handleChange, options, errors }: DetailsProps) => {
             {/* Hose Condition */}
 
             <SelectInput
-              placeholder='e.g., Good-minor wear'
+              placeholder="e.g., Good-minor wear"
               label={t('sell.form.details.hydraulics.hoseCondition')}
-              name='hydraulics.hoseCondition'
+              name="hydraulics.hoseCondition"
               value={formData.hydraulics?.hoseCondition || ''}
               required={true}
               error={errors?.hydraulics?.hoseCondition}
@@ -501,9 +493,9 @@ const Details = ({ formData, handleChange, options, errors }: DetailsProps) => {
             {/* Hydraulic Response*/}
 
             <SelectInput
-              placeholder='e.g., Good'
+              placeholder="e.g., Good"
               label={t('sell.form.details.hydraulics.hydraulicResponse')}
-              name='hydraulics.hydraulicResponse'
+              name="hydraulics.hydraulicResponse"
               value={formData.hydraulics.hydraulicResponse || ''}
               required={true}
               error={errors?.hydraulics?.hydraulicResponse}
@@ -514,7 +506,7 @@ const Details = ({ formData, handleChange, options, errors }: DetailsProps) => {
             {/* Hydraulics Damage*/}
             <RadioGroup
               label={t('sell.form.details.hydraulics.hydraulicDamage')}
-              name='hydraulics.hydraulicsDamage'
+              name="hydraulics.hydraulicsDamage"
               value={formData.hydraulics.hydraulicsDamage || ''}
               required={true}
               error={errors?.hydraulics?.hydraulicsDamage}
@@ -524,17 +516,17 @@ const Details = ({ formData, handleChange, options, errors }: DetailsProps) => {
           </div>
         </section>
         {/*Cab & Electronics*/}
-        <section className='sell-details-form'>
-          <h4 className='mb-6 border-b border-slate-200 pb-3 text-xl font-bold uppercase tracking-wider text-slate-900 dark:border-slate-700 dark:text-slate-300'>
+        <section className="sell-details-form">
+          <h4 className="mb-6 border-b border-slate-200 pb-3 text-xl font-bold uppercase tracking-wider text-slate-900 dark:border-slate-700 dark:text-slate-300">
             {t('sell.form.details.cabElectronics.title')}
           </h4>
 
-          <div className='grid grid-cols-1 gap-6 md:grid-cols-2'>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             {/* Dashboard Functional */}
 
             <RadioGroup
               label={t('sell.form.details.cabElectronics.dashboardFunctional')}
-              name='cabElectronics.dashboardFunctional'
+              name="cabElectronics.dashboardFunctional"
               value={formData.cabElectronics.dashboardFunctional}
               required={true}
               error={errors?.cabElectronics?.dashboardFunctional}
@@ -545,7 +537,7 @@ const Details = ({ formData, handleChange, options, errors }: DetailsProps) => {
 
             <RadioGroup
               label={t('sell.form.details.cabElectronics.acHeater')}
-              name='cabElectronics.acHeaterWorking'
+              name="cabElectronics.acHeaterWorking"
               value={formData.cabElectronics.acHeaterWorking || ''}
               required={true}
               error={errors?.cabElectronics?.acHeaterWorking}
@@ -557,7 +549,7 @@ const Details = ({ formData, handleChange, options, errors }: DetailsProps) => {
 
             <RadioGroup
               label={t('sell.form.details.cabElectronics.displayErrors')}
-              name='cabElectronics.displayErrors'
+              name="cabElectronics.displayErrors"
               value={formData.cabElectronics.displayErrors || ''}
               required={true}
               error={errors?.cabElectronics?.displayErrors}
@@ -568,9 +560,9 @@ const Details = ({ formData, handleChange, options, errors }: DetailsProps) => {
             {/* Seat Condition*/}
 
             <SelectInput
-              placeholder='e.g., Good-minor wear'
+              placeholder="e.g., Good-minor wear"
               label={t('sell.form.details.cabElectronics.seatCondition')}
-              name='cabElectronics.seatCondition'
+              name="cabElectronics.seatCondition"
               value={formData.cabElectronics.seatCondition || ''}
               required={true}
               error={errors?.cabElectronics?.seatCondition}
@@ -581,7 +573,7 @@ const Details = ({ formData, handleChange, options, errors }: DetailsProps) => {
             {/* Controls Working*/}
             <RadioGroup
               label={t('sell.form.details.cabElectronics.controlsWorking')}
-              name='cabElectronics.controlsWorking'
+              name="cabElectronics.controlsWorking"
               value={formData.cabElectronics.controlsWorking || ''}
               required={true}
               error={errors?.cabElectronics?.controlsWorking}
@@ -592,7 +584,7 @@ const Details = ({ formData, handleChange, options, errors }: DetailsProps) => {
             {/* Lights Working*/}
             <RadioGroup
               label={t('sell.form.details.cabElectronics.lightsWorking')}
-              name='cabElectronics.lightsWorking'
+              name="cabElectronics.lightsWorking"
               value={formData.cabElectronics.lightsWorking || ''}
               required={true}
               error={errors?.cabElectronics?.lightsWorking}
@@ -603,7 +595,7 @@ const Details = ({ formData, handleChange, options, errors }: DetailsProps) => {
             {/* Sensors Working*/}
             <RadioGroup
               label={t('sell.form.details.cabElectronics.sensorsWorking')}
-              name='cabElectronics.sensorsWorking'
+              name="cabElectronics.sensorsWorking"
               value={formData.cabElectronics.sensorsWorking || ''}
               required={true}
               error={errors?.cabElectronics?.sensorsWorking}

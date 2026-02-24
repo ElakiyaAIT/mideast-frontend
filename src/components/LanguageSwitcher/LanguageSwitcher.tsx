@@ -26,14 +26,14 @@ export const LanguageSwitcher = (): JSX.Element => {
   };
 
   return (
-    <div className='flex items-center gap-2'>
+    <div className="flex items-center gap-2">
       {SUPPORTED_LANGUAGES.map((lang) => (
         <Button
           key={lang}
           variant={currentLanguage === lang ? 'primary' : 'outline'}
-          size='sm'
+          size="sm"
           onClick={() => handleLanguageChange(lang)}
-          className='min-w-[60px]'
+          className="min-w-[60px]"
         >
           {lang.toUpperCase()}
         </Button>

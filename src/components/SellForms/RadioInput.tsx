@@ -33,24 +33,24 @@ const RadioGroup = ({
 }: RadioGroupProps) => {
   return (
     <div>
-      <label className='mb-4 block text-lg font-bold tracking-wide  dark:text-slate-300'>
+      <label className="mb-4 block text-lg font-bold tracking-wide dark:text-slate-300">
         {label}
-        {required && <span className='ml-1 text-red-500'>*</span>}
+        {required && <span className="ml-1 text-red-500">*</span>}
       </label>
 
-      <div className='flex gap-6 flex-wrap'>
+      <div className="flex flex-wrap gap-6">
         {options.map((option) => (
           <label
             key={option.id}
-            className='flex items-center text-slate-700 dark:text-slate-300 cursor-pointer'
+            className="flex cursor-pointer items-center text-slate-700 dark:text-slate-300"
           >
             <input
-              type='radio'
+              type="radio"
               name={name}
               value={option.value}
               checked={value === option.value}
               onChange={onChange}
-              className='mr-2 accent-primary'
+              className="mr-2 accent-primary"
               data-error={!!error}
             />
             {formatLabel(option.label || option.value)}
@@ -58,7 +58,7 @@ const RadioGroup = ({
         ))}
         {/* {error && <p className='mt-1 text-xs text-red-600 dark:text-red-400'>{error}</p>} */}
       </div>
-      {error && <p className='mt-1 text-xs text-red-600 dark:text-red-400'>{error}</p>}
+      {error && <p className="mt-1 text-xs text-red-600 dark:text-red-400">{error}</p>}
     </div>
   );
 };

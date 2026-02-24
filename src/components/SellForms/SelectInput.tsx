@@ -30,9 +30,9 @@ export const SelectInput = ({
 
   return (
     <div>
-      <label className='mb-2 block text-lg font-bold  tracking-wide  dark:text-slate-300'>
+      <label className="mb-2 block text-lg font-bold tracking-wide dark:text-slate-300">
         {label}
-        {required && <span className='ml-1 text-red-500'>*</span>}
+        {required && <span className="ml-1 text-red-500">*</span>}
       </label>
 
       <select
@@ -40,12 +40,9 @@ export const SelectInput = ({
         value={value || ''}
         onChange={onChange}
         data-error={!!error}
-        className={`w-full rounded-lg border border-slate-200 bg-slate-10 p-3 focus:border-primary focus:ring-primary dark:border-slate-700 dark:bg-slate-900
-        ${isEmpty ? 'text-slate-400' : 'text-slate-900 dark:text-white'}
-        ${error && 'border-red-500 focus:ring-red-500 focus:border-red-500'}
-       `}
+        className={`bg-slate-10 w-full rounded-lg border border-slate-200 p-3 focus:border-primary focus:ring-primary dark:border-slate-700 dark:bg-slate-900 ${isEmpty ? 'text-slate-400' : 'text-slate-900 dark:text-white'} ${error && 'border-red-500 focus:border-red-500 focus:ring-red-500'} `}
       >
-        <option value='' disabled hidden>
+        <option value="" disabled hidden>
           {placeholder || `Select ${label}`}
         </option>
 
@@ -55,7 +52,7 @@ export const SelectInput = ({
           </option>
         ))}
       </select>
-      {error && <p className='mt-1 text-sm text-red-500'>{error}</p>}
+      {error && <p className="mt-1 text-sm text-red-500">{error}</p>}
     </div>
   );
 };

@@ -32,11 +32,11 @@ export const ConditionPill: React.FC<ConditionPillProps> = ({ label, status }) =
 
   return (
     <div
-      className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wide ${styles.wrapper}`}
+      className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-bold uppercase tracking-wide ${styles.wrapper}`}
     >
       {/* Icon Circle */}
       <div className={`flex h-5 w-5 items-center justify-center rounded-full ${styles.circle}`}>
-        <span className='material-symbols-outlined !text-[14px]'>{styles.icon}</span>
+        <span className="material-symbols-outlined !text-[14px]">{styles.icon}</span>
       </div>
 
       {label}

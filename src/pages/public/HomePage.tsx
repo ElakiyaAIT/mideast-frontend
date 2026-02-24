@@ -89,29 +89,29 @@ const HomePage = (): JSX.Element => {
       <Header />
 
       {/* Hero Section */}
-      <section className='relative bg-banner dark:bg-slate-900 overflow-hidden'>
-        <div className='max-w-7xl mx-auto px-4 md:px-8 py-20 flex flex-col lg:flex-row items-center'>
-          <div className='w-full lg:w-1/2 z-10 space-y-6'>
-            <h1 className='text-4xl lg:text-6xl font-display font-bold text-slate-800 dark:text-white leading-[1.1]'>
+      <section className="bg-banner relative overflow-hidden dark:bg-slate-900">
+        <div className="mx-auto flex max-w-7xl flex-col items-center px-4 py-20 md:px-8 lg:flex-row">
+          <div className="z-10 w-full space-y-6 lg:w-1/2">
+            <h1 className="font-display text-4xl font-bold leading-[1.1] text-slate-800 dark:text-white lg:text-6xl">
               {t('home.hero.title')}
             </h1>
-            <p className='text-lg text-slate-600 dark:text-slate-400 max-w-xl'>
+            <p className="max-w-xl text-lg text-slate-600 dark:text-slate-400">
               {t('home.hero.subtitle')}
             </p>
             <button
               onClick={() => navigate(ROUTES.BUY)}
-              className='flex items-center gap-2 px-8 py-4 bg-primary text-white font-bold uppercase rounded-full hover:bg-[#1e293b] shadow-xl shadow-primary/20 transition-all group'
+              className="group flex items-center gap-2 rounded-full bg-primary px-8 py-4 font-bold uppercase text-white shadow-xl shadow-primary/20 transition-all hover:bg-[#1e293b]"
             >
               {t('home.hero.exploreEquipment')}
-              <i className='material-icons-outlined bg-white text-primary rounded-full p-1 text-md group-hover:translate-x-1 transition-transform'>
+              <i className="material-icons-outlined text-md rounded-full bg-white p-1 text-primary transition-transform group-hover:translate-x-1">
                 arrow_forward
               </i>
             </button>
           </div>
-          <div className='banner-transparent w-full lg:w-1/2 mt-12 lg:mt-0 relative'>
+          <div className="banner-transparent relative mt-12 w-full lg:mt-0 lg:w-1/2">
             <img
-              alt='Large yellow bulldozer'
-              className='relative z-10 w-full transform lg:scale-110 slide-bottom'
+              alt="Large yellow bulldozer"
+              className="slide-bottom relative z-10 w-full transform lg:scale-110"
               src={heavyMachinery}
             />
           </div>
@@ -119,15 +119,15 @@ const HomePage = (): JSX.Element => {
       </section>
 
       {/* Upcoming Auctions */}
-      <section className='py-20 bg-white dark:bg-gray-900'>
-        <div className='max-w-7xl mx-auto px-4 md:px-8 text-center mb-12'>
-          <h2 className='text-4xl font-display font-bold text-gray-900 dark:text-white uppercase'>
+      <section className="bg-white py-20 dark:bg-gray-900">
+        <div className="mx-auto mb-12 max-w-7xl px-4 text-center md:px-8">
+          <h2 className="font-display text-4xl font-bold uppercase text-gray-900 dark:text-white">
             {t('home.auctions.title')}
           </h2>
-          <div className='w-16 h-1 bg-primary mx-auto mt-4'></div>
+          <div className="mx-auto mt-4 h-1 w-16 bg-primary"></div>
         </div>
         {latestAuction && (
-          <div className='max-w-6xl mx-auto px-4'>
+          <div className="mx-auto max-w-6xl px-4">
             <AuctionCard
               auction={{
                 ...latestAuction,
@@ -154,18 +154,18 @@ const HomePage = (): JSX.Element => {
 
       {/* Browse Equipment Categories */}
       {/* Integrated equpipment categories, need image to get and set  */}
-      <section className='py-20 equpment-bg'>
-        <div className='max-w-7xl mx-auto px-4 md:px-8'>
-          <div className='text-center mb-12'>
-            <p className='text-white/80 font-bold text-xs uppercase tracking-widest mb-2'>
+      <section className="equpment-bg py-20">
+        <div className="mx-auto max-w-7xl px-4 md:px-8">
+          <div className="mb-12 text-center">
+            <p className="mb-2 text-xs font-bold uppercase tracking-widest text-white/80">
               {t('home.categories.reasons')}
             </p>
-            <h2 className='text-4xl font-display font-bold text-white uppercase'>
+            <h2 className="font-display text-4xl font-bold uppercase text-white">
               {t('home.categories.title')}
             </h2>
-            <div className='w-16 h-1 bg-white mx-auto mt-4'></div>
+            <div className="mx-auto mt-4 h-1 w-16 bg-white"></div>
           </div>
-          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {categoryData?.items.slice(0, 6).map((category) => {
               const image = CATEGORY_IMAGE_MAP[category.slug] ?? excavatorImg; // fallback
 
@@ -182,10 +182,10 @@ const HomePage = (): JSX.Element => {
             })}
           </div>
 
-          <div className='mt-12 text-center'>
-            <button className='px-10 py-4 bg-white text-primary font-bold uppercase rounded-full hover:bg-slate-50 transition-all group flex items-center gap-2 mx-auto'>
+          <div className="mt-12 text-center">
+            <button className="group mx-auto flex items-center gap-2 rounded-full bg-white px-10 py-4 font-bold uppercase text-primary transition-all hover:bg-slate-50">
               {t('home.categories.viewAllCategory')}
-              <i className='material-icons-outlined text-md bg-primary text-white rounded-full p-1 group-hover:translate-x-1 transition-transform'>
+              <i className="material-icons-outlined text-md rounded-full bg-primary p-1 text-white transition-transform group-hover:translate-x-1">
                 arrow_forward
               </i>
             </button>
@@ -194,17 +194,17 @@ const HomePage = (): JSX.Element => {
       </section>
 
       {/* Support Service */}
-      <section className='py-24 bg-white dark:bg-gray-900'>
-        <div className='max-w-7xl mx-auto px-4 md:px-8 flex flex-col lg:flex-row items-center gap-16'>
-          <div className='w-full lg:w-1/2 relative'>
-            <img alt='Construction worker support' src={supportImg} />
+      <section className="bg-white py-24 dark:bg-gray-900">
+        <div className="mx-auto flex max-w-7xl flex-col items-center gap-16 px-4 md:px-8 lg:flex-row">
+          <div className="relative w-full lg:w-1/2">
+            <img alt="Construction worker support" src={supportImg} />
           </div>
-          <div className='w-full lg:w-1/2 space-y-8'>
-            <h2 className='text-4xl font-display font-extrabold text-slate-900 dark:text-white leading-tight uppercase'>
+          <div className="w-full space-y-8 lg:w-1/2">
+            <h2 className="font-display text-4xl font-extrabold uppercase leading-tight text-slate-900 dark:text-white">
               {t('home.support.subtitle')}
             </h2>
-            <div className='w-16 h-1 bg-primary'></div>
-            <p className='text-lg text-slate-600 dark:text-slate-400'>
+            <div className="h-1 w-16 bg-primary"></div>
+            <p className="text-lg text-slate-600 dark:text-slate-400">
               {t('home.support.description')}
             </p>
           </div>
@@ -212,29 +212,29 @@ const HomePage = (): JSX.Element => {
       </section>
 
       {/* Latest Equipment */}
-      <section className='py-20 bg-slate-50 dark:bg-slate-900/50'>
-        <div className='max-w-7xl mx-auto px-4 md:px-8 text-center mb-16'>
-          <p className='text-primary font-bold text-xs uppercase tracking-widest mb-2'>
+      <section className="bg-slate-50 py-20 dark:bg-slate-900/50">
+        <div className="mx-auto mb-16 max-w-7xl px-4 text-center md:px-8">
+          <p className="mb-2 text-xs font-bold uppercase tracking-widest text-primary">
             {t('home.products.title')}
           </p>
-          <h2 className='text-4xl font-display font-bold text-gray-900 dark:text-white uppercase'>
+          <h2 className="font-display text-4xl font-bold uppercase text-gray-900 dark:text-white">
             {t('home.products.subtitle')}
           </h2>
-          <div className='w-16 h-1 bg-primary mx-auto my-4'></div>
-          <p className='text-slate-500 max-w-2xl mx-auto'>{t('home.products.description')}</p>
+          <div className="mx-auto my-4 h-1 w-16 bg-primary"></div>
+          <p className="mx-auto max-w-2xl text-slate-500">{t('home.products.description')}</p>
         </div>
-        <div className='max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 md:grid-cols-2 md:px-8 lg:grid-cols-3">
           {equipment?.map((equipment) => (
             <ProductCard key={equipment._id} product={equipment} />
           ))}
         </div>
-        <div className='mt-16 text-center'>
+        <div className="mt-16 text-center">
           <button
             onClick={() => navigate(ROUTES.BUY)}
-            className='flex items-center gap-2 px-8 py-4 bg-primary text-white font-bold uppercase rounded-full hover:bg-[#1e293b] shadow-xl shadow-primary/20 transition-all group flex items-center gap-2 mx-auto'
+            className="group mx-auto flex items-center gap-2 rounded-full bg-primary px-8 py-4 font-bold uppercase text-white shadow-xl shadow-primary/20 transition-all hover:bg-[#1e293b]"
           >
             {t('home.products.viewEquipments')}
-            <i className='material-icons-outlined bg-white text-primary rounded-full p-1 text-md group-hover:translate-x-1 transition-transform'>
+            <i className="material-icons-outlined text-md rounded-full bg-white p-1 text-primary transition-transform group-hover:translate-x-1">
               arrow_forward
             </i>
           </button>
@@ -242,55 +242,55 @@ const HomePage = (): JSX.Element => {
       </section>
 
       {/* Services Section */}
-      <section className='py-24 bg-services text-white relative overflow-hidden'>
-        <div className='max-w-7xl mx-auto px-4 md:px-8 relative z-10'>
-          <div className='text-center mb-16'>
-            <p className='text-primary font-bold text-xs uppercase tracking-widest mb-2'>
+      <section className="bg-services relative overflow-hidden py-24 text-white">
+        <div className="relative z-10 mx-auto max-w-7xl px-4 md:px-8">
+          <div className="mb-16 text-center">
+            <p className="mb-2 text-xs font-bold uppercase tracking-widest text-primary">
               {t('home.services.title')}
             </p>
-            <h2 className='text-4xl font-display font-bold text-white uppercase max-w-2xl mx-auto'>
+            <h2 className="mx-auto max-w-2xl font-display text-4xl font-bold uppercase text-white">
               {t('home.services.subtitle')}
             </h2>
-            <div className='w-16 h-1 bg-primary mx-auto my-4'></div>
+            <div className="mx-auto my-4 h-1 w-16 bg-primary"></div>
           </div>
-          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
-            <div className='bg-white p-8 rounded-3xl flex flex-col items-center text-center space-y-4'>
-              <img src={buyIcon} alt='Buy' />
-              <h3 className='text-gray-900 font-display font-bold text-xl uppercase'>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+            <div className="flex flex-col items-center space-y-4 rounded-3xl bg-white p-8 text-center">
+              <img src={buyIcon} alt="Buy" />
+              <h3 className="font-display text-xl font-bold uppercase text-gray-900">
                 {t('home.services.buy.title')}
               </h3>
-              <p className='text-slate-600 text-sm'>{t('home.services.buy.subtitle')}</p>
-              <button className='bg-slate-900 text-white text-xs font-bold px-6 py-2 rounded-3xl uppercase hover:bg-primary transition-colors'>
+              <p className="text-sm text-slate-600">{t('home.services.buy.subtitle')}</p>
+              <button className="rounded-3xl bg-slate-900 px-6 py-2 text-xs font-bold uppercase text-white transition-colors hover:bg-primary">
                 {t('home.services.buy.learnMore')}
               </button>
             </div>
-            <div className='bg-white p-8 rounded-3xl flex flex-col items-center text-center space-y-4'>
-              <img src={consignmentIcon} alt='Consignment' />
-              <h3 className='text-gray-900 font-display font-bold text-xl uppercase'>
+            <div className="flex flex-col items-center space-y-4 rounded-3xl bg-white p-8 text-center">
+              <img src={consignmentIcon} alt="Consignment" />
+              <h3 className="font-display text-xl font-bold uppercase text-gray-900">
                 {t('home.services.consignment.title')}
               </h3>
-              <p className='text-slate-600 text-sm'>{t('home.services.consignment.subtitle')}</p>
-              <button className='bg-slate-900 text-white text-xs font-bold px-6 py-2 rounded-3xl uppercase hover:bg-primary transition-colors'>
+              <p className="text-sm text-slate-600">{t('home.services.consignment.subtitle')}</p>
+              <button className="rounded-3xl bg-slate-900 px-6 py-2 text-xs font-bold uppercase text-white transition-colors hover:bg-primary">
                 {t('home.services.consignment.learnMore')}
               </button>
             </div>
-            <div className='bg-white p-8 rounded-3xl flex flex-col items-center text-center space-y-4'>
-              <img src={auctionIcon} alt='Auction' />
-              <h3 className='text-gray-900 font-display font-bold text-xl uppercase'>
+            <div className="flex flex-col items-center space-y-4 rounded-3xl bg-white p-8 text-center">
+              <img src={auctionIcon} alt="Auction" />
+              <h3 className="font-display text-xl font-bold uppercase text-gray-900">
                 {t('home.services.auctions.title')}
               </h3>
-              <p className='text-slate-600 text-sm'>{t('home.services.auctions.subtitle')}</p>
-              <button className='bg-slate-900 text-white text-xs font-bold px-6 py-2 rounded-3xl uppercase hover:bg-primary transition-colors'>
+              <p className="text-sm text-slate-600">{t('home.services.auctions.subtitle')}</p>
+              <button className="rounded-3xl bg-slate-900 px-6 py-2 text-xs font-bold uppercase text-white transition-colors hover:bg-primary">
                 {t('home.services.auctions.learnMore')}
               </button>
             </div>
-            <div className='bg-white p-8 rounded-3xl flex flex-col items-center text-center space-y-4'>
-              <img src={locatorIcon} alt='EQ-Locators' />
-              <h3 className='text-brand-dark font-display font-bold text-xl uppercase'>
+            <div className="flex flex-col items-center space-y-4 rounded-3xl bg-white p-8 text-center">
+              <img src={locatorIcon} alt="EQ-Locators" />
+              <h3 className="font-display text-xl font-bold uppercase text-brand-dark">
                 {t('home.services.eqLocators.title')}
               </h3>
-              <p className='text-slate-600 text-sm'>{t('home.services.eqLocators.subtitle')}</p>
-              <button className='bg-slate-900 text-white text-xs font-bold px-6 py-2 rounded-3xl uppercase hover:bg-primary transition-colors'>
+              <p className="text-sm text-slate-600">{t('home.services.eqLocators.subtitle')}</p>
+              <button className="rounded-3xl bg-slate-900 px-6 py-2 text-xs font-bold uppercase text-white transition-colors hover:bg-primary">
                 {t('home.services.eqLocators.learnMore')}
               </button>
             </div>

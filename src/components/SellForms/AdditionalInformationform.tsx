@@ -100,22 +100,22 @@ const AdditionalInformation = ({
 
   return (
     <div>
-      <h3 className='mb-8 text-xl font-bold uppercase tracking-tight dark:text-slate-300'>
+      <h3 className="mb-8 text-xl font-bold uppercase tracking-tight dark:text-slate-300">
         {t('sell.form.additionalInformation.title')}
       </h3>
 
-      <div className='space-y-12'>
+      <div className="space-y-12">
         {/* EQUIPMENT IDENTITY DETAILS */}
-        <section className='sell-details-form'>
-          <h4 className='mb-6 border-b border-slate-200 pb-3 text-xl font-bold uppercase tracking-wider text-slate-900 dark:border-slate-700 dark:text-slate-300'>
+        <section className="sell-details-form">
+          <h4 className="mb-6 border-b border-slate-200 pb-3 text-xl font-bold uppercase tracking-wider text-slate-900 dark:border-slate-700 dark:text-slate-300">
             {t('sell.form.additionalInformation.equipmentIdentity.title')}
           </h4>
 
-          <div className='grid grid-cols-1 gap-6 md:grid-cols-2'>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             <TextInput
               label={t('sell.form.additionalInformation.equipmentIdentity.vinNumber')}
-              name='additionalInformation.equipmentIdentity.vinNumber'
-              placeholder='e.g., CAT0320GCXYZ123'
+              name="additionalInformation.equipmentIdentity.vinNumber"
+              placeholder="e.g., CAT0320GCXYZ123"
               value={formData.additionalInformation.equipmentIdentity.vinNumber || ''}
               required={true}
               error={errors?.additionalInformation?.equipmentIdentity?.vinNumber}
@@ -124,18 +124,18 @@ const AdditionalInformation = ({
 
             <TextInput
               label={t('sell.form.additionalInformation.equipmentIdentity.manufacturerDate')}
-              name='additionalInformation.equipmentIdentity.manufacturerDate'
-              placeholder='MM/DD/YYYY'
+              name="additionalInformation.equipmentIdentity.manufacturerDate"
+              placeholder="MM/DD/YYYY"
               value={formData.additionalInformation.equipmentIdentity.manufacturerDate || ''}
               required={true}
               error={errors?.additionalInformation?.equipmentIdentity?.manufacturerDate}
               onChange={handleChange}
-              type='date'
+              type="date"
             />
 
             <RadioGroup
               label={t('sell.form.additionalInformation.equipmentIdentity.modelYear')}
-              name='additionalInformation.equipmentIdentity.modelYearConfirmation'
+              name="additionalInformation.equipmentIdentity.modelYearConfirmation"
               value={formData.additionalInformation.equipmentIdentity.modelYearConfirmation || ''}
               required={true}
               error={errors?.additionalInformation?.equipmentIdentity?.modelYearConfirmation}
@@ -145,7 +145,7 @@ const AdditionalInformation = ({
 
             <RadioGroup
               label={t('sell.form.additionalInformation.equipmentIdentity.equipmentHasDamage')}
-              name='additionalInformation.equipmentIdentity.equipmentHasDamage'
+              name="additionalInformation.equipmentIdentity.equipmentHasDamage"
               value={formData.additionalInformation.equipmentIdentity.equipmentHasDamage || ''}
               required={true}
               error={errors?.additionalInformation?.equipmentIdentity?.equipmentHasDamage}
@@ -155,7 +155,7 @@ const AdditionalInformation = ({
 
             <RadioGroup
               label={t('sell.form.additionalInformation.equipmentIdentity.maintainenceRecords')}
-              name='additionalInformation.equipmentIdentity.maintainenceRecords'
+              name="additionalInformation.equipmentIdentity.maintainenceRecords"
               value={formData.additionalInformation.equipmentIdentity.maintainenceRecords || ''}
               required={true}
               error={errors?.additionalInformation?.equipmentIdentity?.maintainenceRecords}
@@ -165,7 +165,7 @@ const AdditionalInformation = ({
 
             <RadioGroup
               label={t('sell.form.additionalInformation.equipmentIdentity.warrantyAvailable')}
-              name='additionalInformation.equipmentIdentity.warrantyAvailable'
+              name="additionalInformation.equipmentIdentity.warrantyAvailable"
               value={formData.additionalInformation.equipmentIdentity.warrantyAvailable || ''}
               required={true}
               error={errors?.additionalInformation?.equipmentIdentity?.warrantyAvailable}
@@ -175,47 +175,40 @@ const AdditionalInformation = ({
           </div>
         </section>
 
-        <section className='sell-details-form'>
-          <h4 className='mb-6 border-b border-slate-200 pb-3 text-xl font-bold uppercase tracking-wider text-slate-900 dark:border-slate-700 dark:text-slate-300'>
+        <section className="sell-details-form">
+          <h4 className="mb-6 border-b border-slate-200 pb-3 text-xl font-bold uppercase tracking-wider text-slate-900 dark:border-slate-700 dark:text-slate-300">
             {t('sell.form.additionalInformation.location.title')}
           </h4>
 
-          <div className='grid grid-cols-1 gap-6 '>
+          <div className="grid grid-cols-1 gap-6">
             <TextInput
               label={t('sell.form.additionalInformation.location.address')}
-              name='additionalInformation.location.address'
-              placeholder='e.g., Milan, Italia'
+              name="additionalInformation.location.address"
+              placeholder="e.g., Milan, Italia"
               value={formData.additionalInformation.location.address || ''}
               required={true}
               error={errors?.additionalInformation?.location?.address}
               onChange={handleChange}
             />
 
-            <div
-              className='
-                        h-[350px] w-full overflow-hidden rounded-xl
-                        bg-slate-200 dark:bg-slate-800
-                        shadow-inner contrast-125 
-                        transition-all duration-700 hover:grayscale-0
-                    '
-            >
+            <div className="h-[350px] w-full overflow-hidden rounded-xl bg-slate-200 shadow-inner contrast-125 transition-all duration-700 hover:grayscale-0 dark:bg-slate-800">
               <iframe
-                title='Equipment Location Map'
+                title="Equipment Location Map"
                 src={getGoogleMapsEmbedUrl(formData.additionalInformation.location.address)}
-                className='w-full h-full border-0'
-                loading='lazy'
-                referrerPolicy='no-referrer-when-downgrade'
+                className="h-full w-full border-0"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
               />
             </div>
           </div>
         </section>
 
-        <section className='sell-details-form'>
-          <h4 className='mb-6 border-b border-slate-200 pb-3 text-xl font-bold uppercase tracking-wider text-slate-900 dark:border-slate-700 dark:text-slate-300'>
+        <section className="sell-details-form">
+          <h4 className="mb-6 border-b border-slate-200 pb-3 text-xl font-bold uppercase tracking-wider text-slate-900 dark:border-slate-700 dark:text-slate-300">
             {t('sell.form.additionalInformation.ownership.title')}
           </h4>
 
-          <div className='grid grid-cols-1 gap-6 md:grid-cols-2'>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             <DocumentUpload
               label={t('sell.form.additionalInformation.ownership.ownershipProof')}
               required={true}

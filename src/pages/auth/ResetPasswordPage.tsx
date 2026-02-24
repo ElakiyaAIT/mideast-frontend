@@ -45,58 +45,58 @@ const ResetPasswordPage = (): JSX.Element | null => {
   }
 
   return (
-    <div className='relative flex min-h-screen items-center justify-center overflow-hidden bg-white px-4 py-12 dark:bg-gray-950 sm:px-6 lg:px-8'>
-      <div className='pointer-events-none fixed inset-0 overflow-hidden'>
-        <div className='absolute right-0 top-0 h-[500px] w-[500px] -translate-y-1/2 translate-x-1/2 rounded-full bg-primary-500/10 blur-[100px]' />
-        <div className='absolute bottom-0 left-0 h-[500px] w-[500px] -translate-x-1/2 translate-y-1/2 rounded-full bg-primary-500/10 blur-[100px]' />
+    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-white px-4 py-12 dark:bg-gray-950 sm:px-6 lg:px-8">
+      <div className="pointer-events-none fixed inset-0 overflow-hidden">
+        <div className="absolute right-0 top-0 h-[500px] w-[500px] -translate-y-1/2 translate-x-1/2 rounded-full bg-primary-500/10 blur-[100px]" />
+        <div className="absolute bottom-0 left-0 h-[500px] w-[500px] -translate-x-1/2 translate-y-1/2 rounded-full bg-primary-500/10 blur-[100px]" />
       </div>
-      <div className='relative z-10 w-full max-w-md space-y-8'>
-        <div className='glass-frost rounded-3xl border border-white/40 p-8 shadow-frost-lg dark:border-white/15'>
+      <div className="relative z-10 w-full max-w-md space-y-8">
+        <div className="glass-frost rounded-3xl border border-white/40 p-8 shadow-frost-lg dark:border-white/15">
           <div>
-            <h2 className='text-gradient-brand mt-6 text-center text-3xl font-extrabold'>
+            <h2 className="text-gradient-brand mt-6 text-center text-3xl font-extrabold">
               {t('auth.resetPassword.resetYourPassword')}
             </h2>
-            <p className='mt-4 text-center text-sm text-gray-600 dark:text-gray-400'>
+            <p className="mt-4 text-center text-sm text-gray-600 dark:text-gray-400">
               {t('auth.resetPassword.description')}
             </p>
           </div>
-          <form className='mt-8 space-y-6' onSubmit={handleSubmit(onSubmit)}>
-            <div className='space-y-4'>
-              <input type='hidden' {...register('token')} />
+          <form className="mt-8 space-y-6" onSubmit={handleSubmit(onSubmit)}>
+            <div className="space-y-4">
+              <input type="hidden" {...register('token')} />
               <div>
-                <div className='relative'>
+                <div className="relative">
                   <Input
                     label={t('auth.resetPassword.newPassword')}
                     type={showPassword ? 'text' : 'password'}
                     {...register('newPassword')}
                     error={errors.newPassword?.message}
-                    autoComplete='new-password'
+                    autoComplete="new-password"
                     placeholder={t('auth.resetPassword.passwordPlaceholder')}
                   />
                   <button
-                    type='button'
+                    type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className='absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700'
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
                   >
-                    {showPassword ? <EyeOff className='h-5 w-5' /> : <Eye className='h-5 w-5' />}
+                    {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
                   </button>
                 </div>
               </div>
-              <p className='text-xs text-gray-500 dark:text-gray-400'>
+              <p className="text-xs text-gray-500 dark:text-gray-400">
                 {t('auth.resetPassword.passwordRequirements')}
               </p>
             </div>
 
             <div>
-              <Button type='submit' className='w-full' isLoading={resetPasswordMutation.isPending}>
+              <Button type="submit" className="w-full" isLoading={resetPasswordMutation.isPending}>
                 {t('auth.resetPassword.reset')}
               </Button>
             </div>
 
-            <div className='text-center'>
+            <div className="text-center">
               <Link
                 to={ROUTES.LOGIN}
-                className='text-sm font-medium text-primary-600 transition-colors hover:text-primary-500 dark:text-primary-400'
+                className="text-sm font-medium text-primary-600 transition-colors hover:text-primary-500 dark:text-primary-400"
               >
                 {t('auth.forgotPassword.backToLogin')}
               </Link>

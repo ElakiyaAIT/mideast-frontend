@@ -119,7 +119,7 @@ To view all components in isolation:
    ```tsx
    import { ComponentShowcase } from '../pages/ComponentShowcase';
 
-   <Route path='/showcase' element={<ComponentShowcase />} />;
+   <Route path="/showcase" element={<ComponentShowcase />} />;
    ```
 
 2. Navigate to:
