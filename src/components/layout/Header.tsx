@@ -105,28 +105,28 @@ export function Header(): JSX.Element {
       >
         <div className='space-y-4 px-4 py-6'>
           {NAV_ITEMS.map((item, index) => (
-            <a
+            <NavLink
               key={item.label}
               className={`block ${index === 0 ? 'text-primary' : 'text-slate-600 dark:text-slate-300'} text-sm font-semibold uppercase hover:text-${index === 0 ? 'orange-600' : 'primary'} transition-colors`}
-              href={item.href}
+              to={item.href}
               onClick={() => setIsOpen(false)}
             >
               {item.label}
-            </a>
+            </NavLink>
           ))}
           <div className='flex gap-2 border-t border-slate-200 pt-4 dark:border-slate-700'>
-            <a
+            <NavLink
               className='button flex-1 rounded-3xl bg-primary px-4 py-2 text-center text-xs font-bold uppercase text-white transition-colors hover:bg-orange-600'
-              href={ROUTES.LOGIN}
+              to={ROUTES.LOGIN}
             >
               {t('nav.login')}
-            </a>
-            <a
+            </NavLink>
+            <NavLink
               className='flex-1 rounded-3xl border-2 border-slate-200 px-4 py-2 text-center text-xs font-bold uppercase text-slate-600 transition-colors hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800'
-              href={ROUTES.REGISTER}
+              to={ROUTES.REGISTER}
             >
               {t('nav.register')}
-            </a>
+            </NavLink>
           </div>
         </div>
       </div>
