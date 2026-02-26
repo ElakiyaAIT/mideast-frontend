@@ -2,7 +2,7 @@ import { TopBanner, Header, Footer } from '../../components/layout';
 import type { JSX } from 'react';
 import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { useEquipmentDetail } from '../../hooks/queries/useEquipment';
+import { useEquipmentDetail, useRelatedEquipment } from '../../hooks/queries/useEquipment';
 import { InlineSpinner } from '../../components/Loader';
 import { ROUTES } from '../../constants';
 import defaultImage from '../../assets/images/Dump Truck.png';
@@ -10,19 +10,27 @@ import defaultImage from '../../assets/images/Dump Truck.png';
 // Import images
 import buynowDetailsBanner from '../../assets/images/buynow details/buynow-details-banner.png';
 import ProductCard from '../../components/Card/EquipmentCard';
-import { PRODUCTS } from '../../constants/DummyConstant';
 import React from 'react';
 import { useTranslation } from '../../i18n';
+import BuyNowModal from '../../components/BuyNow/BuyNowModal';
 
 const BuyNowDetailsPage = (): JSX.Element => {
   const { t } = useTranslation();
   const { id } = useParams<{ id: string }>();
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const [isOpen, setIsOpen] = useState(false);
 
   // Fetch equipment details
-  const { data: response, isLoading, isError } = useEquipmentDetail(id || '');
+  const { data: equipment, isLoading, isError } = useEquipmentDetail(id || '');
   // console.log(response, '----------------------');
-  const equipment = response;
+  const ITEMS_PER_PAGE = 3;
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const { data: relatedData } = useRelatedEquipment({
+    id: id!,
+    page: currentPage,
+    limit: ITEMS_PER_PAGE,
+  });
 
   const formatPrice = (price?: number): string => {
     if (!price) return 'Contact for price';
@@ -40,23 +48,14 @@ const BuyNowDetailsPage = (): JSX.Element => {
       day: 'numeric',
     });
   };
-  const ITEMS_PER_PAGE = 3;
-
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const handleNext = () => {
-    if (currentIndex + ITEMS_PER_PAGE < PRODUCTS.length) {
-      setCurrentIndex((prev) => prev + ITEMS_PER_PAGE);
-    }
-  };
 
   const handlePrev = () => {
-    if (currentIndex - ITEMS_PER_PAGE >= 0) {
-      setCurrentIndex((prev) => prev - ITEMS_PER_PAGE);
-    }
+    if (currentPage > 1) setCurrentPage((prev) => prev - 1);
   };
 
-  const visibleProducts = PRODUCTS.slice(currentIndex, currentIndex + ITEMS_PER_PAGE);
+  const handleNext = () => {
+    if (currentPage < (relatedData?.pagination.totalPages || 1)) setCurrentPage((prev) => prev + 1);
+  };
 
   type Location = {
     address: string;
@@ -251,7 +250,6 @@ const BuyNowDetailsPage = (): JSX.Element => {
             </section>
 
             {/* Equipment Details */}
-            {/* Equipment Details */}
             <section className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-[250px_1fr]">
               <h3 className="pl-4 text-xl font-bold tracking-wide">
                 {t('product.details.vehicleDetails')}
@@ -397,7 +395,10 @@ const BuyNowDetailsPage = (): JSX.Element => {
                 </div>
 
                 {/* BUY NOW BUTTON */}
-                <button className="-mt-1 w-full rounded-full bg-orange-400 py-3 text-sm font-bold uppercase text-white shadow transition-colors hover:bg-orange-500">
+                <button
+                  className="-mt-1 w-full rounded-full bg-orange-400 py-3 text-sm font-bold uppercase text-white shadow transition-colors hover:bg-orange-500"
+                  onClick={() => setIsOpen(true)}
+                >
                   {t('product.buyNow')}
                 </button>
               </div>
@@ -451,36 +452,38 @@ const BuyNowDetailsPage = (): JSX.Element => {
               </div>
             </div>
 
-            <div className="flex gap-2">
-              <button
-                type="button"
-                onClick={handlePrev}
-                disabled={currentIndex === 0}
-                className="flex h-12 w-12 items-center justify-center rounded-full border border-slate-200 bg-white transition-all hover:bg-primary hover:text-white disabled:opacity-40 disabled:hover:bg-white dark:border-slate-700 dark:bg-slate-800"
-              >
-                <span className="material-symbols-outlined">chevron_left</span>
-              </button>
+            {relatedData?.pagination?.total && relatedData.pagination.total > ITEMS_PER_PAGE && (
+              <div className="flex gap-2">
+                <button
+                  type="button"
+                  onClick={handlePrev}
+                  disabled={currentPage === 1}
+                  className="flex h-12 w-12 items-center justify-center rounded-full border border-slate-200 bg-white transition-all hover:bg-primary hover:text-white disabled:opacity-40 disabled:hover:bg-white dark:border-slate-700 dark:bg-slate-800"
+                >
+                  <span className="material-symbols-outlined">chevron_left</span>
+                </button>
 
-              <button
-                type="button"
-                onClick={handleNext}
-                disabled={currentIndex + ITEMS_PER_PAGE >= PRODUCTS.length}
-                className="flex h-12 w-12 items-center justify-center rounded-full bg-slate-900 text-white transition-all hover:bg-primary disabled:opacity-40"
-              >
-                <span className="material-symbols-outlined">chevron_right</span>
-              </button>
-            </div>
+                <button
+                  type="button"
+                  onClick={handleNext}
+                  disabled={currentPage === (relatedData?.pagination.totalPages || 1)}
+                  className="flex h-12 w-12 items-center justify-center rounded-full bg-slate-900 text-white transition-all hover:bg-primary disabled:opacity-40"
+                >
+                  <span className="material-symbols-outlined">chevron_right</span>
+                </button>
+              </div>
+            )}
           </div>
 
           {/* Carousel */}
           <div className="grid grid-cols-3 gap-6">
-            {visibleProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
+            {relatedData?.items.map((product) => (
+              <ProductCard key={product._id} product={product} />
             ))}
           </div>
         </section>
       </main>
-
+      {isOpen && <BuyNowModal productName={equipment?.title} onClose={() => setIsOpen(false)} />}
       <Footer />
     </>
   );

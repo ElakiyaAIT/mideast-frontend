@@ -50,7 +50,7 @@ const RadioGroup = ({
               value={option.value}
               checked={value === option.value}
               onChange={onChange}
-              className="mr-2 accent-primary"
+              className="mr-2 h-4 w-4 appearance-none rounded-full border border-gray-400 checked:border-primary checked:bg-primary focus:outline-none focus:ring-2 focus:ring-primary"
               data-error={!!error}
             />
             {formatLabel(option.label || option.value)}

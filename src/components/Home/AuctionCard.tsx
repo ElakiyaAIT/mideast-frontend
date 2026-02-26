@@ -37,7 +37,9 @@ export function AuctionCard({ auction }: AuctionCardProps): JSX.Element {
 
       {/* Content */}
       <div className="space-y-6 p-10 md:w-1/2">
-        <h3 className="font-display text-3xl font-bold uppercase">{auction?.title}</h3>
+        <h3 className="truncate font-display text-3xl font-bold uppercase" title={auction?.title}>
+          {auction?.title}
+        </h3>
 
         <div className="space-y-3 text-slate-600">
           <div className="flex items-center gap-2">

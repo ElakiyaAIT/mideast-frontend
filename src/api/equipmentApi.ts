@@ -178,6 +178,24 @@ export const equipmentApi = {
     });
     return response.data;
   },
+
+  /**
+   * Get related equipment by category
+   * Supports pagination, default limit is 3
+   */
+  getRelatedByCategory: async (
+    id: string,
+    page: number = 1,
+    limit: number = 3,
+  ): Promise<ApiResponse<EquipmentListResponse>> => {
+    const response = await axiosInstance.get<ApiResponse<EquipmentListResponse>>(
+      `/equipment/${id}/related`,
+      {
+        params: { page, limit },
+      },
+    );
+    return response.data;
+  },
 };
 
 /**

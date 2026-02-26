@@ -1,16 +1,20 @@
-import { type Product } from '../../constants/DummyConstant';
+import type { Equipment } from '../../api';
 import { useTranslation } from '../../i18n';
+import defaultImage from '../../assets/images/Dump Truck.png';
+import { useNavigate } from 'react-router-dom';
 
 type Props = {
-  product: Product;
+  product: Equipment;
 };
 
 export default function ProductCard({ product }: Props) {
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const getProductBadge = (status: string) => {
     switch (status) {
       case 'for_sale':
+      case 'buy_now':
         return {
           label: t('product.status.forSale'),
           className: 'bg-orange-400',
@@ -33,7 +37,7 @@ export default function ProductCard({ product }: Props) {
     }
   };
 
-  const badge = getProductBadge(product.status);
+  const badge = getProductBadge(product.listingType);
 
   return (
     <div className="group rounded-2xl bg-white shadow-md transition-all hover:shadow-xl">
@@ -41,7 +45,7 @@ export default function ProductCard({ product }: Props) {
       <div className="relative aspect-[4/3] overflow-hidden rounded-t-2xl">
         {/* IMAGE (scales) */}
         <img
-          src={product.image}
+          src={product.images[0] || defaultImage}
           alt={product.title}
           className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
         />
@@ -64,12 +68,32 @@ export default function ProductCard({ product }: Props) {
         <h3 className="mb-4 truncate text-lg font-bold">{product.title}</h3>
 
         <div className="mb-4 grid grid-cols-3 gap-4 text-sm">
-          {Object.entries(product.specs).map(([key, value]) => (
-            <div key={key}>
-              <p className="font-bold">{value}</p>
-              <p className="text-[11px] capitalize text-slate-400">{key.replace('_', ' ')}</p>
-            </div>
-          ))}
+          <div>
+            <p className="truncate font-bold capitalize">{product?.make}</p>
+            <p className="text-sm capitalize text-slate-400">make</p>
+          </div>
+          <div>
+            <p className="truncate font-bold capitalize">{product?.models}</p>
+            <p className="text-sm capitalize text-slate-400">model</p>
+          </div>
+          <div>
+            <p className="truncate font-bold capitalize">{product?.year}</p>
+            <p className="text-sm capitalize text-slate-400">year</p>
+          </div>
+        </div>
+        <div className="mb-4 grid grid-cols-3 gap-4 text-sm">
+          <div>
+            <p className="truncate font-bold capitalize">{product?.condition}</p>
+            <p className="text-sm capitalize text-slate-400">Condition</p>
+          </div>
+          <div>
+            <p className="truncate font-bold capitalize">{product?.hoursUsed}</p>
+            <p className="text-sm capitalize text-slate-400">Hours</p>
+          </div>
+          <div>
+            <p className="truncate font-bold capitalize">{product?.location?.state}</p>
+            <p className="text-sm capitalize text-slate-400">location</p>
+          </div>
         </div>
 
         <div className="flex items-center justify-between border-t pt-4">
@@ -77,11 +101,13 @@ export default function ProductCard({ product }: Props) {
             <p className="text-[10px] font-bold uppercase text-slate-400">
               {t('product.totalPrice')}
             </p>
-            <p className="text-xl font-bold text-orange-500">${product.price.toLocaleString()}</p>
+            <p className="text-xl font-bold text-orange-500">
+              ${product?.buyNowPrice?.toLocaleString() || '-'}
+            </p>
           </div>
 
           <button
-            // onClick={()=>navigate(`/buy/${product.id}`)}
+            onClick={() => navigate(`/buy/${product._id}`)}
             className="rounded-full bg-orange-400 px-5 py-2 text-xs font-bold text-white transition hover:bg-orange-500"
           >
             {t('product.viewMore')}

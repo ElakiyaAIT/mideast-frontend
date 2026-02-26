@@ -16,182 +16,7 @@ import { useFilteredAuctions } from '../../hooks/queries/useAuction';
 import { useTranslation } from '../../i18n';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../../constants';
-
-// interface AuctionItem {
-//   id: number;
-//   title: string;
-//   description: string;
-//   date: string;
-//   time: string;
-//   location: string;
-//   mainImage: string;
-//   thumbnails: string[];
-//   status: 'upcoming' | 'past';
-//   startingPrice?: string;
-//   soldFor?: string;
-//   duration?: string;
-//   bids?: number;
-// }
-
-// const AUCTION_ITEMS: AuctionItem[] = [
-//   {
-//     id: 1,
-//     title: 'John Deere 850K Crawler Dozer - Construction Ready',
-//     description: 'Farm Tractors, Construction Equipment, Farm Equipment, Cars, Trucks, Lawn and...',
-//     date: 'January 12, 2026',
-//     time: '10AM ET',
-//     location: 'Various Locations Throughout the Northeast',
-//     mainImage: auction1,
-//     thumbnails: [auction12, auction13],
-//     status: 'upcoming',
-//   },
-//   {
-//     id: 2,
-//     title: 'Komatsu PC390LC Excavator Fleet - 3 Units Available',
-//     description: 'Excavators, Earthmoving, Construction Equipment, Heavy Duty, Site Prep and...',
-//     date: 'January 13, 2026',
-//     time: '10AM ET',
-//     location: 'Los Angeles, California',
-//     mainImage: auction14,
-//     thumbnails: [auction15, auction16],
-//     status: 'upcoming',
-//   },
-//   {
-//     id: 3,
-//     title: 'Komatsu PC390LC Excavator Fleet - 3 Units Available',
-//     description: 'Excavators, Earthmoving, Construction Equipment, Heavy Duty, Site Prep and...',
-//     date: 'January 13, 2026',
-//     time: '10AM ET',
-//     location: 'Los Angeles, California',
-//     mainImage: auction17,
-//     thumbnails: [auction16, auction15],
-//     status: 'upcoming',
-//   },
-//   {
-//     id: 4,
-//     title: 'John Deere 850K Crawler Dozer - Construction Ready',
-//     description: 'Farm Tractors, Construction Equipment, Farm Equipment, Cars, Trucks, Lawn and...',
-//     date: 'January 12, 2026',
-//     time: '10AM ET',
-//     location: 'Various Locations Throughout the Northeast',
-//     mainImage: auction14,
-//     thumbnails: [auction15, auction16],
-//     status: 'upcoming',
-//   },
-//   {
-//     id: 5,
-//     title: 'Komatsu PC390LC Excavator Fleet - 3 Units Available',
-//     description: 'Excavators, Earthmoving, Construction Equipment, Heavy Duty, Site Prep and...',
-//     date: 'January 13, 2026',
-//     time: '10AM ET',
-//     location: 'Los Angeles, California',
-//     mainImage: auction17,
-//     thumbnails: [auction15, auction16],
-//     status: 'upcoming',
-//   },
-//   {
-//     id: 6,
-//     title: 'Komatsu PC390LC Excavator Fleet - 3 Units Available',
-//     description: 'Excavators, Earthmoving, Construction Equipment, Heavy Duty, Site Prep and...',
-//     date: 'January 13, 2026',
-//     time: '10AM ET',
-//     location: 'Los Angeles, California',
-//     mainImage: auction1,
-//     thumbnails: [auction12, auction13],
-//     status: 'upcoming',
-//   },
-//   // Past auctions
-//   {
-//     id: 7,
-//     title: 'Komatsu PC390LC Excavator Fleet - 3 Units Available',
-//     description: 'Farm Tractors, Construction Equipment, Farm Equipment, Cars, Trucks, Lawn and....',
-//     date: 'December 12, 2025',
-//     time: '10AM ET',
-//     location: 'Los Angeles, California',
-//     mainImage: auction1,
-//     thumbnails: [auction12, auction14],
-//     status: 'past',
-//     startingPrice: '$25.199',
-//     soldFor: '$35.199',
-//     duration: '3Days',
-//     bids: 18,
-//   },
-//   {
-//     id: 8,
-//     title: 'John Deere 850K Crawler Dozer - Construction Ready',
-//     description: 'Farm Tractors, Construction Equipment, Farm Equipment, Cars, Trucks, Lawn and....',
-//     date: 'December 12, 2025',
-//     time: '10AM ET',
-//     location: 'Los Angeles, California',
-//     mainImage: auction17,
-//     thumbnails: [auction15, auction1],
-//     status: 'past',
-//     startingPrice: '$25.199',
-//     soldFor: '$35.199',
-//     duration: '3Days',
-//     bids: 18,
-//   },
-//   {
-//     id: 9,
-//     title: 'Komatsu PC390LC Excavator Fleet - 3 Units Available',
-//     description: 'Farm Tractors, Construction Equipment, Farm Equipment, Cars, Trucks, Lawn and....',
-//     date: 'December 12, 2025',
-//     time: '10AM ET',
-//     location: 'Los Angeles, California',
-//     mainImage: auction17,
-//     thumbnails: [auction15, auction16],
-//     status: 'past',
-//     startingPrice: '$25.199',
-//     soldFor: '$35.199',
-//     duration: '3Days',
-//     bids: 18,
-//   },
-//   {
-//     id: 10,
-//     title: 'Komatsu PC390LC Excavator Fleet - 3 Units Available',
-//     description: 'Farm Tractors, Construction Equipment, Farm Equipment, Cars, Trucks, Lawn and....',
-//     date: 'December 12, 2025',
-//     time: '10AM ET',
-//     location: 'Los Angeles, California',
-//     mainImage: auction16,
-//     thumbnails: [auction15, auction17],
-//     status: 'past',
-//     startingPrice: '$25.199',
-//     soldFor: '$35.199',
-//     duration: '3Days',
-//     bids: 18,
-//   },
-//   {
-//     id: 11,
-//     title: 'Komatsu PC390LC Excavator Fleet - 3 Units Available',
-//     description: 'Farm Tractors, Construction Equipment, Farm Equipment, Cars, Trucks, Lawn and....',
-//     date: 'December 12, 2025',
-//     time: '10AM ET',
-//     location: 'Los Angeles, California',
-//     mainImage: auction1,
-//     thumbnails: [auction12, auction14],
-//     status: 'past',
-//     startingPrice: '$25.199',
-//     soldFor: '$35.199',
-//     duration: '3Days',
-//     bids: 18,
-//   },
-//   {
-//     id: 12,
-//     title: 'Komatsu PC390LC Excavator Fleet - 3 Units Available',
-//     description: 'Farm Tractors, Construction Equipment, Farm Equipment, Cars, Trucks, Lawn and....',
-//     date: 'December 12, 2025',
-//     time: '10AM ET',
-//     location: 'Los Angeles, California',
-//     mainImage: auction16,
-//     thumbnails: [auction15, auction17],
-//     status: 'past',
-//     startingPrice: '$25.199',
-//     soldFor: '$35.199',
-//     duration: '3Days',
-//     bids: 18,
-//   },
-// ];
+import type { NewAuction } from '../../types/home';
 
 type AuctionFilterState = {
   auctionName?: string;
@@ -262,7 +87,7 @@ const AuctionPage = (): JSX.Element => {
     const start = new Date(auction.startDate);
 
     return {
-      id: auction._id,
+      _id: auction._id,
       title: auction.title,
       description: auction.description,
       mainImage: auction.images?.[0] ?? '/placeholder.jpg',
@@ -272,12 +97,14 @@ const AuctionPage = (): JSX.Element => {
         hour: '2-digit',
         minute: '2-digit',
       }),
-      location: formatLocation(auction?.location),
+      location: auction?.location,
       duration: auction?.duration,
       startingPrice: auction?.startingPrice,
       bids: auction?.bids,
       soldFor: auction?.soldFor,
       status: auction.status,
+      startDate: auction.startDate,
+      locationFormat: formatLocation(auction?.location),
     };
   });
 
@@ -323,6 +150,98 @@ const AuctionPage = (): JSX.Element => {
   if (isLoading) {
     <div>Loading....</div>;
   }
+
+  const renderAuctionCard = (item: NewAuction, variant: 'upcoming' | 'past') => {
+    return (
+      <div
+        key={item._id}
+        className="group overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-slate-700 dark:bg-slate-800"
+      >
+        {/* Image */}
+        <div className="relative overflow-hidden">
+          <img
+            src={item.mainImage}
+            alt={item.title}
+            className="h-56 w-full object-cover transition-transform duration-500 group-hover:scale-110"
+          />
+
+          {/* Status Badge */}
+          <div className="absolute right-3 top-3 rounded bg-slate-800/80 px-3 py-1 text-[10px] font-bold uppercase text-white">
+            {variant === 'upcoming' ? t('auction.upcoming') : t('auction.past')}
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="p-6">
+          <h3
+            className="mb-2 truncate text-lg font-bold leading-tight dark:text-white"
+            title={item.title}
+          >
+            {item.title}
+          </h3>
+
+          <p
+            className="mb-6 line-clamp-2 text-xs leading-relaxed text-slate-500 dark:text-slate-400"
+            title={item.description}
+          >
+            {item.description}
+          </p>
+
+          {/* Shared Info */}
+          <div className="mb-6 space-y-3 text-sm text-slate-600 dark:text-slate-300">
+            <div className="flex items-center gap-2">
+              <span className="material-icons text-base">calendar_today</span>
+              {item.date}
+            </div>
+
+            {variant === 'upcoming' && (
+              <div className="flex items-center gap-2">
+                <span className="material-icons text-base">schedule</span>
+                {item.time}
+              </div>
+            )}
+
+            <div className="flex items-center gap-2">
+              <span className="material-icons text-base">location_on</span>
+              {item.locationFormat}
+            </div>
+          </div>
+
+          {/* Variant Specific */}
+          {variant === 'upcoming' ? (
+            <div className="space-y-3">
+              <button className="w-full rounded-2xl border border-primary/30 bg-primary/20 py-3 text-xs font-bold uppercase tracking-widest text-primary hover:bg-primary/30">
+                {t('auction.proxibidBidding')}
+              </button>
+              <button className="w-full rounded-2xl bg-primary py-3 text-xs font-bold uppercase tracking-widest text-white hover:bg-orange-500">
+                {t('auction.equipmentfactsBidding')}
+              </button>
+            </div>
+          ) : (
+            <>
+              <div className="mb-6 grid grid-cols-2 gap-y-3 text-xs">
+                <div>
+                  {t('auction.startingPrice')}:{' '}
+                  <span className="font-bold">{item.startingPrice}</span>
+                </div>
+                <div>
+                  {t('auction.bids')}: <span className="font-bold">{item.bids}</span>
+                </div>
+                <div className="col-span-2">
+                  {t('auction.soldFor')}:{' '}
+                  <span className="font-bold text-primary">{item.soldFor}</span>
+                </div>
+              </div>
+
+              <button className="w-full rounded-2xl bg-primary/10 py-3 text-xs font-bold uppercase text-primary hover:bg-primary hover:text-white">
+                {t('common.viewMore')}
+              </button>
+            </>
+          )}
+        </div>
+      </div>
+    );
+  };
 
   return (
     <>
@@ -426,162 +345,11 @@ const AuctionPage = (): JSX.Element => {
 
       {/* Main Content */}
       <main className="mx-auto max-w-7xl px-6 py-12">
-        {activeTab === 'upcoming' ? (
-          /* Upcoming Auctions */
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {filteredAuctions?.map((item) => (
-              <div
-                key={item.id}
-                className="group overflow-hidden rounded-xl border border-slate-100 bg-white shadow-md transition-all duration-300 hover:-translate-y-1 dark:border-slate-700 dark:bg-slate-800"
-              >
-                <div className="relative">
-                  <img alt={item.title} className="h-48 w-full object-cover" src={item.mainImage} />
-                  <div className="absolute right-4 top-4 rounded-xl bg-slate-700/80 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white backdrop-blur-sm">
-                    {t('auction.upcoming')}
-                  </div>
-                  {/* <div className="grid grid-cols-2 gap-1 p-1 bg-white dark:bg-slate-800">
-                    {item.thumbnails.map((thumb, idx) => (
-                      <img
-                        key={idx}
-                        alt={`Thumbnail ${idx + 1}`}
-                        className="w-full h-20 object-cover"
-                        src={thumb}
-                      />
-                    ))}
-                  </div> */}
-                </div>
-                <div className="p-6">
-                  <h3 className="mb-2 text-xl font-bold leading-tight dark:text-white">
-                    {item.title}
-                  </h3>
-                  <p className="mb-6 line-clamp-2 cursor-help text-xs leading-relaxed text-slate-500 dark:text-slate-400">
-                    {item.description}
-                  </p>
-                  <div className="mb-8 space-y-3">
-                    <div className="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
-                      <span className="material-icons text-base text-slate-900 dark:text-slate-100">
-                        calendar_today
-                      </span>
-                      <span>{item.date}</span>
-                    </div>
-                    <div className="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
-                      <span className="material-icons text-base text-slate-900 dark:text-slate-100">
-                        schedule
-                      </span>
-                      <span>{item.time}</span>
-                    </div>
-                    <div className="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
-                      <span className="material-icons text-base text-slate-900 dark:text-slate-100">
-                        location_on
-                      </span>
-                      <span>{item.location}</span>
-                    </div>
-                  </div>
-                  <div className="space-y-3">
-                    <button className="w-full rounded-2xl border border-primary/30 bg-primary/20 py-3 text-xs font-black uppercase tracking-widest text-primary transition-colors hover:bg-primary/30">
-                      {t('auction.proxibidBidding')}
-                    </button>
-                    <button className="w-full rounded-2xl bg-primary py-3 text-xs font-black uppercase tracking-widest text-white shadow-lg shadow-orange-500/20 transition-colors hover:bg-orange-500">
-                      {t('auction.equipmentfactsBidding')}
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        ) : (
-          /* Past Auctions */
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {filteredAuctions?.map((item) => (
-              <div
-                key={item.id}
-                className="group overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm transition-all duration-300 hover:shadow-xl dark:border-slate-700 dark:bg-slate-800"
-              >
-                <div className="relative overflow-hidden">
-                  <div className="h-[240px] gap-1">
-                    <div className="relative col-span-3 row-span-1 overflow-hidden">
-                      <img
-                        src={item.mainImage}
-                        alt={item.title}
-                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-                      />
-                      <div className="absolute right-3 top-3 rounded bg-slate-800/80 px-3 py-1 text-[10px] font-bold uppercase text-white">
-                        {t('auction.past')}
-                      </div>
-                    </div>
-                    {/* <div className="col-span-1 row-span-1 overflow-hidden">
-                      <img
-                        src={item.thumbnails[0]}
-                        alt="Detail 1"
-                        className="w-full h-full object-cover"
-                      />
-                    </div> */}
-                    {/* <div className="col-span-2 row-span-1 overflow-hidden">
-                      <img
-                        src={item.thumbnails[1]}
-                        alt="Detail 2"
-                        className="w-full h-full object-cover"
-                      />
-                    </div> */}
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="mb-2 text-lg font-bold leading-tight transition-colors group-hover:text-primary">
-                    {item?.title}
-                  </h3>
-                  <p className="mb-6 line-clamp-2 text-xs leading-relaxed text-slate-500 dark:text-slate-400">
-                    {item?.description}
-                  </p>
-                  <div className="mb-6 grid grid-cols-2 gap-y-3 text-xs text-slate-600 dark:text-slate-300">
-                    <div className="flex items-center gap-2">
-                      <span className="material-icons-outlined text-sm text-slate-900 dark:text-slate-100">
-                        calendar_today
-                      </span>
-                      {item.date}
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span className="material-icons-outlined text-sm text-slate-900 dark:text-slate-100">
-                        schedule
-                      </span>
-                      {t('auction.auctionDuration')}: {item?.duration}
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span className="material-icons-outlined text-sm text-slate-900 dark:text-slate-100">
-                        sell
-                      </span>
-                      {t('auction.startingPrice')}:{' '}
-                      <span className="font-bold">{item?.startingPrice}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span className="material-icons-outlined text-sm text-slate-900 dark:text-slate-100">
-                        gavel
-                      </span>
-                      {t('auction.bids')}: <span className="font-bold">{item?.bids}</span>
-                    </div>
-                    <div className="col-span-2 flex items-center gap-2">
-                      <span className="material-icons-outlined text-sm text-slate-900 dark:text-slate-100">
-                        location_on
-                      </span>
-                      {item?.location}
-                    </div>
-                  </div>
-                  <div className="flex items-center justify-between border-t border-slate-100 pt-6 dark:border-slate-700">
-                    <div>
-                      <p className="text-[14px] font-bold uppercase text-slate-400">
-                        {t('auction.soldFor')}
-                      </p>
-                      <p className="text-xl font-extrabold text-primary">{item?.soldFor}</p>
-                    </div>
-                    <button className="rounded-2xl bg-primary/10 px-6 py-2.5 text-sm font-bold uppercase text-primary transition-all hover:bg-primary hover:text-white">
-                      {t('common.viewMore')}
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {filteredAuctions?.map((item) =>
+            renderAuctionCard(item, activeTab as 'upcoming' | 'past'),
+          )}
+        </div>
         {/* Pagination */}
         {totalPages > 1 && (
           <div className="mt-16 flex flex-col items-center gap-4">

@@ -186,3 +186,37 @@ export const useLatestEquipment = (): UseQueryResult<Equipment[], Error> => {
     retry: 2,
   });
 };
+
+/**
+ * Fetch related equipment by category
+ *
+ * Features:
+ * - Public (no auth required)
+ * - Paginated (default limit: 3)
+ * - Automatic loading & error handling
+ *
+ * @example
+ * const { data, isLoading } = useRelatedEquipment({ id: '123', page: 1 });
+ */
+export const useRelatedEquipment = (options: {
+  id: string;
+  page?: number;
+  limit?: number;
+}): UseQueryResult<EquipmentListResponse, Error> => {
+  const { id, page = 1, limit = 3 } = options;
+
+  return useQuery({
+    queryKey: ['relatedEquipment', id, page, limit],
+    queryFn: async (): Promise<EquipmentListResponse> => {
+      const response = await equipmentApi.getRelatedByCategory(id, page, limit);
+
+      if (!response.success) {
+        throw new Error(response.message ?? 'Failed to fetch related equipment');
+      }
+
+      return response.data;
+    },
+    staleTime: 1000 * 60 * 5, // 5 minutes
+    retry: 2,
+  });
+};

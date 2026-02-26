@@ -15,7 +15,9 @@ export function CategoryCard({ category }: CategoryCardProps): JSX.Element {
       />
       <div className="absolute inset-0 bg-gradient-to-t from-brand-black/90 to-transparent" />
       <div className="absolute bottom-6 left-6 right-6 text-center">
-        <h3 className="font-display text-2xl font-bold uppercase text-white">{category.title}</h3>
+        <h3 className="truncate font-display text-2xl font-bold uppercase text-white">
+          {category.title}
+        </h3>
       </div>
     </div>
   );

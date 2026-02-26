@@ -332,6 +332,45 @@ export const additionalInformationSchema = yup.object({
   }),
 });
 
+export const buyNowFormSchema = yup.object({
+  name: yup
+    .string()
+    .transform((value, originalValue) => (originalValue === '' ? undefined : value))
+    .required(() => 'Name is required')
+    .min(2, () => 'Name must be at least 2 characters')
+    .max(50, () => 'Name cannot exceed 50 characters'),
+
+  phone: yup
+    .string()
+    .transform((value, originalValue) => (originalValue === '' ? undefined : value))
+
+    .required(() => 'Phone is required')
+    .matches(
+      /^\+?[1-9]\d{1,14}$/,
+      () => 'Phone number is invalid. Include country code, e.g., +1992565678',
+    ),
+
+  email: yup
+    .string()
+    .trim()
+    .required(() => 'Email is required')
+    .email(() => 'Enter a valid email'),
+
+  message: yup
+    .string()
+    .trim()
+    .max(500, () => 'Message cannot exceed 500 characters')
+    .optional(),
+
+  contactMethods: yup
+    .array()
+    .of(yup.mixed<'call' | 'email' | 'whatsapp'>().oneOf(['call', 'email', 'whatsapp']))
+    .min(1, () => 'Select at least one preferred contact method')
+    .required(() => 'Preferred contact method is required'),
+
+  productName: yup.string().optional(),
+});
+
 // Type exports for form data
 export type LoginFormData = yup.InferType<typeof loginSchema>;
 export type RegisterFormData = yup.InferType<typeof registerSchema>;
@@ -342,3 +381,4 @@ export type BasicInfoFormData = yup.InferType<typeof basicInfoSchema>;
 export type DetailInfoFormData = yup.InferType<typeof detailsSchema>;
 export type ConditionChekListFormData = yup.InferType<typeof conditionSchema>;
 export type AdditionalInformationData = yup.InferType<typeof additionalInformationSchema>;
+export type BuyNowFormData = yup.InferType<typeof buyNowFormSchema>;

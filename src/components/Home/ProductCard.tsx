@@ -44,7 +44,9 @@ export function ProductCard({ product }: ProductCardProps): JSX.Element {
 
       {/* CONTENT */}
       <div className="flex-grow bg-white p-6">
-        <h3 className="mb-4 text-xl font-bold">{product.title}</h3>
+        <h3 className="mb-4 truncate text-xl font-bold" title={product?.title}>
+          {product.title}
+        </h3>
 
         <div className="grid grid-cols-3 gap-y-6 text-sm">
           <Spec label="Assembly Weight" value="3,780 kg" />
@@ -81,7 +83,7 @@ export function ProductCard({ product }: ProductCardProps): JSX.Element {
 function Spec({ label, value }: { label: string; value?: string | number | undefined }) {
   return (
     <div>
-      <p className="mb-0.5 font-bold">{value}</p>
+      <p className="mb-0.5 truncate font-bold">{value}</p>
       <p className="text-xs">{label}</p>
     </div>
   );

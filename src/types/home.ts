@@ -45,6 +45,8 @@ export interface NewAuction {
   readonly soldFor?: string;
   readonly duration?: string;
   readonly bids?: number;
+  readonly mainImage?: string;
+  readonly locationFormat?: string;
 }
 
 export interface Category {

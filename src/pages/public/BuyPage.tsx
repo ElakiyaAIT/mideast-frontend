@@ -331,11 +331,14 @@ const BuyPage = (): JSX.Element => {
                           />
                         </div>
                         <div className={`p-3 ${isSold ? 'opacity-75' : ''}`}>
-                          <h3 className="mb-2 truncate text-base font-bold">{item.title}</h3>
+                          <h3 className="mb-2 truncate text-base font-bold" title={item?.title}>
+                            {item.title}
+                          </h3>
                           <div className="mb-4 grid grid-cols-3 gap-3">
                             <div>
                               <p
-                                className={`text-sm font-bold ${isSold ? 'text-gray-400 line-through' : ''}`}
+                                className={`truncate text-sm font-bold ${isSold ? 'text-gray-400 line-through' : ''}`}
+                                title={item?.make}
                               >
                                 {item.make}
                               </p>
@@ -355,7 +358,7 @@ const BuyPage = (): JSX.Element => {
                             </div>
                             <div>
                               <p
-                                className={`text-sm font-bold ${isSold ? 'text-gray-400 line-through' : ''}`}
+                                className={`truncate text-sm font-bold ${isSold ? 'text-gray-400 line-through' : ''}`}
                               >
                                 {item.hoursUsed || 'N/A'}
                               </p>
@@ -365,7 +368,8 @@ const BuyPage = (): JSX.Element => {
                             </div>
                             <div>
                               <p
-                                className={`text-sm font-bold ${isSold ? 'text-gray-400 line-through' : ''}`}
+                                className={`truncate text-sm font-bold ${isSold ? 'text-gray-400 line-through' : ''}`}
+                                title={item?.models}
                               >
                                 {item.models}
                               </p>
@@ -385,7 +389,8 @@ const BuyPage = (): JSX.Element => {
                             </div>
                             <div>
                               <p
-                                className={`text-sm font-bold ${isSold ? 'text-gray-400 line-through' : ''}`}
+                                className={`truncate text-sm font-bold ${isSold ? 'text-gray-400 line-through' : ''}`}
+                                title={item?.location?.state}
                               >
                                 {item.location.state}
                               </p>

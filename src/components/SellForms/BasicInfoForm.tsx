@@ -20,10 +20,11 @@ import 'tinymce/plugins/link';
 import 'tinymce/plugins/lists';
 import 'tinymce/plugins/code';
 import 'tinymce/plugins/image';
-
+import 'tinymce/plugins/media';
+import 'tinymce/plugins/table';
 //  ADD THESE
-import 'tinymce/skins/ui/oxide/skin.min.css';
-import 'tinymce/skins/content/default/content.min.css';
+import 'tinymce/skins/ui/oxide/skin.css';
+import 'tinymce/skins/content/default/content.css';
 type NestedErrors<T> = {
   [K in keyof T]?: T[K] extends object ? NestedErrors<T[K]> : string;
 };
@@ -111,7 +112,8 @@ const BasicInfo = ({ formData, setFormData, handleChange, errors, setErrors }: P
 
               placeholder:
                 'Provide a detailed description of the equipment, its features, and recent maintenance.',
-
+              skin: false,
+              content_css: false,
               automatic_uploads: true,
               file_picker_types: 'image media file',
             }}

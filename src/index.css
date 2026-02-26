@@ -375,4 +375,14 @@
     background-image: radial-gradient(#d97706 0.5px, transparent 0.5px);
     background-size: 20px 20px;
   }
+
+  /* Buy Now modl scrollbar hide */
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+
+  .hide-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
 }
