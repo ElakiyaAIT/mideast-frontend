@@ -9,10 +9,11 @@ interface TextInputProps extends InputHTMLAttributes<HTMLInputElement> {
 
 export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
   ({ label, error, className, required = false, type = 'text', ...props }, ref) => {
+    const inputId = props.id || label?.toLowerCase().replace(/\s+/g, '-');
     return (
       <div className="w-full">
         {label && (
-          <label className="mb-2 block text-lg font-bold tracking-wide dark:text-slate-300">
+          <label htmlFor={inputId} className="mb-2 block text-lg font-bold tracking-wide dark:text-slate-300">
             {label}
             {required && <span className="ml-1 text-red-500">*</span>}
           </label>
@@ -22,6 +23,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
           ref={ref}
           type={type}
           data-error={!!error}
+          id={inputId}
           className={cn(
             'bg-slate-10 w-full rounded-lg border dark:bg-slate-900',
             'border-slate-200 dark:border-slate-700',

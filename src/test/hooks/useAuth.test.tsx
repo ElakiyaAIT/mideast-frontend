@@ -5,7 +5,15 @@ import * as authHooks from '../../hooks/queries/useAuth';
 import { authApi } from '../../api';
 import { showToast } from '../../utils/toast';
 import { signInWithPopup, type UserCredential } from 'firebase/auth';
-import type { LoginRequestDto, RegisterRequestDto, UserDto } from '../../dto';
+import type {
+  ForgotPasswordRequestDto,
+  ForgotPasswordResponseDto,
+  LoginRequestDto,
+  RegisterRequestDto,
+  ResetPasswordRequestDto,
+  ResetPasswordResponseDto,
+  UserDto,
+} from '../../dto';
 import React from 'react';
 
 // Mock APIs and utilities
@@ -26,6 +34,8 @@ vi.mock('../../api', () => ({
     register: vi.fn(),
     logout: vi.fn(),
     googleSignIn: vi.fn(),
+    forgotPassword: vi.fn(), // <-- add this
+    resetPassword: vi.fn(), // ✅ ADD THIS
   },
 }));
 
@@ -43,7 +53,12 @@ vi.mock('firebase/auth', async () => {
     signInWithPopup: vi.fn(),
   };
 });
-
+vi.mock('../../firebase', () => ({
+  auth: {
+    signOut: vi.fn(),
+  },
+  googleProvider: {},
+}));
 // Helper wrapper for react-query hooks
 const createWrapper = () => {
   const queryClient = new QueryClient({ defaultOptions: { queries: { retry: false } } });
@@ -231,14 +246,15 @@ describe('Auth Hooks', () => {
 
   // ================= useGoogleSignIn =================
   describe('useGoogleSignIn', () => {
-    it('signs in with Google successfully', async () => {
-      const mockCredential = {
-        user: {
-          getIdToken: vi.fn().mockResolvedValue('token'),
-        },
-      } as unknown as UserCredential;
+    const mockCredential = {
+      user: {
+        getIdToken: vi.fn().mockResolvedValue('mock-token'),
+      },
+    } as unknown as UserCredential;
 
+    it('signs in successfully', async () => {
       vi.mocked(signInWithPopup).mockResolvedValue(mockCredential);
+
       vi.mocked(authApi.googleSignIn).mockResolvedValue({
         success: true,
         data: { user: mockUser, message: 'Success' },
@@ -252,12 +268,15 @@ describe('Auth Hooks', () => {
       act(() => result.current.mutate());
 
       await waitFor(() => expect(result.current.isSuccess).toBe(true));
+
       expect(showToast.success).toHaveBeenCalledWith('Signed in with Google successfully');
       expect(navigateMock).toHaveBeenCalledWith('/');
     });
 
-    it('handles Google sign in error', async () => {
-      vi.mocked(signInWithPopup).mockRejectedValue(new Error('Popup blocked'));
+    it('handles popup closed by user', async () => {
+      vi.mocked(signInWithPopup).mockRejectedValue({
+        code: 'auth/popup-closed-by-user',
+      });
 
       const { result } = renderHook(() => authHooks.useGoogleSignIn(), {
         wrapper: createWrapper(),
@@ -266,7 +285,208 @@ describe('Auth Hooks', () => {
       act(() => result.current.mutate());
 
       await waitFor(() => expect(result.current.isError).toBe(true));
-      expect(showToast.error).toHaveBeenCalled();
+
+      expect(showToast.error).toHaveBeenCalledWith('Sign in cancelled');
     });
+
+    it('handles popup blocked error', async () => {
+      vi.mocked(signInWithPopup).mockRejectedValue({
+        code: 'auth/popup-blocked',
+      });
+
+      const { result } = renderHook(() => authHooks.useGoogleSignIn(), {
+        wrapper: createWrapper(),
+      });
+
+      act(() => result.current.mutate());
+
+      await waitFor(() => expect(result.current.isError).toBe(true));
+
+      expect(showToast.error).toHaveBeenCalledWith(
+        'Popup blocked. Please allow popups for this site.',
+      );
+    });
+
+    it('handles network error', async () => {
+      vi.mocked(signInWithPopup).mockRejectedValue({
+        code: 'auth/network-request-failed',
+      });
+
+      const { result } = renderHook(() => authHooks.useGoogleSignIn(), {
+        wrapper: createWrapper(),
+      });
+
+      act(() => result.current.mutate());
+
+      await waitFor(() => expect(result.current.isError).toBe(true));
+
+      expect(showToast.error).toHaveBeenCalledWith('Network error. Please check your connection.');
+    });
+
+    it('handles backend failure after firebase success', async () => {
+      vi.mocked(signInWithPopup).mockResolvedValue(mockCredential);
+
+      vi.mocked(authApi.googleSignIn).mockResolvedValue({
+        success: false,
+        message: 'Backend error',
+        data: null as any,
+      });
+
+      const { result } = renderHook(() => authHooks.useGoogleSignIn(), {
+        wrapper: createWrapper(),
+      });
+
+      act(() => result.current.mutate());
+
+      await waitFor(() => expect(result.current.isError).toBe(true));
+
+      expect(showToast.error).toHaveBeenCalledWith('Backend error');
+    });
+    it('handles unknown firebase error code', async () => {
+      vi.mocked(signInWithPopup).mockRejectedValue({
+        code: 'auth/internal-error',
+        message: 'Internal Firebase error',
+      });
+
+      const { result } = renderHook(() => authHooks.useGoogleSignIn(), {
+        wrapper: createWrapper(),
+      });
+
+      act(() => result.current.mutate());
+
+      await waitFor(() => expect(result.current.isError).toBe(true));
+
+      expect(showToast.error).toHaveBeenCalledWith('Internal Firebase error');
+    });
+    it('handles unexpected non-object error', async () => {
+      vi.mocked(signInWithPopup).mockRejectedValue(new Error('Random failure'));
+
+      const { result } = renderHook(() => authHooks.useGoogleSignIn(), {
+        wrapper: createWrapper(),
+      });
+
+      act(() => result.current.mutate());
+
+      await waitFor(() => expect(result.current.isError).toBe(true));
+
+      expect(showToast.error).toHaveBeenCalledWith('Google sign in failed');
+    });
+  });
+});
+
+// ================= useForgotPassword =================
+describe('useForgotPassword', () => {
+  const requestData: ForgotPasswordRequestDto = { email: 'john@example.com' };
+  const mockResponse: ForgotPasswordResponseDto = { message: 'Reset email sent' };
+
+  it('sends forgot password email successfully', async () => {
+    vi.mocked(authApi.forgotPassword).mockResolvedValue({
+      success: true,
+      data: mockResponse,
+      message: 'Success',
+    });
+
+    const { result } = renderHook(() => authHooks.useForgotPassword(), {
+      wrapper: createWrapper(),
+    });
+
+    act(() => result.current.mutate(requestData));
+
+    await waitFor(() => expect(result.current.isSuccess).toBe(true));
+    expect(authApi.forgotPassword).toHaveBeenCalledWith(requestData);
+    expect(showToast.success).toHaveBeenCalledWith('Password reset email sent');
+  });
+
+  it('handles error when forgot password fails', async () => {
+    vi.mocked(authApi.forgotPassword).mockResolvedValue({
+      success: false,
+      message: 'Email not found',
+      data: null as unknown as ForgotPasswordResponseDto,
+    });
+
+    const { result } = renderHook(() => authHooks.useForgotPassword(), {
+      wrapper: createWrapper(),
+    });
+
+    act(() => result.current.mutate(requestData));
+
+    await waitFor(() => expect(result.current.isError).toBe(true));
+    expect(showToast.error).toHaveBeenCalledWith('Email not found');
+  });
+
+  it('handles network or unexpected error', async () => {
+    vi.mocked(authApi.forgotPassword).mockRejectedValue(new Error('Network error'));
+
+    const { result } = renderHook(() => authHooks.useForgotPassword(), {
+      wrapper: createWrapper(),
+    });
+
+    act(() => result.current.mutate(requestData));
+
+    await waitFor(() => expect(result.current.isError).toBe(true));
+    expect(showToast.error).toHaveBeenCalled();
+  });
+});
+// ================= useResetPassword =================
+describe('useResetPassword', () => {
+  const requestData: ResetPasswordRequestDto = {
+    token: 'reset-token',
+    newPassword: 'newPassword123',
+  };
+
+  const mockResponse: ResetPasswordResponseDto = {
+    message: 'Password reset successfully',
+  };
+
+  it('resets password successfully', async () => {
+    vi.mocked(authApi.resetPassword).mockResolvedValue({
+      success: true,
+      data: mockResponse,
+      message: 'Success',
+    });
+
+    const { result } = renderHook(() => authHooks.useResetPassword(), {
+      wrapper: createWrapper(),
+    });
+
+    act(() => result.current.mutate(requestData));
+
+    await waitFor(() => expect(result.current.isSuccess).toBe(true));
+
+    expect(authApi.resetPassword).toHaveBeenCalledWith(requestData);
+    expect(showToast.success).toHaveBeenCalledWith('Password reset successfully');
+    expect(navigateMock).toHaveBeenCalledWith('/login');
+  });
+
+  it('handles API failure', async () => {
+    vi.mocked(authApi.resetPassword).mockResolvedValue({
+      success: false,
+      message: 'Invalid or expired token',
+      data: null as unknown as ResetPasswordResponseDto,
+    });
+
+    const { result } = renderHook(() => authHooks.useResetPassword(), {
+      wrapper: createWrapper(),
+    });
+
+    act(() => result.current.mutate(requestData));
+
+    await waitFor(() => expect(result.current.isError).toBe(true));
+
+    expect(showToast.error).toHaveBeenCalledWith('Invalid or expired token');
+  });
+
+  it('handles unexpected/network error', async () => {
+    vi.mocked(authApi.resetPassword).mockRejectedValue(new Error('Network error'));
+
+    const { result } = renderHook(() => authHooks.useResetPassword(), {
+      wrapper: createWrapper(),
+    });
+
+    act(() => result.current.mutate(requestData));
+
+    await waitFor(() => expect(result.current.isError).toBe(true));
+
+    expect(showToast.error).toHaveBeenCalled();
   });
 });

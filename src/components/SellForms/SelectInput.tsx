@@ -27,16 +27,17 @@ export const SelectInput = ({
   required = false,
 }: SelectInputProps) => {
   const isEmpty = !value;
-
+const inputId = `select-${name}`;
   return (
     <div>
-      <label className="mb-2 block text-lg font-bold tracking-wide dark:text-slate-300">
+      <label htmlFor={inputId}className="mb-2 block text-lg font-bold tracking-wide dark:text-slate-300">
         {label}
         {required && <span className="ml-1 text-red-500">*</span>}
       </label>
 
       <select
         name={name}
+        id={inputId}
         value={value || ''}
         onChange={onChange}
         data-error={!!error}
@@ -47,7 +48,7 @@ export const SelectInput = ({
         </option>
 
         {options.map((option) => (
-          <option key={option.id} value={option.id} style={{ color: '#0f172a' }}>
+          <option key={option.id} value={option.value} style={{ color: '#0f172a' }}>
             {option.value}
           </option>
         ))}
