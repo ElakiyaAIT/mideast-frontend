@@ -4,7 +4,7 @@ import { ROUTES } from '../../constants';
 import product1 from '../../assets/images/chuttersnap-PF1daJne7lA-unsplash-1-768x512.jpg.png';
 import { useTranslation } from '../../i18n';
 
-interface Equipment {
+export interface Equipment {
   _id: string;
   title: string;
   buyNowPrice?: number;

@@ -1,4 +1,5 @@
-import type { AxiosInstance, InternalAxiosRequestConfig, AxiosResponse, LoaderConfig } from 'axios';
+import type { AxiosInstance, InternalAxiosRequestConfig, AxiosResponse } from 'axios';
+import type { LoaderConfig } from 'axios';
 import type { AppDispatch } from '../store';
 import { startRequest, endRequest } from '../store/loaderSlice';
 

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { normalizeApiError, getUserFriendlyMessage } from './errorHandler';
+import { normalizeApiError, getUserFriendlyMessage } from '../../utils/errorHandler';
 import type { AxiosError } from 'axios';
 
 describe('errorHandler', () => {

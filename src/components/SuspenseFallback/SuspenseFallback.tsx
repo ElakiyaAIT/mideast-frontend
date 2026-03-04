@@ -14,7 +14,7 @@ export const SuspenseFallback = ({
     : 'flex items-center justify-center min-h-[400px] bg-transparent';
 
   return (
-    <div className={containerClass}>
+    <div data-testid="suspense-fallback" className={containerClass}>
       <div className="flex animate-fade-in flex-col items-center gap-6">
         {/* Premium animated loader with glass morphism */}
         <div className="relative">

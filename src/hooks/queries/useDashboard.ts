@@ -20,6 +20,9 @@ export const useDashboardStats = (): UseQueryResult<DashboardStatsDto, Error> =>
       if (!response.success) {
         throw new Error(response.message ?? 'Failed to fetch dashboard stats');
       }
+      if (!response.data) {
+        throw new Error('Failed to fetch dashboard stats');
+      }
       return response.data;
     },
     staleTime: 1000 * 60 * 2, // 2 minutes
