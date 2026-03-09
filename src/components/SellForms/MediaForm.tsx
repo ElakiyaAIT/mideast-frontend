@@ -1,3 +1,4 @@
+import { equipmentApi } from '../../api';
 import { useTranslation } from '../../i18n';
 import type { SellFormData } from '../../types/home';
 import { ImageUpload } from './ImageInput';
@@ -28,7 +29,7 @@ const MediaForm = ({ formData, setFormData }: MediaFormProps) => {
       icon: 'crop_original',
     },
 
-    cabInteiorImages: {
+    cabInteriorImages: {
       title: t('sell.form.media.cabInterior'),
       icon: 'crop_original',
     },
@@ -51,7 +52,14 @@ const MediaForm = ({ formData, setFormData }: MediaFormProps) => {
     onUpload: (files: File[]) => void;
     onRemove: (index: number) => void;
   }
-
+  const mediaUploadApi: Record<MediaKey, (file: File) => Promise<{ data: { urls: string[] } }>> = {
+    exteriorImages: equipmentApi.uploadExteriorMediaImage,
+    engineCompartMentImages: equipmentApi.uploadEngineMediaImage,
+    underCarriageTracksImages: equipmentApi.uploadUndercarriageMediaImage,
+    cabInteriorImages: equipmentApi.uploadCabInteriorMediaImage,
+    otherAttachments: equipmentApi.uploadOtherAttachmentMediaImage,
+    videos: equipmentApi.uploadVideos,
+  };
   const MediaSection = ({ title, icon, images, onUpload, onRemove }: MediaSectionProps) => {
     return (
       <div className="mb-12">
@@ -61,19 +69,20 @@ const MediaForm = ({ formData, setFormData }: MediaFormProps) => {
           </div>
 
           <span className="text-sm font-medium text-[#FDAD3E]">
-            {title} <span className="ml-1 text-red-500">*</span>
+            {title}
+            {/* <span className="ml-1 text-red-500">*</span> */}
           </span>
         </div>
 
         <ImageUpload
           label=""
           required
-          maxFiles={1}
+          maxFiles={5}
+          maxSize={icon === 'videocam' ? 50 : 2}
           value={images}
           onChange={onUpload}
           onRemove={onRemove}
           mode={icon === 'videocam' ? 'video' : 'image'}
-          // helperText="Supported formats: SVG, JPG, PNG (10MB max each)"
         />
       </div>
     );
@@ -81,24 +90,25 @@ const MediaForm = ({ formData, setFormData }: MediaFormProps) => {
 
   //  Generic Upload
   const handleUpload = async (sectionKey: MediaKey, files: File[]) => {
-    const uploadData = new FormData();
-    files.forEach((file) => uploadData.append('images', file));
+    try {
+      const uploadedUrls: string[] = [];
 
-    const response = await fetch('/api/upload-images', {
-      method: 'POST',
-      body: uploadData,
-    });
+      for (const file of files) {
+        const res = await mediaUploadApi[sectionKey](file);
 
-    const data = await response.json();
-    const uploadedUrls: string[] = data.imageUrls;
+        uploadedUrls.push(...res.data.urls);
+      }
 
-    setFormData((prev) => ({
-      ...prev,
-      media: {
-        ...prev.media,
-        [sectionKey]: [...(prev.media?.[sectionKey] || []), ...uploadedUrls],
-      },
-    }));
+      setFormData((prev) => ({
+        ...prev,
+        media: {
+          ...prev.media,
+          [sectionKey]: [...(prev.media?.[sectionKey] || []), ...uploadedUrls],
+        },
+      }));
+    } catch (error) {
+      console.error('Upload failed:', error);
+    }
   };
 
   const handleRemove = (sectionKey: MediaKey, index: number) => {

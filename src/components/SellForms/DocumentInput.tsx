@@ -9,17 +9,21 @@ interface DocumentUploadProps {
   helperText?: string;
   required?: boolean;
   maxFiles?: number;
+  maxSize?: number;
   onChange?: (files: File[]) => void;
   onRemove?: (index: number) => void;
   disabled?: boolean;
+  value?: string[];
 }
 
 export const DocumentUpload = ({
   label,
-  error,
+  error: externalError,
   helperText,
   required,
   maxFiles = 5,
+  maxSize = 10,
+  value = [],
   onChange,
   disabled,
   onRemove,
@@ -27,10 +31,12 @@ export const DocumentUpload = ({
   const { t } = useTranslation();
   const [files, setFiles] = useState<File[]>([]);
   const [dragActive, setDragActive] = useState(false);
+  const [localError, setLocalError] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
-
+  const error = externalError || localError;
   const hasError = Boolean(error);
   const canAddMore = files.length < maxFiles;
+  const totalFiles = value.length + files.length;
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>): void => {
     const selectedFiles = event.target.files;
@@ -40,20 +46,28 @@ export const DocumentUpload = ({
   };
 
   const handleFiles = (newFiles: File[]): void => {
-    const remainingSlots = maxFiles - files.length;
-    const filesToAdd = newFiles.slice(0, remainingSlots);
+    const remainingSlots = maxFiles - totalFiles;
+    const allowedTypes = [
+      'application/pdf',
+      'application/msword',
+      'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+      'application/vnd.ms-excel',
+      'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    ];
+    const sizeInBytes = maxSize * 1024 * 1024;
 
-    const validFiles = filesToAdd.filter((file) =>
-      [
-        'application/pdf',
-        'application/msword',
-        'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-        'application/vnd.ms-excel',
-        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-      ].includes(file.type),
-    );
+    const validFiles = newFiles.filter((file) => {
+      const isCorrectType = allowedTypes.includes(file.type);
+      const isCorrectSize = file.size <= sizeInBytes;
 
-    if (validFiles.length > 0) {
+      if (isCorrectType && !isCorrectSize) {
+        setLocalError(`File "${file.name}" is too large. Maximum size is ${maxSize}MB.`);
+      }
+
+      return isCorrectType && isCorrectSize;
+    });
+    const filesToAdd = validFiles.slice(0, remainingSlots);
+    if (filesToAdd.length > 0) {
       const updatedFiles = [...files, ...validFiles];
       setFiles(updatedFiles);
       onChange?.(updatedFiles);
@@ -84,12 +98,12 @@ export const DocumentUpload = ({
     handleFiles(Array.from(e.dataTransfer.files));
   };
 
-  const handleRemove = (index: number): void => {
-    const updated = files.filter((_, i) => i !== index);
-    setFiles(updated);
-    onChange?.(updated);
-    onRemove?.(index);
-  };
+  // const handleRemove = (index: number): void => {
+  //   const updated = files.filter((_, i) => i !== index);
+  //   setFiles(updated);
+  //   onChange?.(updated);
+  //   onRemove?.(index);
+  // };
 
   const handleClick = (): void => {
     if (!disabled && canAddMore) {
@@ -144,35 +158,41 @@ export const DocumentUpload = ({
             </p>
 
             <p className="mt-1 text-xs text-slate-400">
-              PDF, DOC, DOCX, XLS, XLSX (Max {maxFiles})
+              PDF, DOC, DOCX, XLS, XLSX (Max {maxFiles} {maxSize}MB each)
             </p>
           </div>
         </div>
       </div>
 
       {/* File List */}
-      {files.length > 0 && (
-        <div className="mt-4 space-y-2">
-          {files.map((file, index) => (
-            <div
-              key={index}
-              className="flex items-center justify-between rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 dark:border-slate-700 dark:bg-slate-900"
+      {/* Existing Uploaded Documents */}
+      {value.map((url, index) => {
+        return (
+          <div
+            key={`existing-${index}`}
+            className="flex items-center justify-between rounded-xl border border-slate-200 bg-slate-50 px-3 py-2"
+          >
+            <a
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="truncate text-sm text-blue-600 underline"
             >
-              <p className="truncate text-sm text-slate-700 dark:text-slate-300">{file.name}</p>
+              File Preview
+            </a>
 
-              {!disabled && (
-                <button
-                  type="button"
-                  onClick={() => handleRemove(index)}
-                  className="rounded-full bg-red-500 p-1 text-white hover:bg-red-600"
-                >
-                  <X size={14} />
-                </button>
-              )}
-            </div>
-          ))}
-        </div>
-      )}
+            {!disabled && (
+              <button
+                type="button"
+                onClick={() => onRemove?.(index)}
+                className="rounded-full bg-red-500 p-1 text-white hover:bg-red-600"
+              >
+                <X size={14} />
+              </button>
+            )}
+          </div>
+        );
+      })}
 
       {helperText && !hasError && (
         <div className="mt-2 text-sm text-gray-500 dark:text-gray-400">{helperText}</div>

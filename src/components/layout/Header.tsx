@@ -4,10 +4,17 @@ import mideastLogo from '../../assets/images/mideastlogo.svg';
 import { ROUTES } from '../../constants';
 import { NavLink, useLocation } from 'react-router-dom';
 import { useTranslation } from '../../i18n';
+import { useCurrentUser, useLogout } from '../../hooks/queries/useAuth';
+import { Button } from '../Button/Button';
+import { LogOut } from 'lucide-react';
+import { LogoutConfirmModal } from '../LogoutConfirmModal/LogoutConfirmModal';
 
 export function Header(): JSX.Element {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const { pathname } = useLocation();
+  const { data: user } = useCurrentUser();
+  const logoutMutation = useLogout();
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
   const { t } = useTranslation();
 
   const NAV_ITEMS: readonly NavItem[] = [
@@ -21,6 +28,18 @@ export function Header(): JSX.Element {
 
   const toggleMenu = (): void => {
     setIsOpen((prev) => !prev);
+  };
+  const handleLogoutClick = (): void => {
+    setShowLogoutModal(true);
+  };
+
+  const handleLogoutConfirm = (): void => {
+    logoutMutation.mutate();
+    setShowLogoutModal(false);
+  };
+
+  const handleLogoutCancel = (): void => {
+    setShowLogoutModal(false);
   };
 
   const isActive = (href: string): boolean => pathname === href;
@@ -73,20 +92,42 @@ export function Header(): JSX.Element {
           <button className="p-2 text-slate-400 transition-colors hover:text-primary">
             <i className="material-icons-outlined">search</i>
           </button>
-          <div className="flex items-center gap-2">
-            <NavLink
-              className="button rounded-3xl bg-primary px-5 py-2 text-sm font-bold uppercase text-white transition-colors hover:bg-orange-600"
-              to={ROUTES.LOGIN}
-            >
-              {t('nav.login')}
-            </NavLink>
-            <NavLink
-              className="rounded-3xl border-2 border-slate-200 px-5 py-2 text-sm font-bold uppercase transition-colors hover:bg-slate-50 dark:border-slate-700 dark:hover:bg-slate-800"
-              to={ROUTES.REGISTER}
-            >
-              {t('nav.register')}
-            </NavLink>
-          </div>
+          {/* if user logged in display user */}
+          {user ? (
+            <>
+              <div className="flex items-center gap-3 border-l border-white/20 pl-3 dark:border-white/10">
+                <NavLink to={ROUTES.PROFILE}>
+                  <div className="hover:shadow-glow-brand-lg flex h-10 w-10 cursor-pointer items-center justify-center rounded-xl border border-primary-400/30 bg-gradient-to-br from-primary-500 via-primary-500 to-primary-600 text-sm font-bold text-white backdrop-blur-sm transition-all duration-300 hover:scale-110">
+                    {user?.firstName?.[0]?.toUpperCase() || 'U'}
+                  </div>
+                </NavLink>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={handleLogoutClick}
+                  className="hidden items-center gap-2 text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white lg:flex"
+                >
+                  <LogOut className="h-4 w-4" />
+                  <span>Logout</span>
+                </Button>
+              </div>
+            </>
+          ) : (
+            <div className="flex items-center gap-2">
+              <NavLink
+                className="button rounded-3xl bg-primary px-5 py-2 text-sm font-bold uppercase text-white transition-colors hover:bg-orange-600"
+                to={ROUTES.LOGIN}
+              >
+                {t('nav.login')}
+              </NavLink>
+              <NavLink
+                className="rounded-3xl border-2 border-slate-200 px-5 py-2 text-sm font-bold uppercase transition-colors hover:bg-slate-50 dark:border-slate-700 dark:hover:bg-slate-800"
+                to={ROUTES.REGISTER}
+              >
+                {t('nav.register')}
+              </NavLink>
+            </div>
+          )}
         </div>
 
         {/* Mobile Right Section */}
@@ -114,22 +155,47 @@ export function Header(): JSX.Element {
               {item.label}
             </NavLink>
           ))}
-          <div className="flex gap-2 border-t border-slate-200 pt-4 dark:border-slate-700">
-            <NavLink
-              className="button flex-1 rounded-3xl bg-primary px-4 py-2 text-center text-xs font-bold uppercase text-white transition-colors hover:bg-orange-600"
-              to={ROUTES.LOGIN}
-            >
-              {t('nav.login')}
-            </NavLink>
-            <NavLink
-              className="flex-1 rounded-3xl border-2 border-slate-200 px-4 py-2 text-center text-xs font-bold uppercase text-slate-600 transition-colors hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
-              to={ROUTES.REGISTER}
-            >
-              {t('nav.register')}
-            </NavLink>
-          </div>
+          {/* if user logged in display user */}
+          {user ? (
+            <div className="flex items-center gap-3">
+              <NavLink to={ROUTES.PROFILE}>
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-sm font-bold text-white">
+                  {user?.firstName?.[0]?.toUpperCase() || 'U'}
+                </div>
+              </NavLink>
+              <button
+                onClick={handleLogoutClick}
+                className="rounded-lg p-2 text-gray-500 transition-colors hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800 lg:hidden"
+                aria-label="Logout"
+              >
+                <LogOut className="h-5 w-5" />
+              </button>
+            </div>
+          ) : (
+            <div className="flex gap-2 border-t border-slate-200 pt-4 dark:border-slate-700">
+              <NavLink
+                className="button flex-1 rounded-3xl bg-primary px-4 py-2 text-center text-xs font-bold uppercase text-white transition-colors hover:bg-orange-600"
+                to={ROUTES.LOGIN}
+              >
+                {t('nav.login')}
+              </NavLink>
+              <NavLink
+                className="flex-1 rounded-3xl border-2 border-slate-200 px-4 py-2 text-center text-xs font-bold uppercase text-slate-600 transition-colors hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+                to={ROUTES.REGISTER}
+              >
+                {t('nav.register')}
+              </NavLink>
+            </div>
+          )}
         </div>
       </div>
+      {/* Logout Confirmation Modal */}
+      <LogoutConfirmModal
+        isOpen={showLogoutModal}
+        onClose={handleLogoutCancel}
+        onConfirm={handleLogoutConfirm}
+        isLoading={logoutMutation.isPending}
+      />
     </header>
   );
 }

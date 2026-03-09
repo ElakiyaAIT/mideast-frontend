@@ -20,6 +20,7 @@ const AuctionPage = lazy(() => import('../pages/public/AuctionPage'));
 const ContactUsPage = lazy(() => import('../pages/public/ContactUsPage'));
 import LoaderDemoPage from '../pages/LoaderDemoPage';
 import ContentPage from '../pages/public/ContentPage';
+import ProfilePage from '../pages/public/ProfilePage';
 
 export const AppRoutes = (): JSX.Element => {
   return (
@@ -154,6 +155,7 @@ export const AppRoutes = (): JSX.Element => {
           }
         />
         <Route path={ROUTES.CONTENT} element={<ContentPage />} />
+        <Route path={ROUTES.PROFILE} element={<ProfilePage />} />
         {/* Catch all route */}
         <Route path="*" element={<Navigate to={ROUTES.HOME} replace />} />
       </Routes>

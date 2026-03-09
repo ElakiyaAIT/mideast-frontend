@@ -5,21 +5,19 @@ import type { SellFormData } from '../../types/home';
 interface ReviewFormProps {
   formData: SellFormData;
   setCurrentStep: Dispatch<SetStateAction<number>>;
+  category?: string;
 }
-const dummyImages = [
-  'https://picsum.photos/400/300?random=1',
-  'https://picsum.photos/400/300?random=2',
-  'https://picsum.photos/400/300?random=3',
-  'https://picsum.photos/400/300?random=4',
-  'https://picsum.photos/400/300?random=5',
-  'https://picsum.photos/400/300?random=6',
-  'https://picsum.photos/400/300?random=7',
-  'https://picsum.photos/400/300?random=8',
-  'https://picsum.photos/400/300?random=9',
-];
 
-export default function ReviewForm({ formData, setCurrentStep }: ReviewFormProps) {
+export default function ReviewForm({ formData, setCurrentStep, category }: ReviewFormProps) {
   const { t } = useTranslation();
+  const allImages = [
+    ...(formData?.media?.exteriorImages || []),
+    ...(formData?.media?.engineCompartMentImages || []),
+    ...(formData?.media?.underCarriageTracksImages || []),
+    ...(formData?.media?.cabInteriorImages || []),
+    ...(formData?.media?.otherAttachments || []),
+  ];
+  const displayedImages = allImages.slice(0, 6);
   const truncate = (
     text: string | undefined | null,
     wordLimit: number = 50,
@@ -95,12 +93,12 @@ export default function ReviewForm({ formData, setCurrentStep }: ReviewFormProps
 
             <div>
               <p className="mb-1 text-sm text-gray-500">{t('sell.form.category')}</p>
-              <p className="font-medium">{formData?.category || '-'}</p>
+              <p className="font-medium">{category || '-'}</p>
             </div>
 
             <div className="col-span-2">
               <p className="mb-1 text-sm text-gray-500">{t('sell.form.description')}</p>
-              <p>{truncate(formData.description, 20, 50)}</p>
+              <p className="truncate">{truncate(formData.description, 20, 50)}</p>
             </div>
           </div>
         </div>
@@ -134,12 +132,12 @@ export default function ReviewForm({ formData, setCurrentStep }: ReviewFormProps
             {/* Left Column */}
             <div>
               <p className="mb-1 text-sm text-gray-500">{t('sell.form.details.basic.make')}</p>
-              <p className="font-medium">{formData?.basicDetails?.make || '-'}</p>
+              <p className="font-medium">{formData?.make || '-'}</p>
             </div>
 
             <div>
               <p className="mb-1 text-sm text-gray-500">{t('sell.form.details.basic.model')}</p>
-              <p className="font-medium">{formData?.basicDetails?.model || '-'}</p>
+              <p className="font-medium">{formData?.models || '-'}</p>
             </div>
 
             <div>
@@ -153,7 +151,7 @@ export default function ReviewForm({ formData, setCurrentStep }: ReviewFormProps
             {/* Left Column */}
             <div>
               <p className="mb-1 text-sm text-gray-500">{t('product.specs.engine')}</p>
-              <p className="font-medium">Diesel-162 HP</p>
+              <p className="font-medium">{formData?.basicDetails?.engineHours || '-'}</p>
             </div>
 
             <div>
@@ -223,7 +221,7 @@ export default function ReviewForm({ formData, setCurrentStep }: ReviewFormProps
           <div className="mb-6 border-t border-gray-200"></div>
           <div>
             <div className="scrollbar-hide flex gap-2 overflow-x-auto">
-              {dummyImages.slice(0, 6).map((src, index) => (
+              {displayedImages.slice(0, 6).map((src, index) => (
                 <div
                   key={index}
                   className="group relative h-[100px] min-w-[140px] flex-shrink-0 cursor-pointer overflow-hidden rounded-2xl"
@@ -239,13 +237,13 @@ export default function ReviewForm({ formData, setCurrentStep }: ReviewFormProps
               ))}
 
               {/* +More Card */}
-              {dummyImages.length > 7 && (
+              {allImages.length > 7 && (
                 <div className="relative h-[100px] min-w-[140px] flex-shrink-0 cursor-pointer overflow-hidden rounded-2xl">
-                  <img src={dummyImages[6]} alt="more" className="h-full w-full object-cover" />
+                  <img src={allImages[6]} alt="more" className="h-full w-full object-cover" />
 
                   <div className="absolute inset-0 flex items-center justify-center rounded-2xl bg-black/60">
                     <span className="text-lg font-bold text-white">
-                      +{dummyImages.length - 6} More
+                      +{allImages.length - 6} More
                     </span>
                   </div>
                 </div>
@@ -303,7 +301,9 @@ export default function ReviewForm({ formData, setCurrentStep }: ReviewFormProps
               <p className="mb-1 text-sm text-gray-500">
                 {t('sell.form.additionalInformation.equipmentIdentity.modelYear')}
               </p>
-              <p className="font-medium">22,000 Kg</p>
+              <p className="font-medium">
+                {formData?.additionalInformation?.equipmentIdentity?.modelYearConfirmation || '-'}
+              </p>
             </div>
           </div>
           <div className="grid grid-cols-3 gap-x-12 gap-y-6">
@@ -312,12 +312,10 @@ export default function ReviewForm({ formData, setCurrentStep }: ReviewFormProps
               <p className="mb-1 text-sm text-gray-500">
                 {t('sell.form.additionalInformation.location.title')}
               </p>
-              <p className="font-medium">
-                {formData?.additionalInformation?.location?.address || '-'}
-              </p>
+              <p className="font-medium">{formData?.location?.address || '-'}</p>
             </div>
 
-            <div>
+            {/* <div>
               <p className="mb-1 text-sm text-gray-500">
                 {t('sell.form.additionalInformation.ownership.insurance')}
               </p>
@@ -325,7 +323,7 @@ export default function ReviewForm({ formData, setCurrentStep }: ReviewFormProps
                 <span className="material-symbols-outlined text-[#fdad3e]">picture_as_pdf</span>
                 <p className="font-medium">invoice.pdf</p>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
 

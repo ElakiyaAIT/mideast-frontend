@@ -27,32 +27,32 @@ export const BasicDetailsSection = ({
 
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         <TextInput
-          error={errors?.basicDetails?.year}
+          error={errors?.year}
           required={true}
           label={t('sell.form.details.basic.year')}
-          name="basicDetails.year"
+          name="year"
           placeholder="e.g., 2020"
-          value={formData.basicDetails.year || ''}
+          value={formData.year || ''}
           onChange={handleChange}
         />
 
         <TextInput
-          error={errors?.basicDetails?.make}
+          error={errors?.make}
           required={true}
           label={t('sell.form.details.basic.make')}
-          name="basicDetails.make"
+          name="make"
           placeholder="Caterpillar"
-          value={formData.basicDetails.make || ''}
+          value={formData.make || ''}
           onChange={handleChange}
         />
 
         <TextInput
-          error={errors?.basicDetails?.model}
+          error={errors?.models}
           required={true}
           label={t('sell.form.details.basic.model')}
-          name="basicDetails.model"
+          name="models"
           placeholder="e.g., 320D"
-          value={formData.basicDetails.model || ''}
+          value={formData.models || ''}
           onChange={handleChange}
         />
 

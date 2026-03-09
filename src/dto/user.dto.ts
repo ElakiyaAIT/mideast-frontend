@@ -8,6 +8,10 @@ export interface UserProfileDto {
   role: UserRole;
   createdAt: string;
   updatedAt: string;
+  roleId?: {
+    _id?: string;
+    name?: string;
+  };
 }
 
 export interface UpdateUserProfileDto {

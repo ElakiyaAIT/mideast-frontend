@@ -15,6 +15,7 @@ interface ImageUploadProps {
   helperText?: string;
   required?: boolean;
   maxFiles?: number;
+  maxSize?: number;
   value?: string[]; // Existing image URLs
   onChange?: (files: File[]) => void;
   onRemove?: (index: number) => void;
@@ -24,20 +25,24 @@ interface ImageUploadProps {
 
 export const ImageUpload = ({
   label,
-  error,
+  error: externalError,
   helperText,
   required,
   maxFiles = 10,
+  maxSize = 2,
   value = [],
   onChange,
-  // onRemove,
+  onRemove,
   disabled,
   mode = 'image',
 }: ImageUploadProps): JSX.Element => {
   const { t } = useTranslation();
   const [previews, setPreviews] = useState<ImagePreview[]>([]);
   const [dragActive, setDragActive] = useState(false);
+  const [localError, setLocalError] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const error = externalError || localError;
 
   const hasError = Boolean(error);
   const totalImages = value.length + previews.length;
@@ -51,6 +56,17 @@ export const ImageUpload = ({
   };
 
   const handleFiles = (files: File[]): void => {
+    setLocalError(null);
+    // Filter by size if maxSize is provided
+    const validSizeFiles = files.filter((file) => {
+      if (!maxSize) return true;
+      const sizeInBytes = maxSize * 1024 * 1024;
+      return file.size <= sizeInBytes;
+    });
+
+    if (validSizeFiles.length < files.length) {
+      setLocalError(`Some files were too large. Max size is ${maxSize}MB.`);
+    }
     const remainingSlots = maxFiles - totalImages;
     const filesToAdd = files.slice(0, remainingSlots);
 
@@ -99,21 +115,21 @@ export const ImageUpload = ({
     handleFiles(files);
   };
 
-  const handleRemovePreview = (index: number): void => {
-    setPreviews((prev) => {
-      const newPreviews = prev.filter((_, i) => i !== index);
-      // Revoke URL to free memory
-      URL.revokeObjectURL(prev[index].url);
-      // Update parent with new file list
-      const allFiles = newPreviews.map((p) => p.file);
-      onChange?.(allFiles);
-      return newPreviews;
-    });
-  };
-
-  // const handleRemoveExisting = (index: number): void => {
-  //   onRemove?.(index);
+  // const handleRemovePreview = (index: number): void => {
+  //   setPreviews((prev) => {
+  //     const newPreviews = prev.filter((_, i) => i !== index);
+  //     // Revoke URL to free memory
+  //     URL.revokeObjectURL(prev[index].url);
+  //     // Update parent with new file list
+  //     const allFiles = newPreviews.map((p) => p.file);
+  //     onChange?.(allFiles);
+  //     return newPreviews;
+  //   });
   // };
+
+  const handleRemoveExisting = (index: number): void => {
+    onRemove?.(index);
+  };
 
   const handleClick = (): void => {
     if (!disabled && canAddMore) {
@@ -171,9 +187,22 @@ export const ImageUpload = ({
               {t('sell.form.conditionCheckList.imageUpload.toUpload')}
             </p>
 
-            <p className="mt-1 text-xs text-slate-400">
-              {t('sell.form.conditionCheckList.imageUpload.formatSupport')}
-            </p>
+            {mode === 'image' ? (
+              <p className="mt-1 text-xs text-slate-400">
+                {t('sell.form.conditionCheckList.imageUpload.formatSupport')}
+                {maxSize && ` (Max ${maxSize}MB)`}
+              </p>
+            ) : (
+              <p className="mt-1 text-xs text-slate-400">
+                {t('sell.form.conditionCheckList.imageUpload.videoSupport')}
+                {maxSize && ` (Max ${maxSize}MB)`}
+              </p>
+            )}
+            {canAddMore && (
+              <p className="text-xs text-gray-400 dark:text-gray-500">
+                {totalImages} / {maxFiles} {mode === 'video' ? 'videos' : 'images'}
+              </p>
+            )}
           </div>
         </div>
       </div>
@@ -182,65 +211,54 @@ export const ImageUpload = ({
       {(value.length > 0 || previews.length > 0) && (
         <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
           {/* Existing images */}
-          {/* {value.map((url, index) => (
-            <div key={`existing-${index}`} className="group relative">
-              <div className="glass-light overflow-hidden rounded-xl border border-white/30 dark:border-white/10">
-                <img
-                  src={url}
-                  alt={`Existing ${index + 1}`}
-                  className="h-32 w-full object-cover"
-                />
-              </div>
-              {!disabled && (
-                <button
-                  type="button"
-                  onClick={() => handleRemoveExisting(index)}
-                  className={cn(
-                    'absolute -right-2 -top-2 rounded-full bg-red-500 p-1.5 text-white',
-                    'opacity-0 transition-opacity group-hover:opacity-100',
-                    'hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2',
-                  )}
-                  aria-label="Remove image"
-                >
-                  <X size={14} />
-                </button>
-              )}
-            </div>
-          ))} */}
+          {value.map((url, index) => {
+            const extension = url.split('.').pop()?.toLowerCase();
+            const isImage = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg'].includes(extension || '');
+            const isVideo = ['mp4', 'webm', 'ogg', 'mov'].includes(extension || '');
+            const isDoc = ['pdf', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx'].includes(
+              extension || '',
+            );
 
-          {/* New preview images */}
-          {previews.map((preview, index) => (
-            <div key={`preview-${index}`} className="group relative">
-              <div className="glass-light overflow-hidden rounded-xl border border-primary-300 dark:border-primary-700">
-                {mode === 'image' ? (
-                  <img
-                    src={preview.url}
-                    alt={`Preview ${index + 1}`}
-                    className="h-32 w-full object-cover"
-                  />
-                ) : (
-                  <video src={preview.url} className="h-32 w-full object-cover" controls />
+            return (
+              <div key={`existing-${index}`} className="group relative">
+                <div className="glass-light overflow-hidden rounded-xl border border-white/30 dark:border-white/10">
+                  {isImage && (
+                    <img
+                      src={url}
+                      alt={`Existing ${index + 1}`}
+                      className="h-32 w-full object-cover"
+                    />
+                  )}
+                  {isVideo && <video src={url} className="h-32 w-full object-cover" controls />}
+                  {isDoc && (
+                    <a
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex flex-col items-center justify-center text-sm text-blue-600"
+                    >
+                      <span className="material-icons text-4xl">description</span>
+                      <span className="mt-1 text-xs">View Document</span>
+                    </a>
+                  )}
+                </div>
+                {!disabled && (
+                  <button
+                    type="button"
+                    onClick={() => handleRemoveExisting(index)}
+                    className={cn(
+                      'absolute -right-2 -top-2 rounded-full bg-red-500 p-1.5 text-white',
+                      'opacity-0 transition-opacity group-hover:opacity-100',
+                      'hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2',
+                    )}
+                    aria-label="Remove image"
+                  >
+                    <X size={14} />
+                  </button>
                 )}
               </div>
-              {!disabled && (
-                <button
-                  type="button"
-                  onClick={() => handleRemovePreview(index)}
-                  className={cn(
-                    'absolute -right-2 -top-2 rounded-full bg-red-500 p-1.5 text-white',
-                    'opacity-0 transition-opacity group-hover:opacity-100',
-                    'hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2',
-                  )}
-                  aria-label="Remove preview"
-                >
-                  <X size={14} />
-                </button>
-              )}
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent px-2 py-1">
-                <p className="truncate text-xs text-white">{preview.file.name}</p>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       )}
 

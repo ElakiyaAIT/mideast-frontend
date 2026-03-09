@@ -25,6 +25,7 @@ import 'tinymce/plugins/table';
 //  ADD THESE
 import 'tinymce/skins/ui/oxide/skin.css';
 import 'tinymce/skins/content/default/content.css';
+import { useEquipmentCategories } from '../../hooks/queries/useEquipment';
 type NestedErrors<T> = {
   [K in keyof T]?: T[K] extends object ? NestedErrors<T[K]> : string;
 };
@@ -35,16 +36,19 @@ interface Props {
   errors?: NestedErrors<SellFormData>;
   handleChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
   setErrors: React.Dispatch<React.SetStateAction<NestedErrors<SellFormData>>>;
+  setCategory?: (label: string) => void;
 }
-const conditionOptions = [
-  { id: 1, value: 'Excellent' },
-  { id: 2, value: 'Good' },
-  { id: 3, value: 'Fair' },
-  { id: 4, value: 'Poor' },
-];
-
-const BasicInfo = ({ formData, setFormData, handleChange, errors, setErrors }: Props) => {
+const BasicInfo = ({
+  formData,
+  setFormData,
+  handleChange,
+  errors,
+  setErrors,
+  setCategory,
+}: Props) => {
   const { t } = useTranslation();
+  const { data: categoriesData } = useEquipmentCategories({ page: 1, limit: 100 });
+  const categories = categoriesData?.items || [];
 
   return (
     <div>
@@ -69,13 +73,17 @@ const BasicInfo = ({ formData, setFormData, handleChange, errors, setErrors }: P
 
         <SelectInput
           required={true}
-          error={errors?.category}
+          error={errors?.categoryId}
           placeholder="e.g., Excavators"
           label={t('sell.form.category')}
-          name="category"
-          value={formData.category}
-          options={conditionOptions}
+          name="categoryId"
+          value={formData.categoryId}
+          options={categories.map((cat) => ({
+            value: cat._id,
+            label: cat.name,
+          }))}
           onChange={handleChange}
+          setLabelValue={setCategory}
         />
         {/* Description (Your Original UI Preserved) */}
         <div>

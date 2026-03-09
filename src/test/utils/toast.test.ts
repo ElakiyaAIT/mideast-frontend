@@ -8,7 +8,7 @@ type ToastMock = Mock & {
 // Mock react-hot-toast
 vi.mock('react-hot-toast', () => {
   // Create a callable function mock inside the factory
-  const toastMock: ToastMock = (vi.fn() as unknown) as ToastMock;
+  const toastMock: ToastMock = vi.fn() as unknown as ToastMock;
   toastMock.success = vi.fn();
   toastMock.error = vi.fn();
 

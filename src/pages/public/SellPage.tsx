@@ -1,6 +1,6 @@
 import { TopBanner, Header, Footer } from '../../components/layout';
 import type { JSX } from 'react';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { useTranslation } from '../../i18n';
 
 // Components
@@ -17,11 +17,23 @@ import { SellStepProgress } from './components/SellStepProgress';
 
 // Hooks & Constants
 import { useSellForm } from '../../hooks/useSellForm';
-import { dropdownOptions } from './SellPage.constants';
+import { dropdownOptions, initialFormData } from './SellPage.constants';
+import { useCreateEquipment } from '../../hooks/queries/useEquipment';
+import { useCurrentUser } from '../../hooks/queries/useAuth';
+import LoginRequiredModal from './components/LoginRequiredModal';
+import { Button } from '../../components/Button/Button';
 
 const SellPage = (): JSX.Element => {
   const { t } = useTranslation();
   const formRef = useRef<HTMLDivElement>(null);
+  const { data: user } = useCurrentUser();
+  // const user={
+  //   id:'1',
+  //   firstName:'seller123',
+  //   lastName:'demo',
+  // }
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [category, setCategory] = useState('');
 
   const steps = [
     { id: 0, icon: 'info', label: t('sell.steps.basicInfo') },
@@ -45,9 +57,52 @@ const SellPage = (): JSX.Element => {
     prevStep,
     isLastStep,
   } = useSellForm(steps.length, formRef);
+  const createMutation = useCreateEquipment();
+  const isLoadingCreate = createMutation.isPending;
+  const convertYesNoStringsToBooleans = (obj: unknown): unknown => {
+    if (obj === 'yes') return true;
+    if (obj === 'no') return false;
 
-  const handleSubmit = () => {
-    console.warn(formData, 'Form Submitted');
+    if (Array.isArray(obj)) {
+      return obj.map(convertYesNoStringsToBooleans);
+    }
+
+    if (obj !== null && typeof obj === 'object') {
+      const newObj: Record<string, unknown> = {};
+      const source = obj as Record<string, unknown>;
+
+      for (const key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          newObj[key] = convertYesNoStringsToBooleans(source[key]);
+        }
+      }
+
+      return newObj;
+    }
+
+    return obj;
+  };
+  const handleSubmit = async () => {
+    try {
+      const converted = convertYesNoStringsToBooleans(formData) as typeof formData;
+      const payload = {
+        ...converted,
+        sellerId: user?.id,
+        hoursUsed: formData?.basicDetails?.engineHours
+          ? Number(formData.basicDetails.engineHours)
+          : undefined,
+        year: Number(formData.year),
+        condition: 'new',
+        listingType: 'buy_now',
+        buyNowPrice: 150000,
+      };
+      await createMutation.mutateAsync(payload);
+      setShowSuccessModal(true);
+      setFormData(initialFormData);
+      setCurrentStep(0);
+    } catch (error) {
+      console.error('Equipment creation failed', error);
+    }
   };
 
   const renderStep = () => {
@@ -60,6 +115,7 @@ const SellPage = (): JSX.Element => {
             handleChange={handleChange}
             setFormData={setFormData}
             errors={errors}
+            setCategory={setCategory}
           />
         );
       case 1:
@@ -96,7 +152,9 @@ const SellPage = (): JSX.Element => {
       case 5:
         return <PriceForm />;
       case 6:
-        return <ReviewForm formData={formData} setCurrentStep={setCurrentStep} />;
+        return (
+          <ReviewForm formData={formData} setCurrentStep={setCurrentStep} category={category} />
+        );
       default:
         return null;
     }
@@ -104,6 +162,7 @@ const SellPage = (): JSX.Element => {
 
   return (
     <>
+      <LoginRequiredModal open={!user} />
       <TopBanner />
       <Header />
 
@@ -114,7 +173,7 @@ const SellPage = (): JSX.Element => {
 
         <div
           ref={formRef}
-          className="rounded-3xl border border-slate-200 bg-white shadow-2xl dark:border-slate-700 dark:bg-slate-800"
+          className={`rounded-3xl border border-slate-200 bg-white shadow-2xl dark:border-slate-700 dark:bg-slate-800 ${!user ? 'pointer-events-none opacity-50' : ''}`}
         >
           <SellStepProgress steps={steps} currentStep={currentStep} />
 
@@ -136,19 +195,54 @@ const SellPage = (): JSX.Element => {
                 {t('common.previous')}
               </button>
 
-              <button
+              <Button
                 type="button"
                 onClick={isLastStep ? handleSubmit : nextStep}
-                className="flex transform items-center gap-2 rounded-full bg-primary px-10 py-3 font-bold text-white shadow-lg shadow-primary/30 transition-all hover:scale-105 hover:bg-orange-600"
+                className={`flex transform items-center gap-2 rounded-full bg-primary px-10 py-3 font-bold text-white shadow-lg shadow-primary/30 transition-all hover:scale-105 hover:bg-orange-600 ${
+                  isLastStep && isLoadingCreate ? 'cursor-not-allowed opacity-60' : ''
+                }`}
+                disabled={isLastStep && isLoadingCreate}
               >
-                {isLastStep ? t('common.submit') : t('common.next')}
+                {isLastStep
+                  ? isLoadingCreate
+                    ? 'Saving...'
+                    : t('common.submit')
+                  : t('common.next')}
                 <i className="material-icons">arrow_forward</i>
-              </button>
+              </Button>
             </div>
           </div>
         </div>
       </main>
+      {showSuccessModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
+          <div className="w-full max-w-md rounded-2xl bg-white p-8 text-center shadow-xl">
+            <div className="mb-4 flex justify-center">
+              <div className="flex h-14 w-14 items-center justify-center rounded-full bg-green-100">
+                <i className="material-icons text-3xl text-green-600">check_circle</i>
+              </div>
+            </div>
 
+            <h2 className="mb-2 text-xl font-semibold text-gray-900">Listing Submitted</h2>
+
+            <p className="mb-6 text-gray-600">
+              Your equipment listing has been submitted successfully. Please wait for our team to
+              contact you.
+            </p>
+
+            <button
+              onClick={() => {
+                setShowSuccessModal(false);
+                setFormData(initialFormData);
+                setCurrentStep(0);
+              }}
+              className="rounded-full bg-primary px-6 py-2 font-medium text-white hover:bg-orange-600"
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      )}
       <Footer />
     </>
   );

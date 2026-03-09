@@ -62,7 +62,7 @@ export const useLogin = (): UseMutationResult<UserDto, Error, LoginRequestDto> =
       return response.data.user;
     },
     onSuccess: (user): void => {
-      // Invalidate and refetch user profile
+      // Set user profile in cache
       queryClient.setQueryData(authKeys.profile(), user);
       showToast.success('Login successful');
       void navigate('/');
@@ -120,7 +120,7 @@ export const useLogout = (): UseMutationResult<LogoutResponseDto, Error, void> =
       // Clear all queries
       queryClient.clear();
       showToast.success('Logged out successfully');
-      void navigate('/login');
+      void navigate('/');
     },
     onError: (error): void => {
       // Still logout even if API call fails

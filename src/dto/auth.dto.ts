@@ -29,6 +29,10 @@ export interface UserDto {
   role: UserRole;
   createdAt: string;
   updatedAt: string;
+  roleId?: {
+    _id?: string;
+    name?: string;
+  };
 }
 
 export interface LogoutResponseDto {

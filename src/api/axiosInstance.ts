@@ -18,7 +18,7 @@ const axiosInstance: AxiosInstance = axios.create({
 let isRefreshing = false;
 let refreshPromise: Promise<AxiosResponse<ApiResponse<unknown>>> | null = null;
 let refreshAttempts = 0;
-const MAX_REFRESH_ATTEMPTS = 3;
+// const MAX_REFRESH_ATTEMPTS = 3;
 const failedQueue: {
   resolve: (_value?: unknown) => void;
   reject: (_error?: unknown) => void;
@@ -52,13 +52,26 @@ axiosInstance.interceptors.request.use(
     const language = i18n.language || 'en';
     config.headers['Accept-Language'] = language;
 
+    // Add Firebase ID token to Authorization header if user is authenticated
+
+    // const currentUser = auth.currentUser;
+    // if (currentUser) {
+    //   try {
+    //     const idToken = await currentUser.getIdToken();
+
+    //     config.headers['Authorization'] = `Bearer ${idToken}`;
+    //   } catch (error) {
+    //     console.error('Failed to get Firebase ID token:', error);
+    //   }
+    // }
+
     // csrf handling
     const method = config.method?.toUpperCase() || 'GET';
     const needsCsrf = ['POST', 'PUT', 'PATCH', 'DELETE'].includes(method);
 
     if (needsCsrf) {
-      const token = await csrfService.getToken();
-      config.headers[csrfService.getHeaderName()] = token;
+      const csrfToken = await csrfService.getToken();
+      config.headers[csrfService.getHeaderName()] = csrfToken;
     }
     return config;
   },
@@ -84,6 +97,7 @@ axiosInstance.interceptors.response.use(
 
     // Skip refresh logic for specific endpoints or if already marked to skip
     if (
+      !originalRequest ||
       originalRequest._retry ||
       originalRequest._skipRefresh ||
       shouldSkipRefresh(originalRequest.url) ||
@@ -94,17 +108,17 @@ axiosInstance.interceptors.response.use(
 
     // Handle 401 Unauthorized
     if (error.response?.status === HTTP_STATUS.UNAUTHORIZED) {
-      // Prevent infinite refresh loops
-      if (refreshAttempts >= MAX_REFRESH_ATTEMPTS) {
-        refreshAttempts = 0;
-        refreshPromise = null;
-        isRefreshing = false;
-        processQueue(error);
-        if (!isAuthPage()) {
-          window.location.replace('/login');
-        }
-        return Promise.reject(error);
-      }
+      //   // Prevent infinite refresh loops
+      //   if (refreshAttempts >= MAX_REFRESH_ATTEMPTS) {
+      //     refreshAttempts = 0;
+      //     refreshPromise = null;
+      //     isRefreshing = false;
+      //     processQueue(error);
+      //     if (!isAuthPage()) {
+      //       window.location.replace('/login');
+      //     }
+      //     return Promise.reject(error);
+      //   }
 
       // If already refreshing, queue this request
       if (isRefreshing && refreshPromise) {
@@ -124,8 +138,8 @@ axiosInstance.interceptors.response.use(
       isRefreshing = true;
       refreshAttempts += 1;
 
-      refreshPromise = axios
-        .post<ApiResponse<unknown>>(`${API_BASE_URL}/auth/refresh`, {}, { withCredentials: true })
+      refreshPromise = axiosInstance
+        .post<ApiResponse<unknown>>('/auth/refresh', {})
         .then((response) => {
           if (response.status === HTTP_STATUS.OK) {
             refreshAttempts = 0; // Reset on success
@@ -137,9 +151,9 @@ axiosInstance.interceptors.response.use(
         .catch((refreshError: unknown) => {
           refreshAttempts += 1;
           processQueue(refreshError as AxiosError);
-          if (!isAuthPage()) {
-            window.location.replace('/login');
-          }
+          // if (!isAuthPage()) {
+          //   window.location.replace('/login');
+          // }
           return Promise.reject(
             refreshError instanceof Error ? refreshError : new Error(String(refreshError)),
           );

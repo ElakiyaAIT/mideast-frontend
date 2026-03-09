@@ -5,13 +5,13 @@ import { InlineSpinner } from '../../components/Loader/InlineSpinner';
 describe('InlineSpinner', () => {
   it('renders correctly with default props', () => {
     render(<InlineSpinner />);
-    
+
     const spinner = screen.getByRole('status');
     expect(spinner).toBeInTheDocument();
-    
+
     // Check for default size (md) and variant (primary) classes
     expect(spinner).toHaveClass('h-5', 'w-5', 'border-t-primary-500');
-    
+
     // Check accessibility label
     expect(screen.getByText('Loading')).toHaveClass('sr-only');
   });
@@ -35,15 +35,15 @@ describe('InlineSpinner', () => {
   it('uses a custom accessible label', () => {
     const customLabel = 'Fetching data...';
     render(<InlineSpinner label={customLabel} />);
-    
+
     const spinner = screen.getByRole('status');
     expect(spinner).toHaveAttribute('aria-label', customLabel);
     expect(screen.getByText(customLabel)).toBeInTheDocument();
   });
 
   it('merges custom classNames correctly', () => {
-    render(<InlineSpinner className="mt-4 custom-test-class" />);
-    
+    render(<InlineSpinner className="custom-test-class mt-4" />);
+
     const spinner = screen.getByRole('status');
     expect(spinner).toHaveClass('mt-4', 'custom-test-class');
     // Ensure it still keeps the base animation class
@@ -53,7 +53,7 @@ describe('InlineSpinner', () => {
   it('is accessible', () => {
     render(<InlineSpinner />);
     const spinner = screen.getByRole('status');
-    
+
     expect(spinner).toHaveAttribute('aria-live', 'polite');
   });
 });

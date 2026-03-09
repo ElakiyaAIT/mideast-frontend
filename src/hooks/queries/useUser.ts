@@ -5,7 +5,7 @@ import {
   type UseQueryResult,
   type UseMutationResult,
 } from '@tanstack/react-query';
-import { userApi } from '../../api';
+import { authApi, userApi } from '../../api';
 import type { UpdateUserProfileDto, UserProfileDto } from '../../dto';
 import { normalizeApiError, getUserFriendlyMessage } from '../../utils/errorHandler';
 import { showToast } from '../../utils/toast';
@@ -65,3 +65,10 @@ export const useUpdateProfile = (): UseMutationResult<
     },
   });
 };
+export const useOptionalUser = () =>
+  useQuery({
+    queryKey: authKeys.profile(),
+    queryFn: authApi.getCurrentUser,
+    retry: false,
+    enabled: false,
+  });

@@ -37,7 +37,7 @@ describe('RadioGroup', () => {
 
   it('calls onChange when a different option is clicked', () => {
     render(<RadioGroup {...defaultProps} />);
-    
+
     const largeRadio = screen.getByLabelText('Large Size');
     fireEvent.click(largeRadio);
 
@@ -46,12 +46,12 @@ describe('RadioGroup', () => {
 
   it('displays error message when provided', () => {
     render(<RadioGroup {...defaultProps} error="Please select an option" />);
-    
+
     expect(screen.getByText('Please select an option')).toBeInTheDocument();
-    
+
     // Check if data-error attribute is set on inputs
     const inputs = screen.getAllByRole('radio');
-    inputs.forEach(input => {
+    inputs.forEach((input) => {
       expect(input).toHaveAttribute('data-error', 'true');
     });
   });
@@ -59,7 +59,7 @@ describe('RadioGroup', () => {
   it('applies formatting to labels correctly', () => {
     const options = [{ id: 1, value: 'low_stock', label: 'low stock' }];
     render(<RadioGroup {...defaultProps} options={options} />);
-    
+
     // formatLabel logic: 'low stock' -> 'Low Stock'
     expect(screen.getByText('Low Stock')).toBeInTheDocument();
   });

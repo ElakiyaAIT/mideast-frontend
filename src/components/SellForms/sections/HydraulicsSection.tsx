@@ -3,13 +3,10 @@ import type { SellFormData } from '../../../types/home';
 import { SelectInput } from '../SelectInput';
 import RadioGroup from '../RadioInput';
 import { useTranslation } from '../../../i18n';
+import { type Option } from '../../../pages/public/SellPage.constants';
 type NestedErrors<T> = {
   [K in keyof T]?: T[K] extends object ? NestedErrors<T[K]> : string;
 };
-interface Option {
-  id: number;
-  value: string;
-}
 
 interface HydraulicsSectionProps {
   formData: SellFormData;

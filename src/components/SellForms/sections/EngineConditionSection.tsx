@@ -7,8 +7,8 @@ type NestedErrors<T> = {
   [K in keyof T]?: T[K] extends object ? NestedErrors<T[K]> : string;
 };
 interface Option {
-  id: number;
-  value: string;
+  value: string | number;
+  label: string;
 }
 
 interface EngineConditionSectionProps {
@@ -20,6 +20,7 @@ interface EngineConditionSectionProps {
     yesNo: Option[];
     engineNoise: Option[];
     coldStartQuality: Option[];
+    smokeColor: Option[];
   };
 }
 
@@ -76,7 +77,7 @@ export const EngineConditionSection = ({
           value={formData.engineCondition.coolantLevel || ''}
           required={true}
           error={errors?.engineCondition?.coolantLevel}
-          options={options.yesNo}
+          options={options.overAllCondition}
           onChange={handleChange}
         />
 
@@ -87,11 +88,12 @@ export const EngineConditionSection = ({
           value={formData.engineCondition.smokeColor || ''}
           required={true}
           error={errors?.engineCondition?.smokeColor}
-          options={options.yesNo}
+          options={options.smokeColor}
           onChange={handleChange}
         />
 
-        <RadioGroup
+        <SelectInput
+          placeholder="e.g.. slight knock"
           label={t('sell.form.details.engine.engineNoise')}
           name="engineCondition.engineNoise"
           value={formData.engineCondition.engineNoise || ''}

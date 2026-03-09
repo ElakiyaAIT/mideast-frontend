@@ -1,3 +1,4 @@
+import { equipmentApi } from '../../../api';
 import { useTranslation } from '../../../i18n';
 import type { SellFormData } from '../../../types/home';
 import { ImageUpload } from '../ImageInput';
@@ -18,10 +19,10 @@ interface Props {
 }
 
 const conditionOptions = [
-  { id: 1, value: 'Excellent' },
-  { id: 2, value: 'Good' },
-  { id: 3, value: 'Fair' },
-  { id: 4, value: 'Poor' },
+  { value: 1, label: 'Excellent' },
+  { value: 2, label: 'Good' },
+  { value: 3, label: 'Fair' },
+  { value: 4, label: 'Poor' },
 ];
 
 const ConditionSection = ({
@@ -36,29 +37,31 @@ const ConditionSection = ({
   const { t } = useTranslation();
   // const [uploadingItem, setUploadingItem] = useState<string | null>(null);
   // Inside your Parent Component
+  const uploadApiMap = {
+    exterior: equipmentApi.uploadExteriorImage,
+    engine: equipmentApi.uploadEngineImage,
+    hydraulics: equipmentApi.uploadHydraulicsImage,
+    underCarriage: equipmentApi.uploadUnderCarriageImage,
+    functionalTest: equipmentApi.uploadFunctionalImage,
+  };
   const handleConditionUpload = async (itemKey: string, files: File[]) => {
     if (files.length === 0) return;
 
     // setUploadingItem(itemKey);
 
     try {
-      const uploadData = new FormData();
-      files.forEach((file) => uploadData.append('images', file));
+      const uploadFn = uploadApiMap[sectionKey];
+      if (!uploadFn) throw new Error('No upload API found for section');
 
-      const response = await fetch('/api/upload-images', {
-        method: 'POST',
-        body: uploadData,
-      });
+      const uploadedUrls: string[] = [];
 
-      if (!response.ok) throw new Error('Upload failed');
-
-      const data: { imageUrls: string[] } = await response.json();
-      const uploadedUrls = data.imageUrls;
-
+      for (const file of files) {
+        const res = await uploadFn(file);
+        uploadedUrls.push(...res.data.urls); // API returns string url
+      }
       setFormData((prev) => {
         const section = prev.checkList[sectionKey];
-        const imagesKey = `${itemKey}Images`;
-
+        const imagesKey = `${itemKey}Images` as keyof typeof section;
         const existingImages =
           typeof section === 'object' &&
           section !== null &&
@@ -148,7 +151,7 @@ const ConditionSection = ({
             {/* Item */}
             <div className="font-semibold dark:text-slate-400 md:col-span-3">
               {t(item.label)}
-              <span className="ml-1 text-red-500">*</span>
+              {/* <span className="ml-1 text-red-500">*</span> */}
             </div>
 
             {/* Select */}
@@ -166,10 +169,12 @@ const ConditionSection = ({
             {/* Upload */}
             <div className="md:col-span-6">
               <ImageUpload
-                maxFiles={1}
+                maxFiles={5}
+                maxSize={2}
                 value={formData?.checkList?.[sectionKey]?.[`${item.key}Images`] || []}
                 onChange={(files) => handleConditionUpload(item.key, files)}
                 onRemove={(idx) => handleConditionRemove(item.key, idx)}
+                helperText="Upload upto 5 images"
               />
               {/* {uploadingItem === item.key && (
                 <span className='text-xs text-primary animate-pulse'>Uploading...</span>

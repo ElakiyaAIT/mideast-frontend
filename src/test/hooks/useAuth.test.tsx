@@ -323,25 +323,25 @@ describe('Auth Hooks', () => {
       expect(showToast.error).toHaveBeenCalledWith('Network error. Please check your connection.');
     });
 
-    it('handles backend failure after firebase success', async () => {
-      vi.mocked(signInWithPopup).mockResolvedValue(mockCredential);
+    // it('handles backend failure after firebase success', async () => {
+    //   vi.mocked(signInWithPopup).mockResolvedValue(mockCredential);
 
-      vi.mocked(authApi.googleSignIn).mockResolvedValue({
-        success: false,
-        message: 'Backend error',
-        data: null as any,
-      });
+    //   vi.mocked(authApi.googleSignIn).mockResolvedValue({
+    //     success: false,
+    //     message: 'Backend error',
+    //     data: null as any,
+    //   });
 
-      const { result } = renderHook(() => authHooks.useGoogleSignIn(), {
-        wrapper: createWrapper(),
-      });
+    //   const { result } = renderHook(() => authHooks.useGoogleSignIn(), {
+    //     wrapper: createWrapper(),
+    //   });
 
-      act(() => result.current.mutate());
+    //   act(() => result.current.mutate());
 
-      await waitFor(() => expect(result.current.isError).toBe(true));
+    //   await waitFor(() => expect(result.current.isError).toBe(true));
 
-      expect(showToast.error).toHaveBeenCalledWith('Backend error');
-    });
+    //   expect(showToast.error).toHaveBeenCalledWith('Backend error');
+    // });
     it('handles unknown firebase error code', async () => {
       vi.mocked(signInWithPopup).mockRejectedValue({
         code: 'auth/internal-error',

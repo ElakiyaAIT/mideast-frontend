@@ -13,7 +13,7 @@ describe('TextInput', () => {
 
   it('shows the required asterisk when required is true', () => {
     render(<TextInput label="Username" required />);
-    
+
     expect(screen.getByText('*')).toBeInTheDocument();
     expect(screen.getByText('*')).toHaveClass('text-red-500');
   });
@@ -47,14 +47,7 @@ describe('TextInput', () => {
   });
 
   it('passes standard HTML attributes to the input element', () => {
-    render(
-      <TextInput 
-        label="Password" 
-        type="password" 
-        autoComplete="current-password" 
-        disabled 
-      />
-    );
+    render(<TextInput label="Password" type="password" autoComplete="current-password" disabled />);
 
     const input = screen.getByLabelText('Password');
     expect(input).toHaveAttribute('type', 'password');

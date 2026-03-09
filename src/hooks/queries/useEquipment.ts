@@ -1,4 +1,4 @@
-import { useQuery, type UseQueryResult } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient, type UseQueryResult } from '@tanstack/react-query';
 import {
   equipmentApi,
   type Equipment,
@@ -8,6 +8,7 @@ import {
   type EquipmentCategoryListResponse,
   equipmentCategoryApi,
 } from '../../api/equipmentApi';
+import type { SellFormData } from '../../types/home';
 
 /**
  * Query keys for equipment data
@@ -218,5 +219,21 @@ export const useRelatedEquipment = (options: {
     },
     staleTime: 1000 * 60 * 5, // 5 minutes
     retry: 2,
+  });
+};
+/**
+ * Hook to create new equipment
+ */
+export const useCreateEquipment = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (data: SellFormData) => equipmentApi.createEquipment(data),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: ['equipment'] });
+    },
+    onError: (error: Error) => {
+      console.error(error.message || 'Failed to create equipment');
+    },
   });
 };

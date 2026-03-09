@@ -8,8 +8,8 @@ type NestedErrors<T> = {
   [K in keyof T]?: T[K] extends object ? NestedErrors<T[K]> : string;
 };
 interface Option {
-  id: number;
-  value: string;
+  value: string | number;
+  label: string;
 }
 
 interface GeneralSpecsSectionProps {

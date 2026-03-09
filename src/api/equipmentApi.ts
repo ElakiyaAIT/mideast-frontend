@@ -1,5 +1,6 @@
 import axiosInstance from './axiosInstance';
 import type { ApiResponse } from '../dto';
+import type { SellFormData } from '../types/home';
 
 /**
  * Equipment data structure - matches backend schema
@@ -129,6 +130,16 @@ export interface EquipmentCategoryListResponse {
  */
 export const equipmentApi = {
   /**
+   * Create new equipment listing
+   */
+  createEquipment: async (data: SellFormData): Promise<ApiResponse<EquipmentListResponse>> => {
+    const response = await axiosInstance.post<ApiResponse<EquipmentListResponse>>(
+      '/equipment',
+      data,
+    );
+    return response.data;
+  },
+  /**
    * Get equipment list with filters
    * Uses SCOPED loader (default)
    */
@@ -167,7 +178,242 @@ export const equipmentApi = {
     });
     return response.data;
   },
+  //Upload images in forms
+  uploadExteriorImage: async (file: File): Promise<{ data: { urls: string[] } }> => {
+    const formData = new FormData();
 
+    formData.append('images', file); // MUST match FileInterceptor('image')
+
+    const response = await axiosInstance.post('/admin/upload/exterior-images', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+
+    return response.data;
+  },
+
+  //Engine
+  //Upload images in forms
+  uploadEngineImage: async (file: File): Promise<{ data: { urls: string[] } }> => {
+    const formData = new FormData();
+
+    formData.append('images', file); // MUST match FileInterceptor('image')
+
+    const response = await axiosInstance.post('/admin/upload/engine-images', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+
+    return response.data;
+  },
+  //hydraulics
+  //Upload images in forms
+  uploadHydraulicsImage: async (file: File): Promise<{ data: { urls: string[] } }> => {
+    const formData = new FormData();
+
+    formData.append('images', file); // MUST match FileInterceptor('image')
+
+    const response = await axiosInstance.post('/admin/upload/hydraulics-images', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+
+    return response.data;
+  },
+  //underCarriage
+  //Upload images in forms
+  uploadUnderCarriageImage: async (file: File): Promise<{ data: { urls: string[] } }> => {
+    const formData = new FormData();
+
+    formData.append('images', file); // MUST match FileInterceptor('image')
+
+    const response = await axiosInstance.post('/admin/upload/underCarriage-images', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+
+    return response.data;
+  },
+  //functionalTest
+  //Upload images in forms
+  uploadFunctionalImage: async (file: File): Promise<{ data: { urls: string[] } }> => {
+    const formData = new FormData();
+
+    formData.append('images', file); // MUST match FileInterceptor('image')
+
+    const response = await axiosInstance.post('/admin/upload/functional-images', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    return response.data;
+  },
+  //Exterior
+  uploadExteriorMediaImage: async (file: File): Promise<{ data: { urls: string[] } }> => {
+    const formData = new FormData();
+
+    formData.append('images', file); // MUST match FileInterceptor('image')
+
+    const response = await axiosInstance.post('/admin/upload/exteriorMedia-images', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    return response.data;
+  },
+  //Engine
+  //Upload images in forms
+  uploadEngineMediaImage: async (file: File): Promise<{ data: { urls: string[] } }> => {
+    const formData = new FormData();
+
+    formData.append('images', file); // MUST match FileInterceptor('image')
+
+    const response = await axiosInstance.post('/admin/upload/engineMedia-images', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    return response.data;
+  },
+  //UnderCarriage
+  //Upload images in forms
+  uploadUndercarriageMediaImage: async (file: File): Promise<{ data: { urls: string[] } }> => {
+    const formData = new FormData();
+
+    formData.append('images', file); // MUST match FileInterceptor('image')
+
+    const response = await axiosInstance.post('/admin/upload/underCarriageMedia-images', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    return response.data;
+  },
+  //cabInterior
+  //Upload images in forms
+  uploadCabInteriorMediaImage: async (file: File): Promise<{ data: { urls: string[] } }> => {
+    const formData = new FormData();
+
+    formData.append('images', file); // MUST match FileInterceptor('image')
+
+    const response = await axiosInstance.post('/admin/upload/cabInteriorMedia-images', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    return response.data;
+  },
+  //other attachments
+  //Upload images in forms
+  uploadOtherAttachmentMediaImage: async (file: File): Promise<{ data: { urls: string[] } }> => {
+    const formData = new FormData();
+
+    formData.append('images', file); // MUST match FileInterceptor('image')
+
+    const response = await axiosInstance.post('/admin/upload/otherMedia-images', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    return response.data;
+  },
+  //Upload videos in forms
+  uploadVideos: async (file: File): Promise<{ data: { urls: string[] } }> => {
+    const formData = new FormData();
+
+    formData.append('videos', file); // MUST match FileInterceptor('image')
+
+    const response = await axiosInstance.post('/admin/upload/videos', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    return response.data;
+  },
+  //Upload Documents in forms
+  //Ownership
+  uploadOwnershipDocs: async (file: File): Promise<{ data: { urls: string[] } }> => {
+    const formData = new FormData();
+
+    formData.append('documents', file); // MUST match FileInterceptor('image')
+
+    const response = await axiosInstance.post('/admin/upload/ownership-docs', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    return response.data;
+  },
+  //Invoice/Bill of sale
+  uploadInvoiceDocs: async (file: File): Promise<{ data: { urls: string[] } }> => {
+    const formData = new FormData();
+
+    formData.append('documents', file); // MUST match FileInterceptor('image')
+
+    const response = await axiosInstance.post('/admin/upload/invoice-docs', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    return response.data;
+  },
+  //Government Registration
+  uploadRegistrationDocs: async (file: File): Promise<{ data: { urls: string[] } }> => {
+    const formData = new FormData();
+
+    formData.append('documents', file); // MUST match FileInterceptor('image')
+
+    const response = await axiosInstance.post('/admin/upload/registration-docs', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    return response.data;
+  },
+  //Emission Test
+  uploadEmissionDocs: async (file: File): Promise<{ data: { urls: string[] } }> => {
+    const formData = new FormData();
+
+    formData.append('documents', file); // MUST match FileInterceptor('image')
+
+    const response = await axiosInstance.post('/admin/upload/emissionTest-docs', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    return response.data;
+  },
+  //Insurance
+  uploadInsuranceDocs: async (file: File): Promise<{ data: { urls: string[] } }> => {
+    const formData = new FormData();
+
+    formData.append('documents', file); // MUST match FileInterceptor('image')
+
+    const response = await axiosInstance.post('/admin/upload/insurance-docs', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    return response.data;
+  },
+  //Maintenance
+  //Insurance
+  uploadMaintenanceDocs: async (file: File): Promise<{ data: { urls: string[] } }> => {
+    const formData = new FormData();
+
+    formData.append('documents', file); // MUST match FileInterceptor('image')
+
+    const response = await axiosInstance.post('/admin/upload/maintenance-docs', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    return response.data;
+  },
   /**
    * Search equipment by query
    * Uses SCOPED loader (default)

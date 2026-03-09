@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
-import { 
-  SkeletonLoader, 
-  SkeletonText, 
-  SkeletonAvatar, 
-  SkeletonCard 
+import {
+  SkeletonLoader,
+  SkeletonText,
+  SkeletonAvatar,
+  SkeletonCard,
 } from '../../components/Loader/SkeletonLoader';
 
 describe('SkeletonLoader', () => {
@@ -18,11 +18,11 @@ describe('SkeletonLoader', () => {
   it('renders the correct number of items based on count', () => {
     const count = 5;
     const { container } = render(<SkeletonLoader variant="text" count={count} />);
-    
+
     // The wrapper for multiple items has 'space-y-3'
     const wrapper = container.querySelector('.space-y-3');
     expect(wrapper).toBeInTheDocument();
-    
+
     // Count the actual skeleton blocks
     const items = container.querySelectorAll('.relative.overflow-hidden');
     expect(items).toHaveLength(count);
@@ -31,7 +31,7 @@ describe('SkeletonLoader', () => {
   it('applies specific styles for the circle variant', () => {
     const { container } = render(<SkeletonLoader variant="circle" />);
     const item = container.querySelector('.rounded-full') as HTMLElement;
-    
+
     expect(item).toBeInTheDocument();
     expect(item.style.width).toBe('48px');
     expect(item.style.height).toBe('48px');
@@ -39,11 +39,11 @@ describe('SkeletonLoader', () => {
 
   it('renders the complex card variant structure', () => {
     const { container } = render(<SkeletonLoader variant="card" />);
-    
+
     // Check for the nested skeleton elements inside the card
     const avatarPlaceholder = container.querySelector('.h-12.w-12.rounded-full');
     const footerButtons = container.querySelectorAll('.h-8.w-20');
-    
+
     expect(avatarPlaceholder).toBeInTheDocument();
     expect(footerButtons).toHaveLength(2);
   });

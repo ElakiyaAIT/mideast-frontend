@@ -4,7 +4,7 @@ import type { SellFormData } from '../types/home';
 import {
   additionalInformationSchema,
   basicInfoSchema,
-  conditionSchema,
+  // conditionSchema,
   detailsSchema,
 } from '../utils';
 import { initialFormData } from '../pages/public/SellPage.constants';
@@ -31,9 +31,10 @@ export const useSellForm = (
         case 1:
           schema = detailsSchema;
           break;
-        case 2:
-          schema = conditionSchema;
-          break;
+        //TO MAKE MANDATORY
+        // case 2:
+        //   schema = conditionSchema;
+        //   break;
         case 4:
           schema = additionalInformationSchema;
           break;

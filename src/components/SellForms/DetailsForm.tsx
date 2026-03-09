@@ -13,8 +13,8 @@ type NestedErrors<T> = {
 };
 
 interface Option {
-  id: number;
-  value: string;
+  value: string | number;
+  label: string;
 }
 
 interface DetailsProps {
@@ -33,6 +33,7 @@ interface DetailsProps {
     yesNo: Option[];
     coldStartQuality: Option[];
     engineNoise: Option[];
+    smokeColor: Option[];
   };
 }
 

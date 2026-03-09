@@ -75,12 +75,19 @@ export const auctionKeys = {
 
 export interface SellFormData {
   title: string;
-  category: string;
+  categoryId?: string;
   description?: string;
+  make?: string;
+  models?: string;
+  year?: number;
+  location: {
+    address?: string;
+    city?: string;
+    state?: string;
+    zipCode?: string;
+    country?: string;
+  };
   basicDetails: {
-    year?: string;
-    make?: string;
-    model?: string;
     manufacturer?: string;
     engineHours?: string;
     mileage?: string;
@@ -96,71 +103,71 @@ export interface SellFormData {
     cabType?: string;
     tireTrackWear?: string;
   };
-  condition: {
+  conditionOverview: {
     overallCondition?: string;
     exteriorColor: string;
     interiorColor: string;
-    jumpStartRequired?: string;
-    batteriesHoldCharge?: string;
-    parkingBrakeWorks?: string;
+    jumpStartRequired?: boolean;
+    batteriesHoldCharge?: boolean;
+    parkingBrakeWorks?: boolean;
   };
   engineCondition: {
     overAllCondition?: string;
-    oilLevelOk?: string;
-    anyLeaks?: string;
+    oilLevelOk?: boolean;
+    anyLeaks?: boolean;
     engineNoise?: string;
     coolantLevel?: string;
     coldStartQuality?: string;
-    checkEngineLight?: string;
+    checkEngineLight?: boolean;
     smokeColor?: string;
   };
   hydraulics: {
-    hydraulicPumpCondition: string;
-    cylinderLeaks: string;
-    hoseCondition: string;
-    hydraulicResponse: string;
-    hydraulicsDamage: string;
+    hydraulicPumpCondition?: string;
+    cylinderLeaks?: boolean;
+    hoseCondition?: string;
+    hydraulicResponse?: string;
+    hydraulicsDamage?: boolean;
   };
   cabElectronics: {
-    dashboardFunctional: string;
-    acHeaterWorking: string;
-    displayErrors: string;
-    seatCondition: string;
-    controlsWorking: string;
-    lightsWorking: string;
-    sensorsWorking: string;
+    dashboardFunctional?: boolean;
+    acHeaterWorking?: boolean;
+    displayErrors?: boolean;
+    seatCondition?: string;
+    controlsWorking?: boolean;
+    lightsWorking?: boolean;
+    sensorsWorking?: boolean;
   };
   checkList: {
     exterior: {
-      bodyPanels: string;
+      bodyPanels?: string;
       bodyPanelsImages: string[];
-      glassMirrors: string;
+      glassMirrors?: string;
       glassMirrorsImages: string[];
-      lightsSignals: string;
+      lightsSignals?: string;
       lightsSignalsImages: string[];
     };
     engine: {
-      engineBlock: string;
+      engineBlock?: string;
       engineBlockImages: string[];
-      transmission: string;
+      transmission?: string;
       transmissionImages: string[];
     };
     hydraulics: {
-      hydraulicPump: string;
+      hydraulicPump?: string;
       hydraulicPumpImages: string[];
-      cylinders: string;
+      cylinders?: string;
       cylindersImages: string[];
     };
     underCarriage: {
-      tracksWheels: string;
+      tracksWheels?: string;
       tracksWheelsImages: string[];
-      suspension: string;
+      suspension?: string;
       suspensionImages: string[];
     };
     functionalTest: {
-      engineStart: string;
+      engineStart?: string;
       engineStartImages: string[];
-      operationTest: string;
+      operationTest?: string;
       operationTestImages: string[];
     };
   };
@@ -168,21 +175,18 @@ export interface SellFormData {
     exteriorImages: string[];
     engineCompartMentImages: string[];
     underCarriageTracksImages: string[];
-    cabInteiorImages: string[];
+    cabInteriorImages: string[];
     otherAttachments: string[];
     videos: string[];
   };
   additionalInformation: {
     equipmentIdentity: {
-      vinNumber: string;
-      manufacturerDate: string;
-      modelYearConfirmation: string;
-      equipmentHasDamage: string;
-      maintainenceRecords: string;
-      warrantyAvailable: string;
-    };
-    location: {
-      address: string;
+      vinNumber?: string;
+      manufacturerDate?: string;
+      modelYearConfirmation?: boolean;
+      equipmentHasDamage?: boolean;
+      maintenanceRecords?: boolean;
+      warrantyAvailable?: boolean;
     };
     ownership: {
       ownershipProof: string[];

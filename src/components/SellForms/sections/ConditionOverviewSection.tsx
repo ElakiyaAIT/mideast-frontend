@@ -7,8 +7,8 @@ type NestedErrors<T> = {
   [K in keyof T]?: T[K] extends object ? NestedErrors<T[K]> : string;
 };
 interface Option {
-  id: number;
-  value: string;
+  value: string | number;
+  label: string;
 }
 
 interface ConditionOverviewSectionProps {
@@ -40,10 +40,10 @@ export const ConditionOverviewSection = ({
         <SelectInput
           placeholder="e.g., Good"
           label={t('sell.form.details.condition.overall')}
-          name="condition.overallCondition"
-          value={formData.condition.overallCondition}
+          name="conditionOverview.overallCondition"
+          value={formData.conditionOverview.overallCondition}
           required={true}
-          error={errors?.condition?.overallCondition}
+          error={errors?.conditionOverview?.overallCondition}
           options={options.overAllCondition}
           onChange={handleChange}
         />
@@ -51,10 +51,10 @@ export const ConditionOverviewSection = ({
         <SelectInput
           placeholder="e.g., CAT yellow"
           label={t('sell.form.details.condition.exterior')}
-          name="condition.exteriorColor"
-          value={formData.condition.exteriorColor}
+          name="conditionOverview.exteriorColor"
+          value={formData.conditionOverview.exteriorColor}
           required={true}
-          error={errors?.condition?.exteriorColor}
+          error={errors?.conditionOverview?.exteriorColor}
           options={options.exteriorColor}
           onChange={handleChange}
         />
@@ -62,40 +62,40 @@ export const ConditionOverviewSection = ({
         <SelectInput
           placeholder="e.g., Black/Grey"
           label={t('sell.form.details.condition.interior')}
-          name="condition.interiorColor"
-          value={formData.condition.interiorColor}
+          name="conditionOverview.interiorColor"
+          value={formData.conditionOverview.interiorColor}
           required={true}
-          error={errors?.condition?.interiorColor}
+          error={errors?.conditionOverview?.interiorColor}
           options={options.exteriorColor}
           onChange={handleChange}
         />
 
         <RadioGroup
           label={t('sell.form.details.condition.jumpStart')}
-          name="condition.jumpStartRequired"
-          value={formData.condition.jumpStartRequired || ''}
+          name="conditionOverview.jumpStartRequired"
+          value={formData.conditionOverview.jumpStartRequired || ''}
           required={true}
-          error={errors?.condition?.jumpStartRequired}
+          error={errors?.conditionOverview?.jumpStartRequired}
           options={options.yesNo}
           onChange={handleChange}
         />
 
         <RadioGroup
           label={t('sell.form.details.condition.batteriesHoldCharge')}
-          name="condition.batteriesHoldCharge"
-          value={formData.condition.batteriesHoldCharge || ''}
+          name="conditionOverview.batteriesHoldCharge"
+          value={formData.conditionOverview.batteriesHoldCharge || ''}
           required={true}
-          error={errors?.condition?.batteriesHoldCharge}
+          error={errors?.conditionOverview?.batteriesHoldCharge}
           options={options.yesNo}
           onChange={handleChange}
         />
 
         <RadioGroup
           label={t('sell.form.details.condition.parkingBrake')}
-          name="condition.parkingBrakeWorks"
-          value={formData.condition.parkingBrakeWorks || ''}
+          name="conditionOverview.parkingBrakeWorks"
+          value={formData.conditionOverview.parkingBrakeWorks || ''}
           required={true}
-          error={errors?.condition?.parkingBrakeWorks}
+          error={errors?.conditionOverview?.parkingBrakeWorks}
           options={options.yesNo}
           onChange={handleChange}
         />

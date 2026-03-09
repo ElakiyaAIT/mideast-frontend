@@ -529,9 +529,9 @@
           "overall": "OverAll Condition",
           "exterior": "Exterior Color",
           "interior": "Interior Color",
-          "jumpStart": "Jump Start Required",
-          "batteriesHoldCharge": "Batteries Hold Charge",
-          "parkingBrake": "Parking Brake Works"
+          "jumpStart": "Jump Start Required?",
+          "batteriesHoldCharge": "Batteries Hold Charge?",
+          "parkingBrake": "Parking Brake Works?"
         },
         "engine": {
           "title": "Engine Condition",
@@ -542,25 +542,25 @@
           "smokeColor": "Smoke Color",
           "engineNoise": "Engine Noise",
           "coldStartQuality": "Cold Start Quality",
-          "checkEngineLight": "Check Engine Light"
+          "checkEngineLight": "Check Engine Light?"
         },
         "hydraulics": {
           "title": "Hydraulics",
           "hydraulicPump": "Hydraulic Pump Condition",
-          "cylinderLeaks": "Cylinder Leaks",
+          "cylinderLeaks": "Cylinder Leaks?",
           "hoseCondition": "Hose Condition",
           "hydraulicResponse": "Hydraulic Response",
-          "hydraulicDamage": "Hydraulics Damage"
+          "hydraulicDamage": "Hydraulics Damage?"
         },
         "cabElectronics": {
           "title": "Cab & Electronics",
-          "dashboardFunctional": "Dashboard Functional",
-          "acHeater": "Ac/Heater Working",
-          "displayErrors": "Display Errors",
+          "dashboardFunctional": "Dashboard Functional?",
+          "acHeater": "Ac/Heater Working?",
+          "displayErrors": "Display Errors?",
           "seatCondition": "Seat Condition",
-          "controlsWorking": "Controls Working",
-          "lightsWorking": "Lights Working",
-          "sensorsWorking": "Sensors Working"
+          "controlsWorking": "Controls Working?",
+          "lightsWorking": "Lights Working?",
+          "sensorsWorking": "Sensors Working?"
         }
       },
       "conditionCheckList": {
@@ -571,7 +571,8 @@
         "imageUpload": {
           "clickHere": "Click here",
           "toUpload": " to upload your file or drag.",
-          "formatSupport": "Supported Format: SVG, JPG, MP4 (10mb each)"
+          "formatSupport": "Supported Format: SVG, JPG, PNG (10mb each)",
+          "videoSupport": "Supported Format:MP4, MPEg"
         },
         "exteriorLabel": "exterior",
         "engineLabel": "engine",
@@ -620,14 +621,18 @@
           "title": "Equipment Identity Information",
           "vinNumber": "VIN Number",
           "manufacturerDate": "Manufacturer Date",
-          "modelYear": "Model Year Confirmation",
+          "modelYear": "Model Year Confirmation?",
           "equipmentHasDamage": "If Equipment Has Damage?",
           "maintainenceRecords": "Maintainence Records Available?",
           "warrantyAvailable": "Warranty Available?"
         },
         "location": {
           "title": "Location",
-          "address": "Address"
+          "address": "Address",
+          "city": "City",
+          "state": "State",
+          "zipCode": "ZipCode",
+          "country": "Country"
         },
         "ownership": {
           "title": "Ownership & Legal Documents",

@@ -4,13 +4,14 @@ import RadioGroup from './RadioInput';
 import { useTranslation } from '../../i18n';
 import { DocumentUpload } from './DocumentInput';
 import React from 'react';
+import { equipmentApi } from '../../api';
 
 type NestedErrors<T> = {
   [K in keyof T]?: T[K] extends object ? NestedErrors<T[K]> : string;
 };
 interface Option {
-  id: number;
-  value: string;
+  value: string | number;
+  label: string;
 }
 interface DetailsProps {
   formData: SellFormData;
@@ -30,7 +31,13 @@ interface DetailsProps {
     engineNoise: Option[];
   };
 }
-
+type Location = {
+  address?: string;
+  city?: string;
+  state?: string;
+  country?: string;
+  zipcode?: string;
+};
 const AdditionalInformation = ({
   formData,
   handleChange,
@@ -39,36 +46,47 @@ const AdditionalInformation = ({
   setFormData,
 }: DetailsProps) => {
   const { t } = useTranslation();
-  const getGoogleMapsEmbedUrl = (address?: string) => {
-    if (address && address.trim() !== '') {
-      const encodedAddress = encodeURIComponent(address);
+  const getGoogleMapsEmbedUrl = (location?: Location) => {
+    if (location) {
+      const parts = [
+        location.address,
+        location.city,
+        location.state,
+        location.zipcode,
+        location.country,
+      ].filter(Boolean); // remove empty values
 
-      // When address exists → show location with marker
-      return `https://www.google.com/maps?q=${encodedAddress}&output=embed`;
+      if (parts.length > 0) {
+        const fullAddress = parts.join(', ');
+        const encodedAddress = encodeURIComponent(fullAddress);
+
+        return `https://www.google.com/maps?q=${encodedAddress}&output=embed`;
+      }
     }
 
-    // When empty → show plain map view (no pin)
+    // fallback → plain map view
     return `https://www.google.com/maps?output=embed`;
   };
-
+  const uploadApiMap = {
+    ownershipProof: equipmentApi.uploadOwnershipDocs,
+    invoiceBillOfSale: equipmentApi.uploadInvoiceDocs,
+    governmentRegistration: equipmentApi.uploadRegistrationDocs,
+    emissionTest: equipmentApi.uploadEmissionDocs,
+    insurance: equipmentApi.uploadInsuranceDocs,
+    maintenanceLog: equipmentApi.uploadMaintenanceDocs,
+  };
   const handleOwnershipUpload =
     (field: keyof typeof formData.additionalInformation.ownership) => async (files: File[]) => {
       try {
+        const uploadFn = uploadApiMap[field];
+        if (!uploadFn) throw new Error('No upload API found');
+
         const uploadedUrls: string[] = [];
 
         for (const file of files) {
-          const uploadData = new FormData();
-          uploadData.append('file', file);
-
-          const res = await fetch('/your-upload-api', {
-            method: 'POST',
-            body: uploadData,
-          });
-
-          const data = await res.json();
-          uploadedUrls.push(data.url);
+          const res = await uploadFn(file);
+          uploadedUrls.push(...res.data.urls);
         }
-
         setFormData((prev) => ({
           ...prev,
           additionalInformation: {
@@ -117,7 +135,7 @@ const AdditionalInformation = ({
               name="additionalInformation.equipmentIdentity.vinNumber"
               placeholder="e.g., CAT0320GCXYZ123"
               value={formData.additionalInformation.equipmentIdentity.vinNumber || ''}
-              required={true}
+              // required={true}
               error={errors?.additionalInformation?.equipmentIdentity?.vinNumber}
               onChange={handleChange}
             />
@@ -127,7 +145,7 @@ const AdditionalInformation = ({
               name="additionalInformation.equipmentIdentity.manufacturerDate"
               placeholder="MM/DD/YYYY"
               value={formData.additionalInformation.equipmentIdentity.manufacturerDate || ''}
-              required={true}
+              // required={true}
               error={errors?.additionalInformation?.equipmentIdentity?.manufacturerDate}
               onChange={handleChange}
               type="date"
@@ -137,7 +155,7 @@ const AdditionalInformation = ({
               label={t('sell.form.additionalInformation.equipmentIdentity.modelYear')}
               name="additionalInformation.equipmentIdentity.modelYearConfirmation"
               value={formData.additionalInformation.equipmentIdentity.modelYearConfirmation || ''}
-              required={true}
+              // required={true}
               error={errors?.additionalInformation?.equipmentIdentity?.modelYearConfirmation}
               options={options.yesNo}
               onChange={handleChange}
@@ -147,7 +165,7 @@ const AdditionalInformation = ({
               label={t('sell.form.additionalInformation.equipmentIdentity.equipmentHasDamage')}
               name="additionalInformation.equipmentIdentity.equipmentHasDamage"
               value={formData.additionalInformation.equipmentIdentity.equipmentHasDamage || ''}
-              required={true}
+              // required={true}
               error={errors?.additionalInformation?.equipmentIdentity?.equipmentHasDamage}
               options={options.yesNo}
               onChange={handleChange}
@@ -156,9 +174,9 @@ const AdditionalInformation = ({
             <RadioGroup
               label={t('sell.form.additionalInformation.equipmentIdentity.maintainenceRecords')}
               name="additionalInformation.equipmentIdentity.maintainenceRecords"
-              value={formData.additionalInformation.equipmentIdentity.maintainenceRecords || ''}
-              required={true}
-              error={errors?.additionalInformation?.equipmentIdentity?.maintainenceRecords}
+              value={formData.additionalInformation.equipmentIdentity.maintenanceRecords || ''}
+              // required={true}
+              error={errors?.additionalInformation?.equipmentIdentity?.maintenanceRecords}
               options={options.yesNo}
               onChange={handleChange}
             />
@@ -167,7 +185,7 @@ const AdditionalInformation = ({
               label={t('sell.form.additionalInformation.equipmentIdentity.warrantyAvailable')}
               name="additionalInformation.equipmentIdentity.warrantyAvailable"
               value={formData.additionalInformation.equipmentIdentity.warrantyAvailable || ''}
-              required={true}
+              // required={true}
               error={errors?.additionalInformation?.equipmentIdentity?.warrantyAvailable}
               options={options.yesNo}
               onChange={handleChange}
@@ -183,18 +201,50 @@ const AdditionalInformation = ({
           <div className="grid grid-cols-1 gap-6">
             <TextInput
               label={t('sell.form.additionalInformation.location.address')}
-              name="additionalInformation.location.address"
+              name="location.address"
               placeholder="e.g., Milan, Italia"
-              value={formData.additionalInformation.location.address || ''}
+              value={formData.location.address || ''}
               required={true}
-              error={errors?.additionalInformation?.location?.address}
+              error={errors?.location?.address}
+              onChange={handleChange}
+            />
+            <TextInput
+              label={t('sell.form.additionalInformation.location.city')}
+              name="location.city"
+              value={formData.location.city || ''}
+              required={true}
+              error={errors?.location?.city}
+              onChange={handleChange}
+            />
+            <TextInput
+              label={t('sell.form.additionalInformation.location.state')}
+              name="location.state"
+              value={formData.location.state || ''}
+              required={true}
+              error={errors?.location?.state}
+              onChange={handleChange}
+            />
+            <TextInput
+              label={t('sell.form.additionalInformation.location.zipCode')}
+              name="location.zipCode"
+              value={formData.location.zipCode || ''}
+              required={true}
+              error={errors?.location?.zipCode}
+              onChange={handleChange}
+            />
+            <TextInput
+              label={t('sell.form.additionalInformation.location.country')}
+              name="location.country"
+              value={formData.location.country || ''}
+              required={true}
+              error={errors?.location?.country}
               onChange={handleChange}
             />
 
             <div className="h-[350px] w-full overflow-hidden rounded-xl bg-slate-200 shadow-inner contrast-125 transition-all duration-700 hover:grayscale-0 dark:bg-slate-800">
               <iframe
                 title="Equipment Location Map"
-                src={getGoogleMapsEmbedUrl(formData.additionalInformation.location.address)}
+                src={getGoogleMapsEmbedUrl(formData?.location || '')}
                 className="h-full w-full border-0"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
@@ -211,48 +261,54 @@ const AdditionalInformation = ({
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             <DocumentUpload
               label={t('sell.form.additionalInformation.ownership.ownershipProof')}
-              required={true}
-              maxFiles={3}
+              // required={true}
+              maxFiles={1}
+              value={formData.additionalInformation.ownership.ownershipProof}
               onChange={handleOwnershipUpload('ownershipProof')}
               onRemove={handleOwnershipRemove('ownershipProof')}
             />
 
             <DocumentUpload
               label={t('sell.form.additionalInformation.ownership.invoiceBill')}
-              required={true}
-              maxFiles={3}
+              // required={true}
+              maxFiles={1}
+              value={formData.additionalInformation.ownership.invoiceBillOfSale}
               onChange={handleOwnershipUpload('invoiceBillOfSale')}
               onRemove={handleOwnershipRemove('invoiceBillOfSale')}
             />
 
             <DocumentUpload
               label={t('sell.form.additionalInformation.ownership.governmentRegistration')}
-              required={true}
-              maxFiles={3}
+              // required={true}
+              maxFiles={1}
+              value={formData.additionalInformation.ownership.governmentRegistration}
               onChange={handleOwnershipUpload('governmentRegistration')}
               onRemove={handleOwnershipRemove('governmentRegistration')}
             />
 
             <DocumentUpload
               label={t('sell.form.additionalInformation.ownership.emission')}
-              required={true}
-              maxFiles={3}
+              // required={true}
+              maxFiles={1}
+              value={formData.additionalInformation.ownership.emissionTest}
               onChange={handleOwnershipUpload('emissionTest')}
               onRemove={handleOwnershipRemove('emissionTest')}
             />
 
             <DocumentUpload
               label={t('sell.form.additionalInformation.ownership.insurance')}
-              required={true}
-              maxFiles={3}
+              // required={true}
+              maxFiles={1}
+              value={formData.additionalInformation.ownership.insurance}
               onChange={handleOwnershipUpload('insurance')}
               onRemove={handleOwnershipRemove('insurance')}
             />
 
             <DocumentUpload
               label={t('sell.form.additionalInformation.ownership.maintenance')}
-              required={true}
-              maxFiles={3}
+              // required={true}
+              maxFiles={1}
+              value={formData.additionalInformation.ownership.maintenanceLog}
               onChange={handleOwnershipUpload('maintenanceLog')}
               onRemove={handleOwnershipRemove('maintenanceLog')}
             />

@@ -25,7 +25,8 @@ const getCleanText = (value?: string): string => {
 export const emailSchema = yup
   .string()
   .required(() => t('validation.email.required'))
-  .email(() => t('validation.email.invalid'));
+  .email(() => t('validation.email.invalid'))
+  .trim();
 
 // Password validation
 export const passwordSchema = yup
@@ -68,18 +69,28 @@ export const resetPasswordSchema = yup.object({
 });
 
 // Update profile schema
-export const updateProfileSchema = yup.object({
+
+export interface UpdateProfileFormData {
+  email: string;
+  firstName?: string;
+  lastName?: string;
+}
+export const updateProfileSchema: yup.ObjectSchema<UpdateProfileFormData> = yup.object({
   email: emailSchema,
   firstName: yup
     .string()
+    .transform((v) => (v === '' ? undefined : v))
     .min(2, () => t('validation.firstName.minLength'))
     .max(50, () => t('validation.firstName.maxLength'))
-    .optional(),
+    .optional()
+    .trim(),
   lastName: yup
     .string()
+    .transform((v) => (v === '' ? undefined : v))
     .min(2, () => t('validation.lastName.minLength'))
     .max(50, () => t('validation.lastName.maxLength'))
-    .optional(),
+    .optional()
+    .trim(),
 });
 
 export const basicInfoSchema = yup.object({
@@ -90,7 +101,7 @@ export const basicInfoSchema = yup.object({
     .min(5, () => t('validation.sell.title.minLength'))
     .max(120, () => t('validation.sell.title.maxLength')),
 
-  category: yup.string().required(() => t('validation.sell.category.required')),
+  categoryId: yup.string().required(() => t('validation.sell.category.required')),
 
   description: yup
     .string()
@@ -120,24 +131,21 @@ export const basicInfoSchema = yup.object({
 });
 
 export const detailsSchema = yup.object({
+  year: yup
+    .number()
+    .required(() => t('validation.sell.year.required'))
+    .typeError(() => t('validation.sell.year.number'))
+    .min(1900, () => t('validation.sell.year.min'))
+    .max(new Date().getFullYear(), () => t('validation.sell.year.max')),
+  make: yup
+    .string()
+    .transform((value) => (value?.trim() === '' ? undefined : value))
+    .required(() => t('validation.sell.make.required')),
+  models: yup
+    .string()
+    .transform((value) => (value?.trim() === '' ? undefined : value))
+    .required(() => t('validation.sell.model.required')),
   basicDetails: yup.object({
-    year: yup
-      .number()
-      .transform((value, originalValue) => {
-        return originalValue === '' ? undefined : value;
-      })
-      .required(() => t('validation.sell.year.required'))
-      .typeError(() => t('validation.sell.year.number'))
-      .min(1900, () => t('validation.sell.year.min'))
-      .max(new Date().getFullYear(), () => t('validation.sell.year.max')),
-    make: yup
-      .string()
-      .transform((value) => (value?.trim() === '' ? undefined : value))
-      .required(() => t('validation.sell.make.required')),
-    model: yup
-      .string()
-      .transform((value) => (value?.trim() === '' ? undefined : value))
-      .required(() => t('validation.sell.model.required')),
     manufacturer: yup
       .string()
       .transform((value) => (value?.trim() === '' ? undefined : value))
@@ -211,7 +219,7 @@ export const detailsSchema = yup.object({
       .max(100, () => t('validation.sell.tireTrackWear.max')),
   }),
 
-  condition: yup.object({
+  conditionOverview: yup.object({
     overallCondition: yup.string().required(() => t('validation.sell.overallCondition.required')),
     exteriorColor: yup.string().required(() => t('validation.sell.exteriorColor.required')),
     interiorColor: yup.string().required(() => t('validation.sell.interiorColor.required')),
@@ -285,51 +293,66 @@ export const conditionSchema = yup.object({
 });
 
 export const additionalInformationSchema = yup.object({
-  additionalInformation: yup.object({
-    equipmentIdentity: yup.object({
-      vinNumber: yup
-        .string()
-        .transform((value) => (value?.trim() === '' ? undefined : value))
-        .required(() => t('validation.sell.additionalInformation.vinNumberRequired')),
-
-      manufacturerDate: yup
-        .string()
-        .transform((value) => (value?.trim() === '' ? undefined : value))
-        .required(() => t('validation.sell.additionalInformation.required')),
-
-      modelYearConfirmation: yup
-        .string()
-        .required(() => t('validation.sell.additionalInformation.required')),
-
-      equipmentHasDamage: yup
-        .string()
-        .required(() => t('validation.sell.additionalInformation.required')),
-
-      maintainenceRecords: yup
-        .string()
-        .required(() => t('validation.sell.additionalInformation.required')),
-
-      warrantyAvailable: yup
-        .string()
-        .required(() => t('validation.sell.additionalInformation.required')),
-    }),
-
-    location: yup.object({
-      address: yup
-        .string()
-        .transform((value) => (value?.trim() === '' ? undefined : value))
-        .required(() => t('validation.sell.additionalInformation.location.addressRequired')),
-    }),
-
-    ownership: yup.object({
-      ownershipProof: yup.array().of(yup.string()),
-      invoiceBillOfSale: yup.array().of(yup.string()),
-      governmentRegistration: yup.array().of(yup.string()),
-      emissionTest: yup.array().of(yup.string()),
-      insurance: yup.array().of(yup.string()),
-      maintenanceLog: yup.array().of(yup.string()),
-    }),
+  location: yup.object({
+    address: yup
+      .string()
+      .required('Address is required')
+      .max(200, 'Address must not exceed 200 characters')
+      .trim(),
+    city: yup
+      .string()
+      .required('City is required')
+      .max(100, 'City must not exceed 100 characters')
+      .trim(),
+    state: yup
+      .string()
+      .required('State is required')
+      .max(50, 'State must not exceed 50 characters')
+      .trim(),
+    zipCode: yup
+      .string()
+      .required('ZIP code is required')
+      .matches(/^\d{5}(-\d{4})?$/, 'Please enter a valid ZIP code')
+      .trim(),
+    country: yup.string().required('Country is required').max(100).trim(),
   }),
+  // additionalInformation: yup.object({
+  //   equipmentIdentity: yup.object({
+  //     vinNumber: yup
+  //       .string()
+  //       .transform((value) => (value?.trim() === '' ? undefined : value))
+  //       .required(() => t('validation.sell.additionalInformation.vinNumberRequired')),
+
+  //     manufacturerDate: yup
+  //       .string()
+  //       .transform((value) => (value?.trim() === '' ? undefined : value))
+  //       .required(() => t('validation.sell.additionalInformation.required')),
+
+  //     modelYearConfirmation: yup
+  //       .string()
+  //       .required(() => t('validation.sell.additionalInformation.required')),
+
+  //     equipmentHasDamage: yup
+  //       .string()
+  //       .required(() => t('validation.sell.additionalInformation.required')),
+
+  //     maintainenceRecords: yup
+  //       .string()
+  //       .required(() => t('validation.sell.additionalInformation.required')),
+
+  //     warrantyAvailable: yup
+  //       .string()
+  //       .required(() => t('validation.sell.additionalInformation.required')),
+  //   }),
+  //   ownership: yup.object({
+  //     ownershipProof: yup.array().of(yup.string()),
+  //     invoiceBillOfSale: yup.array().of(yup.string()),
+  //     governmentRegistration: yup.array().of(yup.string()),
+  //     emissionTest: yup.array().of(yup.string()),
+  //     insurance: yup.array().of(yup.string()),
+  //     maintenanceLog: yup.array().of(yup.string()),
+  //   }),
+  // }),
 });
 
 export const buyNowFormSchema = yup.object({
@@ -376,7 +399,7 @@ export type LoginFormData = yup.InferType<typeof loginSchema>;
 export type RegisterFormData = yup.InferType<typeof registerSchema>;
 export type ForgotPasswordFormData = yup.InferType<typeof forgotPasswordSchema>;
 export type ResetPasswordFormData = yup.InferType<typeof resetPasswordSchema>;
-export type UpdateProfileFormData = yup.InferType<typeof updateProfileSchema>;
+// export type UpdateProfileFormData = yup.InferType<typeof updateProfileSchema>;
 export type BasicInfoFormData = yup.InferType<typeof basicInfoSchema>;
 export type DetailInfoFormData = yup.InferType<typeof detailsSchema>;
 export type ConditionChekListFormData = yup.InferType<typeof conditionSchema>;

@@ -571,7 +571,8 @@
         "imageUpload": {
           "clickHere": "Haz clic aquí",
           "toUpload": " para subir tu archivo o arrastrarlo.",
-          "formatSupport": "Formatos compatibles: SVG, JPG, MP4 (10 MB cada uno)"
+          "formatSupport": "Formatos compatibles: SVG, JPG, MP4 (10 MB cada uno)",
+          "videoSupport": "Formatos compatibles: MP4, MPEG"
         },
         "exteriorLabel": "Exterior",
         "engineLabel": "Motor",
@@ -627,7 +628,11 @@
         },
         "location": {
           "title": "Ubicación",
-          "address": "Dirección"
+          "address": "Dirección",
+          "city": "Ciudad",
+          "state": "Estado",
+          "zipCode": "Código Postal",
+          "country": "País"
         },
         "ownership": {
           "title": "Propiedad y Documentos Legales",

@@ -3,7 +3,7 @@ import { cn } from '../../utils';
 import i18n from '../../i18n/config';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger';
   size?: 'sm' | 'md' | 'lg';
   children: ReactNode;
   isLoading?: boolean;
@@ -30,6 +30,8 @@ export const Button = ({
       'glass-light border-2 border-primary-500/50 text-primary-600 hover:glass-brand hover:border-primary-500 focus:ring-primary-500/50 focus:ring-offset-2 dark:border-primary-400/50 dark:text-primary-400 dark:hover:glass-brand shadow-sm hover:shadow-frost',
     ghost:
       'text-gray-700 hover:glass-light focus:ring-gray-500/50 focus:ring-offset-2 dark:text-gray-300 transition-all duration-200 border border-transparent hover:border-white/20 dark:hover:border-white/10',
+    danger:
+      'bg-gradient-to-r from-red-500 to-red-600 text-white hover:from-red-600 hover:to-red-700 focus:ring-red-500/50 focus:ring-offset-2 shadow-md hover:scale-[1.02] backdrop-blur-sm border border-red-400/30',
   };
 
   const sizes = {

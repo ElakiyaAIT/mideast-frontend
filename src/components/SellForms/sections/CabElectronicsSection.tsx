@@ -3,15 +3,10 @@ import type { SellFormData } from '../../../types/home';
 import { SelectInput } from '../SelectInput';
 import RadioGroup from '../RadioInput';
 import { useTranslation } from '../../../i18n';
-
+import { type Option } from '../../../pages/public/SellPage.constants';
 type NestedErrors<T> = {
   [K in keyof T]?: T[K] extends object ? NestedErrors<T[K]> : string;
 };
-interface Option {
-  id: number;
-  value: string;
-}
-
 interface CabElectronicsSectionProps {
   formData: SellFormData;
   handleChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
@@ -63,7 +58,7 @@ export const CabElectronicsSection = ({
           value={formData.cabElectronics.displayErrors || ''}
           required={true}
           error={errors?.cabElectronics?.displayErrors}
-          options={options.overAllCondition}
+          options={options.yesNo}
           onChange={handleChange}
         />
 
