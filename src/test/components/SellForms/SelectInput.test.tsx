@@ -4,8 +4,8 @@ import { SelectInput } from '../../../components/SellForms/SelectInput';
 
 describe('SelectInput', () => {
   const mockOptions = [
-    { id: '1', value: 'Option 1' },
-    { id: '2', value: 'Option 2' },
+    { label: '1', value: 'Option 1' },
+    { label: '2', value: 'Option 2' },
   ];
 
   const defaultProps = {

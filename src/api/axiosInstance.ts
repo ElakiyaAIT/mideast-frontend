@@ -51,20 +51,6 @@ axiosInstance.interceptors.request.use(
     // Add language header to all requests
     const language = i18n.language || 'en';
     config.headers['Accept-Language'] = language;
-
-    // Add Firebase ID token to Authorization header if user is authenticated
-
-    // const currentUser = auth.currentUser;
-    // if (currentUser) {
-    //   try {
-    //     const idToken = await currentUser.getIdToken();
-
-    //     config.headers['Authorization'] = `Bearer ${idToken}`;
-    //   } catch (error) {
-    //     console.error('Failed to get Firebase ID token:', error);
-    //   }
-    // }
-
     // csrf handling
     const method = config.method?.toUpperCase() || 'GET';
     const needsCsrf = ['POST', 'PUT', 'PATCH', 'DELETE'].includes(method);

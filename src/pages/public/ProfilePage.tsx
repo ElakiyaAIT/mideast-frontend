@@ -45,7 +45,11 @@ const ProfilePage = (): JSX.Element => {
   }, [profile, authUser, reset]);
 
   const onSubmit = async (data: UpdateProfileFormData): Promise<void> => {
-    updateProfileMutation.mutate(data);
+    updateProfileMutation.mutate(data, {
+      onSuccess: () => {
+        reset(data); // ensures isDirty = false after save
+      },
+    });
   };
 
   const displayProfile = profile || authUser;

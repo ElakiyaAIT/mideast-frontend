@@ -1,6 +1,6 @@
 import { TopBanner, Header, Footer } from '../../components/layout';
 import type { JSX } from 'react';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useEquipmentDetail, useRelatedEquipment } from '../../hooks/queries/useEquipment';
 import { InlineSpinner } from '../../components/Loader';
@@ -19,6 +19,7 @@ const BuyNowDetailsPage = (): JSX.Element => {
   const { id } = useParams<{ id: string }>();
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
+  const formRef = useRef<HTMLDivElement>(null);
 
   // Fetch equipment details
   const { data: equipment, isLoading, isError } = useEquipmentDetail(id || '');
@@ -80,7 +81,21 @@ const BuyNowDetailsPage = (): JSX.Element => {
       country: 'USA',
     },
   };
+  const hasScrolledRef = useRef(false);
 
+  React.useEffect(() => {
+    // 2. Only run if we are NOT loading, equipment EXISTS, and we HAVEN'T scrolled yet
+    if (!isLoading && equipment && formRef.current && !hasScrolledRef.current) {
+      // 3. Perform the scroll
+      formRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+
+      // 4. Mark as "done" so it never runs again during this session
+      hasScrolledRef.current = true;
+    }
+  }, [isLoading, equipment]);
   if (isLoading) {
     return (
       <>
@@ -132,7 +147,7 @@ const BuyNowDetailsPage = (): JSX.Element => {
           className="absolute inset-0 h-full w-full object-cover"
           src={buynowDetailsBanner}
         />
-        <div className="relative z-10 text-center">
+        <div ref={formRef} className="relative z-10 text-center">
           <h1 className="text-5xl font-bold uppercase tracking-tight text-white">
             {equipment.title}
           </h1>
@@ -245,7 +260,7 @@ const BuyNowDetailsPage = (): JSX.Element => {
                 {t('product.details.description')}
               </h3>
               <div className="text-sm leading-relaxed text-slate-600 dark:text-slate-400">
-                <p>{equipment.description}</p>
+                <p className="truncate">{equipment.description}</p>
               </div>
             </section>
 
@@ -403,7 +418,6 @@ const BuyNowDetailsPage = (): JSX.Element => {
                 </button>
               </div>
 
-              {/* DOCUMENTATION */}
               {/* DOCUMENTATION */}
               <div className="rounded-xl border border-slate-200 bg-white px-4 py-3 dark:border-slate-800 dark:bg-gray-900">
                 <h4 className="mb-2 text-sm font-bold">{t('product.details.documentation')}</h4>

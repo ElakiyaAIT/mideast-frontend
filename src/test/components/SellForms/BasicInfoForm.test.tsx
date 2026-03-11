@@ -2,6 +2,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import BasicInfo from '../../../components/SellForms/BasicInfoForm';
 import { type SellFormData } from '../../../types/home';
+import { initialFormData } from '../../../pages/public/SellPage.constants';
 
 // 1. Mock the TinyMCE Editor to avoid heavy rendering and iframe issues
 vi.mock('@tinymce/tinymce-react', () => ({
@@ -33,12 +34,7 @@ describe('BasicInfo Component', () => {
   const mockHandleChange = vi.fn();
   const mockSetErrors = vi.fn();
 
-  const initialData: SellFormData = {
-    title: '',
-    category: '',
-    description: '',
-    // ... add other necessary fields from SellFormData
-  } as SellFormData;
+  const initialData: SellFormData = initialFormData;
 
   beforeEach(() => {
     vi.clearAllMocks();

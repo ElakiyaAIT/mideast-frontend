@@ -21,7 +21,7 @@ export const DocumentUpload = ({
   error: externalError,
   helperText,
   required,
-  maxFiles = 5,
+  maxFiles = 1,
   maxSize = 10,
   value = [],
   onChange,
@@ -68,7 +68,7 @@ export const DocumentUpload = ({
     });
     const filesToAdd = validFiles.slice(0, remainingSlots);
     if (filesToAdd.length > 0) {
-      const updatedFiles = [...files, ...validFiles];
+      const updatedFiles = [...files, ...filesToAdd];
       setFiles(updatedFiles);
       onChange?.(updatedFiles);
     }
@@ -140,7 +140,7 @@ export const DocumentUpload = ({
         <input
           ref={fileInputRef}
           type="file"
-          multiple
+          multiple={maxFiles > 1}
           accept=".pdf,.doc,.docx,.xls,.xlsx"
           onChange={handleFileChange}
           disabled={disabled || !canAddMore}

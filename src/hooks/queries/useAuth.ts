@@ -127,7 +127,7 @@ export const useLogout = (): UseMutationResult<LogoutResponseDto, Error, void> =
       queryClient.clear();
       const normalizedError = normalizeApiError(error);
       console.error('Logout error:', normalizedError);
-      void navigate('/login');
+      void navigate('/');
     },
   });
 };
